@@ -24,22 +24,23 @@
 
 - (instancetype)init
 {
-    self = [super init];
-    
-    //_initialURL = url;
-    [self configureController];
+    if ((self = [super init]))
+    {
+        [self initializeController];
+    }
     
     return self;
 }
 
 - (instancetype)initWithWebView:(UIWebView *)webView
 {
-    self = [super init];
-    
-    _webView = webView;
-    _sharedWebView = YES;
-    
-    [self configureController];
+    if ((self = [super init]))
+    {
+        _webView = webView;
+        _sharedWebView = YES;
+        
+        [self initializeController];
+    }
     
     return self;
 }
@@ -55,7 +56,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
 }
 
-- (void)configureController
+- (void)initializeController
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -67,8 +68,6 @@
         
         _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
@@ -170,6 +169,8 @@
     
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidStartLoad:)])
         [strongDelegate webViewControllerDidStartLoad:self];
+    
+    [self webViewDidStartLoad];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -181,6 +182,8 @@
     
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
         [strongDelegate webViewControllerDidFinishLoad:self];
+    
+    [self webViewDidFinishLoad];
 }
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
@@ -199,6 +202,18 @@
     UIGraphicsEndImageContext();
     
     return img;
+}
+
+#pragma mark - Subclasses should override.
+
+- (void)webViewDidStartLoad
+{
+    // don't do anything, this is for subclasses.
+}
+
+- (void)webViewDidFinishLoad
+{
+    // don't do anything, this is for subclasses.
 }
 
 @end

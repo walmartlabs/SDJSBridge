@@ -31,4 +31,10 @@
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name;
 - (void)addScriptMethod:(NSString *)name block:(void *)block;
 
+#pragma mark - Subclasses should override and call super
+
+- (void)initializeController;
+- (void)webViewDidFinishLoad;
+- (void)webViewDidStartLoad;
+
 @end
