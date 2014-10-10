@@ -106,6 +106,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     if (![self isMovingToParentViewController])
     {
         [self recontainWebView];
@@ -115,13 +116,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     UIImage *placeholderImage = [self imageWithView:self.webView];
     self.placeholderView.image = placeholderImage;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,17 +143,22 @@
             result = [strongDelegate webViewController:self shouldOpenRequest:request];
         else
         {
+            result = [self shouldHandleURL:request.URL];
+            
             // handles link clicks through standard navigation mechanism.
-            if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
+            if (result)
             {
-                SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
-                [self.navigationController pushViewController:webViewController animated:YES];
-                [webViewController loadURL:request.URL];
+                if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
+                {
+                    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
+                    [self.navigationController pushViewController:webViewController animated:YES];
+                    [webViewController loadURL:request.URL];
 
-                result = NO;
+                    result = NO;
+                }
+                else
+                    result = YES;
             }
-            else
-                result = YES;
         }
     }
     
@@ -214,6 +216,11 @@
 - (void)webViewDidFinishLoad
 {
     // don't do anything, this is for subclasses.
+}
+
+- (BOOL)shouldHandleURL:(NSURL *)url
+{
+    return YES;
 }
 
 @end

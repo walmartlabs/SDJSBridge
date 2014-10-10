@@ -34,6 +34,7 @@
 #pragma mark - Subclasses should override and call super
 
 - (void)initializeController;
+- (BOOL)shouldHandleURL:(NSURL *)url;
 - (void)webViewDidFinishLoad;
 - (void)webViewDidStartLoad;
 
