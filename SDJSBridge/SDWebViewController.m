@@ -143,7 +143,19 @@
         if ([self.delegate respondsToSelector:@selector(webViewController:shouldOpenRequest:)])
             result = [self.delegate webViewController:self shouldOpenRequest:request];
         else
-            result = YES;
+        {
+            // handles link clicks through standard navigation mechanism.
+            if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
+            {
+                SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
+                [self.navigationController pushViewController:webViewController animated:YES];
+                [webViewController loadURL:request.URL];
+
+                result = NO;
+            }
+            else
+                result = YES;
+        }
     }
     
     return result;
@@ -157,13 +169,11 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.navigationItem.title = title;
+    
     if ([self.delegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
         [self.delegate webViewControllerDidFinishLoad:self];
-    /*_bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
-     _topLevelAPI.platform.sharedWebView = self.webView;
-     _topLevelAPI.platform.navigationController = self.navigationController;
-     
-     [_bridge addScriptObject:_topLevelAPI name:@"WM"];*/
 }
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
