@@ -8,6 +8,7 @@
 
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
+#import "SDMacros.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
@@ -140,8 +141,10 @@
         if ([request.URL.absoluteString isEqualToString:_currentURL.absoluteString])
             return YES;
         
-        if ([self.delegate respondsToSelector:@selector(webViewController:shouldOpenRequest:)])
-            result = [self.delegate webViewController:self shouldOpenRequest:request];
+        @strongify(self.delegate, strongDelegate);
+        
+        if ([strongDelegate respondsToSelector:@selector(webViewController:shouldOpenRequest:)])
+            result = [strongDelegate webViewController:self shouldOpenRequest:request];
         else
         {
             // handles link clicks through standard navigation mechanism.
@@ -163,8 +166,10 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    if ([self.delegate respondsToSelector:@selector(webViewControllerDidStartLoad:)])
-        [self.delegate webViewControllerDidStartLoad:self];
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerDidStartLoad:)])
+        [strongDelegate webViewControllerDidStartLoad:self];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -172,8 +177,10 @@
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.navigationItem.title = title;
     
-    if ([self.delegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
-        [self.delegate webViewControllerDidFinishLoad:self];
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
+        [strongDelegate webViewControllerDidFinishLoad:self];
 }
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx

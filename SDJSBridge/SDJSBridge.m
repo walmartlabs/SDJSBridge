@@ -66,7 +66,7 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
 - (void)configureContext:(JSContext *)context
 {
     _context = [_webView valueForKeyPath:UIWebViewContextPath];
-    [_context setExceptionHandler:^(JSContext *context, JSValue *value) {
+    [_context setExceptionHandler:^(JSContext *aContext, JSValue *value) {
         NSLog(@"SDJSBridgeException: %@", value);
     }];
     

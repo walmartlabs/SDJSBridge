@@ -20,6 +20,13 @@
 		CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */; };
 		CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */; };
 		CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */; };
+		CA024A1019E88463007CAAC7 /* Global-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0C19E88463007CAAC7 /* Global-iOS.xcconfig */; };
+		CA024A1119E88463007CAAC7 /* Global-iOS.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0C19E88463007CAAC7 /* Global-iOS.xcconfig */; };
+		CA024A1219E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */; };
+		CA024A1319E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */; };
+		CA024A1419E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */; };
+		CA024A1519E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */; };
+		CA024A1C19E885C9007CAAC7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA024A1B19E885C9007CAAC7 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,12 @@
 		CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+SDJSExtensions.m"; sourceTree = "<group>"; };
 		CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebViewController.h; sourceTree = "<group>"; };
 		CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebViewController.m; sourceTree = "<group>"; };
+		CA024A0C19E88463007CAAC7 /* Global-iOS.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Global-iOS.xcconfig"; sourceTree = "<group>"; };
+		CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-iOS-Debug.xcconfig"; sourceTree = "<group>"; };
+		CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-iOS-Release.xcconfig"; sourceTree = "<group>"; };
+		CA024A1919E884EF007CAAC7 /* ObjectiveCGenerics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectiveCGenerics.h; sourceTree = "<group>"; };
+		CA024A1A19E884EF007CAAC7 /* SDMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDMacros.h; sourceTree = "<group>"; };
+		CA024A1B19E885C9007CAAC7 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA024A1C19E885C9007CAAC7 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +89,7 @@
 		CA0249C219E70B10007CAAC7 = {
 			isa = PBXGroup;
 			children = (
+				CA024A1B19E885C9007CAAC7 /* JavaScriptCore.framework */,
 				CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */,
 				CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */,
 				CA0249CC19E70B10007CAAC7 /* Products */,
@@ -93,6 +108,8 @@
 		CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */ = {
 			isa = PBXGroup;
 			children = (
+				CA024A1819E884EF007CAAC7 /* Macros */,
+				CA024A0B19E88463007CAAC7 /* Configurations */,
 				CA0249F419E70B2B007CAAC7 /* SDJSBridge */,
 				CA0249D219E70B10007CAAC7 /* AppDelegate.h */,
 				CA0249D319E70B10007CAAC7 /* AppDelegate.m */,
@@ -144,6 +161,27 @@
 			);
 			name = SDJSBridge;
 			path = ../../SDJSBridge;
+			sourceTree = "<group>";
+		};
+		CA024A0B19E88463007CAAC7 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				CA024A0C19E88463007CAAC7 /* Global-iOS.xcconfig */,
+				CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */,
+				CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */,
+			);
+			name = Configurations;
+			path = ../../Configurations;
+			sourceTree = "<group>";
+		};
+		CA024A1819E884EF007CAAC7 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				CA024A1919E884EF007CAAC7 /* ObjectiveCGenerics.h */,
+				CA024A1A19E884EF007CAAC7 /* SDMacros.h */,
+			);
+			name = Macros;
+			path = ../../Macros;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +264,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA024A1419E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */,
 				CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */,
 				CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */,
 				CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */,
+				CA024A1019E88463007CAAC7 /* Global-iOS.xcconfig in Resources */,
+				CA024A1219E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +277,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA024A1519E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */,
+				CA024A1319E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */,
+				CA024A1119E88463007CAAC7 /* Global-iOS.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +342,7 @@
 /* Begin XCBuildConfiguration section */
 		CA0249EC19E70B10007CAAC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -339,6 +384,7 @@
 		};
 		CA0249ED19E70B10007CAAC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -374,6 +420,7 @@
 		};
 		CA0249EF19E70B10007CAAC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SDJSBridgeExample/Info.plist;
@@ -384,6 +431,7 @@
 		};
 		CA0249F019E70B10007CAAC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SDJSBridgeExample/Info.plist;
@@ -394,6 +442,7 @@
 		};
 		CA0249F219E70B10007CAAC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0D19E88463007CAAC7 /* Project-iOS-Debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -413,6 +462,7 @@
 		};
 		CA0249F319E70B10007CAAC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA024A0E19E88463007CAAC7 /* Project-iOS-Release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -445,6 +495,7 @@
 				CA0249F019E70B10007CAAC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA0249F119E70B10007CAAC7 /* Build configuration list for PBXNativeTarget "SDJSBridgeExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +504,7 @@
 				CA0249F319E70B10007CAAC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
