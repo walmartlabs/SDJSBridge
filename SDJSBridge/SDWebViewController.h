@@ -26,6 +26,8 @@
 - (instancetype)init;
 - (instancetype)initWithWebView:(UIWebView *)webView;
 
+- (void)loadURL:(NSURL *)url;
+
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name;
 - (void)addScriptMethod:(NSString *)name block:(void *)block;
 
