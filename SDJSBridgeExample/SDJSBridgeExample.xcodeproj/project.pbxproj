@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
+		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
+		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
+		CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0249D819E70B10007CAAC7 /* Main.storyboard */; };
+		CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DB19E70B10007CAAC7 /* Images.xcassets */; };
+		CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */; };
+		CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */; };
+		CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
+		CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
+		CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */; };
+		CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */; };
+		CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */; };
+		CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA0249E519E70B10007CAAC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA0249C319E70B10007CAAC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA0249CA19E70B10007CAAC7;
+			remoteInfo = SDJSBridgeExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CA0249D219E70B10007CAAC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CA0249D319E70B10007CAAC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CA0249D519E70B10007CAAC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CA0249D619E70B10007CAAC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CA0249D919E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CA0249DB19E70B10007CAAC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CA0249DE19E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDJSBridgeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0249E919E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeExampleTests.m; sourceTree = "<group>"; };
+		CA0249F519E70B81007CAAC7 /* SDJSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridge.h; sourceTree = "<group>"; };
+		CA0249F619E70B81007CAAC7 /* SDJSBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridge.m; sourceTree = "<group>"; };
+		CA0249F919E70C23007CAAC7 /* UIWebView+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+SDJSExtensions.h"; sourceTree = "<group>"; };
+		CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+SDJSExtensions.m"; sourceTree = "<group>"; };
+		CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebViewController.h; sourceTree = "<group>"; };
+		CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA0249C819E70B10007CAAC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0249E119E70B10007CAAC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA0249C219E70B10007CAAC7 = {
+			isa = PBXGroup;
+			children = (
+				CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */,
+				CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */,
+				CA0249CC19E70B10007CAAC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA0249CC19E70B10007CAAC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */,
+				CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249F419E70B2B007CAAC7 /* SDJSBridge */,
+				CA0249D219E70B10007CAAC7 /* AppDelegate.h */,
+				CA0249D319E70B10007CAAC7 /* AppDelegate.m */,
+				CA0249D519E70B10007CAAC7 /* ViewController.h */,
+				CA0249D619E70B10007CAAC7 /* ViewController.m */,
+				CA0249D819E70B10007CAAC7 /* Main.storyboard */,
+				CA0249DB19E70B10007CAAC7 /* Images.xcassets */,
+				CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */,
+				CA0249CE19E70B10007CAAC7 /* Supporting Files */,
+			);
+			path = SDJSBridgeExample;
+			sourceTree = "<group>";
+		};
+		CA0249CE19E70B10007CAAC7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249CF19E70B10007CAAC7 /* Info.plist */,
+				CA0249D019E70B10007CAAC7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */,
+				CA0249E819E70B10007CAAC7 /* Supporting Files */,
+			);
+			path = SDJSBridgeExampleTests;
+			sourceTree = "<group>";
+		};
+		CA0249E819E70B10007CAAC7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249E919E70B10007CAAC7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CA0249F419E70B2B007CAAC7 /* SDJSBridge */ = {
+			isa = PBXGroup;
+			children = (
+				CA0249F519E70B81007CAAC7 /* SDJSBridge.h */,
+				CA0249F619E70B81007CAAC7 /* SDJSBridge.m */,
+				CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */,
+				CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */,
+				CA0249F919E70C23007CAAC7 /* UIWebView+SDJSExtensions.h */,
+				CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */,
+			);
+			name = SDJSBridge;
+			path = ../../SDJSBridge;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CA0249CA19E70B10007CAAC7 /* SDJSBridgeExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0249EE19E70B10007CAAC7 /* Build configuration list for PBXNativeTarget "SDJSBridgeExample" */;
+			buildPhases = (
+				CA0249C719E70B10007CAAC7 /* Sources */,
+				CA0249C819E70B10007CAAC7 /* Frameworks */,
+				CA0249C919E70B10007CAAC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDJSBridgeExample;
+			productName = SDJSBridgeExample;
+			productReference = CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CA0249E319E70B10007CAAC7 /* SDJSBridgeExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA0249F119E70B10007CAAC7 /* Build configuration list for PBXNativeTarget "SDJSBridgeExampleTests" */;
+			buildPhases = (
+				CA0249E019E70B10007CAAC7 /* Sources */,
+				CA0249E119E70B10007CAAC7 /* Frameworks */,
+				CA0249E219E70B10007CAAC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA0249E619E70B10007CAAC7 /* PBXTargetDependency */,
+			);
+			name = SDJSBridgeExampleTests;
+			productName = SDJSBridgeExampleTests;
+			productReference = CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA0249C319E70B10007CAAC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = SetDirection;
+				TargetAttributes = {
+					CA0249CA19E70B10007CAAC7 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					CA0249E319E70B10007CAAC7 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = CA0249CA19E70B10007CAAC7;
+					};
+				};
+			};
+			buildConfigurationList = CA0249C619E70B10007CAAC7 /* Build configuration list for PBXProject "SDJSBridgeExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CA0249C219E70B10007CAAC7;
+			productRefGroup = CA0249CC19E70B10007CAAC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA0249CA19E70B10007CAAC7 /* SDJSBridgeExample */,
+				CA0249E319E70B10007CAAC7 /* SDJSBridgeExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA0249C919E70B10007CAAC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */,
+				CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */,
+				CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0249E219E70B10007CAAC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA0249C719E70B10007CAAC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
+				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
+				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA0249E019E70B10007CAAC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */,
+				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA0249E619E70B10007CAAC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA0249CA19E70B10007CAAC7 /* SDJSBridgeExample */;
+			targetProxy = CA0249E519E70B10007CAAC7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CA0249D819E70B10007CAAC7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA0249D919E70B10007CAAC7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA0249DE19E70B10007CAAC7 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CA0249EC19E70B10007CAAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CA0249ED19E70B10007CAAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CA0249EF19E70B10007CAAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SDJSBridgeExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CA0249F019E70B10007CAAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SDJSBridgeExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CA0249F219E70B10007CAAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SDJSBridgeExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SDJSBridgeExample.app/SDJSBridgeExample";
+			};
+			name = Debug;
+		};
+		CA0249F319E70B10007CAAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SDJSBridgeExampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SDJSBridgeExample.app/SDJSBridgeExample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA0249C619E70B10007CAAC7 /* Build configuration list for PBXProject "SDJSBridgeExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0249EC19E70B10007CAAC7 /* Debug */,
+				CA0249ED19E70B10007CAAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA0249EE19E70B10007CAAC7 /* Build configuration list for PBXNativeTarget "SDJSBridgeExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0249EF19E70B10007CAAC7 /* Debug */,
+				CA0249F019E70B10007CAAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CA0249F119E70B10007CAAC7 /* Build configuration list for PBXNativeTarget "SDJSBridgeExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA0249F219E70B10007CAAC7 /* Debug */,
+				CA0249F319E70B10007CAAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA0249C319E70B10007CAAC7 /* Project object */;
+}
