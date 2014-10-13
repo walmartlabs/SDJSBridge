@@ -22,6 +22,7 @@
 @interface SDWebViewController : UIViewController
 
 @property (nonatomic, weak) id<SDWebViewControllerDelegate> delegate;
+@property (nonatomic, readonly) NSURL *url;
 
 - (instancetype)init;
 - (instancetype)initWithWebView:(UIWebView *)webView;

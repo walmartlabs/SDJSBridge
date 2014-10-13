@@ -50,6 +50,11 @@
     //NSLog(@"dealloc");
 }
 
+- (NSURL *)url
+{
+    return [_currentURL copy];
+}
+
 - (void)loadURL:(NSURL *)url
 {
     //NSLog(@"loading url = %@", url);
@@ -183,7 +188,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    self.navigationItem.title = title;
+    self.title = title;
     self.webView.hidden = NO;
     
     @strongify(self.delegate, strongDelegate);
