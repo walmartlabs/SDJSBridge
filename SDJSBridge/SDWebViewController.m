@@ -47,11 +47,12 @@
 
 - (void)dealloc
 {
-    NSLog(@"dealloc");
+    //NSLog(@"dealloc");
 }
 
 - (void)loadURL:(NSURL *)url
 {
+    //NSLog(@"loading url = %@", url);
     _currentURL = url;
     [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
 }
@@ -68,6 +69,8 @@
         
         _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
+    
+    self.webView.hidden = YES;
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
@@ -114,12 +117,12 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+/*- (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     UIImage *placeholderImage = [self imageWithView:self.webView];
     self.placeholderView.image = placeholderImage;
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -132,7 +135,7 @@
     
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
-        NSLog(@"url = %@", request.URL);
+        //NSLog(@"url = %@", request.URL);
         
         if ([request.URL.absoluteString isEqualToString:_currentURL.absoluteString])
             return YES;
@@ -150,7 +153,9 @@
             {
                 if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
                 {
-                    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
+                    self.placeholderView.image = [self imageWithView:self.webView];
+                    
+                    id webViewController = [[[self class] alloc] initWithWebView:self.webView];
                     [self.navigationController pushViewController:webViewController animated:YES];
                     [webViewController loadURL:request.URL];
 
@@ -179,6 +184,7 @@
 {
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.navigationItem.title = title;
+    self.webView.hidden = NO;
     
     @strongify(self.delegate, strongDelegate);
     
@@ -190,7 +196,7 @@
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
 {
-    NSLog(@"got a new context");
+    //NSLog(@"got a new context");
     [_bridge configureContext:ctx];
 }
 
