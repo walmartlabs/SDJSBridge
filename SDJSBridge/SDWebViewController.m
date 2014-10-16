@@ -20,7 +20,10 @@
     NSURL *_currentURL;
     SDJSBridge *_bridge;
     BOOL _sharedWebView;
+    NSTimer *_loadTimer;
 }
+
+#pragma mark - Public methods
 
 - (instancetype)init
 {
@@ -45,11 +48,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    //NSLog(@"dealloc");
-}
-
 - (NSURL *)url
 {
     return [_currentURL copy];
@@ -57,9 +55,11 @@
 
 - (void)loadURL:(NSURL *)url
 {
-    //NSLog(@"loading url = %@", url);
     _currentURL = url;
     [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
+    
+    [self invalidateTimer];
+    _loadTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(checkLoadingStatus:) userInfo:nil repeats:YES];
 }
 
 - (void)initializeController
@@ -88,16 +88,11 @@
     [_bridge addScriptMethod:name block:block];
 }
 
-- (void)recontainWebView
+#pragma mark - Lifecycle methods
+
+- (void)dealloc
 {
-    self.webView.delegate = self;
-    
-    CGRect frame = self.view.bounds;
-    
-    [self.webView removeFromSuperview];
-    self.webView.frame = frame;
-    self.webView.scrollView.contentInset = UIEdgeInsetsZero;
-    [self.view addSubview:self.webView];
+    [self invalidateTimer];
 }
 
 - (void)viewDidLoad {
@@ -122,17 +117,13 @@
     }
 }
 
-/*- (void)viewWillDisappear:(BOOL)animated
+- (void)didReceiveMemoryWarning
 {
-    [super viewWillDisappear:animated];
-    UIImage *placeholderImage = [self imageWithView:self.webView];
-    self.placeholderView.image = placeholderImage;
-}*/
-
-- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -140,8 +131,6 @@
     
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
-        //NSLog(@"url = %@", request.URL);
-        
         if ([request.URL.absoluteString isEqualToString:_currentURL.absoluteString])
             return YES;
         
@@ -172,6 +161,9 @@
         }
     }
     
+    // useful for debugging.
+    //NSLog(@"navType = %d, url = %@", navigationType, request.URL);
+    
     return result;
 }
 
@@ -190,6 +182,7 @@
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.title = title;
     self.webView.hidden = NO;
+    [self invalidateTimer];
     
     @strongify(self.delegate, strongDelegate);
     
@@ -201,20 +194,7 @@
 
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
 {
-    //NSLog(@"got a new context");
     [_bridge configureContext:ctx];
-}
-
-- (UIImage *)imageWithView:(UIView *)view
-{
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return img;
 }
 
 #pragma mark - Subclasses should override.
@@ -232,6 +212,54 @@
 - (BOOL)shouldHandleURL:(NSURL *)url
 {
     return YES;
+}
+
+#pragma mark - Utilities
+
+- (UIImage *)imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return img;
+}
+
+- (void)invalidateTimer
+{
+    [_loadTimer invalidate];
+    _loadTimer = nil;
+}
+
+- (void)checkLoadingStatus:(NSTimer *)timer
+{
+    if (!self.webView.loading)
+    {
+        // they likely left the app due to some redirected url like to iTunes or something.
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+        [self invalidateTimer];
+    }
+    
+    // useful code for debugging.
+    /*if (self.webView.loading)
+        NSLog(@"loading = YES");
+    else
+        NSLog(@"loading = NO");*/
+}
+
+- (void)recontainWebView
+{
+    self.webView.delegate = self;
+    
+    CGRect frame = self.view.bounds;
+    
+    [self.webView removeFromSuperview];
+    self.webView.frame = frame;
+    self.webView.scrollView.contentInset = UIEdgeInsetsZero;
+    [self.view addSubview:self.webView];
 }
 
 @end
