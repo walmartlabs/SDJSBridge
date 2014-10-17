@@ -11,7 +11,7 @@
 #import "SDMacros.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, readonly) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
 @end
 
@@ -21,6 +21,7 @@
     SDJSBridge *_bridge;
     BOOL _sharedWebView;
     NSTimer *_loadTimer;
+    UIWebView *_webView;
 }
 
 #pragma mark - Public methods
@@ -29,7 +30,6 @@
 {
     if ((self = [super init]))
     {
-        [self initializeController];
     }
     
     return self;
@@ -41,8 +41,6 @@
     {
         _webView = webView;
         _sharedWebView = YES;
-        
-        [self initializeController];
     }
     
     return self;
@@ -65,16 +63,6 @@
 - (void)initializeController
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    if (!self.webView)
-    {
-        self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        self.webView.scrollView.delaysContentTouches = NO;
-        [self.webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
-        
-        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
-    }
-    
     self.webView.hidden = YES;
 }
 
@@ -98,13 +86,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.autoresizesSubviews = YES;
+    //self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    self.placeholderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    //self.placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view insertSubview:self.placeholderView atIndex:0];
+
+    [self initializeController];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
     
     [self recontainWebView];
     
-    self.placeholderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [self.view insertSubview:self.placeholderView atIndex:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,6 +113,11 @@
         [self recontainWebView];
         [self.webView goBack];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -239,6 +242,7 @@
     if (!self.webView.loading)
     {
         // they likely left the app due to some redirected url like to iTunes or something.
+        [self.webView stopLoading];
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
         [self invalidateTimer];
     }
@@ -257,9 +261,28 @@
     CGRect frame = self.view.bounds;
     
     [self.webView removeFromSuperview];
+    
     self.webView.frame = frame;
     self.webView.scrollView.contentInset = UIEdgeInsetsZero;
     [self.view addSubview:self.webView];
+    
+    self.placeholderView.frame = frame;
+}
+
+- (UIWebView *)webView
+{
+    if (!_webView)
+    {
+        _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        //_webView.translatesAutoresizingMaskIntoConstraints = NO;
+        _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _webView.scrollView.delaysContentTouches = NO;
+        [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
+        
+        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+    }
+
+    return _webView;
 }
 
 @end
