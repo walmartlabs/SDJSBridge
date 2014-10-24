@@ -57,7 +57,6 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
     
     [self invalidateTimer];
-    _loadTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(checkLoadingStatus:) userInfo:nil repeats:YES];
 }
 
 - (void)initializeController
@@ -163,9 +162,16 @@
             }
         }
     }
+    else if (navigationType == UIWebViewNavigationTypeOther)
+    {
+        if (!_loadTimer)
+        {
+            _loadTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(checkLoadingStatus:) userInfo:nil repeats:YES];
+        }
+    }
     
     // useful for debugging.
-    //NSLog(@"navType = %d, url = %@", navigationType, request.URL);
+    NSLog(@"navType = %d, url = %@", navigationType, request.URL);
     
     return result;
 }
