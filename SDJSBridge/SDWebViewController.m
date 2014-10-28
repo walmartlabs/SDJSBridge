@@ -171,7 +171,7 @@
     }
     
     // useful for debugging.
-    NSLog(@"navType = %d, url = %@", navigationType, request.URL);
+    //NSLog(@"navType = %d, url = %@", navigationType, request.URL);
     
     return result;
 }
