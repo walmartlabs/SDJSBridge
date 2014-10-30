@@ -1,0 +1,63 @@
+<!doctype html5>
+
+<button id="backward">backward</button>
+<button id="forward">forward</button>
+<button id="modal">modal</button>
+<button id="dismiss">dismiss modal</button>
+
+<script>
+    function NoClickDelay(el) {
+        this.element = el;
+        if( window.Touch ) this.element.addEventListener('touchstart', this, false);
+    }
+
+NoClickDelay.prototype = {
+    handleEvent: function(e) {
+        switch(e.type) {
+            case 'touchstart': this.onTouchStart(e); break;
+            case 'touchmove': this.onTouchMove(e); break;
+            case 'touchend': this.onTouchEnd(e); break;
+        }
+    },
+    
+    onTouchStart: function(e) {
+        e.preventDefault();
+        this.moved = false;
+        
+        this.element.addEventListener('touchmove', this, false);
+        this.element.addEventListener('touchend', this, false);
+    },
+    
+    onTouchMove: function(e) {
+        this.moved = true;
+    },
+    
+    onTouchEnd: function(e) {
+        this.element.removeEventListener('touchmove', this, false);
+        this.element.removeEventListener('touchend', this, false);
+        
+        if( !this.moved ) {
+            // Place your code here or use the click simulation below
+            var theTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            if(theTarget.nodeType == 3) theTarget = theTarget.parentNode;
+            
+            var theEvent = document.createEvent('MouseEvents');
+            theEvent.initEvent('click', true, true);
+            theTarget.dispatchEvent(theEvent);
+        }
+    }
+};
+
+    document.getElementById('forward').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.navigation.pushURL('http://www.google.com/', 'Page Title');
+    })
+    document.getElementById('backward').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.navigation.popURL();
+    });
+    document.getElementById('modal').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.navigation.presentModalURL('http://www.google.com/', 'Modal Title');
+    });
+    document.getElementById('dismiss').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.navigation.dismiss();
+    });
+</script>

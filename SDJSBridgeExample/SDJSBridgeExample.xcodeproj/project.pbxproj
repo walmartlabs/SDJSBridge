@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193E8EFB1A02A4AF00AB4C47 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */; };
+		193E8EFE1A02A83900AB4C47 /* SDJSNavigationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */; };
+		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
+		196650571A02C0E600AAC405 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
-		CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0249D819E70B10007CAAC7 /* Main.storyboard */; };
 		CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DB19E70B10007CAAC7 /* Images.xcassets */; };
 		CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */; };
 		CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */; };
@@ -40,6 +43,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		193E8EF91A02A4AF00AB4C47 /* SDJSPlatformAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformAPI.h; sourceTree = "<group>"; };
+		193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPI.m; sourceTree = "<group>"; };
+		193E8EFC1A02A83900AB4C47 /* SDJSNavigationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationAPI.h; sourceTree = "<group>"; };
+		193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationAPI.m; sourceTree = "<group>"; };
+		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
+		196650551A02C0E600AAC405 /* SDJSTopLevelAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSTopLevelAPI.h; sourceTree = "<group>"; };
+		196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPI.m; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,7 +57,6 @@
 		CA0249D319E70B10007CAAC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CA0249D519E70B10007CAAC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CA0249D619E70B10007CAAC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CA0249D919E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA0249DB19E70B10007CAAC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA0249DE19E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDJSBridgeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +95,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		193E8EF81A02A47C00AB4C47 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				193E8EF91A02A4AF00AB4C47 /* SDJSPlatformAPI.h */,
+				193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */,
+				193E8EFC1A02A83900AB4C47 /* SDJSNavigationAPI.h */,
+				193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
 		CA0249C219E70B10007CAAC7 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +128,7 @@
 		CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */ = {
 			isa = PBXGroup;
 			children = (
+				196650531A02C04300AAC405 /* example1.html */,
 				CA024A1819E884EF007CAAC7 /* Macros */,
 				CA024A0B19E88463007CAAC7 /* Configurations */,
 				CA0249F419E70B2B007CAAC7 /* SDJSBridge */,
@@ -115,7 +136,6 @@
 				CA0249D319E70B10007CAAC7 /* AppDelegate.m */,
 				CA0249D519E70B10007CAAC7 /* ViewController.h */,
 				CA0249D619E70B10007CAAC7 /* ViewController.m */,
-				CA0249D819E70B10007CAAC7 /* Main.storyboard */,
 				CA0249DB19E70B10007CAAC7 /* Images.xcassets */,
 				CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */,
 				CA0249CE19E70B10007CAAC7 /* Supporting Files */,
@@ -152,6 +172,9 @@
 		CA0249F419E70B2B007CAAC7 /* SDJSBridge */ = {
 			isa = PBXGroup;
 			children = (
+				193E8EF81A02A47C00AB4C47 /* Platform */,
+				196650551A02C0E600AAC405 /* SDJSTopLevelAPI.h */,
+				196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */,
 				CA0249F519E70B81007CAAC7 /* SDJSBridge.h */,
 				CA0249F619E70B81007CAAC7 /* SDJSBridge.m */,
 				CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */,
@@ -265,11 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA024A1419E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */,
-				CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */,
 				CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */,
 				CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */,
 				CA024A1019E88463007CAAC7 /* Global-iOS.xcconfig in Resources */,
 				CA024A1219E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */,
+				196650541A02C04300AAC405 /* example1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +317,11 @@
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
+				193E8EFE1A02A83900AB4C47 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
+				193E8EFB1A02A4AF00AB4C47 /* SDJSPlatformAPI.m in Sources */,
+				196650571A02C0E600AAC405 /* SDJSTopLevelAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,14 +347,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CA0249D819E70B10007CAAC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA0249D919E70B10007CAAC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
