@@ -17,6 +17,9 @@
 @end
 
 @implementation SDJSNavigationAPI
+{
+    NSString *_currentURL;
+}
 
 #pragma mark - Initialization
 
@@ -40,7 +43,21 @@
 #pragma mark - Push/Pop
 
 - (void)pushURL:(NSString *)urlString title:(NSString *)title {
+    
+    if (urlString.length == 0 || [urlString isEqualToString:_currentURL]) {
+        return;
+    }
+    
+    _currentURL = urlString;
+    
     NSURL *url = [NSURL URLWithString:urlString];
+    if (!url.scheme)
+    {
+        NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:urlString withExtension:nil];
+        url = bundleURL;
+    }
+    
+    
     SDWebViewController *webViewController = [self webViewControllerWithURL:url title:title];
     [self.navigationController pushViewController:webViewController animated:YES];
 }
