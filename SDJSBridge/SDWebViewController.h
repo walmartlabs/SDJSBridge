@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSURL *url;
 
 - (instancetype)init;
+- (instancetype)initWithURL:(NSURL *)url;
 - (instancetype)initWithWebView:(UIWebView *)webView;
 
 - (void)loadURL:(NSURL *)url;

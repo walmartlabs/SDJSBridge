@@ -46,6 +46,17 @@
     return self;
 }
 
+- (instancetype)initWithURL:(NSURL *)url
+{
+    if ((self = [super init]))
+    {
+        _currentURL = url;
+        [self loadURL:_currentURL];
+    }
+    
+    return self;
+}
+
 - (NSURL *)url
 {
     return [_currentURL copy];
