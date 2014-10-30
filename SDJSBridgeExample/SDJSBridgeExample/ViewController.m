@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SDWebViewController.h"
 
 @interface ViewController ()
 
@@ -16,12 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(pushWebControllerTest:)];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)pushWebControllerTest:(id)sender {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 @end
