@@ -49,13 +49,13 @@ NoClickDelay.prototype = {
 };
 
     document.getElementById('forward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.pushURL('http://www.google.com/', 'Page Title');
+        JSBridgeAPI.platform.navigation.pushURL('example1.html', 'Page Title');
     })
     document.getElementById('backward').addEventListener('touchend', function() {
         JSBridgeAPI.platform.navigation.popURL();
     });
     document.getElementById('modal').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.presentModalURL('http://www.google.com/', 'Modal Title');
+        JSBridgeAPI.platform.navigation.presentModalURL('example1.html', 'Modal Title');
     });
     document.getElementById('dismiss').addEventListener('touchend', function() {
         JSBridgeAPI.platform.navigation.dismiss();
