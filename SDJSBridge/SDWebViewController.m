@@ -11,18 +11,15 @@
 #import "SDMacros.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
-@property (nonatomic, readonly) UIWebView *webView;
+@property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
+@property (nonatomic, strong) NSTimer *loadTimer;
+@property (nonatomic, assign) BOOL sharedWebView;
+@property (nonatomic, strong) SDJSBridge *bridge;
+@property (nonatomic, strong) NSURL *currentURL;
 @end
 
 @implementation SDWebViewController
-{
-    NSURL *_currentURL;
-    SDJSBridge *_bridge;
-    BOOL _sharedWebView;
-    NSTimer *_loadTimer;
-    UIWebView *_webView;
-}
 
 #pragma mark - Public methods
 
@@ -48,15 +45,13 @@
 
 - (NSURL *)url
 {
-    return [_currentURL copy];
+    return [self.currentURL copy];
 }
 
 - (void)loadURL:(NSURL *)url
 {
-    _currentURL = url;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:_currentURL]];
-    
-    [self invalidateTimer];
+    self.currentURL = url;
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
 }
 
 - (void)initializeController
@@ -67,19 +62,19 @@
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
 {
-    [_bridge addScriptObject:object name:name];
+    [self.bridge addScriptObject:object name:name];
 }
 
 - (void)addScriptMethod:(NSString *)name block:(void *)block
 {
-    [_bridge addScriptMethod:name block:block];
+    [self.bridge addScriptMethod:name block:block];
 }
 
 #pragma mark - Lifecycle methods
 
 - (void)dealloc
 {
-    [self invalidateTimer];
+    self.delegate = nil;
 }
 
 - (void)viewDidLoad {
@@ -101,7 +96,6 @@
     self.webView.backgroundColor = [UIColor whiteColor];
     
     [self recontainWebView];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -109,6 +103,7 @@
     [super viewWillAppear:animated];
     if (![self isMovingToParentViewController])
     {
+        self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
     }
@@ -133,7 +128,7 @@
     
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
-        if ([request.URL.absoluteString isEqualToString:_currentURL.absoluteString])
+        if ([request.URL.absoluteString isEqualToString:self.currentURL.absoluteString])
             return YES;
         
         @strongify(self.delegate, strongDelegate);
@@ -162,13 +157,6 @@
             }
         }
     }
-    else if (navigationType == UIWebViewNavigationTypeOther)
-    {
-        if (!_loadTimer)
-        {
-            _loadTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(checkLoadingStatus:) userInfo:nil repeats:YES];
-        }
-    }
     
     // useful for debugging.
     //NSLog(@"navType = %d, url = %@", navigationType, request.URL);
@@ -191,19 +179,22 @@
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.title = title;
     self.webView.hidden = NO;
-    [self invalidateTimer];
     
     @strongify(self.delegate, strongDelegate);
-    
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
         [strongDelegate webViewControllerDidFinishLoad:self];
     
     [self webViewDidFinishLoad];
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self webViewDidFinishLoad];
+}
+
 - (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
 {
-    [_bridge configureContext:ctx];
+    [self.bridge configureContext:ctx];
 }
 
 #pragma mark - Subclasses should override.
@@ -237,33 +228,10 @@
     return img;
 }
 
-- (void)invalidateTimer
-{
-    [_loadTimer invalidate];
-    _loadTimer = nil;
-}
-
-- (void)checkLoadingStatus:(NSTimer *)timer
-{
-    if (!self.webView.loading)
-    {
-        // they likely left the app due to some redirected url like to iTunes or something.
-        [self.webView stopLoading];
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
-        [self invalidateTimer];
-    }
-    
-    // useful code for debugging.
-    /*if (self.webView.loading)
-        NSLog(@"loading = YES");
-    else
-        NSLog(@"loading = NO");*/
-}
-
 - (void)recontainWebView
 {
     self.webView.delegate = self;
-    
+
     CGRect frame = self.view.bounds;
     
     [self.webView removeFromSuperview];
@@ -280,12 +248,11 @@
     if (!_webView)
     {
         _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        //_webView.translatesAutoresizingMaskIntoConstraints = NO;
         _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
         
-        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
 
     return _webView;

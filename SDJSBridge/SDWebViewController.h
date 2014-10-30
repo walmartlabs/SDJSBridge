@@ -36,6 +36,7 @@
 
 - (void)initializeController;
 - (BOOL)shouldHandleURL:(NSURL *)url;
+
 - (void)webViewDidFinishLoad;
 - (void)webViewDidStartLoad;
 
