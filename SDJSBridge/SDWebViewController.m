@@ -9,6 +9,8 @@
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "SDMacros.h"
+#import "SDJSTopLevelAPI.h"
+#import "SDJSNavigationAPI.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
 @property (nonatomic, readonly) UIWebView *webView;
@@ -22,6 +24,7 @@
     BOOL _sharedWebView;
     NSTimer *_loadTimer;
     UIWebView *_webView;
+    __strong SDJSTopLevelAPI *_topLevelAPI;
 }
 
 #pragma mark - Public methods
@@ -110,6 +113,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
+    
+    _topLevelAPI.platform.navigation.navigationController = self.navigationController;
     
     [self recontainWebView];
     
@@ -241,7 +246,7 @@
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
@@ -297,6 +302,10 @@
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
         
         _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        _topLevelAPI = [[SDJSTopLevelAPI alloc] init];
+        _topLevelAPI.platform.sharedWebView = self.webView;
+        
+        [_bridge addScriptObject:_topLevelAPI name:@"JSBridgeAPI"];
     }
 
     return _webView;
