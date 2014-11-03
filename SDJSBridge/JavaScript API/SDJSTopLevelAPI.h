@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SDJSPlatformAPI.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import "SDJSBridgeScript.h"
+
+@class SDJSPlatformAPI;
+@class SDWebViewController;
 
 extern NSString * const SDJSTopLevelAPIScriptName;
 
@@ -15,10 +19,8 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 @property (nonatomic, strong) SDJSPlatformAPI *platform;
 @end
 
-@interface SDJSTopLevelAPI : NSObject<SDJSTopLevelAPIExports>
+@interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports>
 
 @property (nonatomic, strong) SDJSPlatformAPI *platform;
-
-- (instancetype)initWithWebViewController:(SDWebViewController *)webViewControllerl;
 
 @end

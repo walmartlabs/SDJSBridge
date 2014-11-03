@@ -10,25 +10,9 @@
 #import "SDWebViewController.h"
 #import "SDJSPlatformAPI.h"
 
-@interface SDJSNavigationAPI ()
-
-@property (nonatomic, weak) SDWebViewController *webViewController;
-
-@end
-
 @implementation SDJSNavigationAPI
 {
     NSString *_currentURL;
-}
-
-#pragma mark - Initialization
-
-- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
-    if ((self = [super init])) {
-        _webViewController = webViewController;
-    }
-    
-    return self;
 }
 
 #pragma mark - URLs

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <UIKit/UIKit.h>
+#import "SDJSBridgeScript.h"
 
 @class SDJSNavigationAPI;
 @class SDWebViewController;
@@ -19,10 +20,8 @@
 
 @end
 
-@interface SDJSPlatformAPI : NSObject <SDJSPlatformAPIExports>
+@interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
-
-- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController;
 
 @end

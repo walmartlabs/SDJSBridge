@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		193E8EFB1A02A4AF00AB4C47 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */; };
-		193E8EFE1A02A83900AB4C47 /* SDJSNavigationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
-		196650571A02C0E600AAC405 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */; };
+		19AAED021A081BF500238146 /* SDJSNavigationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFD1A081BF500238146 /* SDJSNavigationAPI.m */; };
+		19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */; };
+		19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */; };
+		19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED061A081C2600238146 /* SDJSBridgeScript.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
@@ -43,13 +44,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		193E8EF91A02A4AF00AB4C47 /* SDJSPlatformAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformAPI.h; sourceTree = "<group>"; };
-		193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPI.m; sourceTree = "<group>"; };
-		193E8EFC1A02A83900AB4C47 /* SDJSNavigationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationAPI.h; sourceTree = "<group>"; };
-		193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
-		196650551A02C0E600AAC405 /* SDJSTopLevelAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSTopLevelAPI.h; sourceTree = "<group>"; };
-		196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPI.m; sourceTree = "<group>"; };
+		19AAECFC1A081BF500238146 /* SDJSNavigationAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationAPI.h; sourceTree = "<group>"; };
+		19AAECFD1A081BF500238146 /* SDJSNavigationAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationAPI.m; sourceTree = "<group>"; };
+		19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformAPI.h; sourceTree = "<group>"; };
+		19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPI.m; sourceTree = "<group>"; };
+		19AAED001A081BF500238146 /* SDJSTopLevelAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSTopLevelAPI.h; sourceTree = "<group>"; };
+		19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPI.m; sourceTree = "<group>"; };
+		19AAED051A081C2600238146 /* SDJSBridgeScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeScript.h; sourceTree = "<group>"; };
+		19AAED061A081C2600238146 /* SDJSBridgeScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeScript.m; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,13 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		193E8EF81A02A47C00AB4C47 /* Platform */ = {
+		19AAECFA1A081BF500238146 /* JavaScript API */ = {
 			isa = PBXGroup;
 			children = (
-				193E8EF91A02A4AF00AB4C47 /* SDJSPlatformAPI.h */,
-				193E8EFA1A02A4AF00AB4C47 /* SDJSPlatformAPI.m */,
-				193E8EFC1A02A83900AB4C47 /* SDJSNavigationAPI.h */,
-				193E8EFD1A02A83900AB4C47 /* SDJSNavigationAPI.m */,
+				19AAECFB1A081BF500238146 /* Platform */,
+				19AAED001A081BF500238146 /* SDJSTopLevelAPI.h */,
+				19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */,
+				19AAED051A081C2600238146 /* SDJSBridgeScript.h */,
+				19AAED061A081C2600238146 /* SDJSBridgeScript.m */,
+			);
+			path = "JavaScript API";
+			sourceTree = "<group>";
+		};
+		19AAECFB1A081BF500238146 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				19AAECFC1A081BF500238146 /* SDJSNavigationAPI.h */,
+				19AAECFD1A081BF500238146 /* SDJSNavigationAPI.m */,
+				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
+				19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -172,9 +187,7 @@
 		CA0249F419E70B2B007CAAC7 /* SDJSBridge */ = {
 			isa = PBXGroup;
 			children = (
-				193E8EF81A02A47C00AB4C47 /* Platform */,
-				196650551A02C0E600AAC405 /* SDJSTopLevelAPI.h */,
-				196650561A02C0E600AAC405 /* SDJSTopLevelAPI.m */,
+				19AAECFA1A081BF500238146 /* JavaScript API */,
 				CA0249F519E70B81007CAAC7 /* SDJSBridge.h */,
 				CA0249F619E70B81007CAAC7 /* SDJSBridge.m */,
 				CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */,
@@ -313,15 +326,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AAED021A081BF500238146 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
-				193E8EFE1A02A83900AB4C47 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
-				193E8EFB1A02A4AF00AB4C47 /* SDJSPlatformAPI.m in Sources */,
-				196650571A02C0E600AAC405 /* SDJSTopLevelAPI.m in Sources */,
+				19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */,
+				19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

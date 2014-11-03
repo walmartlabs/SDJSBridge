@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "SDJSBridgeScript.h"
 
 @class SDWebViewController;
 
@@ -28,9 +29,8 @@ JSExportAs(presentModalURL,
 
 @end
 
-@interface SDJSNavigationAPI : NSObject <SDJSNavigationAPIExports>
+@interface SDJSNavigationAPI : SDJSBridgeScript <SDJSNavigationAPIExports>
 
-- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController;
 - (void)pushURL:(NSString
                  *)urlString title:(NSString *)title;
 - (void)popURL;
