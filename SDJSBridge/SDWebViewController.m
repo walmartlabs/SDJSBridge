@@ -161,12 +161,7 @@
             {
                 if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
                 {
-                    self.placeholderView.image = [self imageWithView:self.webView];
-                    
-                    id webViewController = [[[self class] alloc] initWithWebView:self.webView];
-                    [self.navigationController pushViewController:webViewController animated:YES];
-                    [webViewController loadURL:request.URL];
-
+                    [self pushURL:request.URL title:nil];
                     result = NO;
                 }
                 else
@@ -272,6 +267,18 @@
     }
 
     return _webView;
+}
+
+#pragma mark - Navigation
+
+- (id)pushURL:(NSURL *)url title:(NSString *)title {
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    webViewController.title = title;
+    [self.navigationController pushViewController:webViewController animated:YES];
+    [webViewController loadURL:url];
+    return webViewController;
 }
 
 @end

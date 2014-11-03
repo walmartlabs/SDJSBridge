@@ -31,8 +31,14 @@
 
 - (void)loadURL:(NSURL *)url;
 
+/// @name Interacting with the JS Bridge
+
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name;
 - (void)addScriptMethod:(NSString *)name block:(void *)block;
+
+/// @name Navigation
+
+- (id)pushURL:(NSURL *)url title:(NSString *)title;
 
 #pragma mark - Subclasses should override and call super
 
