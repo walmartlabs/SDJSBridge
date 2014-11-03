@@ -35,6 +35,7 @@
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name;
 - (void)addScriptMethod:(NSString *)name block:(void *)block;
+- (void)configureScripts;
 
 /// @name Navigation
 

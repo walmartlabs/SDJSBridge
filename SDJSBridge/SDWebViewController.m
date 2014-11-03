@@ -87,6 +87,13 @@
     [self.bridge addScriptMethod:name block:block];
 }
 
+- (void)configureScripts
+{
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
+    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
+}
+
+
 #pragma mark - Lifecycle methods
 
 - (void)dealloc
@@ -111,10 +118,6 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
-    
-    // todo: allow delegate/subclass to have control over adding API bridge
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
-    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
 
     [self recontainWebView];
 }
@@ -127,6 +130,7 @@
         self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
+        [self configureScripts];
     }
 }
 
@@ -200,6 +204,8 @@
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
         [strongDelegate webViewControllerDidFinishLoad:self];
     
+    [self configureScripts];
+    
     [self webViewDidFinishLoad];
 }
 
@@ -255,6 +261,7 @@
     self.webView.frame = frame;
     self.webView.scrollView.contentInset = UIEdgeInsetsZero;
     [self.view addSubview:self.webView];
+    self.webView.hidden = NO;
     
     self.placeholderView.frame = frame;
 }
