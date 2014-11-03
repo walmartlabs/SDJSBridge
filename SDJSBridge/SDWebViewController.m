@@ -9,27 +9,20 @@
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "SDMacros.h"
-#import "SDJSTopLevelAPI.h"
 #import "SDJSNavigationAPI.h"
+#import "SDJSTopLevelAPI.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
 @property (nonatomic, strong) NSTimer *loadTimer;
 @property (nonatomic, assign) BOOL sharedWebView;
-@property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, strong) SDJSBridge *bridge;
+
 @end
 
 @implementation SDWebViewController
-{
-    NSURL *_currentURL;
-    SDJSBridge *_bridge;
-    BOOL _sharedWebView;
-    NSTimer *_loadTimer;
-    UIWebView *_webView;
-    __strong SDJSTopLevelAPI *_topLevelAPI;
-}
 
 #pragma mark - Public methods
 
@@ -48,6 +41,7 @@
     {
         _webView = webView;
         _sharedWebView = YES;
+        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
     
     return self;
@@ -80,6 +74,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.webView.hidden = YES;
 }
+
+#pragma mark - SDJSBridge
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
 {
@@ -115,9 +111,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
-    
-    _topLevelAPI.platform.navigation.navigationController = self.navigationController;
-    
+
     [self recontainWebView];
 }
 
@@ -274,12 +268,7 @@
         _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
-        
-        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
-        _topLevelAPI = [[SDJSTopLevelAPI alloc] init];
-        _topLevelAPI.platform.sharedWebView = self.webView;
-        
-        [_bridge addScriptObject:_topLevelAPI name:@"JSBridgeAPI"];
+        self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
 
     return _webView;
