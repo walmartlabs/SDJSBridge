@@ -22,6 +22,5 @@
 @interface SDJSPlatformAPI : NSObject <SDJSPlatformAPIExports>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
-@property (nonatomic, weak) UIWebView *sharedWebView;
 
 @end

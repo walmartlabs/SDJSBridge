@@ -11,14 +11,4 @@
 
 @implementation SDJSPlatformAPI
 
-#pragma mark - Initialization
-
-- (instancetype)init {
-    if ((self = [super init])) {
-        _navigation = [[SDJSNavigationAPI alloc] initWithPlatform:self];
-    }
-    
-    return self;
-}
-
 @end

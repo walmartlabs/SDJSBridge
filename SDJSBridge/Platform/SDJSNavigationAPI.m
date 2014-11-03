@@ -12,7 +12,8 @@
 
 @interface SDJSNavigationAPI ()
 
-@property (nonatomic, weak) SDJSPlatformAPI *platform;
+@property (nonatomic, weak) UINavigationController *navigationController;
+@property (nonatomic, weak) UIWebView *webView;
 
 @end
 
@@ -23,9 +24,10 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithPlatform:(SDJSPlatformAPI *)platform {
+- (instancetype)initWithWebView:(UIWebView *)webView navigationController:(UINavigationController *)navigationController {
     if ((self = [super init])) {
-        _platform = platform;
+        _webView = webView;
+        _navigationController = navigationController;
     }
     
     return self;
@@ -34,8 +36,7 @@
 #pragma mark - SDWebViewController
 
 - (SDWebViewController *)webViewControllerWithURL:(NSURL *)url title:(NSString *)title {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.platform.sharedWebView];
-    [webViewController loadURL:url];
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
     webViewController.title = title;
     return webViewController;
 }
@@ -60,12 +61,12 @@
     
     SDWebViewController *webViewController = [self webViewControllerWithURL:url title:title];
     [self.navigationController pushViewController:webViewController animated:YES];
+    [webViewController loadURL:url];
 }
 
 - (void)popURL {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 #pragma mark - Modals
 
@@ -73,6 +74,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     SDWebViewController *webViewController = [self webViewControllerWithURL:url title:title];
     [self.navigationController.topViewController presentViewController:webViewController animated:YES completion:nil];
+    [webViewController loadURL:url];
 }
 
 - (void)dismissModalURL {

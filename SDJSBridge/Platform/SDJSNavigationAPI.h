@@ -30,9 +30,7 @@ JSExportAs(presentModalURL,
 
 @interface SDJSNavigationAPI : NSObject <SDJSNavigationAPIExports>
 
-@property (nonatomic, weak) UINavigationController *navigationController;
-
-- (instancetype)initWithPlatform:(SDJSPlatformAPI *)platform;
+- (instancetype)initWithWebView:(UIWebView *)webView navigationController:(UINavigationController *)navigationController;
 - (void)pushURL:(NSString
                  *)urlString title:(NSString *)title;
 - (void)popURL;
