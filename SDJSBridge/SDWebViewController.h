@@ -39,6 +39,7 @@
 /// @name Navigation
 
 - (id)pushURL:(NSURL *)url title:(NSString *)title;
+- (id)presentURL:(NSURL *)url title:(NSString *)title;
 
 #pragma mark - Subclasses should override and call super
 

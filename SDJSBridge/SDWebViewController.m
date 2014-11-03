@@ -281,4 +281,14 @@
     return webViewController;
 }
 
+- (id)presentURL:(NSURL *)url title:(NSString *)title {
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    webViewController.title = title;
+    [self presentViewController:webViewController animated:YES completion:nil];
+    [webViewController loadURL:url];
+    return webViewController;
+}
+
 @end
