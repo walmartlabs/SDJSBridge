@@ -8,6 +8,8 @@
 
 #import "SDJSTopLevelAPI.h"
 
+NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
+
 @implementation SDJSTopLevelAPI
 
 #pragma mark - Initialization

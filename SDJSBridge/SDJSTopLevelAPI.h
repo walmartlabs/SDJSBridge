@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SDJSPlatformAPI.h"
 
+extern NSString * const SDJSTopLevelAPIScriptName;
+
 @protocol SDJSTopLevelAPIExports <JSExport>
 @property (nonatomic, strong) SDJSPlatformAPI *platform;
 @end
