@@ -111,6 +111,10 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
+    
+    // todo: allow delegate/subclass to have control over adding API bridge
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
+    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
 
     [self recontainWebView];
 }

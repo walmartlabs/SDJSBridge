@@ -8,14 +8,6 @@
 
 #import "ViewController.h"
 #import "SDWebViewController.h"
-#import "SDJSTopLevelAPI.h"
-#import "SDJSNavigationAPI.h"
-
-@interface ViewController ()
-
-@property (nonatomic, strong) SDJSTopLevelAPI *topLevelAPI;
-
-@end
 
 @implementation ViewController
 
@@ -31,11 +23,6 @@
 - (IBAction)pushWebControllerTest:(id)sender {
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
-    
-    // create top level API
-    self.topLevelAPI = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:self.topLevelAPI name:SDJSTopLevelAPIScriptName];
-    
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
