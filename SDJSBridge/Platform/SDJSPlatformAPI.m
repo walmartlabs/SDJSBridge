@@ -11,4 +11,12 @@
 
 @implementation SDJSPlatformAPI
 
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
+    if ((self = [super init])) {
+        _navigation = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
+    }
+    
+    return self;
+}
+
 @end

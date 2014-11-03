@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 
 @class SDJSNavigationAPI;
-
+@class SDWebViewController;
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
@@ -22,5 +22,7 @@
 @interface SDJSPlatformAPI : NSObject <SDJSPlatformAPIExports>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
+
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController;
 
 @end

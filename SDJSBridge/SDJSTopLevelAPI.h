@@ -16,5 +16,9 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 @end
 
 @interface SDJSTopLevelAPI : NSObject<SDJSTopLevelAPIExports>
+
 @property (nonatomic, strong) SDJSPlatformAPI *platform;
+
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewControllerl;
+
 @end

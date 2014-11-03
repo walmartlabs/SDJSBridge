@@ -8,15 +8,17 @@
 
 #import "SDJSTopLevelAPI.h"
 
+#import "SDWebViewController.h"
+
 NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 @implementation SDJSTopLevelAPI
 
 #pragma mark - Initialization
 
-- (instancetype)init {
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super init])) {
-        _platform = [[SDJSPlatformAPI alloc] init];
+        _platform = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];
     }
     
     return self;

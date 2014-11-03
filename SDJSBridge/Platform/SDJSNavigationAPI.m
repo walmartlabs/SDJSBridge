@@ -12,8 +12,7 @@
 
 @interface SDJSNavigationAPI ()
 
-@property (nonatomic, weak) UINavigationController *navigationController;
-@property (nonatomic, weak) UIWebView *webView;
+@property (nonatomic, weak) SDWebViewController *webViewController;
 
 @end
 
@@ -24,21 +23,25 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithWebView:(UIWebView *)webView navigationController:(UINavigationController *)navigationController {
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super init])) {
-        _webView = webView;
-        _navigationController = navigationController;
+        _webViewController = webViewController;
     }
     
     return self;
 }
 
-#pragma mark - SDWebViewController
+#pragma mark - URLs
 
-- (SDWebViewController *)webViewControllerWithURL:(NSURL *)url title:(NSString *)title {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithWebView:self.webView];
-    webViewController.title = title;
-    return webViewController;
+- (NSURL *)URLWithURLString:(NSString *)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    if (!url.scheme)
+    {
+        NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:urlString withExtension:nil];
+        url = bundleURL;
+    }
+    
+    return url;
 }
 
 #pragma mark - Push/Pop
@@ -51,34 +54,24 @@
     
     _currentURL = urlString;
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    if (!url.scheme)
-    {
-        NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:urlString withExtension:nil];
-        url = bundleURL;
-    }
-    
-    
-    SDWebViewController *webViewController = [self webViewControllerWithURL:url title:title];
-    [self.navigationController pushViewController:webViewController animated:YES];
-    [webViewController loadURL:url];
+    NSURL *url = [self URLWithURLString:urlString];
+    id currentWebController = [self.webViewController pushURL:url title:title];
+    self.webViewController = currentWebController;
 }
 
 - (void)popURL {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.webViewController.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Modals
 
 - (void)presentModalURL:(NSString *)urlString title:(NSString *)title {
-    NSURL *url = [NSURL URLWithString:urlString];
-    SDWebViewController *webViewController = [self webViewControllerWithURL:url title:title];
-    [self.navigationController.topViewController presentViewController:webViewController animated:YES completion:nil];
-    [webViewController loadURL:url];
+    NSURL *url = [self URLWithURLString:urlString];
+    [self.webViewController presentURL:url title:title];
 }
 
 - (void)dismissModalURL {
-    [self.navigationController.topViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.webViewController.navigationController.topViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

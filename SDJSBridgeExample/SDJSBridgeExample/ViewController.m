@@ -33,12 +33,7 @@
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
     
     // create top level API
-    self.topLevelAPI = [[SDJSTopLevelAPI alloc] init];
-
-    // setup navigation API
-    self.topLevelAPI.platform.navigation = [[SDJSNavigationAPI alloc] initWithWebView:webViewController.webView
-                                                                 navigationController:self.navigationController];
-    
+    self.topLevelAPI = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
     [webViewController addScriptObject:self.topLevelAPI name:SDJSTopLevelAPIScriptName];
     
     [self.navigationController pushViewController:webViewController animated:YES];

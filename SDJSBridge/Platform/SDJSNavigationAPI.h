@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@class SDJSPlatformAPI;
+@class SDWebViewController;
 
 @protocol SDJSNavigationAPIExports <JSExport>
 
@@ -30,7 +30,7 @@ JSExportAs(presentModalURL,
 
 @interface SDJSNavigationAPI : NSObject <SDJSNavigationAPIExports>
 
-- (instancetype)initWithWebView:(UIWebView *)webView navigationController:(UINavigationController *)navigationController;
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController;
 - (void)pushURL:(NSString
                  *)urlString title:(NSString *)title;
 - (void)popURL;
