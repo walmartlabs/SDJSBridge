@@ -67,11 +67,12 @@
 
 - (void)presentModalURL:(NSString *)urlString title:(NSString *)title {
     NSURL *url = [self URLWithURLString:urlString];
-    [self.webViewController presentURL:url title:title];
+    id currentWebController = [self.webViewController presentURL:url title:title];
+    self.webViewController = currentWebController;
 }
 
 - (void)dismissModalURL {
-    [self.webViewController.navigationController.topViewController.presentedViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

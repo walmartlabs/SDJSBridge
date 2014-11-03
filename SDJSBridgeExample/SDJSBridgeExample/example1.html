@@ -58,6 +58,6 @@ NoClickDelay.prototype = {
         JSBridgeAPI.platform.navigation.presentModalURL('example1.html', 'Modal Title');
     });
     document.getElementById('dismiss').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.dismiss();
+        JSBridgeAPI.platform.navigation.dismissModalURL();
     });
 </script>

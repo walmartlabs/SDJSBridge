@@ -290,7 +290,9 @@
     
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
     webViewController.title = title;
-    [self presentViewController:webViewController animated:YES completion:nil];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
     [webViewController loadURL:url];
     return webViewController;
 }
