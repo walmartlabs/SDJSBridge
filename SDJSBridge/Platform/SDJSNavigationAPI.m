@@ -55,8 +55,7 @@
     _currentURL = urlString;
     
     NSURL *url = [self URLWithURLString:urlString];
-    id currentWebController = [self.webViewController pushURL:url title:title];
-    self.webViewController = currentWebController;
+    [self.webViewController pushURL:url title:title];
 }
 
 - (void)popURL {
@@ -67,8 +66,7 @@
 
 - (void)presentModalURL:(NSString *)urlString title:(NSString *)title {
     NSURL *url = [self URLWithURLString:urlString];
-    id currentWebController = [self.webViewController presentURL:url title:title];
-    self.webViewController = currentWebController;
+    [self.webViewController presentURL:url title:title];
 }
 
 - (void)dismissModalURL {
