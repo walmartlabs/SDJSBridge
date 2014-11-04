@@ -14,6 +14,7 @@
 		19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED131A09364500238146 /* SDJSNavigationAPI.m */; };
 		19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED151A09364500238146 /* SDJSNavigationBarAPI.m */; };
 		19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED171A09364500238146 /* SDJSNavigationItem.m */; };
+		19AAED1E1A096E0500238146 /* SDJSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED1D1A096E0500238146 /* SDJSAlertAction.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
@@ -59,6 +60,8 @@
 		19AAED151A09364500238146 /* SDJSNavigationBarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPI.m; sourceTree = "<group>"; };
 		19AAED161A09364500238146 /* SDJSNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationItem.h; sourceTree = "<group>"; };
 		19AAED171A09364500238146 /* SDJSNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItem.m; sourceTree = "<group>"; };
+		19AAED1C1A096E0500238146 /* SDJSAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertAction.h; sourceTree = "<group>"; };
+		19AAED1D1A096E0500238146 /* SDJSAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertAction.m; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +122,7 @@
 		19AAECFB1A081BF500238146 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				19AAED1B1A096DF100238146 /* Alert */,
 				19AAED111A09364500238146 /* Navigation */,
 				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
 				19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */,
@@ -137,6 +141,15 @@
 				19AAED171A09364500238146 /* SDJSNavigationItem.m */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		19AAED1B1A096DF100238146 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				19AAED1C1A096E0500238146 /* SDJSAlertAction.h */,
+				19AAED1D1A096E0500238146 /* SDJSAlertAction.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		CA0249C219E70B10007CAAC7 = {
@@ -348,6 +361,7 @@
 				19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				19AAED1E1A096E0500238146 /* SDJSAlertAction.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */,

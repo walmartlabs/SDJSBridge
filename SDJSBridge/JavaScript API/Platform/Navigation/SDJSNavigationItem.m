@@ -10,7 +10,7 @@
 
 @implementation SDJSNavigationItem
 
-+ (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback {
++ (instancetype)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback {
     SDJSNavigationItem *navigationItem = [SDJSNavigationItem new];
     navigationItem.title = title;
     navigationItem.imageName = imageName;
