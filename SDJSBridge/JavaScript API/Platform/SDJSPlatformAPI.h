@@ -20,12 +20,15 @@
 
 JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
 
+JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
+
 @end
 
-@interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports>
+@interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
 
 - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
+- (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
 
 @end

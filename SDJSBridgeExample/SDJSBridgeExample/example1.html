@@ -13,6 +13,11 @@
 <button id="navitem-remove">remove right item</button>
 <button id="navitem-removeall">remove all right items</button>
 
+<h2>alerts</h2>
+
+<button id="alerts-show">show alert</button>
+<button id="alerts-action">show alert with actions</button>
+
 <script>
     function NoClickDelay(el) {
         this.element = el;
@@ -81,7 +86,6 @@ NoClickDelay.prototype = {
 
         navigation.navigationBar.setRightItems([navItemTwo, navItemOne]);
     });
-
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
         var navigation = JSBridgeAPI.platform.navigation;
         var rightItems = navigation.navigationBar.rightItems;
@@ -93,10 +97,25 @@ NoClickDelay.prototype = {
             navigation.navigationBar.setRightItems(remainingItems);
         }
     });
-
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
         JSBridgeAPI.platform.navigation.navigationBar.setRightItems(null);
     });
     
-    
+    document.getElementById('alerts-show').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.alert("Not found", "Something wasn't found.", null);
+    });
+
+    document.getElementById('alerts-action').addEventListener('touchend', function() {
+        var okAction = JSBridgeAPI.platform.AlertAction("YAYYUHH!", function () {
+            alert('YAYYUHH!');
+        });
+
+        var cancelAction = JSBridgeAPI.platform.AlertAction("Cancel", function () {
+            alert('Cancel tapped!');
+        });
+
+        var actions = [cancelAction, okAction];
+
+        JSBridgeAPI.platform.alert("Not found", "Continue?", actions);
+    });   
 </script>
