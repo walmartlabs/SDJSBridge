@@ -11,17 +11,9 @@
 @implementation SDJSAlertAction
 
 + (instancetype)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback {
-    SDJSAlertAction *alertAction = [SDJSAlertAction new];
+    SDJSAlertAction *alertAction = [[SDJSAlertAction alloc] initWithCallback:callback];
     alertAction.title = title;
-    alertAction.callback = callback;
     return alertAction;
-}
-
-- (void)itemTapped:(id)sender {
-    if (self.callback) {
-        // todo: figure out how to call a block instead
-        [self.callback callWithArguments:nil];
-    }
 }
 
 @end

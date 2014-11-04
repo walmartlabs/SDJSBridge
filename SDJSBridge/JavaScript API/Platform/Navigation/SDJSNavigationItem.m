@@ -11,18 +11,26 @@
 @implementation SDJSNavigationItem
 
 + (instancetype)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback {
-    SDJSNavigationItem *navigationItem = [SDJSNavigationItem new];
+    SDJSNavigationItem *navigationItem = [[SDJSNavigationItem alloc] initWithCallback:callback];
     navigationItem.title = title;
     navigationItem.imageName = imageName;
-    navigationItem.callback = callback;
     return navigationItem;
 }
 
-- (void)itemTapped:(id)sender {
-    if (self.callback) {
-        // todo: figure out how to call a block instead
-        [self.callback callWithArguments:nil];
+- (UIBarButtonItem *)barButtonItem {
+    if (self.title) {
+        return [[UIBarButtonItem alloc] initWithTitle:self.title
+                                                style:UIBarButtonItemStylePlain
+                                               target:self
+                                               action:@selector(performActionWithSender:)];
+    } else if (self.imageName) {
+        return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:self.imageName]
+                                                style:UIBarButtonItemStylePlain
+                                               target:self
+                                               action:@selector(performActionWithSender:)];
     }
+    
+    return nil;
 }
 
 @end

@@ -6,22 +6,21 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "SDJSBridgeResponder.h"
+
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @protocol SDJSAlertActionExports <JSExport>
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) JSValue *callback;
 
 @end
 
-@interface SDJSAlertAction : NSObject
+@interface SDJSAlertAction : SDJSBridgeResponder <SDJSAlertActionExports>
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, strong) JSValue *callback;
 
 + (instancetype)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
-- (void)itemTapped:(id)sender;
 
 @end

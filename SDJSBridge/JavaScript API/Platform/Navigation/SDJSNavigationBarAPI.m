@@ -39,27 +39,10 @@
     NSMutableArray *items = [NSMutableArray array];
     
     for (SDJSNavigationItem *navigationItem in navigationItems) {
-        UIBarButtonItem *barButtonItem = [self barButtonItemWithNavigationItem:navigationItem];
-        [items addObject:barButtonItem];
+        [items addObject:[navigationItem barButtonItem]];
     }
     
     return [items copy];
-}
-
-- (UIBarButtonItem *)barButtonItemWithNavigationItem:(SDJSNavigationItem *)navigationItem {
-    if (navigationItem.title) {
-        return [[UIBarButtonItem alloc] initWithTitle:navigationItem.title
-                                                style:UIBarButtonItemStylePlain
-                                               target:navigationItem
-                                               action:@selector(itemTapped:)];
-    } else if (navigationItem.imageName) {
-        return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:navigationItem.imageName]
-                                                style:UIBarButtonItemStylePlain
-                                               target:navigationItem
-                                               action:@selector(itemTapped:)];
-    }
-    
-    return nil;
 }
 
 @end

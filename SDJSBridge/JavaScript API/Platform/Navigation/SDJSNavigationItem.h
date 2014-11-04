@@ -6,24 +6,25 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "SDJSBridgeResponder.h"
+
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @protocol SDJSNavigationItemExports <JSExport>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, strong) JSValue *callback;
 
 @end
 
-@interface SDJSNavigationItem : NSObject <SDJSNavigationItemExports>
+@interface SDJSNavigationItem : SDJSBridgeResponder <SDJSNavigationItemExports>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, strong) JSValue *callback;
 
 + (instancetype)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback;
-- (void)itemTapped:(id)sender;
+- (UIBarButtonItem *)barButtonItem;
 
 @end
