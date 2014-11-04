@@ -21,7 +21,7 @@
 
 @end
 
-@interface SDJSNavigationItemAPI : SDJSBridgeScript
+@interface SDJSNavigationItemAPI : SDJSBridgeScript <SDJSNavigationItemAPIExports>
 
 - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title
                                       imageName:(NSString *)imageName

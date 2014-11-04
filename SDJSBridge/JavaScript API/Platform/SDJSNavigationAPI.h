@@ -36,8 +36,7 @@ JSExportAs(presentModalURL,
 
 @property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
 
-- (void)pushURL:(NSString
-                 *)urlString title:(NSString *)title;
+- (void)pushURL:(NSString *)urlString title:(NSString *)title;
 - (void)popURL;
 - (void)presentModalURL:(NSString *)urlString title:(NSString *)title;
 - (void)dismissModalURL;

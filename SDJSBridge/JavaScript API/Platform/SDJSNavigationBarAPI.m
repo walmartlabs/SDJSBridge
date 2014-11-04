@@ -48,10 +48,15 @@
 
 - (UIBarButtonItem *)barButtonItemWithNavigationItem:(SDJSNavigationItem *)navigationItem {
     if (navigationItem.title) {
-        return [[UIBarButtonItem alloc] initWithTitle:navigationItem.title style:UIBarButtonItemStylePlain target:navigationItem action:@selector(itemTapped:)];
+        return [[UIBarButtonItem alloc] initWithTitle:navigationItem.title
+                                                style:UIBarButtonItemStylePlain
+                                               target:navigationItem
+                                               action:@selector(itemTapped:)];
     } else if (navigationItem.imageName) {
-        // todo: items with image names
-        return nil;
+        return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:navigationItem.imageName]
+                                                style:UIBarButtonItemStylePlain
+                                               target:navigationItem
+                                               action:@selector(itemTapped:)];
     }
     
     return nil;
