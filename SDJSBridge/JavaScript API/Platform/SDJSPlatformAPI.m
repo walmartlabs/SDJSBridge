@@ -7,7 +7,9 @@
 //
 
 #import "SDJSPlatformAPI.h"
+
 #import "SDJSNavigationAPI.h"
+#import "SDJSAlertAction.h"
 
 @implementation SDJSPlatformAPI
 
@@ -17,6 +19,10 @@
     }
     
     return self;
+}
+
+- (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback {
+    return [SDJSAlertAction alertActionWithTitle:title callback:callback];
 }
 
 @end
