@@ -10,7 +10,8 @@
 <h2>navigation items</h2>
 
 <button id="navitem-add">add right items</button>
-<button id="navitem-remove">remove first right item</button>
+<button id="navitem-remove">remove right item</button>
+<button id="navitem-removeall">remove all right items</button>
 
 <script>
     function NoClickDelay(el) {
@@ -80,8 +81,18 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var items = JSBridgeAPI.platform.navigation.navigationBar.rightItems.splice(0, 1);
-        JSBridgeAPI.platform.navigation.navigationBar.setRightItems(items);
+        var rightItems = JSBridgeAPI.platform.navigation.navigationBar.rightItems;
+
+        if (rightItems.length === 1) {
+            JSBridgeAPI.platform.navigation.navigationBar.setRightItems(null);
+        } else {
+            var remainingItems = rightItems.splice(rightItems.length - 1, 1);
+            JSBridgeAPI.platform.navigation.navigationBar.setRightItems(remainingItems);
+        }
+    });
+
+    document.getElementById('navitem-removeall').addEventListener('touchend', function() {
+        JSBridgeAPI.platform.navigation.navigationBar.setRightItems(null);
     });
     
     
