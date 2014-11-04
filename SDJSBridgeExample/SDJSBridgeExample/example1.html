@@ -9,7 +9,8 @@
 
 <h2>navigation items</h2>
 
-<button id="navitem">add right items</button>
+<button id="navitem-add">add right items</button>
+<button id="navitem-remove">remove first right item</button>
 
 <script>
     function NoClickDelay(el) {
@@ -66,8 +67,8 @@ NoClickDelay.prototype = {
     document.getElementById('dismiss').addEventListener('touchend', function() {
         JSBridgeAPI.platform.navigation.dismissModalURL();
     });
-    document.getElementById('navitem').addEventListener('touchend', function() {
-        var navItem = JSBridgeAPI.platform.NavigationItem("One", null, function () {
+    document.getElementById('navitem-add').addEventListener('touchend', function() {
+        var navItemOne = JSBridgeAPI.platform.NavigationItem("One", null, function () {
             alert('One tapped!');
         });
 
@@ -75,7 +76,12 @@ NoClickDelay.prototype = {
             alert('Two tapped!');
         });
 
-        JSBridgeAPI.platform.navigation.navigationBar.setRightItems([navItemTwo, navItem]);
+        JSBridgeAPI.platform.navigation.navigationBar.setRightItems([navItemTwo, navItemOne]);
+    });
+
+    document.getElementById('navitem-remove').addEventListener('touchend', function() {
+        var items = JSBridgeAPI.platform.navigation.navigationBar.rightItems.splice(0, 1);
+        JSBridgeAPI.platform.navigation.navigationBar.setRightItems(items);
     });
     
     

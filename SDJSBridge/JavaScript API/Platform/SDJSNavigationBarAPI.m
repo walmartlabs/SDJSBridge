@@ -13,6 +13,16 @@
 
 @implementation SDJSNavigationBarAPI
 
+#pragma mark - Navigation Items
+
+- (NSArray *)leftItems {
+    return self.webViewController.navigationItem.leftBarButtonItems;
+}
+
+- (NSArray *)rightItems {
+    return self.webViewController.navigationItem.rightBarButtonItems;
+}
+
 - (void)setLeftItems:(NSArray *)items {
     NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:items];
     self.webViewController.navigationItem.leftBarButtonItems = barButtonItems;
@@ -22,6 +32,8 @@
     NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:items];
     self.webViewController.navigationItem.rightBarButtonItems = barButtonItems;
 }
+
+#pragma mark - UIBarButton
 
 - (NSArray *)barButtonItemsWithNavigationItems:(NSArray *)navigationItems {
     NSMutableArray *items = [NSMutableArray array];
