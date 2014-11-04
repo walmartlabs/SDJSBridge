@@ -9,10 +9,21 @@
 #import "SDJSNavigationAPI.h"
 #import "SDWebViewController.h"
 #import "SDJSPlatformAPI.h"
+#import "SDJSNavigationBarAPI.h"
 
 @implementation SDJSNavigationAPI
 {
     NSString *_currentURL;
+}
+
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
+    self = [super initWithWebViewController:webViewController];
+    
+    if (self) {
+        _navigationBar = [[SDJSNavigationBarAPI alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return self;
 }
 
 #pragma mark - URLs

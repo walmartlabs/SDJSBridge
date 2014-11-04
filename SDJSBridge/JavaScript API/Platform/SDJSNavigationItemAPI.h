@@ -8,13 +8,10 @@
 
 #import "SDJSBridgeScript.h"
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@class SDJSNavigationItem;
-
-typedef void (^SDJSNavigationItemCallback)();
+#import "SDJSNavigationItem.h"
 
 @protocol SDJSNavigationItemAPIExports <JSExport>
 

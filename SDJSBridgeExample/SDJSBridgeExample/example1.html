@@ -4,6 +4,7 @@
 <button id="forward">forward</button>
 <button id="modal">modal</button>
 <button id="dismiss">dismiss modal</button>
+<button id="navitem">add nav item</button>
 
 <script>
     function NoClickDelay(el) {
@@ -60,4 +61,16 @@ NoClickDelay.prototype = {
     document.getElementById('dismiss').addEventListener('touchend', function() {
         JSBridgeAPI.platform.navigation.dismissModalURL();
     });
+    document.getElementById('navitem').addEventListener('touchend', function() {
+        var navItem = JSBridgeAPI.platform.NavigationItem("Test", null, function () {
+            alert('test tapped!');
+        });
+
+        // alert(JSBridgeAPI.platform.navigation.navigationBar.setRightItems);
+
+                                                        
+        JSBridgeAPI.platform.navigation.navigationBar.setRightItems([navItem]);
+    });
+    
+    
 </script>

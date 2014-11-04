@@ -12,8 +12,11 @@
 #import "SDJSBridgeScript.h"
 
 @class SDWebViewController;
+@class SDJSNavigationBarAPI;
 
 @protocol SDJSNavigationAPIExports <JSExport>
+
+@property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
 
 JSExportAs(pushURL,
 - (void)pushURL:(NSString *)urlString title:(NSString *)title
@@ -30,6 +33,8 @@ JSExportAs(presentModalURL,
 @end
 
 @interface SDJSNavigationAPI : SDJSBridgeScript <SDJSNavigationAPIExports>
+
+@property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
 
 - (void)pushURL:(NSString
                  *)urlString title:(NSString *)title;

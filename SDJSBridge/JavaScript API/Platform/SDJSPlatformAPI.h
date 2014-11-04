@@ -10,18 +10,25 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <UIKit/UIKit.h>
 #import "SDJSBridgeScript.h"
+#import "SDJSNavigationItem.h"
 
 @class SDJSNavigationAPI;
-@class SDWebViewController;
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
+
+JSExportAs(NavigationItem,
+- (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback
+);
+
 
 @end
 
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
+
+- (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback;
 
 @end

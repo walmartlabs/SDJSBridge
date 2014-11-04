@@ -19,4 +19,13 @@
     return self;
 }
 
+- (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback {
+    SDJSNavigationItem *navigationItem = [SDJSNavigationItem new];
+    navigationItem.title = title;
+    navigationItem.imageName = imageName;
+    // todo: set callback JSValue
+//    navigationItem.callback = callback;
+    return navigationItem;
+}
+
 @end

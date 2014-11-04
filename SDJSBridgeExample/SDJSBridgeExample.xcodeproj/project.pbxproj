@@ -13,6 +13,8 @@
 		19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */; };
 		19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED061A081C2600238146 /* SDJSBridgeScript.m */; };
 		19AAED0A1A081E2800238146 /* SDJSNavigationItemAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED091A081E2800238146 /* SDJSNavigationItemAPI.m */; };
+		19AAED0D1A0822D000238146 /* SDJSNavigationBarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED0C1A0822D000238146 /* SDJSNavigationBarAPI.m */; };
+		19AAED101A08233900238146 /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED0F1A08233900238146 /* SDJSNavigationItem.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
@@ -56,6 +58,10 @@
 		19AAED061A081C2600238146 /* SDJSBridgeScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeScript.m; sourceTree = "<group>"; };
 		19AAED081A081E2800238146 /* SDJSNavigationItemAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationItemAPI.h; sourceTree = "<group>"; };
 		19AAED091A081E2800238146 /* SDJSNavigationItemAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItemAPI.m; sourceTree = "<group>"; };
+		19AAED0B1A0822D000238146 /* SDJSNavigationBarAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationBarAPI.h; sourceTree = "<group>"; };
+		19AAED0C1A0822D000238146 /* SDJSNavigationBarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPI.m; sourceTree = "<group>"; };
+		19AAED0E1A08233900238146 /* SDJSNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationItem.h; sourceTree = "<group>"; };
+		19AAED0F1A08233900238146 /* SDJSNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItem.m; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 				19AAECFD1A081BF500238146 /* SDJSNavigationAPI.m */,
 				19AAED081A081E2800238146 /* SDJSNavigationItemAPI.h */,
 				19AAED091A081E2800238146 /* SDJSNavigationItemAPI.m */,
+				19AAED0B1A0822D000238146 /* SDJSNavigationBarAPI.h */,
+				19AAED0C1A0822D000238146 /* SDJSNavigationBarAPI.m */,
+				19AAED0E1A08233900238146 /* SDJSNavigationItem.h */,
+				19AAED0F1A08233900238146 /* SDJSNavigationItem.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -335,12 +345,14 @@
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
+				19AAED0D1A0822D000238146 /* SDJSNavigationBarAPI.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
 				19AAED0A1A081E2800238146 /* SDJSNavigationItemAPI.m in Sources */,
 				19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */,
+				19AAED101A08233900238146 /* SDJSNavigationItem.m in Sources */,
 				19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

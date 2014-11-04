@@ -8,14 +8,7 @@
 
 #import "SDJSNavigationItemAPI.h"
 
-@interface SDJSNavigationItem : NSObject <JSExport>
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, copy) SDJSNavigationItemCallback callback;
-@end
-
-@implementation SDJSNavigationItem
-@end
+#import "SDJSNavigationItem.h"
 
 @implementation SDJSNavigationItemAPI
 
