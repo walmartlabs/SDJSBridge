@@ -10,11 +10,14 @@
 #import "SDWebViewController.h"
 #import "SDJSPlatformAPI.h"
 #import "SDJSNavigationBarAPI.h"
+#import "SDJSNavigationItem.h"
 
 @implementation SDJSNavigationAPI
 {
     NSString *_currentURL;
 }
+
+#pragma mark - Initialization
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     self = [super initWithWebViewController:webViewController];
@@ -66,6 +69,12 @@
 
 - (void)dismissModalURL {
     [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - SDJSNavigationItem
+
+- (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback {
+    return [SDJSNavigationItem navigationItemWithTitle:title imageName:imageName callback:callback];
 }
 
 @end

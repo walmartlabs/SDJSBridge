@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "SDJSBridgeScript.h"
+
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "SDJSBridgeScript.h"
 
 @class SDJSPlatformAPI;
 @class SDWebViewController;

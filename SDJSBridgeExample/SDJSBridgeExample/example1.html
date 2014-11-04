@@ -69,25 +69,28 @@ NoClickDelay.prototype = {
         JSBridgeAPI.platform.navigation.dismissModalURL();
     });
     document.getElementById('navitem-add').addEventListener('touchend', function() {
-        var navItemOne = JSBridgeAPI.platform.NavigationItem("One", null, function () {
+        var navigation = JSBridgeAPI.platform.navigation;
+
+        var navItemOne = navigation.NavigationItem("One", null, function () {
             alert('One tapped!');
         });
 
-        var navItemTwo = JSBridgeAPI.platform.NavigationItem("Two", null, function () {
+        var navItemTwo = navigation.NavigationItem("Two", null, function () {
             alert('Two tapped!');
         });
 
-        JSBridgeAPI.platform.navigation.navigationBar.setRightItems([navItemTwo, navItemOne]);
+        navigation.navigationBar.setRightItems([navItemTwo, navItemOne]);
     });
 
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var rightItems = JSBridgeAPI.platform.navigation.navigationBar.rightItems;
+        var navigation = JSBridgeAPI.platform.navigation;
+        var rightItems = navigation.navigationBar.rightItems;
 
         if (rightItems.length === 1) {
-            JSBridgeAPI.platform.navigation.navigationBar.setRightItems(null);
+            navigation.navigationBar.setRightItems(null);
         } else {
             var remainingItems = rightItems.splice(rightItems.length - 1, 1);
-            JSBridgeAPI.platform.navigation.navigationBar.setRightItems(remainingItems);
+            navigation.navigationBar.setRightItems(remainingItems);
         }
     });
 

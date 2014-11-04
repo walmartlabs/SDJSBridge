@@ -23,6 +23,7 @@
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, strong) JSValue *callback;
 
++ (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback;
 - (void)itemTapped:(id)sender;
 
 @end
