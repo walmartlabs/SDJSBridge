@@ -44,7 +44,7 @@
 
 #pragma mark - Push/Pop
 
-- (void)pushURL:(NSString *)urlString title:(NSString *)title {
+- (void)pushUrl:(NSString *)urlString title:(NSString *)title {
     
     if (urlString.length == 0 || [urlString isEqualToString:_currentURL]) {
         return;
@@ -56,18 +56,18 @@
     [self.webViewController pushURL:url title:title];
 }
 
-- (void)popURL {
+- (void)popUrl {
     [self.webViewController.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Modals
 
-- (void)presentModalURL:(NSString *)urlString title:(NSString *)title {
+- (void)presentModalUrl:(NSString *)urlString title:(NSString *)title {
     NSURL *url = [self URLWithURLString:urlString];
     [self.webViewController presentURL:url title:title];
 }
 
-- (void)dismissModalURL {
+- (void)dismissModalUrl {
     [self.webViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

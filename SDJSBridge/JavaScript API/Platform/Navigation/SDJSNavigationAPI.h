@@ -20,17 +20,17 @@
 
 @property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
 
-JSExportAs(pushURL,
-- (void)pushURL:(NSString *)urlString title:(NSString *)title
+JSExportAs(pushUrl,
+- (void)pushUrl:(NSString *)urlString title:(NSString *)title
 );
 
-- (void)popURL;
+- (void)popUrl;
 
-JSExportAs(presentModalURL,
-- (void)presentModalURL:(NSString *)urlString title:(NSString *)title
+JSExportAs(presentModalUrl,
+- (void)presentModalUrl:(NSString *)urlString title:(NSString *)title
 );
 
-- (void)dismissModalURL;
+- (void)dismissModalUrl;
 
 JSExportAs(NavigationItem,
 - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback
@@ -44,10 +44,10 @@ JSExportAs(NavigationItem,
 
 /// @name Navigating View Controllers
 
-- (void)pushURL:(NSString *)urlString title:(NSString *)title;
-- (void)popURL;
-- (void)presentModalURL:(NSString *)urlString title:(NSString *)title;
-- (void)dismissModalURL;
+- (void)pushUrl:(NSString *)urlString title:(NSString *)title;
+- (void)popUrl;
+- (void)presentModalUrl:(NSString *)urlString title:(NSString *)title;
+- (void)dismissModalUrl;
 
 /// @name Creating Navigation Items
 
