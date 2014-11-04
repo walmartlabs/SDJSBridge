@@ -17,7 +17,7 @@
 
 - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title
                                       imageName:(NSString *)imageName
-                                       callback:(SDJSNavigationItemCallback)callback;
+                                       callback:(JSValue *)callback;
 
 @end
 
@@ -25,6 +25,6 @@
 
 - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title
                                       imageName:(NSString *)imageName
-                                       callback:(SDJSNavigationItemCallback)callback;
+                                       callback:(JSValue *)callback;
 
 @end

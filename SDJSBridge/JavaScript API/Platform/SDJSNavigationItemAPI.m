@@ -14,7 +14,7 @@
 
 - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title
                                       imageName:(NSString *)imageName
-                                       callback:(SDJSNavigationItemCallback)callback {
+                                       callback:(JSValue *)callback {
     SDJSNavigationItem *navigationItem = [SDJSNavigationItem new];
     navigationItem.title = title;
     navigationItem.imageName = imageName;

@@ -9,13 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-typedef void (^SDJSNavigationItemCallback)();
-
 @protocol SDJSNavigationItemExports <JSExport>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, copy) SDJSNavigationItemCallback callback;
+@property (nonatomic, strong) JSValue *callback;
 
 @end
 
@@ -23,7 +21,7 @@ typedef void (^SDJSNavigationItemCallback)();
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *imageName;
-@property (nonatomic, copy) SDJSNavigationItemCallback callback;
+@property (nonatomic, strong) JSValue *callback;
 
 - (void)itemTapped:(id)sender;
 

@@ -11,7 +11,10 @@
 @implementation SDJSNavigationItem
 
 - (void)itemTapped:(id)sender {
-    
+    if (self.callback) {
+        // todo: figure out how to call a block instead
+        [self.callback callWithArguments:nil];
+    }
 }
 
 @end

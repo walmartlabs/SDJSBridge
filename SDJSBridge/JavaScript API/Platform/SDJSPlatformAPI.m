@@ -23,8 +23,7 @@
     SDJSNavigationItem *navigationItem = [SDJSNavigationItem new];
     navigationItem.title = title;
     navigationItem.imageName = imageName;
-    // todo: set callback JSValue
-//    navigationItem.callback = callback;
+    navigationItem.callback = callback;
     return navigationItem;
 }
 
