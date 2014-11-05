@@ -87,12 +87,18 @@
     [self.bridge addScriptMethod:name block:block];
 }
 
-- (void)configureScripts
+- (void)configureScriptObjects
 {
+    // todo: allow developer to opt in to using API scripts, not every web view will need them
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
     [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
+        [strongDelegate webViewControllerConfigureScriptObjects:self];
+    }
 }
-
 
 #pragma mark - Lifecycle methods
 
@@ -130,7 +136,7 @@
         self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
-        [self configureScripts];
+        [self configureScriptObjects];
     }
 }
 
@@ -204,8 +210,6 @@
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
         [strongDelegate webViewControllerDidFinishLoad:self];
     
-    [self configureScripts];
-    
     [self webViewDidFinishLoad];
 }
 
@@ -214,9 +218,17 @@
     [self webViewDidFinishLoad];
 }
 
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
+- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)context
 {
-    [self.bridge configureContext:ctx];
+    [self.bridge configureContext:context];
+    
+    @strongify(self.delegate, strongDelegate);
+
+    if ([strongDelegate respondsToSelector:@selector(webViewController:didCreateJavaScriptContext:)]) {
+        [strongDelegate webViewController:self didCreateJavaScriptContext:context];
+    }
+    
+    [self configureScriptObjects];
 }
 
 #pragma mark - Subclasses should override.

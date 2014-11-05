@@ -54,7 +54,7 @@
     
     NSURL *url = [self URLWithURLString:urlString];
     [self.webViewController pushURL:url title:title];
-}
+}                                                                                                                                         
 
 - (void)popUrl {
     [self.webViewController.navigationController popViewControllerAnimated:YES];
