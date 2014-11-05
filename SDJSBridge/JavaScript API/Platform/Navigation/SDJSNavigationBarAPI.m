@@ -15,21 +15,15 @@
 
 #pragma mark - Navigation Items
 
-- (NSArray *)leftItems {
-    return self.webViewController.navigationItem.leftBarButtonItems;
-}
-
-- (NSArray *)rightItems {
-    return self.webViewController.navigationItem.rightBarButtonItems;
-}
-
 - (void)setLeftItems:(NSArray *)items {
-    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:items];
+    _leftItems = [items copy];
+    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_leftItems];
     self.webViewController.navigationItem.leftBarButtonItems = barButtonItems;
 }
 
 - (void)setRightItems:(NSArray *)items {
-    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:items];
+    _rightItems = [items copy];
+    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_rightItems];
     self.webViewController.navigationItem.rightBarButtonItems = barButtonItems;
 }
 

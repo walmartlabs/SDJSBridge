@@ -14,20 +14,14 @@
 
 @protocol SDJSNavigationBarAPIExports <JSExport>
 
-@property (nonatomic, readonly) NSArray *leftItems;
-@property (nonatomic, readonly) NSArray *rightItems;
-
-- (void)setLeftItems:(NSArray *)items;
-- (void)setRightItems:(NSArray *)items;
+@property (nonatomic, copy) NSArray *leftItems;
+@property (nonatomic, copy) NSArray *rightItems;
 
 @end
 
 @interface SDJSNavigationBarAPI : SDJSBridgeScript <SDJSNavigationBarAPIExports>
 
-@property (nonatomic, readonly) NSArray *leftItems;
-@property (nonatomic, readonly) NSArray *rightItems;
-
-- (void)setLeftItems:(NSArray *)items;
-- (void)setRightItems:(NSArray *)items;
+@property (nonatomic, copy) NSArray *leftItems;
+@property (nonatomic, copy) NSArray *rightItems;
 
 @end
