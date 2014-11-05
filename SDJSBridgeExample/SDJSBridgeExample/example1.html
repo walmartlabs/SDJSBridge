@@ -84,21 +84,21 @@ NoClickDelay.prototype = {
             alert('Two tapped!');
         });
 
-        navigation.navigationBar.setRightItems([navItemTwo, navItemOne]);
+        navigation.navigationBar.rightItems = [navItemTwo, navItemOne];
     });
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
         var navigation = JSBridgeAPI.platform.navigation;
         var rightItems = navigation.navigationBar.rightItems;
 
         if (rightItems.length === 1) {
-            navigation.navigationBar.setRightItems(null);
+            navigation.navigationBar.rightItems = null ;
         } else {
             var remainingItems = rightItems.splice(rightItems.length - 1, 1);
-            navigation.navigationBar.setRightItems(remainingItems);
+            navigation.navigationBar.rightItems = remainingItems;
         }
     });
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.navigationBar.setRightItems(null);
+        JSBridgeAPI.platform.navigation.navigationBar.rightItems = null;
     });
     
     document.getElementById('alerts-show').addEventListener('touchend', function() {
