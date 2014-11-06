@@ -10,6 +10,15 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
+@protocol SDJSProgressAPIDelegate <NSObject>
+
+@required
+
+- (void)showProgressHUDWithMessage:(NSString *)message;
+- (void)hideProgressHUD;
+
+@end
+
 @protocol SDJSProgressAPIExports <JSExport>
 
 @property (nonatomic, copy) NSString *message;
@@ -22,6 +31,7 @@ JSExportAs(show, - (void)showWithMessage:(NSString *)message);
 @interface SDJSProgressAPI : SDJSBridgeScript
 
 @property (nonatomic, copy) NSString *message;
+@property (nonatomic, weak) id<SDJSProgressAPIDelegate> delegate;
 
 - (void)showWithMessage:(NSString *)message;
 - (void)hide;
