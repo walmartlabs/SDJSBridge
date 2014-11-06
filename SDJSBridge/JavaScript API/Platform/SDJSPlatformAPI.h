@@ -13,10 +13,12 @@
 
 @class SDJSNavigationAPI;
 @class SDJSAlertAction;
+@class SDJSProgressAPI;
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
+@property (nonatomic, strong) SDJSProgressAPI *progress;
 
 JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
 
@@ -27,6 +29,7 @@ JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)messag
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
+@property (nonatomic, strong) SDJSProgressAPI *progress;
 
 - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
 - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;

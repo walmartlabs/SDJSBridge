@@ -10,6 +10,7 @@
 
 #import "SDJSNavigationAPI.h"
 #import "SDJSAlertAction.h"
+#import "SDJSProgressAPI.h"
 
 @interface SDJSPlatformAPI ()
 
@@ -22,6 +23,7 @@
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super init])) {
         _navigation = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
+        _progress = [[SDJSProgressAPI alloc] initWithWebViewController:webViewController];
     }
     
     return self;
