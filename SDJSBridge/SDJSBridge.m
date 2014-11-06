@@ -105,4 +105,9 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     return value;
 }
 
+- (JSValue *)scriptValueForName:(NSString *)name
+{
+    return self.context[name];
+}
+
 @end
