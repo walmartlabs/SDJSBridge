@@ -21,18 +21,11 @@ static NSHashTable *g_webViews = nil;
 - (void) sdjs_didCreateContext:(JSContext *)ts_javaScriptContext;
 @end
 
-@protocol SDJSWebFrame <NSObject>
-- (id)parentFrame;
-@end
-
 @implementation NSObject(SDJSJavaScriptContext)
 
-- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)aContext forFrame:(id<SDJSWebFrame>)frame
+- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)aContext forFrame:(id)frame
 {
-    NSParameterAssert([frame respondsToSelector:@selector(parentFrame)]);
-    
-    // only interested in root-level frames
-    if ([frame respondsToSelector:@selector(parentFrame)] && [frame parentFrame] != nil)
+    if (![frame isKindOfClass:NSClassFromString(@"WebFrame")])
         return;
     
     void (^notifyDidCreateJavaScriptContext)() = ^{

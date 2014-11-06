@@ -131,7 +131,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![self isMovingToParentViewController])
+    if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
         self.webView.hidden = YES;
         [self recontainWebView];
@@ -179,7 +179,9 @@
                     result = NO;
                 }
                 else
+                {
                     result = YES;
+                }
             }
         }
     }
