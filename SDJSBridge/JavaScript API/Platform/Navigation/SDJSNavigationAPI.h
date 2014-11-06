@@ -12,7 +12,6 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@class SDWebViewController;
 @class SDJSNavigationBarAPI;
 @class SDJSNavigationItem;
 
@@ -20,21 +19,11 @@
 
 @property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
 
-JSExportAs(pushUrl,
-- (void)pushUrl:(NSString *)urlString title:(NSString *)title
-);
-
+JSExportAs(pushUrl,- (void)pushUrl:(NSString *)urlString title:(NSString *)title);
 - (void)popUrl;
-
-JSExportAs(presentModalUrl,
-- (void)presentModalUrl:(NSString *)urlString title:(NSString *)title
-);
-
+JSExportAs(presentModalUrl, - (void)presentModalUrl:(NSString *)urlString title:(NSString *)title);
 - (void)dismissModalUrl;
-
-JSExportAs(NavigationItem,
-- (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback
-);
+JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback);
 
 @end
 

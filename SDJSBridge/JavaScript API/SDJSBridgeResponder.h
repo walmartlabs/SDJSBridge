@@ -17,8 +17,6 @@
 
 @interface SDJSBridgeResponder : NSObject <SDJSBridgeResponderExports>
 
-
-
 @property (nonatomic, strong) JSValue *callback;
 @property (nonatomic, readonly) SEL actionSelector;
 

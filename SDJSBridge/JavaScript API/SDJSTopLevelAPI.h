@@ -12,7 +12,6 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @class SDJSPlatformAPI;
-@class SDWebViewController;
 
 extern NSString * const SDJSTopLevelAPIScriptName;
 
