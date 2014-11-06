@@ -28,7 +28,7 @@ JSExportAs(show, - (void)showWithMessage:(NSString *)message);
 
 @end
 
-@interface SDJSProgressAPI : SDJSBridgeScript
+@interface SDJSProgressAPI : SDJSBridgeScript <SDJSProgressAPIExports>
 
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, weak) id<SDJSProgressAPIDelegate> delegate;
