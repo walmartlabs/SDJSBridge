@@ -23,6 +23,8 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     UIWebView *_webView;
 }
 
+#pragma mark - Lifecycle
+
 - (instancetype)init
 {
     if ((self = [super init]))
@@ -51,6 +53,8 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
         [_webView removeObserver:self forKeyPath:UIWebViewContextPath];
 }
 
+#pragma mark - KVO
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (!_webView)
@@ -63,8 +67,12 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     }
 }
 
+#pragma mark - Script API
+
 - (void)configureContext:(JSContext *)context
 {
+    _context = context;
+    
     [_context setExceptionHandler:^(JSContext *aContext, JSValue *value) {
         NSLog(@"SDJSBridgeException: %@", value);
     }];
