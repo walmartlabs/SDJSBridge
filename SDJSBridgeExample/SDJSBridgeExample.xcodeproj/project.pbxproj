@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */; };
 		19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
+		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
 		19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformAPI.h; sourceTree = "<group>"; };
 		19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPI.m; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				19AAED111A09364500238146 /* Navigation */,
 				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
 				19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */,
+				1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */,
+				1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */,
 				19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
