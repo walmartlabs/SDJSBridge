@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
+		1938AFFE1A0D84D600647F65 /* SDJSRegistryAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFFD1A0D84D600647F65 /* SDJSRegistryAPI.m */; };
+		1938B0011A0D851900647F65 /* SDJSRegistryScannerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938B0001A0D851900647F65 /* SDJSRegistryScannerAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */; };
 		19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */; };
@@ -51,6 +53,10 @@
 /* Begin PBXFileReference section */
 		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
 		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
+		1938AFFC1A0D84D600647F65 /* SDJSRegistryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSRegistryAPI.h; sourceTree = "<group>"; };
+		1938AFFD1A0D84D600647F65 /* SDJSRegistryAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSRegistryAPI.m; sourceTree = "<group>"; };
+		1938AFFF1A0D851900647F65 /* SDJSRegistryScannerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSRegistryScannerAPI.h; sourceTree = "<group>"; };
+		1938B0001A0D851900647F65 /* SDJSRegistryScannerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSRegistryScannerAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
 		19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformAPI.h; sourceTree = "<group>"; };
 		19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPI.m; sourceTree = "<group>"; };
@@ -113,6 +119,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1938AFFB1A0D84C100647F65 /* Registry */ = {
+			isa = PBXGroup;
+			children = (
+				1938AFFC1A0D84D600647F65 /* SDJSRegistryAPI.h */,
+				1938AFFD1A0D84D600647F65 /* SDJSRegistryAPI.m */,
+				1938AFFF1A0D851900647F65 /* SDJSRegistryScannerAPI.h */,
+				1938B0001A0D851900647F65 /* SDJSRegistryScannerAPI.m */,
+			);
+			name = Registry;
+			path = ../Registry;
+			sourceTree = "<group>";
+		};
 		19AAECFA1A081BF500238146 /* JavaScript API */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +148,7 @@
 		19AAECFB1A081BF500238146 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				1938AFFB1A0D84C100647F65 /* Registry */,
 				19AAED251A09742900238146 /* Alert */,
 				19AAED111A09364500238146 /* Navigation */,
 				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
@@ -371,11 +390,13 @@
 				19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */,
 				19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				1938AFFE1A0D84D600647F65 /* SDJSRegistryAPI.m in Sources */,
 				1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
 				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */,
+				1938B0011A0D851900647F65 /* SDJSRegistryScannerAPI.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,

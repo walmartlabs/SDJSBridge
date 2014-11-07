@@ -7,15 +7,24 @@
 //
 
 #import "SDJSRegistryScannerAPI.h"
+#import "SDMacros.h"
 
 @implementation SDJSRegistryScannerAPI
 
 - (void)presentBarcodeScannerWithCallback:(JSValue *)callback {
+    @strongify(self.delegate, strongDelegate);
     
+    if ([strongDelegate respondsToSelector:@selector(presentBarcodeScannerWithCallback:)]) {
+        [strongDelegate registryScannerAPI:self presentBarcodeScannerWithCallback:callback];
+    }
 }
 
 - (void)presentReceiptScannerWithCallback:(JSValue *)callback {
+    @strongify(self.delegate, strongDelegate);
     
+    if ([strongDelegate respondsToSelector:@selector(presentBarcodeScannerWithCallback:)]) {
+        [strongDelegate registryScannerAPI:self presentReceiptScannerWithCallback:callback];
+    }
 }
 
 @end

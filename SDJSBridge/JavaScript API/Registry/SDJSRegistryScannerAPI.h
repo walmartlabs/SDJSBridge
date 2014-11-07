@@ -10,6 +10,15 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
+@class SDJSRegistryScannerAPI;
+
+@protocol SDJSRegistryScannerAPIDelegate <NSObject>
+
+- (void)registryScannerAPI:(SDJSRegistryScannerAPI *)registryScannerAPI presentBarcodeScannerWithCallback:(JSValue *)callback;
+- (void)registryScannerAPI:(SDJSRegistryScannerAPI *)registryScannerAPI presentReceiptScannerWithCallback:(JSValue *)callback;
+
+@end
+
 @protocol SDJSRegistryScannerAPIExports <JSExport>
 
 JSExportAs(presentBarcodeScanner, - (void)presentBarcodeScannerWithCallback:(JSValue *)callback);
@@ -19,7 +28,10 @@ JSExportAs(presentReceiptScanner, - (void)presentReceiptScannerWithCallback:(JSV
 
 @interface SDJSRegistryScannerAPI : SDJSBridgeScript <SDJSRegistryScannerAPIExports>
 
+@property (nonatomic, weak) id<SDJSRegistryScannerAPIDelegate> delegate;
+
 - (void)presentBarcodeScannerWithCallback:(JSValue *)callback;
 - (void)presentReceiptScannerWithCallback:(JSValue *)callback;
 
 @end
+
