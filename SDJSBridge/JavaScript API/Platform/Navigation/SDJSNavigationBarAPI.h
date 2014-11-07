@@ -19,6 +19,10 @@
 
 @end
 
+/**
+ A JavaScript bridge script for interacting with the navigation items of a 
+ SDWebViewController instance.
+ */
 @interface SDJSNavigationBarAPI : SDJSBridgeScript <SDJSNavigationBarAPIExports>
 
 @property (nonatomic, copy) NSArray *leftItems;

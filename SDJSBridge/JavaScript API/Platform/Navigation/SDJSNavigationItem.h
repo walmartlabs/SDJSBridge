@@ -19,6 +19,9 @@
 
 @end
 
+/**
+ A JavaScript bridge script for creating UIBarButtonItem objects.
+ */
 @interface SDJSNavigationItem : SDJSBridgeResponder <SDJSNavigationItemExports>
 
 @property (nonatomic, copy) NSString *title;

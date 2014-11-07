@@ -27,6 +27,10 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
 
 @end
 
+/**
+ A JavaScript bridge script for interacting with the navigation controller of a 
+ SDWebViewController instance.
+ */
 @interface SDJSNavigationAPI : SDJSBridgeScript <SDJSNavigationAPIExports>
 
 @property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;

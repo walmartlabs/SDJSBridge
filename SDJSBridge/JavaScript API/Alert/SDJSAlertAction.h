@@ -17,6 +17,9 @@
 
 @end
 
+/**
+ A JavaScript bridge to represent an alert action object.
+ */
 @interface SDJSAlertAction : SDJSBridgeResponder <SDJSAlertActionExports>
 
 @property (nonatomic, copy) NSString *title;

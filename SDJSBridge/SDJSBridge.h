@@ -10,6 +10,11 @@
 #import <WebKit/WebKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+/**
+ A concrete class that provides access to a UIWebView's JavaScript context 
+ object. Provides methods to adding scripts and retreiving values out of the 
+ JavaScript context.
+ */
 @interface SDJSBridge: NSObject
 
 /// @name Intializing a Bridge

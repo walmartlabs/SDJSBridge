@@ -25,6 +25,9 @@ JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)messag
 
 @end
 
+/**
+ A JavaScript bridge script for interacting with the platform API.
+ */
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;

@@ -19,6 +19,9 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 @property (nonatomic, strong) SDJSPlatformAPI *platform;
 @end
 
+/**
+ A JavaScript bridge for interacting with the top level of the SDJSBridgeAPI.
+ */
 @interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports>
 
 @property (nonatomic, strong) SDJSPlatformAPI *platform;

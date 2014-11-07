@@ -12,6 +12,10 @@
 
 @interface SDJSBridgeScript : NSObject
 
+/**
+ An abstract class for creating a JavaScript bridge script that interacts with 
+ a SDWebViewController instance.
+ */
 @property (nonatomic, weak, readonly) SDWebViewController *webViewController;
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController;

@@ -28,6 +28,9 @@ JSExportAs(show, - (void)showWithMessage:(NSString *)message);
 
 @end
 
+/**
+ A JavaScript bridge script for interacting with a progress HUD object.
+ */
 @interface SDJSProgressAPI : SDJSBridgeScript <SDJSProgressAPIExports>
 
 @property (nonatomic, copy) NSString *message;

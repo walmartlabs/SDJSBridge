@@ -15,6 +15,10 @@
 
 @end
 
+/**
+ An abstract class for representing a JavaScript bridge script that invokes a
+ callback when performing an action.
+ */
 @interface SDJSBridgeResponder : NSObject <SDJSBridgeResponderExports>
 
 @property (nonatomic, strong) JSValue *callback;
