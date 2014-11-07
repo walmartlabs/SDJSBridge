@@ -94,6 +94,8 @@
         self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
+        self.webView.hidden = NO;
+
         [self configureScriptObjects];
     }
 }
@@ -303,7 +305,6 @@
     self.webView.frame = frame;
     self.webView.scrollView.contentInset = UIEdgeInsetsZero;
     [self.view addSubview:self.webView];
-    self.webView.hidden = NO;
     
     self.placeholderView.frame = frame;
 }
