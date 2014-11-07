@@ -21,7 +21,7 @@
 @implementation SDJSPlatformAPI
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
-    if ((self = [super init])) {
+    if ((self = [super initWithWebViewController:webViewController])) {
         _navigation = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
         _progress = [[SDJSProgressAPI alloc] initWithWebViewController:webViewController];
     }
