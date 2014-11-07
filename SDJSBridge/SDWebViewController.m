@@ -65,7 +65,8 @@
     self.delegate = nil;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
