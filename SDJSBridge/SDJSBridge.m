@@ -79,7 +79,7 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     
     [_scriptObjects enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         self.context[key] = obj;
-    }];
+    }]; 
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
@@ -93,9 +93,9 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     self.context[name] = object;
 }
 
-- (void)addScriptMethod:(NSString *)name block:(void *)block
+- (void)addScriptMethod:(NSString *)name block:(id)block
 {
-    
+    self.context[name] = block;
 }
 
 - (JSValue *)evaluateScript:(NSString *)script

@@ -24,7 +24,10 @@
 /// @name Adding JS Script Objects
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name;
-- (void)addScriptMethod:(NSString *)name block:(void *)block;
+
+/// @name Adding Blocks
+
+- (void)addScriptMethod:(NSString *)name block:(id)block;
 
 /// @name Running Script Strings
 

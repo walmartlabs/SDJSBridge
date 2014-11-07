@@ -24,7 +24,7 @@
 
 @implementation SDWebViewController
 
-#pragma mark - Public methods
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -58,48 +58,6 @@
     return self;
 }
 
-- (NSURL *)url
-{
-    return [self.currentURL copy];
-}
-
-- (void)loadURL:(NSURL *)url
-{
-    self.currentURL = url;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
-}
-
-- (void)initializeController
-{
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.webView.hidden = YES;
-}
-
-#pragma mark - SDJSBridge
-
-- (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
-{
-    [self.bridge addScriptObject:object name:name];
-}
-
-- (void)addScriptMethod:(NSString *)name block:(void *)block
-{
-    [self.bridge addScriptMethod:name block:block];
-}
-
-- (void)configureScriptObjects
-{
-    // todo: allow developer to opt in to using API scripts, not every web view will need them
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
-    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
-    
-    @strongify(self.delegate, strongDelegate);
-    
-    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
-        [strongDelegate webViewControllerConfigureScriptObjects:self];
-    }
-}
-
 #pragma mark - Lifecycle methods
 
 - (void)dealloc
@@ -119,12 +77,12 @@
     //self.placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
     self.placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view insertSubview:self.placeholderView atIndex:0];
-
+    
     [self initializeController];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
-
+    
     [self recontainWebView];
 }
 
@@ -149,6 +107,76 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initializeController
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.webView.hidden = YES;
+}
+
+#pragma mark - URLs
+
+- (NSURL *)url
+{
+    return [self.currentURL copy];
+}
+
+- (void)loadURL:(NSURL *)url
+{
+    self.currentURL = url;
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
+}
+
+#pragma mark - Navigation
+
+- (id)pushURL:(NSURL *)url title:(NSString *)title
+{
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    webViewController.title = title;
+    [self.navigationController pushViewController:webViewController animated:YES];
+    [webViewController loadURL:url];
+    return webViewController;
+}
+
+- (id)presentURL:(NSURL *)url title:(NSString *)title
+{
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    webViewController.title = title;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    [webViewController loadURL:url];
+    return webViewController;
+}
+
+#pragma mark - SDJSBridge
+
+- (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
+{
+    [self.bridge addScriptObject:object name:name];
+}
+
+- (void)addScriptMethod:(NSString *)name block:(id)block
+{
+    [self.bridge addScriptMethod:name block:block];
+}
+
+- (void)configureScriptObjects
+{
+    // todo: allow developer to opt in to using API scripts, not every web view will need them
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
+    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
+        [strongDelegate webViewControllerConfigureScriptObjects:self];
+    }
 }
 
 #pragma mark - UIWebViewDelegate methods
@@ -233,7 +261,7 @@
     [self configureScriptObjects];
 }
 
-#pragma mark - Subclasses should override.
+#pragma mark - Web view events.
 
 - (void)webViewDidStartLoad
 {
@@ -292,30 +320,6 @@
     }
 
     return _webView;
-}
-
-#pragma mark - Navigation
-
-- (id)pushURL:(NSURL *)url title:(NSString *)title {
-    self.placeholderView.image = [self imageWithView:self.webView];
-    
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
-    webViewController.title = title;
-    [self.navigationController pushViewController:webViewController animated:YES];
-    [webViewController loadURL:url];
-    return webViewController;
-}
-
-- (id)presentURL:(NSURL *)url title:(NSString *)title {
-    self.placeholderView.image = [self imageWithView:self.webView];
-    
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
-    webViewController.title = title;
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
-    [self presentViewController:navigationController animated:YES completion:nil];
-    [webViewController loadURL:url];
-    return webViewController;
 }
 
 @end
