@@ -8,6 +8,18 @@
 
 #import "SDJSBridgeScript.h"
 
+#import "SDJSRegistryScannerAPI.h"
+
+#import <JavaScriptCore/JavaScriptCore.h>
+
+@protocol SDJSRegistryAPIExports <JSExport>
+
+@property (nonatomic, strong) SDJSRegistryScannerAPI *scanner;
+
+@end
+
 @interface SDJSRegistryAPI : SDJSBridgeScript
+
+@property (nonatomic, strong) SDJSRegistryScannerAPI *scanner;
 
 @end

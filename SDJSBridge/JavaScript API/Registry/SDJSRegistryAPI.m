@@ -8,7 +8,16 @@
 
 #import "SDJSRegistryAPI.h"
 
+#import "SDJSRegistryScannerAPI.h"
+
 @implementation SDJSRegistryAPI
 
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
+    if ((self = [super initWithWebViewController:webViewController])) {
+        _scanner = [[SDJSRegistryScannerAPI alloc] initWithWebViewController:webViewController];
+    }
+    
+    return self;
+}
 
 @end
