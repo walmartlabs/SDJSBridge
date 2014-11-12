@@ -10,12 +10,16 @@
 
 @implementation SDJSBridgeResponder
 
-- (instancetype)initWithCallback:(JSValue *)callback {
-    if ((self = [super init])) {
+- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController callback:(JSValue *)callback {
+    if ((self = [super initWithWebViewController:webViewController])) {
         _callback = callback;
     }
     
     return self;
+}
+
+- (instancetype)initWithCallback:(JSValue *)callback {
+    return [self initWithWebViewController:nil callback:callback];
 }
 
 - (void)performActionWithSender:(id)sender {
