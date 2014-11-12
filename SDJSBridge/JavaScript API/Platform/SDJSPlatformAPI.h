@@ -20,8 +20,14 @@
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
 @property (nonatomic, strong) SDJSProgressAPI *progress;
 
+/// @name Alerts
+
 JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
 JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
+
+/// @name Sharing
+
+JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
 
 @end
 
@@ -33,7 +39,13 @@ JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)messag
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
 @property (nonatomic, strong) SDJSProgressAPI *progress;
 
+/// @name Alerts
+
 - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
 - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
+
+/// @name Sharing
+
+- (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback;
 
 @end

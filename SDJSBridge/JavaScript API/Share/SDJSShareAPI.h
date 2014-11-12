@@ -12,6 +12,6 @@
 
 @interface SDJSShareAPI : SDJSBridgeResponder
 
-- (void)shareWithURL:(NSURL *)url message:(NSString *)message callback:(JSValue *)callback;
+- (void)shareWithURL:(NSURL *)url message:(NSString *)message;
 
 @end

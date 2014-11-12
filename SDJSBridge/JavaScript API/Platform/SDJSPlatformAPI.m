@@ -11,14 +11,28 @@
 #import "SDJSNavigationAPI.h"
 #import "SDJSAlertAction.h"
 #import "SDJSProgressAPI.h"
+#import "SDJSShareAPI.h"
 
 @interface SDJSPlatformAPI ()
 
 @property (nonatomic, copy) NSArray *actions;
+@property (nonatomic, strong) SDJSShareAPI *shareScript;
 
 @end
 
 @implementation SDJSPlatformAPI
+
+#pragma mark - Accessors
+
+- (SDJSShareAPI *)shareScript {
+    if (!_shareScript) {
+        _shareScript = [[SDJSShareAPI alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _shareScript;
+}
+
+#pragma mark - Initialization
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super initWithWebViewController:webViewController])) {
@@ -59,6 +73,13 @@
     if (action) {
         [action performActionWithSender:alertView];
     }
+}
+
+#pragma mark - Sharing
+
+- (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback {
+    self.shareScript.callback = callback;
+    [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message];
 }
 
 @end
