@@ -11,6 +11,14 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <UIKit/UIKit.h>
 
+@protocol SDJSShareAPIDelegate <NSObject>
+
+- (NSArray *)shareBridgeAPIActivityItems;
+- (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController;
+- (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler;
+
+@end
+
 @interface SDJSShareAPI : SDJSBridgeResponder
 
 - (void)shareWithURL:(NSURL *)url message:(NSString *)message;
