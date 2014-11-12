@@ -13,13 +13,18 @@
 
 @protocol SDJSShareAPIDelegate <NSObject>
 
-- (NSArray *)shareBridgeAPIActivityItems;
+@optional
+
+- (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message;
+- (NSArray *)shareBridgeAPIApplicationActivitiesWithURL:(NSURL *)url message:(NSString *)message;
 - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController;
 - (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler;
 
 @end
 
-@interface SDJSShareAPI : SDJSBridgeResponder
+@interface SDJSShareAPI : SDJSBridgeResponder <SDJSShareAPIDelegate>
+
+@property (nonatomic, weak) id<SDJSShareAPIDelegate> delegate;
 
 - (void)shareWithURL:(NSURL *)url message:(NSString *)message;
 
