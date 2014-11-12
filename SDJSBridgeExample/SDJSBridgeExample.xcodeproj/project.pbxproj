@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1934FA151A13AFAA00874421 /* SDJSShareAPI.m */; };
 		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1934FA141A13AFAA00874421 /* SDJSShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareAPI.h; sourceTree = "<group>"; };
+		1934FA151A13AFAA00874421 /* SDJSShareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPI.m; sourceTree = "<group>"; };
 		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
 		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
@@ -113,6 +116,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1934FA131A13AB7500874421 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				1934FA141A13AFAA00874421 /* SDJSShareAPI.h */,
+				1934FA151A13AFAA00874421 /* SDJSShareAPI.m */,
+			);
+			name = Share;
+			path = ../Share;
+			sourceTree = "<group>";
+		};
 		19AAECFA1A081BF500238146 /* JavaScript API */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 		19AAECFB1A081BF500238146 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				1934FA131A13AB7500874421 /* Share */,
 				19AAED251A09742900238146 /* Alert */,
 				19AAED111A09364500238146 /* Navigation */,
 				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
@@ -378,6 +392,7 @@
 				19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
 				19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */,
 				19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */,
