@@ -23,6 +23,10 @@
 <button id="progress-show">show</button>
 <button id="progress-hide">hide</button>
 
+<h2>sharing</h2>
+
+<button id="share">share</button>
+
 <script>
     function NoClickDelay(el) {
         this.element = el;
@@ -130,5 +134,13 @@ NoClickDelay.prototype = {
     }); 
     document.getElementById('progress-hide').addEventListener('touchend', function() {
         JSBridgeAPI.platform.progress.hide();
+    });
+
+    document.getElementById('share').addEventListener('touchend', function() {
+        var url = "http://www.walmart.com/";
+        var message = "Check out this great deal!"
+        JSBridgeAPI.platform.share(url, message, function () {
+            // share complete
+        });
     }); 
 </script>

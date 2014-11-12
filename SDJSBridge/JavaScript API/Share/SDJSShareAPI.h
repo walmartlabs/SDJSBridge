@@ -9,6 +9,7 @@
 #import "SDJSBridgeResponder.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
+#import <UIKit/UIKit.h>
 
 @interface SDJSShareAPI : SDJSBridgeResponder
 
