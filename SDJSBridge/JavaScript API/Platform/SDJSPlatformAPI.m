@@ -26,11 +26,25 @@
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super initWithWebViewController:webViewController])) {
-        _navigation = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
-        _progress = [[SDJSProgressAPI alloc] initWithWebViewController:webViewController];
+        _navigationScript = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
+        _progressScript = [[SDJSProgressAPI alloc] initWithWebViewController:webViewController];
     }
     
     return self;
+}
+
+#pragma mark - SDJSPlatformAPIExports
+
+- (SDJSNavigationAPI *)navigation {
+    return _navigationScript;
+}
+
+- (SDJSProgressAPI *)progress {
+    return _progressScript;
+}
+
+- (NSDictionary *)ShareService {
+    return [SDJSShareService allServices];
 }
 
 #pragma mark - Alerts
@@ -78,10 +92,6 @@
     
     self.shareScript.callback = callback;
     [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message excludedServices:excludedServices];
-}
-
-- (NSDictionary *)ShareService {
-    return [SDJSShareService allServices];
 }
 
 @end

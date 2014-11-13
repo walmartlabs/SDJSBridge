@@ -19,8 +19,8 @@
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
-@property (nonatomic, strong) SDJSNavigationAPI *navigation;
-@property (nonatomic, strong) SDJSProgressAPI *progress;
+@property (nonatomic, readonly) SDJSNavigationAPI *navigation;
+@property (nonatomic, readonly) SDJSProgressAPI *progress;
 @property (nonatomic, readonly) NSDictionary *ShareService;
 
 /// @name Alerts
@@ -40,10 +40,9 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
  */
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
-@property (nonatomic, strong) SDJSNavigationAPI *navigation;
-@property (nonatomic, strong) SDJSProgressAPI *progress;
+@property (nonatomic, strong) SDJSNavigationAPI *navigationScript;
+@property (nonatomic, strong) SDJSProgressAPI *progressScript;
 @property (nonatomic, strong) SDJSShareAPI *shareScript;
-@property (nonatomic, readonly) NSDictionary *ShareService;
 
 /// @name Alerts
 
