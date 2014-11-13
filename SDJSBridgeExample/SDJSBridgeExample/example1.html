@@ -26,6 +26,7 @@
 <h2>sharing</h2>
 
 <button id="share">share</button>
+<button id="share-exclusions">share with exclusions</button>
 
 <script>
     function NoClickDelay(el) {
@@ -142,5 +143,17 @@ NoClickDelay.prototype = {
         JSBridgeAPI.platform.share(url, message, function () {
             // share complete
         });
-    }); 
+    });
+
+    document.getElementById('share-exclusions').addEventListener('touchend', function() {
+        var ShareService = JSBridgeAPI.platform.ShareService;
+        var excludedServices = [ShareService.Facebook, ShareService.Mail];
+
+        var url = "http://www.walmart.com/";
+        var message = "Check out this great deal!"
+        
+        JSBridgeAPI.platform.share(url, message, excludedServices, function () {
+            // share complete
+        });
+    });
 </script>

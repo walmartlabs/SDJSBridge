@@ -214,3 +214,26 @@ JSBridgeAPI.platform.share(url, message, function () {
     // share complete
 });
 ```
+
+### JSBridgeAPI.platform.ShareService
+
+API for configuring the share services shown when using the native share sheet. By default all available services are shown. API accepts array of share service constants to exclude.
+
+**Services**
+
+- `ShareService.Mail` - Share with mail app service type
+- `ShareService.Message` - Share with messages app service type
+- `ShareService.Facebook` - Share with Facebook service type
+- `ShareService.Twitter` - Share with Twitter service type
+
+**Examples**
+
+Showing a share sheet that excludes the Facebook and Mail options.
+
+```
+var ShareService = JSBridgeAPI.platform.ShareService;
+var excludedServices = [ShareService.Facebook, ShareService.Mail];
+JSBridgeAPI.platform.share(url, message, excludedServices, function () {
+    // share complete
+});
+```
