@@ -10,6 +10,7 @@
 
 #import "SDWebViewController.h"
 #import "SDMacros.h"
+#import "SDJSShareService.h"
 
 @implementation SDJSShareAPI
 
@@ -25,19 +26,25 @@
 
 #pragma mark - JavaScript Bridge API
 
-- (void)shareWithURL:(NSURL *)url message:(NSString *)message {
-    UIActivityViewController *activityViewController = [self activityViewControllerWithURL:url message:message];
+- (void)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
+    UIActivityViewController *activityViewController = [self activityViewControllerWithURL:url message:message excludedServices:excludedServices];
     [self presentActivityViewController:activityViewController];
 }
 
 #pragma mark - UIActivityViewController
 
-- (UIActivityViewController *)activityViewControllerWithURL:(NSURL *)url message:(NSString *)message {
+- (UIActivityViewController *)activityViewControllerWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
     NSArray *items = [self activityItemsWithURL:url message:message];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
                                                                                          applicationActivities:nil];
     
-    activityViewController.completionHandler = [self completionHandler];;
+    activityViewController.completionHandler = [self completionHandler];
+    
+    if (excludedServices) {
+        NSArray *excludedTypes = [SDJSShareService activityTypesFromShareServices:excludedServices];;
+        activityViewController.excludedActivityTypes = excludedTypes;
+    }
+    
     return activityViewController;
 }
 

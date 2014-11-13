@@ -26,6 +26,6 @@
 
 @property (nonatomic, weak) id<SDJSShareAPIDelegate> delegate;
 
-- (void)shareWithURL:(NSURL *)url message:(NSString *)message;
+- (void)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices;
 
 @end

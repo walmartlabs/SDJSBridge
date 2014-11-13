@@ -68,16 +68,20 @@
 #pragma mark - Sharing
 
 - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback {
+    [self shareURL:urlString message:message excludedServices:nil callback:callback];
+}
+
+- (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback {
     if (!self.shareScript) {
         self.shareScript = [[SDJSShareAPI alloc] initWithWebViewController:self.webViewController];
     }
     
     self.shareScript.callback = callback;
-    [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message];
+    [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message excludedServices:excludedServices];
 }
 
 - (NSDictionary *)ShareService {
-    return @{@"Facebook" : [SDJSShareService facebook]};
+    return [SDJSShareService allServices];
 }
 
 @end
