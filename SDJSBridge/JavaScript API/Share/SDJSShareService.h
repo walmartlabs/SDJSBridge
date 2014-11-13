@@ -14,6 +14,7 @@
 
 @property (nonatomic, copy, readonly) NSString *activityType;
 
++ (NSDictionary *)allServices;
 + (SDJSShareService *)facebook;
 + (SDJSShareService *)mail;
 + (SDJSShareService *)message;

@@ -16,12 +16,25 @@
 
 @implementation SDJSShareService
 
+#pragma mark - Initialization
+
 - (instancetype)initWithActivityType:(NSString *)activityType {
     if ((self = [super init])) {
         _activityType = activityType;
     }
     
     return self;
+}
+
+#pragma mark - Services
+
++ (NSDictionary *)allServices {
+    return @{@"Facebook" : [SDJSShareService facebook],
+             @"Mail" : [SDJSShareService mail],
+             @"Twitter" : [SDJSShareService twitter],
+             @"Message" : [SDJSShareService message],
+             @"Flickr" : [SDJSShareService flickr],
+             @"Vimeo" : [SDJSShareService vimeo]};
 }
 
 + (SDJSShareService *)facebook {
@@ -58,7 +71,7 @@
             }
         }
         
-        return [shareServices copy];
+        return [excludedTypes copy];
     }
     
     return nil;
