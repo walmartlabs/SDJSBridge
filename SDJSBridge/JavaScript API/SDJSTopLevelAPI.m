@@ -24,7 +24,7 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 }
 
 - (void)logValue:(JSValue *)value {
-    NSLog(@"SDJSTopLevelAPI log: %@", value);
+    NSLog(@"SDJSTopLevelAPI: %@", value);
 }
 
 @end
