@@ -15,10 +15,24 @@ NSString * const SDJSShareServiceVimeo = @"SDJSShareServiceVimeo";
 NSString * const SDJSShareServiceFacebook = @"SDJSShareServiceFacebook";
 NSString * const SDJSShareServiceTwitter = @"SDJSShareServiceTwitter";
 
+@interface SDJSShareService ()
+
+@property (nonatomic, copy) NSString *serviceType;
+
+@end
+
 @implementation SDJSShareService
 
-+ (NSString *)facebook {
-    return SDJSShareServiceFacebook;
+- (instancetype)initWithServiceType:(NSString *)serviceType {
+    if ((self = [super init])) {
+        _serviceType = serviceType;
+    }
+    
+    return self;
+}
+
++ (SDJSShareService *)facebook {
+    return [[SDJSShareService alloc] initWithServiceType:SDJSShareServiceFacebook];
 }
 
 @end

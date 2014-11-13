@@ -11,6 +11,6 @@
 
 @interface SDJSShareService : NSObject
 
-+ (NSString *)facebook;
++ (SDJSShareService *)facebook;
 
 @end
