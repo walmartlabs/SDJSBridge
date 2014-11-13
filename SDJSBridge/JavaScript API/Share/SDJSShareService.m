@@ -8,31 +8,44 @@
 
 #import "SDJSShareService.h"
 
-NSString * const SDJSShareServiceMessage = @"SDJSShareServiceMessage";
-NSString * const SDJSShareServiceMail = @"SDJSShareServiceMail";
-NSString * const SDJSShareServiceFlickr = @"SDJSShareServiceFlickr";
-NSString * const SDJSShareServiceVimeo = @"SDJSShareServiceVimeo";
-NSString * const SDJSShareServiceFacebook = @"SDJSShareServiceFacebook";
-NSString * const SDJSShareServiceTwitter = @"SDJSShareServiceTwitter";
-
 @interface SDJSShareService ()
 
-@property (nonatomic, copy) NSString *serviceType;
+@property (nonatomic, copy, readwrite) NSString *activityType;
 
 @end
 
 @implementation SDJSShareService
 
-- (instancetype)initWithServiceType:(NSString *)serviceType {
+- (instancetype)initWithActivityType:(NSString *)activityType {
     if ((self = [super init])) {
-        _serviceType = serviceType;
+        _activityType = activityType;
     }
     
     return self;
 }
 
 + (SDJSShareService *)facebook {
-    return [[SDJSShareService alloc] initWithServiceType:SDJSShareServiceFacebook];
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypePostToFacebook];
+}
+
++ (SDJSShareService *)twitter {
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypePostToTwitter];
+}
+
++ (SDJSShareService *)mail {
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypeMail];
+}
+
++ (SDJSShareService *)message {
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypeMessage];
+}
+
++ (SDJSShareService *)flickr {
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypePostToFlickr];
+}
+
++ (SDJSShareService *)vimeo {
+    return [[SDJSShareService alloc] initWithActivityType:UIActivityTypePostToVimeo];
 }
 
 @end
