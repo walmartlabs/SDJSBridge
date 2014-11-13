@@ -20,5 +20,6 @@
 + (SDJSShareService *)twitter;
 + (SDJSShareService *)flickr;
 + (SDJSShareService *)vimeo;
++ (NSArray *)activityTypesFromShareServices:(NSArray *)shareServices;
 
 @end

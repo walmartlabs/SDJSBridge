@@ -48,4 +48,20 @@
     return [[SDJSShareService alloc] initWithActivityType:UIActivityTypePostToVimeo];
 }
 
++ (NSArray *)activityTypesFromShareServices:(NSArray *)shareServices {
+    if (shareServices) {
+        NSMutableArray *excludedTypes = [NSMutableArray array];
+        
+        for (SDJSShareService *service in shareServices) {
+            if ([service isKindOfClass:[SDJSShareService class]]) {
+                [excludedTypes addObject:service.activityType];
+            }
+        }
+        
+        return [shareServices copy];
+    }
+    
+    return nil;
+}
+
 @end
