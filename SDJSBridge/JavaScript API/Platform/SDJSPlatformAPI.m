@@ -12,6 +12,7 @@
 #import "SDJSAlertAction.h"
 #import "SDJSProgressAPI.h"
 #import "SDJSShareAPI.h"
+#import "SDJSShareService.h"
 
 @interface SDJSPlatformAPI ()
 
@@ -73,6 +74,10 @@
     
     self.shareScript.callback = callback;
     [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message];
+}
+
+- (NSDictionary *)ShareService {
+    return @{@"Facebook" : [SDJSShareService facebook]};
 }
 
 @end

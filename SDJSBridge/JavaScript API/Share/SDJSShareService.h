@@ -9,14 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol SDJSShareServiceExports <JSExport>
+@interface SDJSShareService : NSObject
 
-+ (NSString *)Facebook;
-
-@end
-
-@interface SDJSShareService : NSObject <SDJSShareServiceExports>
-
-+ (NSString *)Facebook;
++ (NSString *)facebook;
 
 @end

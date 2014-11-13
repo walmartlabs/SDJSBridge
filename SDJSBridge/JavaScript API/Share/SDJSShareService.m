@@ -17,7 +17,7 @@ NSString * const SDJSShareServiceTwitter = @"SDJSShareServiceTwitter";
 
 @implementation SDJSShareService
 
-+ (NSString *)Facebook {
++ (NSString *)facebook {
     return SDJSShareServiceFacebook;
 }
 
