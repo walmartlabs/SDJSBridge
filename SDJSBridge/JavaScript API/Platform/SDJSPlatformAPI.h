@@ -14,6 +14,7 @@
 @class SDJSNavigationAPI;
 @class SDJSAlertAction;
 @class SDJSProgressAPI;
+@class SDJSShareAPI;
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
@@ -38,6 +39,7 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
 
 @property (nonatomic, strong) SDJSNavigationAPI *navigation;
 @property (nonatomic, strong) SDJSProgressAPI *progress;
+@property (nonatomic, strong) SDJSShareAPI *shareScript;
 
 /// @name Alerts
 

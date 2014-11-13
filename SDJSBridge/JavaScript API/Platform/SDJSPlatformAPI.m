@@ -16,21 +16,10 @@
 @interface SDJSPlatformAPI ()
 
 @property (nonatomic, copy) NSArray *actions;
-@property (nonatomic, strong) SDJSShareAPI *shareScript;
 
 @end
 
 @implementation SDJSPlatformAPI
-
-#pragma mark - Accessors
-
-- (SDJSShareAPI *)shareScript {
-    if (!_shareScript) {
-        _shareScript = [[SDJSShareAPI alloc] initWithWebViewController:self.webViewController];
-    }
-    
-    return _shareScript;
-}
 
 #pragma mark - Initialization
 
@@ -78,6 +67,10 @@
 #pragma mark - Sharing
 
 - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback {
+    if (!self.shareScript) {
+        self.shareScript = [[SDJSShareAPI alloc] initWithWebViewController:self.webViewController];
+    }
+    
     self.shareScript.callback = callback;
     [self.shareScript shareWithURL:[NSURL URLWithString:urlString] message:message];
 }
