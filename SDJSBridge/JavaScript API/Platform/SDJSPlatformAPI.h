@@ -31,7 +31,7 @@ JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)messag
 /// @name Sharing
 
 JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
-JSExportAs(share,  - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
+JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
 
 @end
 

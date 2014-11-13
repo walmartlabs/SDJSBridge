@@ -37,14 +37,8 @@
     NSArray *items = [self activityItemsWithURL:url message:message];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
                                                                                          applicationActivities:nil];
-    
+    activityViewController.excludedActivityTypes = [self excludedActivityTypesWithURL:url message:message excludedServices:excludedServices];
     activityViewController.completionHandler = [self completionHandler];
-    
-    if (excludedServices) {
-        NSArray *excludedTypes = [SDJSShareService activityTypesFromShareServices:excludedServices];;
-        activityViewController.excludedActivityTypes = excludedTypes;
-    }
-    
     return activityViewController;
 }
 
@@ -66,6 +60,24 @@
     }
     
     return nil;
+}
+
+- (NSArray *)excludedActivityTypesWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
+    NSArray *javaScriptExcludedTypes = [SDJSShareService activityTypesFromShareServices:excludedServices];
+    NSArray *delegateExcludedTypes = nil;
+
+    @strongify(self.delegate, strongDelegate);
+
+    if ([strongDelegate respondsToSelector:@selector(shareBridgeAPIExcludedActivityTypesWithURL:message:)]) {
+        delegateExcludedTypes = [strongDelegate shareBridgeAPIExcludedActivityTypesWithURL:url message:message];
+    }
+    
+    if (javaScriptExcludedTypes && delegateExcludedTypes) {
+        javaScriptExcludedTypes = [javaScriptExcludedTypes arrayByAddingObjectsFromArray:delegateExcludedTypes];
+    }
+    
+    
+    return javaScriptExcludedTypes;
 }
 
 - (UIActivityViewControllerCompletionHandler)completionHandler {
@@ -93,6 +105,10 @@
 }
 
 - (NSArray *)shareBridgeAPIApplicationActivitiesWithURL:(NSURL *)url message:(NSString *)message {
+    return nil;
+}
+
+- (NSArray *)shareBridgeAPIExcludedActivityTypesWithURL:(NSURL *)url message:(NSString *)message {
     return nil;
 }
 

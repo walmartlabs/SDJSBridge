@@ -17,6 +17,7 @@
 
 - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message;
 - (NSArray *)shareBridgeAPIApplicationActivitiesWithURL:(NSURL *)url message:(NSString *)message;
+- (NSArray *)shareBridgeAPIExcludedActivityTypesWithURL:(NSURL *)url message:(NSString *)message;
 - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController;
 - (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler;
 
