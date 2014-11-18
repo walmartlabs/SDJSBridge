@@ -17,8 +17,7 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 
 @protocol SDJSTopLevelAPIExports <JSExport>
 
-@property (nonatomic, readonly) SDJSPlatformAPI *platform;
-
+- (SDJSPlatformAPI *)platform;
 JSExportAs(log, - (void)logValue:(JSValue *)value);
 
 @end

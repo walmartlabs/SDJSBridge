@@ -72,19 +72,19 @@ NoClickDelay.prototype = {
 };
 
     document.getElementById('forward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation().pushUrl('example1.html', 'Page Title');
+        JSBridgeAPI.platform().navigation().pushUrl('example1.html', 'Page Title');
     })
     document.getElementById('backward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation().popUrl();
+        JSBridgeAPI.platform().navigation().popUrl();
     });
     document.getElementById('modal').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation().presentModalUrl('example1.html', 'Modal Title');
+        JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
     });
     document.getElementById('dismiss').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation().dismissModalUrl();
+        JSBridgeAPI.platform().navigation().dismissModalUrl();
     });
     document.getElementById('navitem-add').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform.navigation();
+        var navigation = JSBridgeAPI.platform().navigation();
 
         var navItemOne = navigation.NavigationItem("One", null, function () {
             alert('One tapped!');
@@ -97,7 +97,7 @@ NoClickDelay.prototype = {
         navigation.navigationBar().setRightItems([navItemTwo, navItemOne]);
     });
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform.navigation();
+        var navigation = JSBridgeAPI.platform().navigation();
         var rightItems = navigation.navigationBar().rightItems();
 
         if (rightItems.length === 1) {
@@ -108,51 +108,51 @@ NoClickDelay.prototype = {
         }
     });
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation().navigationBar().setRightItems(null);
+        JSBridgeAPI.platform().navigation().navigationBar().setRightItems(null);
     });
     
     document.getElementById('alerts-show').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.alert("Not found", "Something wasn't found.", null);
+        JSBridgeAPI.platform().alert("Not found", "Something wasn't found.", null);
     });
 
     document.getElementById('alerts-action').addEventListener('touchend', function() {
-        var okAction = JSBridgeAPI.platform.AlertAction("YAYYUHH!", function () {
+        var okAction = JSBridgeAPI.platform().AlertAction("YAYYUHH!", function () {
             alert('YAYYUHH!');
         });
 
-        var cancelAction = JSBridgeAPI.platform.AlertAction("Cancel", function () {
+        var cancelAction = JSBridgeAPI.platform().AlertAction("Cancel", function () {
             alert('Cancel tapped!');
         });
 
         var actions = [cancelAction, okAction];
 
-        JSBridgeAPI.platform.alert("Not found", "Continue?", actions);
+        JSBridgeAPI.platform().alert("Not found", "Continue?", actions);
     });  
 
 
     document.getElementById('progress-show').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.progress.show("One moment please...");
+        JSBridgeAPI.platform().progress.show("One moment please...");
     }); 
     document.getElementById('progress-hide').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.progress.hide();
+        JSBridgeAPI.platform().progress.hide();
     });
 
     document.getElementById('share').addEventListener('touchend', function() {
         var url = "http://www.walmart.com/";
         var message = "Check out this great deal!"
-        JSBridgeAPI.platform.share(url, message, function () {
+        JSBridgeAPI.platform().share(url, message, function () {
             // share complete
         });
     });
 
     document.getElementById('share-exclusions').addEventListener('touchend', function() {
-        var ShareService = JSBridgeAPI.platform.ShareService;
+        var ShareService = JSBridgeAPI.platform().ShareService;
         var excludedServices = [ShareService.Facebook, ShareService.Mail];
 
         var url = "http://www.walmart.com/";
         var message = "Check out this great deal!"
         
-        JSBridgeAPI.platform.share(url, message, excludedServices, function () {
+        JSBridgeAPI.platform().share(url, message, excludedServices, function () {
             // share complete
         });
     });
