@@ -11,19 +11,34 @@
 #import "SDJSNavigationItem.h"
 #import "SDWebViewController.h"
 
+@interface SDJSNavigationBarAPI ()
+
+@property (nonatomic, copy) NSArray *leftNavigationItems;
+@property (nonatomic, copy) NSArray *rightNavigationItems;
+
+@end
+
 @implementation SDJSNavigationBarAPI
 
 #pragma mark - Navigation Items
 
+- (NSArray *)leftItems {
+    return _leftNavigationItems;
+}
+
 - (void)setLeftItems:(NSArray *)items {
-    _leftItems = [items copy];
-    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_leftItems];
+    self.leftNavigationItems = items;
+    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_leftNavigationItems];
     self.webViewController.navigationItem.leftBarButtonItems = barButtonItems;
 }
 
+- (NSArray *)rightItems {
+    return _rightNavigationItems;
+}
+
 - (void)setRightItems:(NSArray *)items {
-    _rightItems = [items copy];
-    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_rightItems];
+    self.rightNavigationItems = items;
+    NSArray *barButtonItems = [self barButtonItemsWithNavigationItems:_rightNavigationItems];
     self.webViewController.navigationItem.rightBarButtonItems = barButtonItems;
 }
 

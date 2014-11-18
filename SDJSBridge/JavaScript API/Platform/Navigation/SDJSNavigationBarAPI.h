@@ -14,8 +14,10 @@
 
 @protocol SDJSNavigationBarAPIExports <JSExport>
 
-@property (nonatomic, copy) NSArray *leftItems;
-@property (nonatomic, copy) NSArray *rightItems;
+- (NSArray *)leftItems;
+- (NSArray *)rightItems;
+- (void)setLeftItems:(NSArray *)leftItems;
+- (void)setRightItems:(NSArray *)rightItems;
 
 @end
 
@@ -24,8 +26,5 @@
  SDWebViewController instance.
  */
 @interface SDJSNavigationBarAPI : SDJSBridgeScript <SDJSNavigationBarAPIExports>
-
-@property (nonatomic, copy) NSArray *leftItems;
-@property (nonatomic, copy) NSArray *rightItems;
 
 @end

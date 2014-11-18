@@ -23,10 +23,16 @@
     self = [super initWithWebViewController:webViewController];
     
     if (self) {
-        _navigationBar = [[SDJSNavigationBarAPI alloc] initWithWebViewController:self.webViewController];
+        _navigationBarScript = [[SDJSNavigationBarAPI alloc] initWithWebViewController:self.webViewController];
     }
     
     return self;
+}
+
+#pragma mark - SDJSNavigationAPIExports
+
+- (SDJSNavigationBarAPI *)navigationBar {
+    return _navigationBarScript;
 }
 
 #pragma mark - URLs

@@ -17,8 +17,7 @@
 
 @protocol SDJSNavigationAPIExports <JSExport>
 
-@property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
-
+- (SDJSNavigationBarAPI *)navigationBar;
 JSExportAs(pushUrl,- (void)pushUrl:(NSString *)urlString title:(NSString *)title);
 - (void)popUrl;
 JSExportAs(presentModalUrl, - (void)presentModalUrl:(NSString *)urlString title:(NSString *)title);
@@ -33,7 +32,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
  */
 @interface SDJSNavigationAPI : SDJSBridgeScript <SDJSNavigationAPIExports>
 
-@property (nonatomic, strong) SDJSNavigationBarAPI *navigationBar;
+@property (nonatomic, strong) SDJSNavigationBarAPI *navigationBarScript;
 
 /// @name Navigating View Controllers
 

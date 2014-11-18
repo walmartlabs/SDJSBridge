@@ -94,21 +94,21 @@ NoClickDelay.prototype = {
             alert('Two tapped!');
         });
 
-        navigation.navigationBar.rightItems = [navItemTwo, navItemOne];
+        navigation.navigationBar().setRightItems([navItemTwo, navItemOne]);
     });
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
         var navigation = JSBridgeAPI.platform.navigation();
-        var rightItems = navigation.navigationBar.rightItems;
+        var rightItems = navigation.navigationBar().rightItems();
 
         if (rightItems.length === 1) {
-            navigation.navigationBar.rightItems = null ;
+            navigation.navigationBar().setRightItems(null);
         } else {
             var remainingItems = rightItems.splice(rightItems.length - 1, 1);
-            navigation.navigationBar.rightItems = remainingItems;
+            navigation.navigationBar().setRightItems(remainingItems);
         }
     });
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.navigationBar.rightItems = null;
+        JSBridgeAPI.platform.navigation().navigationBar().setRightItems(null);
     });
     
     document.getElementById('alerts-show').addEventListener('touchend', function() {
