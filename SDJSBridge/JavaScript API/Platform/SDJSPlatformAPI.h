@@ -19,9 +19,15 @@
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
-@property (nonatomic, readonly) SDJSNavigationAPI *navigation;
-@property (nonatomic, readonly) SDJSProgressAPI *progress;
 @property (nonatomic, readonly) NSDictionary *ShareService;
+
+/// @name Navigation
+
+- (SDJSNavigationAPI *)navigation;
+
+/// @name Progress HUD
+
+- (SDJSProgressAPI *)progress;
 
 /// @name Alerts
 

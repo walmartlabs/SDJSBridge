@@ -72,19 +72,19 @@ NoClickDelay.prototype = {
 };
 
     document.getElementById('forward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.pushUrl('example1.html', 'Page Title');
+        JSBridgeAPI.platform.navigation().pushUrl('example1.html', 'Page Title');
     })
     document.getElementById('backward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.popUrl();
+        JSBridgeAPI.platform.navigation().popUrl();
     });
     document.getElementById('modal').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.presentModalUrl('example1.html', 'Modal Title');
+        JSBridgeAPI.platform.navigation().presentModalUrl('example1.html', 'Modal Title');
     });
     document.getElementById('dismiss').addEventListener('touchend', function() {
-        JSBridgeAPI.platform.navigation.dismissModalUrl();
+        JSBridgeAPI.platform.navigation().dismissModalUrl();
     });
     document.getElementById('navitem-add').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform.navigation;
+        var navigation = JSBridgeAPI.platform.navigation();
 
         var navItemOne = navigation.NavigationItem("One", null, function () {
             alert('One tapped!');
@@ -97,7 +97,7 @@ NoClickDelay.prototype = {
         navigation.navigationBar.rightItems = [navItemTwo, navItemOne];
     });
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform.navigation;
+        var navigation = JSBridgeAPI.platform.navigation();
         var rightItems = navigation.navigationBar.rightItems;
 
         if (rightItems.length === 1) {
