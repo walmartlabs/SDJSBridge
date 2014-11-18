@@ -131,10 +131,10 @@ NoClickDelay.prototype = {
 
 
     document.getElementById('progress-show').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().progress.show("One moment please...");
+        JSBridgeAPI.platform().progress().show("One moment please...");
     }); 
     document.getElementById('progress-hide').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().progress.hide();
+        JSBridgeAPI.platform().progress().hide();
     });
 
     document.getElementById('share').addEventListener('touchend', function() {
@@ -146,7 +146,7 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('share-exclusions').addEventListener('touchend', function() {
-        var ShareService = JSBridgeAPI.platform().ShareService;
+        var ShareService = JSBridgeAPI.platform().ShareService();
         var excludedServices = [ShareService.Facebook, ShareService.Mail];
 
         var url = "http://www.walmart.com/";

@@ -19,23 +19,11 @@
 
 @protocol SDJSPlatformAPIExports <JSExport>
 
-@property (nonatomic, readonly) NSDictionary *ShareService;
-
-/// @name Navigation
-
 - (SDJSNavigationAPI *)navigation;
-
-/// @name Progress HUD
-
 - (SDJSProgressAPI *)progress;
-
-/// @name Alerts
-
+- (NSDictionary *)ShareService;
 JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
 JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
-
-/// @name Sharing
-
 JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
 JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
 
