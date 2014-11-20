@@ -14,15 +14,41 @@
  A concrete class that provides access to a UIWebView's JavaScript context 
  object. Provides methods to adding scripts and retreiving values out of the 
  JavaScript context.
+ 
+ ## Usage
+
+ Create a new bridge.
+
+     UIWebView *webView;   
+     SDJSBridge *bridge = [[SDJSBridge alloc] initWithWebView:webView];
+
+ Add scripts to the JavaScript context.
+
+     SDJSTopLevelAPI *apiScript = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
+     [bridge addScriptObject:apiScript name:@"JSBridgeAPI"];
+
+ Retrieving scripts from the JavaScript context.
+
+     JSValue *scriptValue [bridge scriptValueForName:@"JSBridgeAPI"];
+
+ Evaluating scripts in the JavaScript context.
+
+     JSValue *scriptValue [bridge evaluateScript:@"function () {return 'hello world'}"];
+     NSLog(@"%@", scriptValue); // "hello world"
+
  */
 @interface SDJSBridge: NSObject
 
 /// @name Intializing a Bridge
 
+/**
+ Initialize a SDJSBridge. Creates a new JSContext.
+ */
 - (instancetype)init;
 
 /**
  Intialize a SDJSBridge with a web view. Extracts the web view's JSContext 
+ @param webView Web view used to reference the JSContext.
  via KVO.
  */
 - (instancetype)initWithWebView:(UIWebView *)webView;
