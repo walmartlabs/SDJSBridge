@@ -30,15 +30,47 @@
  */
 @interface SDJSShareService : NSObject
 
+/**
+ Activity type constant.
+ */
 @property (nonatomic, copy, readonly) NSString *activityType;
 
 + (NSDictionary *)allServices;
+
+/**
+ Creates a share service for the facebook activity type.
+ */
 + (SDJSShareService *)facebook;
+
+/**
+ Creates a share service for the mail activity type.
+ */
 + (SDJSShareService *)mail;
+
+/**
+ Creates a share service for the message activity type.
+ */
 + (SDJSShareService *)message;
+
+/**
+ Creates a share service for the twitter activity type.
+ */
 + (SDJSShareService *)twitter;
+
+/**
+ Creates a share service for the flickr activity type.
+ */
 + (SDJSShareService *)flickr;
+
+/**
+ Creates a share service for the vimeo activity type.
+ */
 + (SDJSShareService *)vimeo;
+
+/**
+ Returns an array of UIActivityType constants from an array of SDJSShareService
+ objects.
+ */
 + (NSArray *)activityTypesFromShareServices:(NSArray *)shareServices;
 
 @end

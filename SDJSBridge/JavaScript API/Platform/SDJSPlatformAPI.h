@@ -31,6 +31,27 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
 
 /**
  A JavaScript bridge script for interacting with the platform API.
+ 
+ ## Usage
+ 
+ ### JavaScript
+ 
+ Displaying an alert.
+ 
+     var platform = JSBridgeAPI.platform();
+     
+     // null actions default to OK action
+     platform.alert("Error", "An error occured while logging in", null);
+ 
+ 
+ Sharing a URL with message text. 
+
+     var url = "http://www.walmart.com/";
+     var message = "Check out this great deal!"
+     JSBridgeAPI.platform().share(url, message, function () {
+         // share complete
+     });
+ 
  */
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
@@ -38,14 +59,41 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
 @property (nonatomic, strong) SDJSProgressAPI *progressScript;
 @property (nonatomic, strong) SDJSShareAPI *shareScript;
 
-/// @name Alerts
+/// @name Creating Alert Actions
 
 - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
+
+/// @name Displaying Alert
+
+/**
+ Display a UIAlertView.
+ @param Title text for alert.
+ @param Message text for alert.
+ @param Array of SDJSAlertAction objects.
+ */
 - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
 
 /// @name Sharing
 
+/**
+ Share an item with a URL and message.
+ @param url URL of the item being shared.
+ @param message Message text of the item being shared.
+ @param url URL of the item being shared.
+ @param excludedServices Array of share services (SDJSShareService instances) to
+ exclude.
+ */
 - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback;
+
+/**
+ Share an item with a URL and message.
+ @param url URL of the item being shared.
+ @param message Message text of the item being shared.
+ @param url URL of the item being shared.
+ @param excludedServices Array of share services (SDJSShareService instances) to
+ exclude.
+ @param callback JS function to callback when user has completed sharing.
+ */
 - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback;
 
 @end
