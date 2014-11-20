@@ -3,6 +3,9 @@ SDJSBridge
 
 Native/Hybrid Javascript Bridge
 
+## Documentation
+
+See the [documentation](http://setdirection.github.io/SDJSBridge).
 
 ## JSBridgeAPI.platform()
 
