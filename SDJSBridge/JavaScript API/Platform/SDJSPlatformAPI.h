@@ -32,7 +32,9 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
 /**
  A JavaScript bridge script for interacting with the platform API.
   
- ### JavaScript Usage
+ ## JavaScript Usage
+ 
+ ### Alerts
  
  Displaying an alert.
  
@@ -41,6 +43,7 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
      // null actions default to OK action
      platform.alert("Error", "An error occured while logging in", null);
  
+ ### Sharing
  
  Sharing a URL with message text. 
 
@@ -53,8 +56,19 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
  */
 @interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
 
+/**
+ Navigation API script that provides the navigation API bridge.
+ */
 @property (nonatomic, strong) SDJSNavigationAPI *navigationScript;
+
+/**
+ Progress API script that provides the progress API bridge.
+ */
 @property (nonatomic, strong) SDJSProgressAPI *progressScript;
+
+/**
+ Share API script that provides the share API bridge.
+ */
 @property (nonatomic, strong) SDJSShareAPI *shareScript;
 
 /// @name Creating Alert Actions

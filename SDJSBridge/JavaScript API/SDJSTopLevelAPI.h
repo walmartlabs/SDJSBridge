@@ -27,8 +27,15 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
  */
 @interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports>
 
+/**
+ Platform API script that provides the platform API bridge.
+ */
 @property (nonatomic, strong) SDJSPlatformAPI *platformScript;
 
+/**
+ Log a JavaScript value to the console.
+ @param value Value to log out in the console.
+ */
 - (void)logValue:(JSValue *)value;
 
 @end
