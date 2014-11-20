@@ -3,9 +3,21 @@ SDJSBridge
 
 Native/Hybrid Javascript Bridge
 
+
+## JSBridgeAPI.platform()
+
+Returns the platform object.
+
+**Methods**
+
+- [`navigation()`](#jsbridgeapiplatformnavigation) - Returns the navigation object used to push and pop URLs in the web view.
+- [`alert(title, message, actions)`](#jsbridgeapiplatformalert) - Displays an alert.
+- [`AlertAction(title, callback)`](#jsbridgeapiplatformalertaction) - Returns a new instance of an alert action object.
+- [`progress()`](jsbridgeapiplatformprogress) - Returns the progress object for hiding/showing progress HUD.
+
 ### JSBridgeAPI.platform().navigation()
 
-API for working with the navigation object.
+Returns the navigation object containing the API for working with the navigation object.
 
 **Methods**
 
