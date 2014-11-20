@@ -18,14 +18,15 @@
  
  ### JavaScript
  
- ```
- var ShareService = JSBridgeAPI.platform().ShareService();
- var excludedServices = [ShareService.Facebook, ShareService.Mail];
+ Showing a share sheet that excludes the Facebook and Mail options.
  
- JSBridgeAPI.platform().share(url, message, excludedServices, function () {
-   // share complete
- });
- ```
+     var ShareService = JSBridgeAPI.platform().ShareService();
+     var excludedServices = [ShareService.Facebook, ShareService.Mail];
+     
+     JSBridgeAPI.platform().share(url, message, excludedServices, function () {
+       // share complete
+     });
+ 
  */
 @interface SDJSShareService : NSObject
 

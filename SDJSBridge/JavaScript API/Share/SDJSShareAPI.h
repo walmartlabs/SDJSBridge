@@ -68,39 +68,34 @@
 
  Set the delegate property to customize the UIActivityViewController behavior.
 
- ```
- SDWebViewController *webViewController;
- SDJSShareAPI *shareAPI = [[SDJSShareAPI alloc] initWithWebViewController:webViewController];
- shareAPI.delegate = self;
- ```
+     SDWebViewController *webViewController;
+     SDJSShareAPI *shareAPI = [[SDJSShareAPI alloc] initWithWebViewController:webViewController];
+     shareAPI.delegate = self;
 
  Implement the delegate methods to make customizations.
 
- ```
- #pragma mark - SDJSShareAPIDelegate
+     #pragma mark - SDJSShareAPIDelegate
 
- - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message {
-     return @[message, url];
- }
- 
- - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController {
-     [self presentViewController:activityViewController animated:YES completion:nil];
- }
+     - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message {
+         return @[message, url];
+     }
+     
+     - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController {
+         [self presentViewController:activityViewController animated:YES completion:nil];
+     }
 
- ```
 
  ### JavaScript
  
  Sharing a URL with a message.
  
- ```
- var url = "http://www.walmart.com/";
- var message = "Check out this great deal!"
+     var url = "http://www.walmart.com/";
+     var message = "Check out this great deal!"
+     
+     JSBridgeAPI.platform().share(url, message, function () {
+       // share complete
+     });
  
- JSBridgeAPI.platform().share(url, message, function () {
-   // share complete
- });
- ```
  
  */
 @interface SDJSShareAPI : SDJSBridgeResponder <SDJSShareAPIDelegate>
