@@ -17,6 +17,8 @@
  */
 @protocol SDJSShareAPIDelegate <NSObject>
 
+@optional
+
 /**
  Implement to customize the activity items that are being shared.
  @param url URL of the item being shared.
