@@ -61,6 +61,8 @@
  */
 - (instancetype)initWithCallback:(JSValue *)callback;
 
+/// @name Running the Callback Function
+
 /**
  Invoke the JavaScript callback.
  */

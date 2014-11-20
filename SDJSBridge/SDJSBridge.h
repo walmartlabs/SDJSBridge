@@ -29,7 +29,7 @@
 
  Retrieving scripts from the JavaScript context.
 
-     JSValue *scriptValue [bridge scriptValueForName:@"JSBridgeAPI"];
+     JSValue *scriptValue = [bridge scriptValueForName:@"JSBridgeAPI"];
 
  Evaluating scripts in the JavaScript context.
 

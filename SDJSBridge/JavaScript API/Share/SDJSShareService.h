@@ -11,7 +11,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 /**
- An object used to represent a UIActivityType in JavaScript. Allows
+ An object used to represent a `UIActivityType` in JavaScript. Allows
  JavaScript API users to specify activity types.
   
  ## JavaScript Usage
@@ -34,6 +34,8 @@
 @property (nonatomic, copy, readonly) NSString *activityType;
 
 + (NSDictionary *)allServices;
+
+/// @name Creating Share Services
 
 /**
  Creates a share service for the facebook activity type.
@@ -65,9 +67,11 @@
  */
 + (SDJSShareService *)vimeo;
 
+/// @name Converting to Activity Types
+
 /**
- Returns an array of UIActivityType constants from an array of SDJSShareService
- objects.
+ Returns an array of `UIActivityType` constants from an array of 
+ SDJSShareService objects.
  */
 + (NSArray *)activityTypesFromShareServices:(NSArray *)shareServices;
 

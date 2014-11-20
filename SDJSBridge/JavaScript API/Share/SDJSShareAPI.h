@@ -13,7 +13,7 @@
 
 /**
  A delegate protocol for interacting with a SDJSShareAPI object. Allows for 
- customization over the UIActivityViewController that is used to share an item.
+ customization over the `UIActivityViewController` that is used to share an item.
  */
 @protocol SDJSShareAPIDelegate <NSObject>
 
@@ -23,35 +23,35 @@
  Implement to customize the activity items that are being shared.
  @param url URL of the item being shared.
  @param message Message text of the item being shared.
- @return An array of the activity items that will be used for the UIActivityViewController.
+ @return An array of the activity items that will be used for the `UIActivityViewController`.
  */
 - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message;
 
 /**
- Implement to customize the application activities that are used for the UIActivityViewController.
+ Implement to customize the application activities that are used for the `UIActivityViewController`.
  @param url URL of the item being shared.
  @param message Message text of the item being shared.
- @return An array of the application activities that will be used for the UIActivityViewController.
+ @return An array of the application activities that will be used for the `UIActivityViewController`.
  */
 - (NSArray *)shareBridgeAPIApplicationActivitiesWithURL:(NSURL *)url message:(NSString *)message;
 
 /**
- Implement to provide the excluded activity types that are used for the UIActivityViewController.
+ Implement to provide the excluded activity types that are used for the `UIActivityViewController`.
  @param url URL of the item being shared.
  @param message Message text of the item being shared.
- @return An array of the excluded activity types that will be used for the UIActivityViewController.
+ @return An array of the excluded activity types that will be used for the `UIActivityViewController`.
  */
 - (NSArray *)shareBridgeAPIExcludedActivityTypesWithURL:(NSURL *)url message:(NSString *)message;
 
 /**
- Implement to customize how the UIActivityViewController is presented.
- @param activityViewController The UIActivityViewController instance
+ Implement to customize how the `UIActivityViewController` is presented.
+ @param activityViewController The `UIActivityViewController` instance
  */
 - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController;
 
 /**
  Implement to customize the completion logic.
- @return The completion handler block of type UIActivityViewControllerCompletionHandler.
+ @return The completion handler block of type `UIActivityViewControllerCompletionHandler`.
  */
 - (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler;
 
@@ -59,14 +59,14 @@
 
 /**
  A JavaScript bridge script for sharing a URL and message with a
- UIActivityViewController. The class has built-in support for configuring and 
- presenting a UIActivityViewController but the behavior can be customized by
+ `UIActivityViewController`. The class has built-in support for configuring and
+ presenting a `UIActivityViewController` but the behavior can be customized by
  setting the delegate property and implementing methods of the SDJSShareAPIDelegate
  protocol.
  
  ## Objective-C Usage
 
- Set the delegate property to customize the UIActivityViewController behavior.
+ Set the delegate property to customize the `UIActivityViewController` behavior.
 
      SDWebViewController *webViewController;
      SDJSShareAPI *shareAPI = [[SDJSShareAPI alloc] initWithWebViewController:webViewController];
