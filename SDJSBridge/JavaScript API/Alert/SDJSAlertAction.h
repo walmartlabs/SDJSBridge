@@ -11,8 +11,17 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+/**
+ A protocol that describes how a SDJSAlertAction object is exported 
+ to JavaScript.
+ */
 @protocol SDJSAlertActionExports <JSExport>
 
+/// @name JavaScript API
+
+/**
+ Title of the alert action. Used as the button label text.
+ */
 @property (nonatomic, copy) NSString *title;
 
 @end

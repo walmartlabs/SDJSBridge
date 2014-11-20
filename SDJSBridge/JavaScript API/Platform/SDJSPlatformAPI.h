@@ -17,14 +17,46 @@
 @class SDJSShareAPI;
 @class SDJSShareService;
 
+/**
+ A protocol that describes how the platform API is exported to JavaScript.
+ */
 @protocol SDJSPlatformAPIExports <JSExport>
 
+/// @name JavaScript API
+
+/**
+ Returns the navigation API script.
+ */
 - (SDJSNavigationAPI *)navigation;
+
+/**
+ Returns the progress API script.
+ */
 - (SDJSProgressAPI *)progress;
+
+/**
+ Returns the share service constants. (Ex: ShareService.Facebook, ShareService.Mail)
+ */
 - (NSDictionary *)ShareService;
+
+/**
+ Create an alert action.
+ */
 JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
+
+/**
+ Show an alert with a title, message, and an array of SDJSAlertAction objects.
+ */
 JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
+
+/**
+ Share a URL with message text.
+ */
 JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
+
+/**
+ Share a URL with message text and exclude some share services.
+ */
 JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
 
 @end

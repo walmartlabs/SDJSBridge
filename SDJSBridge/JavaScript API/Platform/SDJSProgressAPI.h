@@ -34,7 +34,16 @@
  */
 @protocol SDJSProgressAPIExports <JSExport>
 
+/// @name JavaScript API
+
+/**
+ Show the progress HUD and display the provided message text.
+ */
 JSExportAs(show, - (void)showWithMessage:(NSString *)message);
+
+/**
+ Hide progress HUD.
+ */
 - (void)hide;
 
 @end

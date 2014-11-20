@@ -15,9 +15,21 @@
 
 extern NSString * const SDJSTopLevelAPIScriptName;
 
+/**
+ A protocol that describes how the top level API is exported to JavaScript.
+ */
 @protocol SDJSTopLevelAPIExports <JSExport>
 
+/// @name JavaScript API
+
+/**
+ Platform API object.
+ */
 - (SDJSPlatformAPI *)platform;
+
+/**
+ Log JavaScript values in Objective-C
+ */
 JSExportAs(log, - (void)logValue:(JSValue *)value);
 
 @end
@@ -31,6 +43,8 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
  Platform API script that provides the platform API bridge.
  */
 @property (nonatomic, strong) SDJSPlatformAPI *platformScript;
+
+/// @name Logging JavaScript Values
 
 /**
  Log a JavaScript value to the console.

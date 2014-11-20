@@ -12,11 +12,33 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+/**
+ A protocol that describes how the navigation bar API is exported to JavaScript.
+ */
 @protocol SDJSNavigationBarAPIExports <JSExport>
 
+/**
+ Retreive the bar's left navigation items.
+ @return An array of SDJSNavigationItem objects.
+ */
 - (NSArray *)leftItems;
+
+/**
+ Retreive the bar's right navigation items.
+ @return An array of SDJSNavigationItem objects.
+ */
 - (NSArray *)rightItems;
+
+/**
+ Set the bar's left navigation items.
+ @param leftItems An array of SDJSNavigationItem objects.
+ */
 - (void)setLeftItems:(NSArray *)leftItems;
+
+/**
+ Set the bar's right navigation items.
+ @param rightItems An array of SDJSNavigationItem objects.
+ */
 - (void)setRightItems:(NSArray *)rightItems;
 
 @end

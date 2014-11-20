@@ -12,9 +12,22 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+/**
+ A protocol that describes how a SDJSNavigationItem object is exported
+ to JavaScript.
+ */
 @protocol SDJSNavigationItemExports <JSExport>
 
+/// @name JavaScript API
+
+/**
+ Title text to use for button label text.
+ */
 @property (nonatomic, copy) NSString *title;
+
+/**
+ Image name to load from bundle and use as button background.
+ */
 @property (nonatomic, copy) NSString *imageName;
 
 @end

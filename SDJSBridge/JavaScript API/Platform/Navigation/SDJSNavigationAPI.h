@@ -15,13 +15,45 @@
 @class SDJSNavigationBarAPI;
 @class SDJSNavigationItem;
 
+/**
+ A protocol that describes how the navigation API is exported to JavaScript.
+ */
 @protocol SDJSNavigationAPIExports <JSExport>
 
-- (SDJSNavigationBarAPI *)navigationBar;
+/// @name JavaScript API
+
+/**
+ Push a URL on to the navigation stack with a URL string and title text.
+ @param urlString URL string of URL to push.
+ @param title Title text to use for the view controller title.
+ */
 JSExportAs(pushUrl,- (void)pushUrl:(NSString *)urlString title:(NSString *)title);
 - (void)popUrl;
+
+/**
+ Present a modal web view with a URL string and title text.
+ @param urlString URL string of URL to push.
+ @param title Title text to use for the view controller title.
+ */
 JSExportAs(presentModalUrl, - (void)presentModalUrl:(NSString *)urlString title:(NSString *)title);
+
+/**
+ Dismiss current modal web view.
+ */
 - (void)dismissModalUrl;
+
+/**
+ API for interacting with the navigation bar.
+ */
+- (SDJSNavigationBarAPI *)navigationBar;
+
+/**
+ Create a navigation item with a title, image name and callback.
+ @param title Title text to use for the navigation item button.
+ @param imageName Name of image to load from the bundle to use for the navigation item button background.
+ @param callback JS function to call when navigation item button is tapped.
+ @return A new navigation item object.
+ */
 JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSString *)title imageName:(NSString *)imageName callback:(JSValue *)callback);
 
 @end
@@ -55,6 +87,9 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
  */
 @interface SDJSNavigationAPI : SDJSBridgeScript <SDJSNavigationAPIExports>
 
+/**
+ Bridge script that provides the navigation bar API bridge.
+ */
 @property (nonatomic, strong) SDJSNavigationBarAPI *navigationBarScript;
 
 /// @name Navigating View Controllers
@@ -62,6 +97,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
 /**
  Push a web view controller on to the navigation stack with a URL string and title text.
  @param urlString URL string of URL to push.
+ @param title Title text to use for the view controller title.
  */
 - (void)pushUrl:(NSString *)urlString title:(NSString *)title;
 
@@ -73,6 +109,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
 /**
  Present a modal web view controller with a URL string and title text.
  @param urlString URL string of URL to push.
+ @param title Title text to use for the view controller title.
  */
 - (void)presentModalUrl:(NSString *)urlString title:(NSString *)title;
 
