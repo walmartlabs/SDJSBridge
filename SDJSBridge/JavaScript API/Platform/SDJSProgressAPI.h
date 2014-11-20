@@ -29,9 +29,10 @@
 
 @end
 
+/**
+ A protocol that describes how the progress HUD API is exported to JavaScript.
+ */
 @protocol SDJSProgressAPIExports <JSExport>
-
-@property (nonatomic, copy) NSString *message;
 
 JSExportAs(show, - (void)showWithMessage:(NSString *)message);
 - (void)hide;
@@ -54,11 +55,6 @@ JSExportAs(show, - (void)showWithMessage:(NSString *)message);
 
  */
 @interface SDJSProgressAPI : SDJSBridgeScript <SDJSProgressAPIExports>
-
-/**
- Message text to display.
- */
-@property (nonatomic, copy) NSString *message;
 
 /**
  Progress API delegate. The delgate handles showing/hiding the progress HUD.
