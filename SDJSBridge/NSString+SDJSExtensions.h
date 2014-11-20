@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ A category for working with Strings that have been bridged from a JavaScript
+ context.
+ */
 @interface NSString (SDJSExtensions)
 
+/**
+ Returns nil for "undefined" strings.
+ */
 - (NSString *)bridgeStringValue;
 
 @end
