@@ -24,12 +24,9 @@
 @interface SDJSBridgeResponder : SDJSBridgeScript <SDJSBridgeResponderExports>
 
 @property (nonatomic, strong) JSValue *callback;
-@property (nonatomic, readonly) SEL actionSelector;
-
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController callback:(JSValue *)callback;
 - (instancetype)initWithCallback:(JSValue *)callback;
 - (void)performActionWithSender:(id)sender;
-- (SEL)actionSelector;
 
 @end

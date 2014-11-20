@@ -28,8 +28,4 @@
     }
 }
 
-- (SEL)actionSelector {
-    return @selector(performActionWithSender:);
-}
-
 @end
