@@ -20,6 +20,9 @@
 - (BOOL)webViewControllerConfigureScriptObjects:(SDWebViewController *)controller;
 @end
 
+/**
+ A view controller for loading and interacting with web view content.
+ */
 @interface SDWebViewController : UIViewController
 
 @property (nonatomic, weak) id<SDWebViewControllerDelegate> delegate;

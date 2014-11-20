@@ -21,9 +21,7 @@
  A JavaScript bridge to represent an alert action object. Alert actions are
  used to add button to a UIAlertView.
  
- ## Usage
- 
- ### JavaScript
+ ## JavaScript Usage
  
  Adding buttons with actions to alerts.
 

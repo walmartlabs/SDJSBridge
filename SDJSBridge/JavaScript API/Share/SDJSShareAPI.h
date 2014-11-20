@@ -61,10 +61,8 @@
  presenting a UIActivityViewController but the behavior can be customized by
  setting the delegate property and implementing methods of the SDJSShareAPIDelegate
  protocol.
-
- ## Usage
  
- ### Objective-C
+ ## Objective-C Usage
 
  Set the delegate property to customize the UIActivityViewController behavior.
 
@@ -85,7 +83,7 @@
      }
 
 
- ### JavaScript
+ ## JavaScript Usage
  
  Sharing a URL with a message.
  
@@ -95,7 +93,6 @@
      JSBridgeAPI.platform().share(url, message, function () {
        // share complete
      });
- 
  
  */
 @interface SDJSShareAPI : SDJSBridgeResponder <SDJSShareAPIDelegate>

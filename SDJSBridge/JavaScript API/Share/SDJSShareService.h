@@ -13,10 +13,8 @@
 /**
  An object used to represent a UIActivityType in JavaScript. Allows
  JavaScript API users to specify activity types.
- 
- ## Usage
- 
- ### JavaScript
+  
+ ## JavaScript Usage
  
  Showing a share sheet that excludes the Facebook and Mail options.
  

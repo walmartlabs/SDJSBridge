@@ -31,10 +31,8 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
 
 /**
  A JavaScript bridge script for interacting with the platform API.
- 
- ## Usage
- 
- ### JavaScript
+  
+ ### JavaScript Usage
  
  Displaying an alert.
  
