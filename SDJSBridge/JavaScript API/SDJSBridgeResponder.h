@@ -36,9 +36,6 @@
          MyButtonActionScript *buttonScript;
          [buttonScript performActionWithSender:sender];
      }
- 
-
- SDJSAlertAction *alertAction = [[SDJSAlertAction alloc] initWithCallback:callback];
  */
 @interface SDJSBridgeResponder : SDJSBridgeScript <SDJSBridgeResponderExports>
 
