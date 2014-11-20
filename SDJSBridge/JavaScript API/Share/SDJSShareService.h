@@ -10,6 +10,23 @@
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+/**
+ An object used to represent a UIActivityType in JavaScript. Allows
+ JavaScript API users to specify activity types.
+ 
+ ## Usage
+ 
+ ### JavaScript
+ 
+ ```
+ var ShareService = JSBridgeAPI.platform().ShareService();
+ var excludedServices = [ShareService.Facebook, ShareService.Mail];
+ 
+ JSBridgeAPI.platform().share(url, message, excludedServices, function () {
+   // share complete
+ });
+ ```
+ */
 @interface SDJSShareService : NSObject
 
 @property (nonatomic, copy, readonly) NSString *activityType;
