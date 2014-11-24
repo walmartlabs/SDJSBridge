@@ -28,7 +28,7 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 - (SDJSPlatformAPI *)platform;
 
 /**
- Log JavaScript values in Objective-C
+ Log JavaScript values in Objective-C.
  */
 JSExportAs(log, - (void)logValue:(JSValue *)value);
 

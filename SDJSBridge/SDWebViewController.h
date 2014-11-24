@@ -15,7 +15,6 @@
 - (BOOL)webViewController:(SDWebViewController *)controller shouldOpenRequest:(NSURLRequest *)request;
 - (BOOL)webViewControllerDidStartLoad:(SDWebViewController *)controller;
 - (BOOL)webViewControllerDidFinishLoad:(SDWebViewController *)controller;
-- (BOOL)webViewController:(SDWebViewController *)controller;
 - (BOOL)webViewController:(SDWebViewController *)controller didCreateJavaScriptContext:(JSContext *)context;
 - (BOOL)webViewControllerConfigureScriptObjects:(SDWebViewController *)controller;
 @end
