@@ -11,12 +11,49 @@
 
 @class SDWebViewController;
 
+/**
+ A protocol for handling SDWebViewController events.
+ */
 @protocol SDWebViewControllerDelegate <NSObject>
+
+/**
+ Return `NO` to force the web view controller to open the request in the
+ standard web navigation system.
+ the standard web navigation system.
+ @param controller The web view controller that is attempting to open the request.
+ @param request The request that is to be opened.
+ */
 - (BOOL)webViewController:(SDWebViewController *)controller shouldOpenRequest:(NSURLRequest *)request;
+
+/**
+ Sent after the web view starts loading.
+ @param controller The web view controller containing the web view that has
+ started loading.
+ */
 - (void)webViewControllerDidStartLoad:(SDWebViewController *)controller;
+
+/**
+ Sent after the web view has finished loading.
+ @param controller The web view controller containing the web view that has
+ finished loading.
+ */
 - (void)webViewControllerDidFinishLoad:(SDWebViewController *)controller;
+
+/**
+ Sent after the web view has created a JavaScript context.
+ @param controller The web view controller containing the web view that has
+ finished loading.
+ */
 - (void)webViewController:(SDWebViewController *)controller didCreateJavaScriptContext:(JSContext *)context;
+
+/**
+ Sent when the web view controller is adding script objects to the JavaScript
+ context.
+ @param controller The web view controller.
+ finished loading.
+ */
 - (void)webViewControllerConfigureScriptObjects:(SDWebViewController *)controller;
+
 @end
 
 /**
