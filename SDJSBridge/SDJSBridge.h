@@ -93,4 +93,6 @@
  */
 - (JSValue *)scriptValueForName:(NSString *)name;
 
+- (NSDictionary *)scriptObjects;
+
 @end
