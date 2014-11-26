@@ -15,6 +15,13 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 @implementation SDJSTopLevelAPI
 
+#pragma mark - Accessors
+
+- (void)setWebViewController:(SDWebViewController *)webViewController {
+    [super setWebViewController:webViewController];
+    _platformScript.webViewController = webViewController;
+}
+
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super initWithWebViewController:webViewController])) {
         _platformScript = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];

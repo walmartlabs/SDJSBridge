@@ -22,6 +22,14 @@
 
 @implementation SDJSPlatformAPI
 
+#pragma mark - Accessors
+
+- (void)setWebViewController:(SDWebViewController *)webViewController {
+    [super setWebViewController:webViewController];
+    _navigationScript.webViewController = webViewController;
+    _progressScript.webViewController = webViewController;
+}
+
 #pragma mark - Initialization
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {

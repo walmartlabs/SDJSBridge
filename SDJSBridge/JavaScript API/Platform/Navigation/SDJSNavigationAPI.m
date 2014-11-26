@@ -13,8 +13,12 @@
 #import "SDJSNavigationItem.h"
 
 @implementation SDJSNavigationAPI
-{
-    NSString *_currentURL;
+
+#pragma mark - Accessors
+
+- (void)setWebViewController:(SDWebViewController *)webViewController {
+    [super setWebViewController:webViewController];
+    _navigationBarScript.webViewController = webViewController;
 }
 
 #pragma mark - Initialization
@@ -35,7 +39,7 @@
     return _navigationBarScript;
 }
 
-#pragma mark - URLs
+#pragma mark - URL Construction
 
 - (NSURL *)URLWithURLString:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
@@ -51,13 +55,6 @@
 #pragma mark - Push/Pop
 
 - (void)pushUrl:(NSString *)urlString title:(NSString *)title {
-    
-    if (urlString.length == 0 || [urlString isEqualToString:_currentURL]) {
-        return;
-    }
-    
-    _currentURL = urlString;
-    
     NSURL *url = [self URLWithURLString:urlString];
     [self.webViewController pushURL:url title:title];
 }                                                                                                                                         
