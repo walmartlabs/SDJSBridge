@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SDWebViewController.h"
+#import "SDJSTopLevelAPI.h"
 
 @implementation ViewController
 
@@ -23,6 +24,10 @@
 - (IBAction)pushWebControllerTest:(id)sender {
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
+    
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
