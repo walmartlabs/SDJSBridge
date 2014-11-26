@@ -10,12 +10,6 @@
 
 #import "SDWebViewController.h"
 
-@interface SDJSBridgeScript ()
-
-@property (nonatomic, weak, readwrite) SDWebViewController *webViewController;
-
-@end
-
 @implementation SDJSBridgeScript
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {

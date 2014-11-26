@@ -19,7 +19,7 @@
 /**
  Parent web view controller if the script.
  */
-@property (nonatomic, weak, readonly) SDWebViewController *webViewController;
+@property (nonatomic, weak) SDWebViewController *webViewController;
 
 /// @name Initializaing a Bridge Script
 
