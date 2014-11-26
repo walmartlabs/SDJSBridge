@@ -10,6 +10,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @class SDWebViewController;
+@class SDJSBridge;
 
 /**
  A protocol for handling SDWebViewController events.
@@ -113,6 +114,11 @@
  Initialize a web view controller with a web view.
  */
 - (instancetype)initWithWebView:(UIWebView *)webView;
+
+/**
+ Initialize a web view controller with an existing web view and a JS bridge.
+ */
+- (instancetype)initWithWebView:(UIWebView *)webView bridge:(SDJSBridge *)bridge;
 
 /// @name Initializing a Web View Controller
 

@@ -37,11 +37,21 @@
 
 - (instancetype)initWithWebView:(UIWebView *)webView
 {
+    return [self initWithWebView:webView bridge:nil];
+}
+
+- (instancetype)initWithWebView:(UIWebView *)webView bridge:(SDJSBridge *)bridge
+{
     if ((self = [super init]))
     {
         _webView = webView;
         _sharedWebView = YES;
-        _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        _bridge = bridge;
+
+        if (!_bridge)
+        {
+            _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        }
     }
     
     return self;
@@ -96,7 +106,10 @@
         [self recontainWebView];
         [self.webView goBack];
         self.webView.hidden = NO;
-
+    }
+    
+    if (_bridge)
+    {
         [self configureScriptObjects];
     }
 }
@@ -137,7 +150,7 @@
 {
     self.placeholderView.image = [self imageWithView:self.webView];
     
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     [self.navigationController pushViewController:webViewController animated:YES];
     [webViewController loadURL:url];
@@ -148,9 +161,8 @@
 {
     self.placeholderView.image = [self imageWithView:self.webView];
     
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView];
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     [self presentViewController:navigationController animated:YES completion:nil];
     [webViewController loadURL:url];
@@ -171,9 +183,13 @@
 
 - (void)configureScriptObjects
 {
-    // todo: allow developer to opt in to using API scripts, not every web view will need them
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
-    [self addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    // update parent web view controller reference in scripts
+    for (NSString *scriptName in [_bridge scriptObjects]) {
+        SDJSBridgeScript *script = [_bridge scriptObjects][scriptName];
+        if ([script isKindOfClass:[SDJSBridgeScript class]]) {
+            script.webViewController = self;
+        }
+    }
     
     @strongify(self.delegate, strongDelegate);
     
@@ -260,8 +276,6 @@
     if ([strongDelegate respondsToSelector:@selector(webViewController:didCreateJavaScriptContext:)]) {
         [strongDelegate webViewController:self didCreateJavaScriptContext:context];
     }
-    
-    [self configureScriptObjects];
 }
 
 #pragma mark - Web view events.
