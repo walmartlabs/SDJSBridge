@@ -17,6 +17,8 @@
  */
 @protocol SDWebViewControllerDelegate <NSObject>
 
+@optional
+
 /**
  Return `NO` to force the web view controller to open the request in the
  standard web navigation system.
@@ -169,6 +171,8 @@
  */
 - (void)addScriptMethod:(NSString *)name block:(id)block;
 - (void)configureScriptObjects;
+
+- (JSValue *)evaluateScript:(NSString *)script;
 
 /// @name Web View Events
 
