@@ -8,7 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "SDWebViewController.h"
+#import "SDJSTopLevelAPI.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +22,13 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ViewController *viewController = [[ViewController alloc] init];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
+    
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
     return YES;
