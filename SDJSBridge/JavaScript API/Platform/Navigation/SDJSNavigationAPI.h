@@ -40,7 +40,7 @@ JSExportAs(presentModalUrl, - (id)presentModalUrl:(NSString *)urlString title:(N
 /**
  Dismiss current modal web view.
  */
-- (void)dismissModalUrl;
+JSExportAs(dismissModalUrl, - (void)dismissModalUrlWithCompletion:(JSValue *)callback);
 
 /**
  API for interacting with the navigation bar.
@@ -116,7 +116,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
 /**
  Dismiss a modal web view controller.
  */
-- (void)dismissModalUrl;
+- (void)dismissModalUrlWithCompletion:(JSValue *)callback;
 
 /// @name Creating Navigation Items
 

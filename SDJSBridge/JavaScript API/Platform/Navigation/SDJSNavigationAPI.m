@@ -70,8 +70,12 @@
     return [self.webViewController presentURL:url title:title];
 }
 
-- (void)dismissModalUrl {
-    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+- (void)dismissModalUrlWithCompletion:(JSValue *)callback  {
+    [self.webViewController dismissViewControllerAnimated:YES completion:^{
+        if (callback) {
+            [callback callWithArguments:nil];
+        }
+    }];
 }
 
 #pragma mark - SDJSNavigationItem
