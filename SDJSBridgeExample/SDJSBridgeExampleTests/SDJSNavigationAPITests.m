@@ -59,7 +59,7 @@
 
     [self runPushURL];
     
-    [self waitForExpectationsWithTimeout:20.0 handler:^(NSError *error) {
+    [self waitForExpectationsWithTimeout:4.0 handler:^(NSError *error) {
         if (error) {
             NSLog(@"%@", error);
         }
