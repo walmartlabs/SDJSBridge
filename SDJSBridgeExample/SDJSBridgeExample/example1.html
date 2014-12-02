@@ -4,7 +4,7 @@
 
 <button id="backward">backward</button>
 <button id="forward">forward</button>
-<button id="modal">modal</button>
+<button id="modal">present modal</button>
 <button id="dismiss">dismiss modal</button>
 
 <h2>navigation items</h2>
@@ -116,8 +116,8 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('alerts-action').addEventListener('touchend', function() {
-        var okAction = JSBridgeAPI.platform().AlertAction("YAYYUHH!", function () {
-            alert('YAYYUHH!');
+        var okAction = JSBridgeAPI.platform().AlertAction("Yes!", function () {
+            alert('Yes tapped!');
         });
 
         var cancelAction = JSBridgeAPI.platform().AlertAction("Cancel", function () {

@@ -14,10 +14,11 @@
 
 @interface SDJSNavigationAPITests : XCTestCase <UINavigationControllerDelegate>
 
-@property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, strong) UINavigationController *activeNavigationController;
 @property (nonatomic, strong) XCTestExpectation *pushExpectation;
 @property (nonatomic, strong) XCTestExpectation *popExpectation;
 @property (nonatomic, strong) XCTestExpectation *presentModalExpectation;
+@property (nonatomic, strong) XCTestExpectation *dismissModalExpectation;
 @property (nonatomic, assign) BOOL isPushFulfilled;
 @property (nonatomic, assign) BOOL isPopFulfilled;
 @property (nonatomic, assign) BOOL isPresentFulfilled;
@@ -25,6 +26,13 @@
 @end
 
 @implementation SDJSNavigationAPITests
+
+#pragma mark - Accessors
+
+- (void)setActiveNavigationController:(UINavigationController *)activeNavigationController {
+    _activeNavigationController = activeNavigationController;
+    _activeNavigationController.delegate = self;
+}
 
 #pragma mark - Utilities
 
@@ -36,18 +44,22 @@
     return [[NSBundle mainBundle] URLForResource:@"example2" withExtension:@"html"];
 }
 
-- (void)testNavigationMethods {
+- (UINavigationController *)windowNavigationController {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    self.navigationController = (UINavigationController *)window.rootViewController;
-    self.navigationController.delegate = self;
-    
+    return (UINavigationController *)window.rootViewController;
+}
+
+#pragma mark - Tests
+
+- (void)testPushPopPresentDismissFlow {
     self.pushExpectation = [self expectationWithDescription:@"push"];
     self.popExpectation = [self expectationWithDescription:@"pop"];
     self.presentModalExpectation = [self expectationWithDescription:@"present"];
-    
+    self.dismissModalExpectation = [self expectationWithDescription:@"dismiss"];
+
     [self runPushURL];
     
-    [self waitForExpectationsWithTimeout:4.0 handler:^(NSError *error) {
+    [self waitForExpectationsWithTimeout:20.0 handler:^(NSError *error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -57,11 +69,9 @@
 #pragma mark - Push
 
 - (void)runPushURL {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    UINavigationController *navController = (UINavigationController *)window.rootViewController;
-    navController.delegate = self;
-    SDWebViewController *webViewController = (SDWebViewController *)navController.topViewController;
+    self.activeNavigationController = [self windowNavigationController];
     
+    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().pushUrl('example2.html', 'Page Title');";
     [webViewController evaluateScript:testJavascript];
 }
@@ -80,7 +90,7 @@
 #pragma mark - Pop
 
 - (void)runPopURL {
-    SDWebViewController *webViewController = (SDWebViewController *)self.navigationController.topViewController;
+    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().popUrl();";
     [webViewController evaluateScript:testJavascript];
 }
@@ -99,23 +109,48 @@
 #pragma mark - Present Modal
 
 - (void)runPresentURL {
-    SDWebViewController *webViewController = (SDWebViewController *)self.navigationController.topViewController;
+    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().presentModalUrl('example2.html', 'Page Title');";
     JSValue *rtn = [webViewController evaluateScript:testJavascript];
     SDWebViewController *modalWebViewController = [rtn toObject];
-    UINavigationController *modalNavController = modalWebViewController.navigationController;
-    modalNavController.delegate = self;
+    self.activeNavigationController = modalWebViewController.navigationController;
 }
 
 - (void)validatePresentModalTestWithNavigationController:(UINavigationController *)navigationController {
     SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
-    
+    SDWebViewController *presentingWebViewController = (SDWebViewController *)[self windowNavigationController].topViewController;
+
     XCTAssertTrue([webViewController.url isEqual:[self pageTwoURL]]);
-    XCTAssertTrue(navigationController.viewControllers.count == 1);
+    XCTAssertTrue(presentingWebViewController.presentedViewController !=nil);
     
     [self.presentModalExpectation fulfill];
     self.isPresentFulfilled = YES;
-    NSLog(@"present fulfill");
+    [self runDismissURL];
+}
+
+#pragma mark - Dismiss Modal
+
+- (void)runDismissURL {
+    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
+    NSString *dismissCallbackName = @"_dismissURLCallback";
+    
+    // add JS callback for dismiss completion
+    [webViewController addScriptMethod:dismissCallbackName block:^{
+        [self validateDismissModalTest];
+    }];
+    
+    NSString *testJavascript = [NSString stringWithFormat:@"JSBridgeAPI.platform().navigation().dismissModalUrl(%@);", dismissCallbackName];
+    [webViewController evaluateScript:testJavascript];
+}
+
+- (void)validateDismissModalTest {
+    UINavigationController *navigationController = [self windowNavigationController];
+    SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
+    
+    XCTAssertTrue([webViewController.url isEqual:[self pageOneURL]]);
+    XCTAssertTrue(webViewController.presentedViewController == nil);
+    
+    [self.dismissModalExpectation fulfill];
 }
 
 #pragma mark - UINavigationControllerDelegate
