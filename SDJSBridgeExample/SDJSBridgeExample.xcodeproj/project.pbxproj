@@ -27,7 +27,6 @@
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
 		CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DB19E70B10007CAAC7 /* Images.xcassets */; };
 		CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */; };
-		CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */; };
 		CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
 		CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
 		CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */; };
@@ -92,7 +91,6 @@
 		CA0249DE19E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDJSBridgeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249E919E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeExampleTests.m; sourceTree = "<group>"; };
 		CA0249F519E70B81007CAAC7 /* SDJSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridge.h; sourceTree = "<group>"; };
 		CA0249F619E70B81007CAAC7 /* SDJSBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridge.m; sourceTree = "<group>"; };
 		CA0249F919E70C23007CAAC7 /* UIWebView+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+SDJSExtensions.h"; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */,
-				CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */,
 				CA0249E819E70B10007CAAC7 /* Supporting Files */,
 			);
 			path = SDJSBridgeExampleTests;
@@ -427,7 +424,6 @@
 				CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */,
-				CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
