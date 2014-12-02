@@ -27,7 +27,7 @@
  @param urlString URL string of URL to push.
  @param title Title text to use for the view controller title.
  */
-JSExportAs(pushUrl,- (void)pushUrl:(NSString *)urlString title:(NSString *)title);
+JSExportAs(pushUrl,- (id)pushUrl:(NSString *)urlString title:(NSString *)title);
 - (void)popUrl;
 
 /**
@@ -35,7 +35,7 @@ JSExportAs(pushUrl,- (void)pushUrl:(NSString *)urlString title:(NSString *)title
  @param urlString URL string of URL to push.
  @param title Title text to use for the view controller title.
  */
-JSExportAs(presentModalUrl, - (void)presentModalUrl:(NSString *)urlString title:(NSString *)title);
+JSExportAs(presentModalUrl, - (id)presentModalUrl:(NSString *)urlString title:(NSString *)title);
 
 /**
  Dismiss current modal web view.
@@ -99,7 +99,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
  @param urlString URL string of URL to push.
  @param title Title text to use for the view controller title.
  */
-- (void)pushUrl:(NSString *)urlString title:(NSString *)title;
+- (id)pushUrl:(NSString *)urlString title:(NSString *)title;
 
 /**
  Pop a web view controller off of the navigation stack.
@@ -111,7 +111,7 @@ JSExportAs(NavigationItem, - (SDJSNavigationItem *)navigationItemWithTitle:(NSSt
  @param urlString URL string of URL to push.
  @param title Title text to use for the view controller title.
  */
-- (void)presentModalUrl:(NSString *)urlString title:(NSString *)title;
+- (id)presentModalUrl:(NSString *)urlString title:(NSString *)title;
 
 /**
  Dismiss a modal web view controller.
