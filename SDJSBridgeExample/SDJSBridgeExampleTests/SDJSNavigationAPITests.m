@@ -14,18 +14,49 @@
 
 @interface SDJSNavigationAPITests : XCTestCase <UINavigationControllerDelegate>
 
+@property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) XCTestExpectation *pushExpectation;
 @property (nonatomic, strong) XCTestExpectation *popExpectation;
-@property (nonatomic, strong) JSValue *popResult;
-@property (nonatomic, strong) SDWebViewController *testWebViewController;
+@property (nonatomic, strong) XCTestExpectation *presentModalExpectation;
+@property (nonatomic, assign) BOOL isPushFulfilled;
+@property (nonatomic, assign) BOOL isPopFulfilled;
+@property (nonatomic, assign) BOOL isPresentFulfilled;
 
 @end
 
 @implementation SDJSNavigationAPITests
 
+#pragma mark - Utilities
+
+- (NSURL *)pageOneURL {
+    return [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
+}
+
+- (NSURL *)pageTwoURL {
+    return [[NSBundle mainBundle] URLForResource:@"example2" withExtension:@"html"];
+}
+
+- (void)testNavigationMethods {
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    self.navigationController = (UINavigationController *)window.rootViewController;
+    self.navigationController.delegate = self;
+    
+    self.pushExpectation = [self expectationWithDescription:@"push"];
+    self.popExpectation = [self expectationWithDescription:@"pop"];
+    self.presentModalExpectation = [self expectationWithDescription:@"present"];
+    
+    [self runPushURL];
+    
+    [self waitForExpectationsWithTimeout:4.0 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
 #pragma mark - Push
 
-- (void)testPushURL {
+- (void)runPushURL {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     UINavigationController *navController = (UINavigationController *)window.rootViewController;
     navController.delegate = self;
@@ -33,63 +64,69 @@
     
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().pushUrl('example2.html', 'Page Title');";
     [webViewController evaluateScript:testJavascript];
-    
-    self.pushExpectation = [self expectationWithDescription:@"push open"];
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
 }
 
 - (void)validatePushTestWithNavigationController:(UINavigationController *)navigationController {
+    SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
+    
+    XCTAssertTrue([webViewController.url isEqual:[self pageTwoURL]]);
     XCTAssertTrue(navigationController.viewControllers.count == 2);
     
-    NSURL *pageTwoURL = [[NSBundle mainBundle] URLForResource:@"example2" withExtension:@"html"];
-    SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
-    XCTAssertTrue([webViewController.url isEqual:pageTwoURL]);
     [self.pushExpectation fulfill];
+    self.isPushFulfilled = YES;
+    [self runPopURL];
 }
 
 #pragma mark - Pop
 
-- (void)testPopURL {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    UINavigationController *navController = (UINavigationController *)window.rootViewController;
-    navController.delegate = self;
-    SDWebViewController *webViewController = (SDWebViewController *)navController.topViewController;
-    self.testWebViewController = [[SDWebViewController alloc] initWithWebView:webViewController.webView];
-    
-    NSURL *pageTwoURL = [[NSBundle mainBundle] URLForResource:@"example2" withExtension:@"html"];
-    [self.testWebViewController loadURL:pageTwoURL];
-    
-    navController.viewControllers = @[webViewController, self.testWebViewController];
-    
-    self.popExpectation = [self expectationWithDescription:@"push open"];
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        NSLog(@"%@", error);
-    }];
+- (void)runPopURL {
+    SDWebViewController *webViewController = (SDWebViewController *)self.navigationController.topViewController;
+    NSString *testJavascript = @"JSBridgeAPI.platform().navigation().popUrl();";
+    [webViewController evaluateScript:testJavascript];
 }
 
 - (void)validatePopTestWithNavigationController:(UINavigationController *)navigationController {
-    if (!self.popResult) {
-        NSString *testJavascript = @"JSBridgeAPI.platform().navigation().popUrl();";
-        self.popResult = [self.testWebViewController evaluateScript:testJavascript];
-    } else {
-        XCTAssertTrue(navigationController.viewControllers.count == 1);
-        
-        NSURL *pageOneURL = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
-        SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
-        XCTAssertTrue([webViewController.url isEqual:pageOneURL]);
-        [self.popExpectation fulfill];
-    }
+    SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
+
+    XCTAssertTrue([webViewController.url isEqual:[self pageOneURL]]);
+    XCTAssertTrue(navigationController.viewControllers.count == 1);
+
+    [self.popExpectation fulfill];
+    self.isPopFulfilled = YES;
+    [self runPresentURL];
+}
+
+#pragma mark - Present Modal
+
+- (void)runPresentURL {
+    SDWebViewController *webViewController = (SDWebViewController *)self.navigationController.topViewController;
+    NSString *testJavascript = @"JSBridgeAPI.platform().navigation().presentModalUrl('example2.html', 'Page Title');";
+    JSValue *rtn = [webViewController evaluateScript:testJavascript];
+    SDWebViewController *modalWebViewController = [rtn toObject];
+    UINavigationController *modalNavController = modalWebViewController.navigationController;
+    modalNavController.delegate = self;
+}
+
+- (void)validatePresentModalTestWithNavigationController:(UINavigationController *)navigationController {
+    SDWebViewController *webViewController = (SDWebViewController *)navigationController.topViewController;
+    
+    XCTAssertTrue([webViewController.url isEqual:[self pageTwoURL]]);
+    XCTAssertTrue(navigationController.viewControllers.count == 1);
+    
+    [self.presentModalExpectation fulfill];
+    self.isPresentFulfilled = YES;
+    NSLog(@"present fulfill");
 }
 
 #pragma mark - UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if (self.pushExpectation) {
+    if (!self.isPushFulfilled) {
         [self validatePushTestWithNavigationController:navigationController];
-    } else if (self.popExpectation) {
+    } else if (!self.isPopFulfilled) {
         [self validatePopTestWithNavigationController:navigationController];
+    } else if (!self.isPresentFulfilled) {
+        [self validatePresentModalTestWithNavigationController:navigationController];
     }
 }
 
