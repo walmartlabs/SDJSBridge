@@ -22,7 +22,9 @@
 		19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED171A09364500238146 /* SDJSNavigationItem.m */; };
 		19AAED241A096FBB00238146 /* SDJSBridgeResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */; };
 		19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED271A09742900238146 /* SDJSAlertAction.m */; };
-		19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPI.m */; };
+		19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */; };
+		19B3B9AB1A2FA0EB009A5137 /* SDJSNavigationItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */; };
+		19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
 		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
@@ -81,7 +83,10 @@
 		19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponder.m; sourceTree = "<group>"; };
 		19AAED261A09742900238146 /* SDJSAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertAction.h; sourceTree = "<group>"; };
 		19AAED271A09742900238146 /* SDJSAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertAction.m; sourceTree = "<group>"; };
-		19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPI.m; sourceTree = "<group>"; };
+		19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPITests.m; sourceTree = "<group>"; };
+		19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItemTests.m; sourceTree = "<group>"; };
+		19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ExampleAppUtilities.h"; sourceTree = "<group>"; };
+		19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+ExampleAppUtilities.m"; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -239,8 +244,11 @@
 		CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPI.m */,
+				19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */,
+				19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */,
 				196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */,
+				19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */,
+				19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */,
 				CA0249E819E70B10007CAAC7 /* Supporting Files */,
 			);
 			path = SDJSBridgeExampleTests;
@@ -426,8 +434,10 @@
 			files = (
 				CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
 				CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				19B3B9AB1A2FA0EB009A5137 /* SDJSNavigationItemTests.m in Sources */,
+				19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */,
 				196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */,
-				19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPI.m in Sources */,
+				19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

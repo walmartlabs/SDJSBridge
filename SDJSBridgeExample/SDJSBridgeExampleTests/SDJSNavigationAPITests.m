@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "XCTestCase+ExampleAppUtilities.h"
 #import "SDWebViewController.h"
 #import "SDJSTopLevelAPI.h"
 
@@ -34,21 +35,6 @@
     _activeNavigationController.delegate = self;
 }
 
-#pragma mark - Utilities
-
-- (NSURL *)pageOneURL {
-    return [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
-}
-
-- (NSURL *)pageTwoURL {
-    return [[NSBundle mainBundle] URLForResource:@"example2" withExtension:@"html"];
-}
-
-- (UINavigationController *)windowNavigationController {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    return (UINavigationController *)window.rootViewController;
-}
-
 #pragma mark - Tests
 
 - (void)testPushPopPresentDismissFlow {
@@ -70,8 +56,7 @@
 
 - (void)runPushURL {
     self.activeNavigationController = [self windowNavigationController];
-    
-    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
+    SDWebViewController *webViewController = [self rootWebViewController];
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().pushUrl('example2.html', 'Page Title');";
     [webViewController evaluateScript:testJavascript];
 }
@@ -90,7 +75,7 @@
 #pragma mark - Pop
 
 - (void)runPopURL {
-    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
+    SDWebViewController *webViewController = (SDWebViewController *)[self.activeNavigationController.viewControllers lastObject];
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().popUrl();";
     [webViewController evaluateScript:testJavascript];
 }
@@ -109,7 +94,7 @@
 #pragma mark - Present Modal
 
 - (void)runPresentURL {
-    SDWebViewController *webViewController = (SDWebViewController *)self.activeNavigationController.topViewController;
+    SDWebViewController *webViewController = [self rootWebViewController];
     NSString *testJavascript = @"JSBridgeAPI.platform().navigation().presentModalUrl('example2.html', 'Page Title');";
     JSValue *rtn = [webViewController evaluateScript:testJavascript];
     SDWebViewController *modalWebViewController = [rtn toObject];

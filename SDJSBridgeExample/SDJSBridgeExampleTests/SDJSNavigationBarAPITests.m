@@ -1,11 +1,12 @@
 //
-//  SDJSNavigationBarAPI.m
+//  SDJSNavigationBarAPITests.m
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 12/2/14.
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "XCTestCase+ExampleAppUtilities.h"
 #import "SDWebViewController.h"
 #import "SDJSNavigationItem.h"
 #import "SDMacros.h"
@@ -18,16 +19,11 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
     SDJSNavigationItemTestPlacementRight = 1
 };
 
-@interface SDJSNavigationBarAPI : XCTestCase
+@interface SDJSNavigationBarAPITests : XCTestCase
 
 @end
 
-@implementation SDJSNavigationBarAPI
-
-- (UINavigationController *)windowNavigationController {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    return (UINavigationController *)window.rootViewController;
-}
+@implementation SDJSNavigationBarAPITests
 
 #pragma mark - JavaScript Tests
 
@@ -51,7 +47,7 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
     NSString *navigationItemCallback = @"_navigationItemCallback";
     NSString *script = [NSString stringWithFormat:scriptFormat, navigationItemTitle, navigationItemCallback, setMethodName];
     
-    SDWebViewController *webViewController = (SDWebViewController *)[self windowNavigationController].topViewController;
+    SDWebViewController *webViewController = [self rootWebViewController];
 
     @weakify(webViewController);
     // add JS function to test nav item callback
