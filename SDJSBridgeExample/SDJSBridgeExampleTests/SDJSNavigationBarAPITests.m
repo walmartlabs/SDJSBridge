@@ -80,4 +80,16 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
     }];
 }
 
+- (void)testRemoveNavigationItems {
+    SDWebViewController *webViewController = [self rootWebViewController];
+    UIBarButtonItem *firstButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem *secondButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
+    webViewController.navigationItem.leftBarButtonItems = @[firstButton, secondButton];
+    
+    NSString *script = @"JSBridgeAPI.platform().navigation().navigationBar().setLeftItems(null);";
+    [webViewController evaluateScript:script];
+    
+    XCTAssertTrue(webViewController.navigationItem.leftBarButtonItems.count == 0);
+}
+
 @end

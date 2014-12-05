@@ -48,8 +48,6 @@
     JSValue *alertValue = [webViewController evaluateScript:script];
     UIAlertView *alert = [alertValue toObject];
     
-    NSLog(@"%@", alert.delegate);
-
     XCTAssertTrue([alert isKindOfClass:[UIAlertView class]]);
     XCTAssertTrue(alert.isVisible);
     XCTAssertTrue(alert.numberOfButtons == 2);
@@ -71,14 +69,15 @@
 
 - (void)testCreateAlertAction {
     SDJSPlatformAPI *api = [[SDJSPlatformAPI alloc] initWithWebViewController:nil];
-    
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     [bridge addScriptMethod:@"_callback" block:^{}];
     JSValue *callback = [bridge evaluateScript:@"_callback"];
-    
     SDJSAlertAction *alertAction = [api alertActionWithTitle:@"Test Title" callback:callback];
+    
     XCTAssertTrue([alertAction isKindOfClass:[SDJSAlertAction class]]);
     XCTAssertTrue([alertAction.title isEqualToString:@"Test Title"]);
 }
+
+#pragma mark - 
 
 @end
