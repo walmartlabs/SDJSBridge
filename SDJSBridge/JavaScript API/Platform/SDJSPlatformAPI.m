@@ -61,7 +61,7 @@
     return [SDJSAlertAction alertActionWithTitle:title callback:callback];
 }
 
-- (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions {
+- (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions {
     self.actions = actions;
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
@@ -75,6 +75,7 @@
     }
     
     [alert show];
+    return alert;
 }
 
 #pragma mark - UIAlertViewDelegate

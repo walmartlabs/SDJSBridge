@@ -47,7 +47,7 @@ JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)ti
 /**
  Show an alert with a title, message, and an array of SDJSAlertAction objects.
  */
-JSExportAs(alert, - (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
+JSExportAs(alert, - (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
 
 /**
  Share a URL with message text.
@@ -115,7 +115,7 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
  @param Message text for alert.
  @param Array of SDJSAlertAction objects.
  */
-- (void)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
+- (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
 
 /// @name Sharing
 
