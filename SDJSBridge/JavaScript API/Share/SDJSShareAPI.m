@@ -26,9 +26,10 @@
 
 #pragma mark - JavaScript Bridge API
 
-- (void)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
+- (UIActivityViewController *)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
     UIActivityViewController *activityViewController = [self activityViewControllerWithURL:url message:message excludedServices:excludedServices];
     [self presentActivityViewController:activityViewController];
+    return activityViewController;
 }
 
 #pragma mark - UIActivityViewController

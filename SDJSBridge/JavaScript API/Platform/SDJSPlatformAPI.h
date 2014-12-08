@@ -52,12 +52,12 @@ JSExportAs(alert, - (UIAlertView *)showAlert:(NSString *)title message:(NSString
 /**
  Share a URL with message text.
  */
-JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
+JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
 
 /**
  Share a URL with message text and exclude some share services.
  */
-JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
+JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback);
 
 @end
 
@@ -127,7 +127,7 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
  @param excludedServices Array of share services (SDJSShareService instances) to
  exclude.
  */
-- (void)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback;
+- (UIActivityViewController *)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback;
 
 /**
  Share an item with a URL and message.
@@ -138,6 +138,6 @@ JSExportAs(share, - (void)shareURL:(NSString *)urlString message:(NSString *)mes
  exclude.
  @param callback JS function to callback when user has completed sharing.
  */
-- (void)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback;
+- (UIActivityViewController *)shareURL:(NSString *)urlString message:(NSString *)message excludedServices:(NSArray *)excludedServices callback:(JSValue *)callback;
 
 @end

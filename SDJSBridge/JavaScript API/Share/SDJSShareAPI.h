@@ -113,6 +113,6 @@
  @param excludedServices Array of share services (SDJSShareService instances) to
  exclude.
  */
-- (void)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices;
+- (UIActivityViewController *)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices;
 
 @end
