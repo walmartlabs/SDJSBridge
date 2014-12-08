@@ -11,6 +11,8 @@
 #import "SDJSAlertAction.h"
 #import "SDJSPlatformAPI.h"
 #import "SDJSBridge.h"
+#import "SDJSNavigationAPI.h"
+#import "SDJSProgressAPI.h"
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -20,6 +22,18 @@
 @end
 
 @implementation SDJSPlatformAPITests
+
+#pragma mark - Platform API
+
+- (void)testInitialization {
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
+    SDJSPlatformAPI *platform = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];
+
+    XCTAssertTrue(platform.shareScript == nil);
+    XCTAssertTrue([platform.navigationScript isKindOfClass:[SDJSNavigationAPI class]]);
+    XCTAssertTrue([platform.progressScript isKindOfClass:[SDJSProgressAPI class]]);
+    XCTAssertTrue([webViewController isEqual:platform.webViewController]);
+}
 
 #pragma mark - Alerts
 
@@ -77,7 +91,5 @@
     XCTAssertTrue([alertAction isKindOfClass:[SDJSAlertAction class]]);
     XCTAssertTrue([alertAction.title isEqualToString:@"Test Title"]);
 }
-
-#pragma mark - 
 
 @end
