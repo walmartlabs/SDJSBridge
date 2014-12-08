@@ -35,6 +35,18 @@
     XCTAssertTrue([webViewController isEqual:platform.webViewController]);
 }
 
+- (void)testExports {
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
+    SDJSPlatformAPI *platformAPI = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:platformAPI name:@"platform"];
+    
+    SDJSProgressAPI *progressAPI = [[webViewController evaluateScript:@"platform.progress();"] toObject];
+    SDJSNavigationAPI *navigationAPI = [[webViewController evaluateScript:@"platform.navigation();"] toObject];
+
+    XCTAssertTrue([progressAPI isKindOfClass:[SDJSProgressAPI class]]);
+    XCTAssertTrue([navigationAPI isKindOfClass:[SDJSNavigationAPI class]]);
+}
+
 #pragma mark - Alerts
 
 - (void)testShowAlertActions {
