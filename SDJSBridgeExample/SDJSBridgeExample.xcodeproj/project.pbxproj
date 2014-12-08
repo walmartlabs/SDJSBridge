@@ -10,6 +10,7 @@
 		1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1934FA151A13AFAA00874421 /* SDJSShareAPI.m */; };
 		19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */; };
 		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
+		19377A8C1A3227A700B10CEB /* SDJSShareAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8B1A3227A700B10CEB /* SDJSShareAPITests.m */; };
 		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */; };
@@ -62,6 +63,7 @@
 		1934FA151A13AFAA00874421 /* SDJSShareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPI.m; sourceTree = "<group>"; };
 		19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPITests.m; sourceTree = "<group>"; };
 		19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareServiceTests.m; sourceTree = "<group>"; };
+		19377A8B1A3227A700B10CEB /* SDJSShareAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPITests.m; sourceTree = "<group>"; };
 		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
 		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */,
 				19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */,
 				19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */,
+				19377A8B1A3227A700B10CEB /* SDJSShareAPITests.m */,
 				CA0249E819E70B10007CAAC7 /* Supporting Files */,
 			);
 			path = SDJSBridgeExampleTests;
@@ -444,6 +447,7 @@
 				19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */,
 				19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */,
 				196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */,
+				19377A8C1A3227A700B10CEB /* SDJSShareAPITests.m in Sources */,
 				19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */,
