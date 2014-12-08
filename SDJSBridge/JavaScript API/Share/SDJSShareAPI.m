@@ -36,8 +36,9 @@
 
 - (UIActivityViewController *)activityViewControllerWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
     NSArray *items = [self activityItemsWithURL:url message:message];
+    NSArray *applicationActivities = [self applicationActivitiesWithURL:url message:message];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
-                                                                                         applicationActivities:nil];
+                                                                                         applicationActivities:applicationActivities];
     activityViewController.excludedActivityTypes = [self excludedActivityTypesWithURL:url message:message excludedServices:excludedServices];
     activityViewController.completionHandler = [self completionHandler];
     return activityViewController;
