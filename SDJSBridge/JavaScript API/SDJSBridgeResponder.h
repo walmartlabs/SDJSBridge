@@ -30,11 +30,11 @@
      @interface MyButtonActionScript : SDJSBridgeResponder
      @end
 
- Call the `performActionWithSender:` method to invoke the JavaScript callback.
+ Call the `runCallbackWithSender:` method to invoke the JavaScript callback.
 
      - (IBAction)buttonTapped:(id)sender {
          MyButtonActionScript *buttonScript;
-         [buttonScript performActionWithSender:sender];
+         [buttonScript runCallbackWithSender:sender];
      }
  */
 @interface SDJSBridgeResponder : SDJSBridgeScript <SDJSBridgeResponderExports>
@@ -66,6 +66,6 @@
 /**
  Invoke the JavaScript callback.
  */
-- (void)performActionWithSender:(id)sender;
+- (void)runCallbackWithSender:(id)sender;
 
 @end

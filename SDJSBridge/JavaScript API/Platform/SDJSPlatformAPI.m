@@ -84,7 +84,7 @@
     SDJSAlertAction *action = self.actions[(NSUInteger)buttonIndex];
     
     if (action) {
-        [action performActionWithSender:alertView];
+        [action runCallbackWithSender:alertView];
     }
 }
 

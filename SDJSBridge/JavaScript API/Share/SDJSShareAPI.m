@@ -118,7 +118,7 @@
     return ^(NSString *activityTtpe, BOOL completed) {
         if (completed) {
             // invoke JS callback
-            [self performActionWithSender:nil];
+            [self runCallbackWithSender:nil];
         }
     };
 }

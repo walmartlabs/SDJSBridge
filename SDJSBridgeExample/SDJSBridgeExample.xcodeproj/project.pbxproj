@@ -14,6 +14,7 @@
 		19377A8E1A36324100B10CEB /* SDJSProgressAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */; };
 		19377A901A36364900B10CEB /* SDJSTopLevelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */; };
 		19377A921A3742B700B10CEB /* SDJSBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A911A3742B700B10CEB /* SDJSBridgeTests.m */; };
+		19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */; };
 		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */; };
@@ -70,6 +71,7 @@
 		19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPITests.m; sourceTree = "<group>"; };
 		19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPITests.m; sourceTree = "<group>"; };
 		19377A911A3742B700B10CEB /* SDJSBridgeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeTests.m; sourceTree = "<group>"; };
+		19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponderTests.m; sourceTree = "<group>"; };
 		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
 		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */,
 				19377A911A3742B700B10CEB /* SDJSBridgeTests.m */,
 				196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */,
 				19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */,
@@ -463,6 +466,7 @@
 				19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */,
+				19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,12 +22,12 @@
         return [[UIBarButtonItem alloc] initWithTitle:self.title
                                                 style:UIBarButtonItemStylePlain
                                                target:self
-                                               action:@selector(performActionWithSender:)];
+                                               action:@selector(runCallbackWithSender:)];
     } else if (self.imageName) {
         return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:self.imageName]
                                                 style:UIBarButtonItemStylePlain
                                                target:self
-                                               action:@selector(performActionWithSender:)];
+                                               action:@selector(runCallbackWithSender:)];
     }
     
     return nil;

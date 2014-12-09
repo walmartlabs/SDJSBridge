@@ -71,7 +71,7 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
     XCTAssertTrue([button isKindOfClass:[UIBarButtonItem class]]);
     XCTAssertTrue([button.title isEqualToString:navigationItemTitle]);
     
-    [(SDJSNavigationItem *)button.target performActionWithSender:nil];
+    [(SDJSNavigationItem *)button.target runCallbackWithSender:nil];
     
     [self waitForExpectationsWithTimeout:2.0f handler:^(NSError *error) {
         if (error) {

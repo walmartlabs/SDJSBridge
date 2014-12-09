@@ -22,7 +22,7 @@
     return [self initWithWebViewController:nil callback:callback];
 }
 
-- (void)performActionWithSender:(id)sender {
+- (void)runCallbackWithSender:(id)sender {
     if (self.callback) {
         [self.callback callWithArguments:nil];
     }
