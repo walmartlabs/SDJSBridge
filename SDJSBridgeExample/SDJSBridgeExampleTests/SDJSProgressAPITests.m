@@ -11,6 +11,7 @@
 #import "SDJSPlatformAPI.h"
 #import "SDJSTopLevelAPI.h"
 #import "SDJSProgressAPI.h"
+#import "SDJSBridge.h"
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -24,6 +25,20 @@
 @end
 
 @implementation SDJSProgressAPITests
+
+#pragma mark - Tests
+
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSProgressAPI *progressAPI = [[SDJSProgressAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:progressAPI name:@"progress"];
+    
+    NSDictionary *showMember = [[bridge evaluateScript:@"progress.show;"] toObject];
+    NSDictionary *hideMember = [[bridge evaluateScript:@"progress.hide;"] toObject];
+
+    XCTAssertTrue([showMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([hideMember isKindOfClass:[NSDictionary class]]);
+}
 
 - (void)testShowProgress {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];

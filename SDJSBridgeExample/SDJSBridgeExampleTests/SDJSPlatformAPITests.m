@@ -23,7 +23,7 @@
 
 @implementation SDJSPlatformAPITests
 
-#pragma mark - Platform API
+#pragma mark - Platform API Tests
 
 - (void)testInitialization {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
@@ -35,19 +35,27 @@
     XCTAssertTrue([webViewController isEqual:platform.webViewController]);
 }
 
-- (void)testExports {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    SDJSPlatformAPI *platformAPI = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:platformAPI name:@"platform"];
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSPlatformAPI *platformAPI = [[SDJSPlatformAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:platformAPI name:@"platform"];
     
-    SDJSProgressAPI *progressAPI = [[webViewController evaluateScript:@"platform.progress();"] toObject];
-    SDJSNavigationAPI *navigationAPI = [[webViewController evaluateScript:@"platform.navigation();"] toObject];
+    SDJSProgressAPI *progressAPI = [[bridge evaluateScript:@"platform.progress();"] toObject];
+    SDJSNavigationAPI *navigationAPI = [[bridge evaluateScript:@"platform.navigation();"] toObject];
+    NSDictionary *shareMember = [[bridge evaluateScript:@"platform.share;"] toObject];
+    NSDictionary *shareService = [[bridge evaluateScript:@"platform.ShareService;"] toObject];
+    NSDictionary *alertMember = [[bridge evaluateScript:@"platform.alert;"] toObject];
+    NSDictionary *alertAction = [[bridge evaluateScript:@"platform.AlertAction;"] toObject];
 
     XCTAssertTrue([progressAPI isKindOfClass:[SDJSProgressAPI class]]);
     XCTAssertTrue([navigationAPI isKindOfClass:[SDJSNavigationAPI class]]);
+    XCTAssertTrue([shareMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([shareService isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([alertMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([alertAction isKindOfClass:[NSDictionary class]]);
 }
 
-#pragma mark - Alerts
+#pragma mark - Alert Tests
 
 - (void)testShowAlertActions {
     SDWebViewController *webViewController = [self rootWebViewController];

@@ -9,6 +9,9 @@
 #import "XCTestCase+ExampleAppUtilities.h"
 #import "SDWebViewController.h"
 #import "SDJSTopLevelAPI.h"
+#import "SDJSNavigationAPI.h"
+#import "SDJSBridge.h"
+#import "SDJSNavigationBarAPI.h"
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -36,6 +39,23 @@
 }
 
 #pragma mark - Tests
+
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSNavigationAPI *navigationAPI = [[SDJSNavigationAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:navigationAPI name:@"navigation"];
+    SDJSNavigationBarAPI *navBarAPI = [[bridge evaluateScript:@"navigation.navigationBar();"] toObject];
+    NSDictionary *pushMember = [[bridge evaluateScript:@"navigation.pushUrl"] toObject];
+    NSDictionary *popMember = [[bridge evaluateScript:@"navigation.popUrl"] toObject];
+    NSDictionary *presentMember = [[bridge evaluateScript:@"navigation.presentModalUrl"] toObject];
+    NSDictionary *dismissMember = [[bridge evaluateScript:@"navigation.dismissModalUrl"] toObject];
+    
+    XCTAssertTrue([navBarAPI isKindOfClass:[SDJSNavigationBarAPI class]]);
+    XCTAssertTrue([pushMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([popMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([presentMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([dismissMember isKindOfClass:[NSDictionary class]]);
+}
 
 - (void)testPushPopPresentDismissFlow {
     self.pushExpectation = [self expectationWithDescription:@"push"];

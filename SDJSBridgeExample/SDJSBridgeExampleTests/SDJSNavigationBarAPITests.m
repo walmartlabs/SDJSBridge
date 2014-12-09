@@ -10,6 +10,8 @@
 #import "SDWebViewController.h"
 #import "SDJSNavigationItem.h"
 #import "SDMacros.h"
+#import "SDJSNavigationBarAPI.h"
+#import "SDJSBridge.h"
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -25,7 +27,36 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
 
 @implementation SDJSNavigationBarAPITests
 
-#pragma mark - JavaScript Tests
+#pragma mark - Tests
+
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSNavigationBarAPI *navBarAPI = [[SDJSNavigationBarAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:navBarAPI name:@"navigationBar"];
+
+    NSDictionary *leftItemsMember = [[bridge evaluateScript:@"navigationBar.leftItems"] toObject];
+    NSDictionary *rightItemsMember = [[bridge evaluateScript:@"navigationBar.rightItems"] toObject];
+    NSDictionary *setLeftItemsMember = [[bridge evaluateScript:@"navigationBar.setLeftItems"] toObject];
+    NSDictionary *setRightItemsMember = [[bridge evaluateScript:@"navigationBar.setRightItems"] toObject];
+
+
+    XCTAssertTrue([leftItemsMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([rightItemsMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([setLeftItemsMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([setRightItemsMember isKindOfClass:[NSDictionary class]]);
+}
+
+- (void)testRemoveNavigationItems {
+    SDWebViewController *webViewController = [self rootWebViewController];
+    UIBarButtonItem *firstButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem *secondButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
+    webViewController.navigationItem.leftBarButtonItems = @[firstButton, secondButton];
+    
+    NSString *script = @"JSBridgeAPI.platform().navigation().navigationBar().setLeftItems(null);";
+    [webViewController evaluateScript:script];
+    
+    XCTAssertTrue(webViewController.navigationItem.leftBarButtonItems.count == 0);
+}
 
 - (void)testSetLeftNavigationItem {
     [self runSetNavigationItemTestForPlacement:SDJSNavigationItemTestPlacementLeft];
@@ -78,18 +109,6 @@ NS_ENUM(NSInteger, SDJSNavigationItemTestPlacement) {
             NSLog(@"%@", error);
         }
     }];
-}
-
-- (void)testRemoveNavigationItems {
-    SDWebViewController *webViewController = [self rootWebViewController];
-    UIBarButtonItem *firstButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
-    UIBarButtonItem *secondButton = [[UIBarButtonItem alloc] initWithTitle:@"One" style:UIBarButtonItemStyleDone target:nil action:nil];
-    webViewController.navigationItem.leftBarButtonItems = @[firstButton, secondButton];
-    
-    NSString *script = @"JSBridgeAPI.platform().navigation().navigationBar().setLeftItems(null);";
-    [webViewController evaluateScript:script];
-    
-    XCTAssertTrue(webViewController.navigationItem.leftBarButtonItems.count == 0);
 }
 
 @end

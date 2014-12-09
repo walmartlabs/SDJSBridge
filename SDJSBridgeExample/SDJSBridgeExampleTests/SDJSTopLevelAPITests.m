@@ -8,6 +8,7 @@
 
 #import "SDJSTopLevelAPI.h"
 #import "SDWebViewController.h"
+#import "SDJSBridge.h"
 #import "XCTestCase+ExampleAppUtilities.h"
 #import "SDJSPlatformAPI.h"
 
@@ -20,6 +21,8 @@
 
 @implementation SDJSTopLevelAPITests
 
+#pragma mark - Tests
+
 - (void)testInitialization {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
@@ -29,12 +32,11 @@
     XCTAssertTrue([webViewController isEqual:api.webViewController]);
 }
 
-- (void)testExports {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
-    
-    SDJSPlatformAPI *platform = [[webViewController evaluateScript:@"JSBridgeAPI.platform();"] toObject];
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    SDJSPlatformAPI *platform = [[bridge evaluateScript:@"JSBridgeAPI.platform();"] toObject];
     
     XCTAssertTrue([platform isKindOfClass:[SDJSPlatformAPI class]]);
 }

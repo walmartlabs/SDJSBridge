@@ -32,7 +32,7 @@
     XCTAssertTrue([responder.callback isEqualToObject:callback]);
 }
 
-- (void)testExports {
+- (void)testJavaScriptExports {
     NSString *scriptName = @"responderTest";
     NSString *methodName = @"_responderCallback";
     SDJSBridge *bridge = [[SDJSBridge alloc] init];

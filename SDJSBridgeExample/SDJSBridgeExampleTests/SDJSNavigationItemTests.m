@@ -18,6 +18,8 @@
 
 @implementation SDJSNavigationItemTests
 
+#pragma mark - Tests
+
 - (void)testNavigationItemWithTitle {
     NSString *callbackName = @"_navigationItemCallback";
     NSString *title = @"Test";
