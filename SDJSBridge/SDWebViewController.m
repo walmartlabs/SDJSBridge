@@ -336,6 +336,7 @@
         _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
+        _webView.delegate = self;
         self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
     }
 
