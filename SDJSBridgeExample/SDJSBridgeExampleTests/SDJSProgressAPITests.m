@@ -41,30 +41,28 @@
 }
 
 - (void)testShowProgress {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
     api.platform.progressScript.delegate = self;
     
     NSString *originalMessage = @"One moment please...";
     NSString *format = @"JSBridgeAPI.platform().progress().show('%@');";
     NSString *script = [NSString stringWithFormat:format, originalMessage];
-    [webViewController evaluateScript:script];
+    [bridge evaluateScript:script];
     
     XCTAssertTrue(self.isShowCalled);
     XCTAssertTrue([self.progressMessage isEqualToString:originalMessage]);
 }
 
 - (void)testHideProgress {
-    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
     api.platform.progressScript.delegate = self;
     
     NSString *script = @"JSBridgeAPI.platform().progress().hide();";
-    [webViewController evaluateScript:script];
+    [bridge evaluateScript:script];
     
     XCTAssertTrue(self.isHideCalled);
 }
