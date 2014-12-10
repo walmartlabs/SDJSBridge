@@ -21,7 +21,18 @@
 @implementation SDJSTestBridgeScript
 @end
 
-@interface SDWebViewControllerTests : XCTestCase
+@interface SDWebViewControllerTests : XCTestCase <SDWebViewControllerDelegate>
+
+@property (nonatomic, strong) SDWebViewController *expectedWebViewController;
+@property (nonatomic, strong) XCTestExpectation *didStartLoadExpectation;
+@property (nonatomic, strong) XCTestExpectation *didFinishLoadExpectation;
+@property (nonatomic, strong) XCTestExpectation *didCreateJavaScriptContextExpectation;
+@property (nonatomic, strong) XCTestExpectation *shouldOpenRequestExpectation;
+@property (nonatomic, strong) XCTestExpectation *configureScriptObjectsExpectation;
+
+@property (nonatomic, assign) BOOL isDidCreateJavaScriptContextFulfilled;
+@property (nonatomic, assign) BOOL isLoadFulfilled;
+@property (nonatomic, assign) BOOL isConfigureScriptObjectsFulfilled;
 
 @end
 
@@ -36,6 +47,7 @@
     XCTAssertTrue([webViewController.url isEqual:url]);
     XCTAssertTrue([webViewController.webView isKindOfClass:[UIWebView class]]);
     XCTAssertTrue(webViewController.delegate == nil);
+    XCTAssertTrue([webViewController shouldHandleURL:nil]);
 }
 
 - (void)testInitWithWebView {
@@ -45,6 +57,7 @@
     XCTAssertTrue([webViewController.webView isEqual:webView]);
     XCTAssertTrue(webViewController.delegate == nil);
     XCTAssertTrue(webViewController.url == nil);
+    XCTAssertTrue([webViewController shouldHandleURL:nil]);
 }
 
 #pragma mark - Navigation Tests
@@ -107,6 +120,89 @@
     [webViewController configureScriptObjects];
     
     XCTAssertTrue([script.webViewController isEqual:webViewController]);
+}
+
+#pragma mark - Delegate Tests
+
+- (void)loadWebViewControllerAndWaitForExpectations {
+    self.expectedWebViewController = [[SDWebViewController alloc] init];
+    self.expectedWebViewController.delegate = self;
+    [self.expectedWebViewController loadURL:[self pageOneURL]];
+    
+    [self waitForExpectationsWithTimeout:3.0 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+- (void)testShouldOpenRequestDelegateMethod {
+    self.didStartLoadExpectation = [self expectationWithDescription:@"did start load"];
+    self.didFinishLoadExpectation = [self expectationWithDescription:@"did finish load"];
+    self.didCreateJavaScriptContextExpectation = [self expectationWithDescription:@"did create javaccript context"];
+    self.shouldOpenRequestExpectation = [self expectationWithDescription:@"should open request"];
+    self.configureScriptObjectsExpectation = [self expectationWithDescription:@"configure script objects"];
+
+    self.expectedWebViewController = [[SDWebViewController alloc] init];
+    self.expectedWebViewController.delegate = self;
+    [self.expectedWebViewController loadURL:[self pageOneURL]];
+    [self.expectedWebViewController configureScriptObjects];
+    
+    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+- (void)runShouldOpenRequestTest {
+    // invoke href click via JS to test shouldOpenRequest:
+    NSString *clickScript = @"document.getElementById('test-href').click();";
+    [self.expectedWebViewController evaluateScript:clickScript];
+}
+
+#pragma mark - SDWebViewControllerDelegate
+
+- (void)webViewControllerDidStartLoad:(SDWebViewController *)controller {
+    XCTAssertTrue([self.expectedWebViewController isEqual:controller]);
+
+    if (!self.isLoadFulfilled) {
+        [self.didStartLoadExpectation fulfill];
+    }
+}
+
+- (void)webViewControllerDidFinishLoad:(SDWebViewController *)controller {
+    XCTAssertTrue([self.expectedWebViewController isEqual:controller]);
+    
+    if (!self.isLoadFulfilled) {
+        [self.didFinishLoadExpectation fulfill];
+        self.isLoadFulfilled = YES;
+        [self runShouldOpenRequestTest];
+    }
+}
+
+- (BOOL)webViewController:(SDWebViewController *)controller shouldOpenRequest:(NSURLRequest *)request {
+    XCTAssertTrue([self.expectedWebViewController isEqual:controller]);
+    [self.shouldOpenRequestExpectation fulfill];
+    return YES;
+}
+
+- (void)webViewController:(SDWebViewController *)controller didCreateJavaScriptContext:(JSContext *)context {
+    XCTAssertTrue([self.expectedWebViewController isEqual:controller]);
+    
+    if (!self.isDidCreateJavaScriptContextFulfilled) {
+        [self.didCreateJavaScriptContextExpectation fulfill];
+        self.isDidCreateJavaScriptContextFulfilled = YES;
+    }
+}
+
+- (void)webViewControllerConfigureScriptObjects:(SDWebViewController *)controller {
+    XCTAssertTrue([self.expectedWebViewController isEqual:controller]);
+    
+    if (!self.isConfigureScriptObjectsFulfilled) {
+        [self.configureScriptObjectsExpectation fulfill];
+        self.isConfigureScriptObjectsFulfilled = YES;
+    }
 }
 
 @end
