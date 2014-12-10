@@ -7,19 +7,10 @@
 //
 
 #import "SDJSBridge.h"
+#import "SDJSTestScriptObject.h"
 
 @import JavaScriptCore;
 @import XCTest;
-
-#pragma mark - Script Test Object
-
-@interface SDJSTestScriptObject : NSObject <JSExport>
-
-@end
-
-@implementation SDJSTestScriptObject
-
-@end
 
 @interface SDJSBridgeTests : XCTestCase
 

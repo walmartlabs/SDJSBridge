@@ -19,6 +19,8 @@
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */; };
 		196C1F301A2CF14F008E7FD3 /* example2.html in Resources */ = {isa = PBXBuildFile; fileRef = 196C1F2F1A2CF14F008E7FD3 /* example2.html */; };
+		19842F761A389E7500C73C98 /* SDWebViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */; };
+		19842F791A38A78F00C73C98 /* SDJSTestScriptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */; };
 		19A68C4F1A14FE5B00D5D057 /* SDJSShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A68C4E1A14FE5B00D5D057 /* SDJSShareService.m */; };
 		19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A68C511A1B9E8600D5D057 /* NSString+SDJSExtensions.m */; };
 		19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */; };
@@ -34,7 +36,6 @@
 		19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
-		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
 		CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DB19E70B10007CAAC7 /* Images.xcassets */; };
 		CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */; };
 		CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
@@ -77,6 +78,9 @@
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
 		196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationAPITests.m; sourceTree = "<group>"; };
 		196C1F2F1A2CF14F008E7FD3 /* example2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example2.html; sourceTree = "<group>"; };
+		19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebViewControllerTests.m; sourceTree = "<group>"; };
+		19842F771A38A78F00C73C98 /* SDJSTestScriptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSTestScriptObject.h; sourceTree = "<group>"; };
+		19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTestScriptObject.m; sourceTree = "<group>"; };
 		19A68C4D1A14FE5B00D5D057 /* SDJSShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareService.h; sourceTree = "<group>"; };
 		19A68C4E1A14FE5B00D5D057 /* SDJSShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareService.m; sourceTree = "<group>"; };
 		19A68C501A1B9E8600D5D057 /* NSString+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDJSExtensions.h"; sourceTree = "<group>"; };
@@ -106,8 +110,6 @@
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CA0249D219E70B10007CAAC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0249D319E70B10007CAAC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA0249D519E70B10007CAAC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CA0249D619E70B10007CAAC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CA0249DB19E70B10007CAAC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA0249DE19E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDJSBridgeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,8 +239,6 @@
 				CA0249F419E70B2B007CAAC7 /* SDJSBridge */,
 				CA0249D219E70B10007CAAC7 /* AppDelegate.h */,
 				CA0249D319E70B10007CAAC7 /* AppDelegate.m */,
-				CA0249D519E70B10007CAAC7 /* ViewController.h */,
-				CA0249D619E70B10007CAAC7 /* ViewController.m */,
 				CA0249DB19E70B10007CAAC7 /* Images.xcassets */,
 				CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */,
 				CA0249CE19E70B10007CAAC7 /* Supporting Files */,
@@ -268,8 +268,11 @@
 				19377A8B1A3227A700B10CEB /* SDJSShareAPITests.m */,
 				19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */,
 				19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */,
+				19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */,
 				19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */,
 				19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */,
+				19842F771A38A78F00C73C98 /* SDJSTestScriptObject.h */,
+				19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */,
 				CA0249E819E70B10007CAAC7 /* Supporting Files */,
 			);
 			path = SDJSBridgeExampleTests;
@@ -434,7 +437,6 @@
 				1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
-				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
 				19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
@@ -454,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				19842F791A38A78F00C73C98 /* SDJSTestScriptObject.m in Sources */,
 				CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				19B3B9AB1A2FA0EB009A5137 /* SDJSNavigationItemTests.m in Sources */,
 				19377A921A3742B700B10CEB /* SDJSBridgeTests.m in Sources */,
@@ -466,6 +469,7 @@
 				19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */,
+				19842F761A389E7500C73C98 /* SDWebViewControllerTests.m in Sources */,
 				19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
