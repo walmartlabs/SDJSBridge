@@ -1,0 +1,161 @@
+<!doctype html5>
+
+<h1>page 2</h1>
+
+<h2>navigation</h2>
+
+<button id="backward">backward</button>
+<button id="forward">forward</button>
+<button id="modal">modal</button>
+<button id="dismiss">dismiss modal</button>
+
+<h2>navigation items</h2>
+
+<button id="navitem-add">add right items</button>
+<button id="navitem-remove">remove right item</button>
+<button id="navitem-removeall">remove all right items</button>
+
+<h2>alerts</h2>
+
+<button id="alerts-show">show alert</button>
+<button id="alerts-action">show alert with actions</button>
+
+<h2>progress</h2>
+
+<button id="progress-show">show</button>
+<button id="progress-hide">hide</button>
+
+<h2>sharing</h2>
+
+<button id="share">share</button>
+<button id="share-exclusions">share with exclusions</button>
+
+<script>
+    function NoClickDelay(el) {
+        this.element = el;
+        if( window.Touch ) this.element.addEventListener('touchstart', this, false);
+    }
+
+NoClickDelay.prototype = {
+    handleEvent: function(e) {
+        switch(e.type) {
+            case 'touchstart': this.onTouchStart(e); break;
+            case 'touchmove': this.onTouchMove(e); break;
+            case 'touchend': this.onTouchEnd(e); break;
+        }
+    },
+    
+    onTouchStart: function(e) {
+        e.preventDefault();
+        this.moved = false;
+        
+        this.element.addEventListener('touchmove', this, false);
+        this.element.addEventListener('touchend', this, false);
+    },
+    
+    onTouchMove: function(e) {
+        this.moved = true;
+    },
+    
+    onTouchEnd: function(e) {
+        this.element.removeEventListener('touchmove', this, false);
+        this.element.removeEventListener('touchend', this, false);
+        
+        if( !this.moved ) {
+            // Place your code here or use the click simulation below
+            var theTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            if(theTarget.nodeType == 3) theTarget = theTarget.parentNode;
+            
+            var theEvent = document.createEvent('MouseEvents');
+            theEvent.initEvent('click', true, true);
+            theTarget.dispatchEvent(theEvent);
+        }
+    }
+};
+
+    document.getElementById('forward').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().pushUrl('example1.html', 'Page Title');
+    })
+    document.getElementById('backward').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().popUrl();
+    });
+    document.getElementById('modal').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
+    });
+    document.getElementById('dismiss').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().dismissModalUrl();
+    });
+    document.getElementById('navitem-add').addEventListener('touchend', function() {
+        var navigation = JSBridgeAPI.platform().navigation();
+
+        var navItemOne = navigation.NavigationItem("One", null, function () {
+            alert('One tapped!');
+        });
+
+        var navItemTwo = navigation.NavigationItem("Two", null, function () {
+            alert('Two tapped!');
+        });
+
+        navigation.navigationBar().setRightItems([navItemTwo, navItemOne]);
+    });
+    document.getElementById('navitem-remove').addEventListener('touchend', function() {
+        var navigation = JSBridgeAPI.platform().navigation();
+        var rightItems = navigation.navigationBar().rightItems();
+
+        if (rightItems.length === 1) {
+            navigation.navigationBar().setRightItems(null);
+        } else {
+            var remainingItems = rightItems.splice(rightItems.length - 1, 1);
+            navigation.navigationBar().setRightItems(remainingItems);
+        }
+    });
+    document.getElementById('navitem-removeall').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().navigationBar().setRightItems(null);
+    });
+    
+    document.getElementById('alerts-show').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().alert("Not found", "Something wasn't found.", null);
+    });
+
+    document.getElementById('alerts-action').addEventListener('touchend', function() {
+        var okAction = JSBridgeAPI.platform().AlertAction("YAYYUHH!", function () {
+            alert('YAYYUHH!');
+        });
+
+        var cancelAction = JSBridgeAPI.platform().AlertAction("Cancel", function () {
+            alert('Cancel tapped!');
+        });
+
+        var actions = [cancelAction, okAction];
+
+        JSBridgeAPI.platform().alert("Not found", "Continue?", actions);
+    });  
+
+
+    document.getElementById('progress-show').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().progress().show("One moment please...");
+    }); 
+    document.getElementById('progress-hide').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().progress().hide();
+    });
+
+    document.getElementById('share').addEventListener('touchend', function() {
+        var url = "http://www.walmart.com/";
+        var message = "Check out this great deal!"
+        JSBridgeAPI.platform().share(url, message, function () {
+            // share complete
+        });
+    });
+
+    document.getElementById('share-exclusions').addEventListener('touchend', function() {
+        var ShareService = JSBridgeAPI.platform().ShareService();
+        var excludedServices = [ShareService.Facebook, ShareService.Mail];
+
+        var url = "http://www.walmart.com/";
+        var message = "Check out this great deal!"
+        
+        JSBridgeAPI.platform().share(url, message, excludedServices, function () {
+            // share complete
+        });
+    });
+</script>

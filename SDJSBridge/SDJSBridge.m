@@ -23,6 +23,8 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     UIWebView *_webView;
 }
 
+#pragma mark - Lifecycle
+
 - (instancetype)init
 {
     if ((self = [super init]))
@@ -51,6 +53,8 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
         [_webView removeObserver:self forKeyPath:UIWebViewContextPath];
 }
 
+#pragma mark - KVO
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (!_webView)
@@ -63,16 +67,19 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     }
 }
 
+#pragma mark - Script API
+
 - (void)configureContext:(JSContext *)context
 {
-    _context = [_webView valueForKeyPath:UIWebViewContextPath];
+    _context = context;
+    
     [_context setExceptionHandler:^(JSContext *aContext, JSValue *value) {
         NSLog(@"SDJSBridgeException: %@", value);
     }];
     
     [_scriptObjects enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         self.context[key] = obj;
-    }];
+    }]; 
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
@@ -86,9 +93,9 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     self.context[name] = object;
 }
 
-- (void)addScriptMethod:(NSString *)name block:(void *)block
+- (void)addScriptMethod:(NSString *)name block:(id)block
 {
-    
+    self.context[name] = block;
 }
 
 - (JSValue *)evaluateScript:(NSString *)script
@@ -96,6 +103,15 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     JSValue *value = [self.context evaluateScript:script];
     
     return value;
+}
+
+- (JSValue *)scriptValueForName:(NSString *)name
+{
+    return self.context[name];
+}
+
+- (NSDictionary *)scriptObjects {
+    return _scriptObjects;
 }
 
 @end
