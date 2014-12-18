@@ -181,6 +181,10 @@
     [self.bridge addScriptMethod:name block:block];
 }
 
+- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
+    [self.bridge registerHandlerWithName:handlerName handler:handler];
+}
+
 - (void)configureScriptObjects
 {
     // update parent web view controller reference in scripts

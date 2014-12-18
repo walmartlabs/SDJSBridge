@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import "SDJSBridge.h"
+
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @class SDWebViewController;
-@class SDJSBridge;
 
 /**
  A protocol for handling SDWebViewController events.
@@ -171,8 +172,8 @@
  */
 - (void)addScriptMethod:(NSString *)name block:(id)block;
 - (void)configureScriptObjects;
-
 - (JSValue *)evaluateScript:(NSString *)script;
+- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler;
 
 /// @name Web View Events
 

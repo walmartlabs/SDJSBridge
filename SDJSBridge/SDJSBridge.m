@@ -7,10 +7,14 @@
 //
 
 #import "SDJSBridge.h"
+#import "SDJSHandlerScript.h"
 @import JavaScriptCore;
 
 @interface SDJSBridge ()
+
 @property (nonatomic, readonly) JSContext *context;
+@property (nonatomic, strong) SDJSHandlerScript *handlerScript;
+
 @end
 
 static NSString * const SDJSBridgeException = @"SDJSBridgeException";
@@ -112,6 +116,17 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
 
 - (NSDictionary *)scriptObjects {
     return _scriptObjects;
+}
+
+#pragma mark - 
+
+- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
+    if (!self.handlerScript) {
+        self.handlerScript = [[SDJSHandlerScript alloc] init];
+        [self addScriptObject:self.handlerScript name:@"WebViewJavascriptBridge"];
+    }
+    
+    [self.handlerScript registerHandlerWithName:handlerName handler:handler];
 }
 
 @end
