@@ -181,7 +181,7 @@
     [self.bridge addScriptMethod:name block:block];
 }
 
-- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
+- (void)registerBridgeHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
     [self.bridge registerHandlerWithName:handlerName handler:handler];
 }
 
