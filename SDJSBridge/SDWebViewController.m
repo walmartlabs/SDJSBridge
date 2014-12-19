@@ -185,6 +185,10 @@
     [self.bridge registerHandlerWithName:handlerName handler:handler];
 }
 
+- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object {
+    [self.bridge addHandlerObject:object];
+}
+
 - (void)configureScriptObjects
 {
     // update parent web view controller reference in scripts

@@ -174,6 +174,7 @@
 - (void)configureScriptObjects;
 - (JSValue *)evaluateScript:(NSString *)script;
 - (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler;
+- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object;
 
 /// @name Web View Events
 

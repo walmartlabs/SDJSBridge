@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly) JSContext *context;
 @property (nonatomic, strong) SDJSHandlerScript *handlerScript;
+@property (nonatomic, strong) NSMutableDictionary *handlerObjects;
 
 @end
 
@@ -127,6 +128,20 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
     }
     
     [self.handlerScript registerHandlerWithName:handlerName handler:handler];
+}
+
+- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object
+{
+    if (![[object class] conformsToProtocol:@protocol(SDJSBridgeHandler)]) {
+        [NSException raise:SDJSBridgeException format:@"object does not conform to the SDJSBridgeHandler protocol!"];
+    }
+    
+    NSString *handlerName = [object handlerName];
+    self.handlerObjects[handlerName] = object;
+    
+    [self registerHandlerWithName:handlerName handler:^(JSValue *data, SDBridgeHandlerCallbackBlock callback) {
+        [object callHandlerWithData:data callback:callback];
+    }];
 }
 
 @end

@@ -77,6 +77,8 @@
  */
 - (void)addScriptMethod:(NSString *)name block:(id)block;
 
+- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object;
+
 /// @name Running Script Strings
 
 /**
