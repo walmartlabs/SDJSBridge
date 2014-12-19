@@ -29,7 +29,6 @@
 - (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback {
     SDBridgeHandlerBlock handler = self.handlers[handlerName];
     
-    
     SDBridgeHandlerCallbackBlock callbackBlock = ^(id outputData) {
         NSArray *arguments = outputData == nil ? nil : @[outputData];
         [callback callWithArguments:arguments];

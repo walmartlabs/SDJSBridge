@@ -15,7 +15,8 @@ typedef void (^SDBridgeHandlerBlock)(JSValue *data, SDBridgeHandlerCallbackBlock
 
 @protocol SDJSBridgeHandler <NSObject>
 
-- (void)callHandlerWithData:(JSValue *)data callback:(JSValue *)callback;
+- (NSString *)handlerName;
+- (void)callHandlerWithData:(JSValue *)data callback:(SDBridgeHandlerCallbackBlock)callback;
 
 @end
 
