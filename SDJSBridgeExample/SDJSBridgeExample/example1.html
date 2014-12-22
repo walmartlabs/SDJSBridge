@@ -44,28 +44,28 @@ NoClickDelay.prototype = {
             case 'touchend': this.onTouchEnd(e); break;
         }
     },
-    
+
     onTouchStart: function(e) {
         e.preventDefault();
         this.moved = false;
-        
+
         this.element.addEventListener('touchmove', this, false);
         this.element.addEventListener('touchend', this, false);
     },
-    
+
     onTouchMove: function(e) {
         this.moved = true;
     },
-    
+
     onTouchEnd: function(e) {
         this.element.removeEventListener('touchmove', this, false);
         this.element.removeEventListener('touchend', this, false);
-        
+
         if( !this.moved ) {
             // Place your code here or use the click simulation below
             var theTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
             if(theTarget.nodeType == 3) theTarget = theTarget.parentNode;
-            
+
             var theEvent = document.createEvent('MouseEvents');
             theEvent.initEvent('click', true, true);
             theTarget.dispatchEvent(theEvent);
@@ -77,7 +77,14 @@ NoClickDelay.prototype = {
         JSBridgeAPI.platform().navigation().pushUrl('example1.html', 'Page Title');
     })
     document.getElementById('backward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().popUrl();
+        // JSBridgeAPI.platform().navigation().popUrl();
+
+        var someObject = {message: "hello", title: "hey! listen!"};
+
+        WebViewJavascriptBridge.callHandler('alert', someObject, function (data) {
+            alert('callback');
+        });
+
     });
     document.getElementById('modal').addEventListener('touchend', function() {
         JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
@@ -112,9 +119,13 @@ NoClickDelay.prototype = {
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
         JSBridgeAPI.platform().navigation().navigationBar().setRightItems(null);
     });
-    
+
     document.getElementById('alerts-show').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().alert("Not found", "Something wasn't found.", null);
+        var alertOptions = {message: "hello", title: "hey! listen!"};
+
+        JSBridgeAPI.alert(alertOptions, function (data) {
+
+        });
     });
 
     document.getElementById('alerts-action').addEventListener('touchend', function() {
@@ -129,12 +140,12 @@ NoClickDelay.prototype = {
         var actions = [cancelAction, okAction];
 
         JSBridgeAPI.platform().alert("Not found", "Continue?", actions);
-    });  
+    });
 
 
     document.getElementById('progress-show').addEventListener('touchend', function() {
         JSBridgeAPI.platform().progress().show("One moment please...");
-    }); 
+    });
     document.getElementById('progress-hide').addEventListener('touchend', function() {
         JSBridgeAPI.platform().progress().hide();
     });
@@ -153,7 +164,7 @@ NoClickDelay.prototype = {
 
         var url = "http://www.walmart.com/";
         var message = "Check out this great deal!"
-        
+
         JSBridgeAPI.platform().share(url, message, excludedServices, function () {
             // share complete
         });
