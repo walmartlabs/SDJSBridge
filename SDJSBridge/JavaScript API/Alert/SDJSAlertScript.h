@@ -9,6 +9,16 @@
 #import "SDJSBridgeScript.h"
 #import "SDJSHandlerScript.h"
 
-@interface SDJSAlertScript : SDJSBridgeScript <SDJSBridgeHandler>
+#import <JavaScriptCore/JavaScriptCore.h>
+
+@protocol SDJSAlertScriptExports <JSExport>
+
+JSExportAs(alert, - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback);
+
+@end
+
+@interface SDJSAlertScript : SDJSBridgeScript
+
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback;
 
 @end

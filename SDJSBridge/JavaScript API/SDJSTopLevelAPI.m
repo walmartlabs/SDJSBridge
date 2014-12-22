@@ -10,8 +10,15 @@
 
 #import "SDWebViewController.h"
 #import "SDJSPlatformAPI.h"
+#import "SDJSAlertScript.h"
 
 NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
+
+@interface SDJSTopLevelAPI ()
+
+@property (nonatomic, strong) SDJSAlertScript *alertScript;
+
+@end
 
 @implementation SDJSTopLevelAPI
 
@@ -20,7 +27,10 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 - (void)setWebViewController:(SDWebViewController *)webViewController {
     [super setWebViewController:webViewController];
     _platformScript.webViewController = webViewController;
+    _alertScript.webViewController = webViewController;
 }
+
+#pragma mark - Initialization
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super initWithWebViewController:webViewController])) {
@@ -30,6 +40,8 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     return self;
 }
 
+#pragma mark - Logging API
+
 - (void)logValue:(JSValue *)value {
     NSLog(@"SDJSTopLevelAPI: %@", value);
 }
@@ -38,6 +50,31 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 - (SDJSPlatformAPI *)platform {
     return _platformScript;
+}
+
+#pragma mark - Bridge Callback Block
+
+- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback {
+    return ^(id outputData) {
+        NSArray *arguments = outputData == nil ? nil : @[outputData];
+        [callback callWithArguments:arguments];
+    };
+}
+
+#pragma mark - Alert Script
+
+- (SDJSAlertScript *)alertScript {
+    if (!_alertScript) {
+        _alertScript = [[SDJSAlertScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _alertScript;
+}
+
+#pragma mark - Alert Exports
+
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    [self.alertScript showAlertWithOptions:options callback:[self handlerBlockWithCallback:callback]];
 }
 
 @end

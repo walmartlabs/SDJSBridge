@@ -57,19 +57,13 @@
     }
 }
 
+#pragma mark - 
 
-#pragma mark - SDJSBridgeHandler
-
-- (NSString *)handlerName {
-    return @"alert";
-}
-
-- (void)callHandlerWithData:(JSValue *)data callback:(SDBridgeHandlerCallbackBlock)callback {
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
     self.callback = [callback copy];
     
-    NSDictionary *object = [data toObject];
-    NSString *title = object[@"title"];
-    NSString *message = object[@"message"];
+    NSString *title = options[@"title"];
+    NSString *message = options[@"message"];
     
     [self showAlert:title message:message actions:nil];
 }
