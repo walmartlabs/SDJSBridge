@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import "SDJSBridgeScript.h"
+#import "SDJSHandlerScript.h"
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
@@ -40,7 +40,10 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
 /**
  A JavaScript bridge for interacting with the top level of the SDJSBridgeAPI.
  */
-@interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports, SDJSAlertScriptExports, SDJSNavigationScriptExports, SDJSProgressHUDScriptExports>
+@interface SDJSTopLevelAPI : SDJSHandlerScript <SDJSTopLevelAPIExports,
+                                                SDJSAlertScriptExports,
+                                                SDJSNavigationScriptExports,
+                                                SDJSProgressHUDScriptExports>
 
 /**
  Platform API script that provides the platform API bridge.

@@ -12,6 +12,8 @@
 
 @implementation SDJSBridgeScript
 
+#pragma mark - Initialization
+
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super init])) {
         _webViewController = webViewController;

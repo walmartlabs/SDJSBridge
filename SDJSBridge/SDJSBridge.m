@@ -7,14 +7,11 @@
 //
 
 #import "SDJSBridge.h"
-#import "SDJSHandlerScript.h"
 @import JavaScriptCore;
 
 @interface SDJSBridge ()
 
 @property (nonatomic, readonly) JSContext *context;
-@property (nonatomic, strong) SDJSHandlerScript *handlerScript;
-@property (nonatomic, strong) NSMutableDictionary *handlerObjects;
 
 @end
 
@@ -117,31 +114,6 @@ static NSString * const UIWebViewContextPath = @"documentView.webView.mainFrame.
 
 - (NSDictionary *)scriptObjects {
     return _scriptObjects;
-}
-
-#pragma mark - 
-
-- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
-    if (!self.handlerScript) {
-        self.handlerScript = [[SDJSHandlerScript alloc] init];
-        [self addScriptObject:self.handlerScript name:@"WebViewJavascriptBridge"];
-    }
-    
-    [self.handlerScript registerHandlerWithName:handlerName handler:handler];
-}
-
-- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object
-{
-    if (![[object class] conformsToProtocol:@protocol(SDJSBridgeHandler)]) {
-        [NSException raise:SDJSBridgeException format:@"object does not conform to the SDJSBridgeHandler protocol!"];
-    }
-    
-    NSString *handlerName = [object handlerName];
-    self.handlerObjects[handlerName] = object;
-    
-    [self registerHandlerWithName:handlerName handler:^(JSValue *data, SDBridgeHandlerCallbackBlock callback) {
-        [object callHandlerWithData:data callback:callback];
-    }];
 }
 
 @end

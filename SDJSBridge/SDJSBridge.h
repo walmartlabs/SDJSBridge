@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import "SDJSHandlerScript.h"
-
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -77,8 +75,6 @@
  */
 - (void)addScriptMethod:(NSString *)name block:(id)block;
 
-- (void)addHandlerObject:(NSObject<SDJSBridgeHandler> *)object;
-
 /// @name Running Script Strings
 
 /**
@@ -98,7 +94,5 @@
 - (JSValue *)scriptValueForName:(NSString *)name;
 
 - (NSDictionary *)scriptObjects;
-
-- (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler;
 
 @end
