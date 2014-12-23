@@ -11,12 +11,14 @@
 #import "SDWebViewController.h"
 #import "SDJSPlatformAPI.h"
 #import "SDJSAlertScript.h"
+#import "SDJSNavigationScript.h"
 
 NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 @interface SDJSTopLevelAPI ()
 
 @property (nonatomic, strong) SDJSAlertScript *alertScript;
+@property (nonatomic, strong) SDJSNavigationScript *navigationScript;
 
 @end
 
@@ -75,6 +77,28 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     [self.alertScript showAlertWithOptions:options callback:[self handlerBlockWithCallback:callback]];
+}
+
+#pragma mark - Navigation Script
+
+- (SDJSNavigationScript *)navigationScript {
+    if (!_navigationScript) {
+        _navigationScript = [[SDJSNavigationScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _navigationScript;
+}
+
+
+#pragma mark - Navigatino Exports
+
+- (void)pushStateWithOptions:(NSDictionary *)options {
+    [self.navigationScript pushStateWithOptions:options];
+}
+
+- (void)replaceStateWithOptions:(NSDictionary *)options {
+    [self.navigationScript replaceStateWithOptions:options];
+
 }
 
 @end

@@ -2,10 +2,8 @@
 
 <h2>navigation</h2>
 
-<button id="backward">backward</button>
-<button id="forward">forward</button>
-<button id="modal">present modal</button>
-<button id="dismiss">dismiss modal</button>
+<button id="push-state">push state</button>
+<button id="replace-state">replace state</button>
 
 <h2>navigation items</h2>
 
@@ -73,18 +71,21 @@ NoClickDelay.prototype = {
     }
 };
 
-    document.getElementById('forward').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().pushUrl('example1.html', 'Page Title');
-    })
-    document.getElementById('backward').addEventListener('touchend', function() {
-        // JSBridgeAPI.platform().navigation().popUrl();
+    document.getElementById('push-state').addEventListener('touchend', function() {
+        var options = {
+            title: 'title page',
+            url: 'example1html'
+        };
 
-        var someObject = {message: "hello", title: "hey! listen!"};
+        JSBridgeAPI.pushState(options);
+    });
+    document.getElementById('replace-state').addEventListener('touchend', function() {
+        var options = {
+            title: 'title page',
+            url: 'example2.html'
+        };
 
-        WebViewJavascriptBridge.callHandler('alert', someObject, function (data) {
-            alert('callback');
-        });
-
+        JSBridgeAPI.replaceState(options);
     });
     document.getElementById('modal').addEventListener('touchend', function() {
         JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');

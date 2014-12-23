@@ -8,6 +8,7 @@
 
 #import "SDJSBridgeScript.h"
 #import "SDJSAlertScript.h"
+#import "SDJSNavigationScript.h"
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -38,7 +39,7 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
 /**
  A JavaScript bridge for interacting with the top level of the SDJSBridgeAPI.
  */
-@interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports, SDJSAlertScriptExports>
+@interface SDJSTopLevelAPI : SDJSBridgeScript<SDJSTopLevelAPIExports, SDJSAlertScriptExports, SDJSNavigationScriptExports>
 
 /**
  Platform API script that provides the platform API bridge.
