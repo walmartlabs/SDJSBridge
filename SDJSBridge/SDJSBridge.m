@@ -10,7 +10,9 @@
 @import JavaScriptCore;
 
 @interface SDJSBridge ()
+
 @property (nonatomic, readonly) JSContext *context;
+
 @end
 
 static NSString * const SDJSBridgeException = @"SDJSBridgeException";

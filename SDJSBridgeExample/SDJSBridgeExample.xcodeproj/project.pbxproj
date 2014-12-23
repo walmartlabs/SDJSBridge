@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17681D8A1A432EBE0048D68E /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17681D891A432EBE0048D68E /* SDJSHandlerScript.m */; };
+		17681D8D1A447A770048D68E /* SDJSAlertScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17681D8C1A447A770048D68E /* SDJSAlertScript.m */; };
+		17CED0421A48859A00E7C207 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CED0411A48859A00E7C207 /* SDJSAlertButton.m */; };
+		17CED0451A49B04900E7C207 /* SDJSNavigationScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CED0441A49B04900E7C207 /* SDJSNavigationScript.m */; };
 		1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1934FA151A13AFAA00874421 /* SDJSShareAPI.m */; };
 		19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */; };
 		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
@@ -15,7 +19,7 @@
 		19377A901A36364900B10CEB /* SDJSTopLevelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */; };
 		19377A921A3742B700B10CEB /* SDJSBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A911A3742B700B10CEB /* SDJSBridgeTests.m */; };
 		19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */; };
-		1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */; };
+		1938AFFA1A0BC78D00647F65 /* SDJSProgressHUDScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 1938AFF91A0BC78D00647F65 /* SDJSProgressHUDScript.m */; };
 		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
 		196C1F2E1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */; };
 		196C1F301A2CF14F008E7FD3 /* example2.html in Resources */ = {isa = PBXBuildFile; fileRef = 196C1F2F1A2CF14F008E7FD3 /* example2.html */; };
@@ -30,7 +34,6 @@
 		19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED151A09364500238146 /* SDJSNavigationBarAPI.m */; };
 		19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED171A09364500238146 /* SDJSNavigationItem.m */; };
 		19AAED241A096FBB00238146 /* SDJSBridgeResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */; };
-		19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED271A09742900238146 /* SDJSAlertAction.m */; };
 		19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */; };
 		19B3B9AB1A2FA0EB009A5137 /* SDJSNavigationItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */; };
 		19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */; };
@@ -64,6 +67,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17681D881A432EBE0048D68E /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
+		17681D891A432EBE0048D68E /* SDJSHandlerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSHandlerScript.m; sourceTree = "<group>"; };
+		17681D8B1A447A770048D68E /* SDJSAlertScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScript.h; sourceTree = "<group>"; };
+		17681D8C1A447A770048D68E /* SDJSAlertScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScript.m; sourceTree = "<group>"; };
+		17CED0401A48859A00E7C207 /* SDJSAlertButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertButton.h; sourceTree = "<group>"; };
+		17CED0411A48859A00E7C207 /* SDJSAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertButton.m; sourceTree = "<group>"; };
+		17CED0431A49B04900E7C207 /* SDJSNavigationScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationScript.h; sourceTree = "<group>"; };
+		17CED0441A49B04900E7C207 /* SDJSNavigationScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationScript.m; sourceTree = "<group>"; };
 		1934FA141A13AFAA00874421 /* SDJSShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareAPI.h; sourceTree = "<group>"; };
 		1934FA151A13AFAA00874421 /* SDJSShareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPI.m; sourceTree = "<group>"; };
 		19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPITests.m; sourceTree = "<group>"; };
@@ -73,8 +84,8 @@
 		19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPITests.m; sourceTree = "<group>"; };
 		19377A911A3742B700B10CEB /* SDJSBridgeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeTests.m; sourceTree = "<group>"; };
 		19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponderTests.m; sourceTree = "<group>"; };
-		1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressAPI.h; sourceTree = "<group>"; };
-		1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPI.m; sourceTree = "<group>"; };
+		1938AFF81A0BC78D00647F65 /* SDJSProgressHUDScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressHUDScript.h; sourceTree = "<group>"; };
+		1938AFF91A0BC78D00647F65 /* SDJSProgressHUDScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressHUDScript.m; sourceTree = "<group>"; };
 		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
 		196C1F2D1A2CE5D4008E7FD3 /* SDJSNavigationAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationAPITests.m; sourceTree = "<group>"; };
 		196C1F2F1A2CF14F008E7FD3 /* example2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example2.html; sourceTree = "<group>"; };
@@ -99,8 +110,6 @@
 		19AAED171A09364500238146 /* SDJSNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItem.m; sourceTree = "<group>"; };
 		19AAED221A096FBB00238146 /* SDJSBridgeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeResponder.h; sourceTree = "<group>"; };
 		19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponder.m; sourceTree = "<group>"; };
-		19AAED261A09742900238146 /* SDJSAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertAction.h; sourceTree = "<group>"; };
-		19AAED271A09742900238146 /* SDJSAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertAction.m; sourceTree = "<group>"; };
 		19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPITests.m; sourceTree = "<group>"; };
 		19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItemTests.m; sourceTree = "<group>"; };
 		19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ExampleAppUtilities.h"; sourceTree = "<group>"; };
@@ -169,6 +178,8 @@
 				19AAED011A081BF500238146 /* SDJSTopLevelAPI.m */,
 				19AAED221A096FBB00238146 /* SDJSBridgeResponder.h */,
 				19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */,
+				17681D881A432EBE0048D68E /* SDJSHandlerScript.h */,
+				17681D891A432EBE0048D68E /* SDJSHandlerScript.m */,
 			);
 			path = "JavaScript API";
 			sourceTree = "<group>";
@@ -181,8 +192,8 @@
 				19AAED111A09364500238146 /* Navigation */,
 				19AAECFE1A081BF500238146 /* SDJSPlatformAPI.h */,
 				19AAECFF1A081BF500238146 /* SDJSPlatformAPI.m */,
-				1938AFF81A0BC78D00647F65 /* SDJSProgressAPI.h */,
-				1938AFF91A0BC78D00647F65 /* SDJSProgressAPI.m */,
+				1938AFF81A0BC78D00647F65 /* SDJSProgressHUDScript.h */,
+				1938AFF91A0BC78D00647F65 /* SDJSProgressHUDScript.m */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -196,6 +207,8 @@
 				19AAED151A09364500238146 /* SDJSNavigationBarAPI.m */,
 				19AAED161A09364500238146 /* SDJSNavigationItem.h */,
 				19AAED171A09364500238146 /* SDJSNavigationItem.m */,
+				17CED0431A49B04900E7C207 /* SDJSNavigationScript.h */,
+				17CED0441A49B04900E7C207 /* SDJSNavigationScript.m */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -203,8 +216,10 @@
 		19AAED251A09742900238146 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				19AAED261A09742900238146 /* SDJSAlertAction.h */,
-				19AAED271A09742900238146 /* SDJSAlertAction.m */,
+				17681D8B1A447A770048D68E /* SDJSAlertScript.h */,
+				17681D8C1A447A770048D68E /* SDJSAlertScript.m */,
+				17CED0401A48859A00E7C207 /* SDJSAlertButton.h */,
+				17CED0411A48859A00E7C207 /* SDJSAlertButton.m */,
 			);
 			name = Alert;
 			path = ../Alert;
@@ -433,9 +448,13 @@
 			files = (
 				19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */,
 				19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */,
+				17CED0451A49B04900E7C207 /* SDJSNavigationScript.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
-				1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */,
+				1938AFFA1A0BC78D00647F65 /* SDJSProgressHUDScript.m in Sources */,
+				17CED0421A48859A00E7C207 /* SDJSAlertButton.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
+				17681D8D1A447A770048D68E /* SDJSAlertScript.m in Sources */,
+				17681D8A1A432EBE0048D68E /* SDJSHandlerScript.m in Sources */,
 				19AAED071A081C2600238146 /* SDJSBridgeScript.m in Sources */,
 				19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
@@ -444,7 +463,6 @@
 				19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */,
 				1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
-				19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */,
 				19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */,
 				19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */,
 				19AAED241A096FBB00238146 /* SDJSBridgeResponder.m in Sources */,
