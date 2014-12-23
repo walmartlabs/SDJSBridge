@@ -121,10 +121,16 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('alerts-show').addEventListener('touchend', function() {
-        var alertOptions = {message: "hello", title: "hey! listen!"};
+        var alertOptions = {
+            message: "hello",
+            title: "hey! listen!",
+            okButton: "OKAY",
+            cancelButton: "CANCEL",
+            neutralButton: "hmm..."
+        };
 
         JSBridgeAPI.alert(alertOptions, function (data) {
-
+            JSBridgeAPI.log(data);
         });
     });
 

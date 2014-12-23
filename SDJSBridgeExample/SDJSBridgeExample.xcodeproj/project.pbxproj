@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17681D8A1A432EBE0048D68E /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17681D891A432EBE0048D68E /* SDJSHandlerScript.m */; };
 		17681D8D1A447A770048D68E /* SDJSAlertScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17681D8C1A447A770048D68E /* SDJSAlertScript.m */; };
+		17CED0421A48859A00E7C207 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CED0411A48859A00E7C207 /* SDJSAlertButton.m */; };
 		1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1934FA151A13AFAA00874421 /* SDJSShareAPI.m */; };
 		19377A881A3212CD00B10CEB /* SDJSPlatformAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */; };
 		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
@@ -70,6 +71,8 @@
 		17681D891A432EBE0048D68E /* SDJSHandlerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSHandlerScript.m; sourceTree = "<group>"; };
 		17681D8B1A447A770048D68E /* SDJSAlertScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScript.h; sourceTree = "<group>"; };
 		17681D8C1A447A770048D68E /* SDJSAlertScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScript.m; sourceTree = "<group>"; };
+		17CED0401A48859A00E7C207 /* SDJSAlertButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertButton.h; sourceTree = "<group>"; };
+		17CED0411A48859A00E7C207 /* SDJSAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertButton.m; sourceTree = "<group>"; };
 		1934FA141A13AFAA00874421 /* SDJSShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareAPI.h; sourceTree = "<group>"; };
 		1934FA151A13AFAA00874421 /* SDJSShareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPI.m; sourceTree = "<group>"; };
 		19377A871A3212CD00B10CEB /* SDJSPlatformAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformAPITests.m; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				19AAED271A09742900238146 /* SDJSAlertAction.m */,
 				17681D8B1A447A770048D68E /* SDJSAlertScript.h */,
 				17681D8C1A447A770048D68E /* SDJSAlertScript.m */,
+				17CED0401A48859A00E7C207 /* SDJSAlertButton.h */,
+				17CED0411A48859A00E7C207 /* SDJSAlertButton.m */,
 			);
 			name = Alert;
 			path = ../Alert;
@@ -445,6 +450,7 @@
 				19AAED181A09364500238146 /* SDJSNavigationAPI.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				1938AFFA1A0BC78D00647F65 /* SDJSProgressAPI.m in Sources */,
+				17CED0421A48859A00E7C207 /* SDJSAlertButton.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
 				17681D8D1A447A770048D68E /* SDJSAlertScript.m in Sources */,
 				17681D8A1A432EBE0048D68E /* SDJSHandlerScript.m in Sources */,
