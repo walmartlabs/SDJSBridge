@@ -12,7 +12,6 @@
 #import <UIKit/UIKit.h>
 
 @class SDJSNavigationAPI;
-@class SDJSAlertAction;
 @class SDJSProgressAPI;
 @class SDJSShareAPI;
 @class SDJSShareService;
@@ -40,16 +39,6 @@
 - (NSDictionary *)ShareService;
 
 /**
- Create an alert action.
- */
-JSExportAs(AlertAction, - (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback);
-
-/**
- Show an alert with a title, message, and an array of SDJSAlertAction objects.
- */
-JSExportAs(alert, - (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions);
-
-/**
  Share a URL with message text.
  */
 JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString message:(NSString *)message callback:(JSValue *)callback);
@@ -66,15 +55,6 @@ JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString m
   
  ## JavaScript Usage
  
- ### Alerts
- 
- Displaying an alert.
- 
-     var platform = JSBridgeAPI.platform();
-     
-     // null actions default to OK action
-     platform.alert("Error", "An error occured while logging in", null);
- 
  ### Sharing
  
  Sharing a URL with message text. 
@@ -86,7 +66,7 @@ JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString m
      });
  
  */
-@interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports, UIAlertViewDelegate>
+@interface SDJSPlatformAPI : SDJSBridgeScript <SDJSPlatformAPIExports>
 
 /**
  Navigation API script that provides the navigation API bridge.
@@ -102,20 +82,6 @@ JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString m
  Share API script that provides the share API bridge.
  */
 @property (nonatomic, strong) SDJSShareAPI *shareScript;
-
-/// @name Creating Alert Actions
-
-- (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback;
-
-/// @name Displaying Alert
-
-/**
- Display a UIAlertView.
- @param Title text for alert.
- @param Message text for alert.
- @param Array of SDJSAlertAction objects.
- */
-- (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions;
 
 /// @name Sharing
 

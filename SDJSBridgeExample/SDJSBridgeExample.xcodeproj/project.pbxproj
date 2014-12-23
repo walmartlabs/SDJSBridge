@@ -33,7 +33,6 @@
 		19AAED191A09364500238146 /* SDJSNavigationBarAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED151A09364500238146 /* SDJSNavigationBarAPI.m */; };
 		19AAED1A1A09364500238146 /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED171A09364500238146 /* SDJSNavigationItem.m */; };
 		19AAED241A096FBB00238146 /* SDJSBridgeResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */; };
-		19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 19AAED271A09742900238146 /* SDJSAlertAction.m */; };
 		19B3B9A91A2E720E009A5137 /* SDJSNavigationBarAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */; };
 		19B3B9AB1A2FA0EB009A5137 /* SDJSNavigationItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */; };
 		19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */; };
@@ -108,8 +107,6 @@
 		19AAED171A09364500238146 /* SDJSNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItem.m; sourceTree = "<group>"; };
 		19AAED221A096FBB00238146 /* SDJSBridgeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeResponder.h; sourceTree = "<group>"; };
 		19AAED231A096FBB00238146 /* SDJSBridgeResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponder.m; sourceTree = "<group>"; };
-		19AAED261A09742900238146 /* SDJSAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertAction.h; sourceTree = "<group>"; };
-		19AAED271A09742900238146 /* SDJSAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertAction.m; sourceTree = "<group>"; };
 		19B3B9A81A2E720E009A5137 /* SDJSNavigationBarAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationBarAPITests.m; sourceTree = "<group>"; };
 		19B3B9AA1A2FA0EB009A5137 /* SDJSNavigationItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationItemTests.m; sourceTree = "<group>"; };
 		19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ExampleAppUtilities.h"; sourceTree = "<group>"; };
@@ -214,8 +211,6 @@
 		19AAED251A09742900238146 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				19AAED261A09742900238146 /* SDJSAlertAction.h */,
-				19AAED271A09742900238146 /* SDJSAlertAction.m */,
 				17681D8B1A447A770048D68E /* SDJSAlertScript.h */,
 				17681D8C1A447A770048D68E /* SDJSAlertScript.m */,
 				17CED0401A48859A00E7C207 /* SDJSAlertButton.h */,
@@ -462,7 +457,6 @@
 				19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */,
 				1934FA161A13AFAA00874421 /* SDJSShareAPI.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
-				19AAED281A09742900238146 /* SDJSAlertAction.m in Sources */,
 				19AAED031A081BF500238146 /* SDJSPlatformAPI.m in Sources */,
 				19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */,
 				19AAED241A096FBB00238146 /* SDJSBridgeResponder.m in Sources */,

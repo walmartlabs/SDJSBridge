@@ -9,7 +9,6 @@
 #import "SDJSPlatformAPI.h"
 
 #import "SDJSNavigationAPI.h"
-#import "SDJSAlertAction.h"
 #import "SDJSProgressAPI.h"
 #import "SDJSShareAPI.h"
 #import "SDJSShareService.h"
@@ -53,39 +52,6 @@
 
 - (NSDictionary *)ShareService {
     return [SDJSShareService allServices];
-}
-
-#pragma mark - Alerts
-
-- (SDJSAlertAction *)alertActionWithTitle:(NSString *)title callback:(JSValue *)callback {
-    return [SDJSAlertAction alertActionWithTitle:title callback:callback];
-}
-
-- (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message actions:(NSArray *)actions {
-    self.actions = actions;
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-    
-    for (SDJSAlertAction *action in self.actions) {
-        [alert addButtonWithTitle:action.title];
-    }
-    
-    if (!self.actions.count) {
-        [alert addButtonWithTitle:@"OK"];
-    }
-    
-    [alert show];
-    return alert;
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    SDJSAlertAction *action = self.actions[(NSUInteger)buttonIndex];
-    
-    if (action) {
-        [action runCallbackWithSender:alertView];
-    }
 }
 
 #pragma mark - Sharing
