@@ -11,7 +11,7 @@
 #import "SDJSPlatformAPI.h"
 #import "SDJSBridge.h"
 #import "SDJSNavigationAPI.h"
-#import "SDJSProgressAPI.h"
+#import "SDJSProgressHUDScript.h"
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -30,7 +30,7 @@
 
     XCTAssertTrue(platform.shareScript == nil);
     XCTAssertTrue([platform.navigationScript isKindOfClass:[SDJSNavigationAPI class]]);
-    XCTAssertTrue([platform.progressScript isKindOfClass:[SDJSProgressAPI class]]);
+    XCTAssertTrue([platform.progressScript isKindOfClass:[SDJSProgressHUDScript class]]);
     XCTAssertTrue([webViewController isEqual:platform.webViewController]);
 }
 
@@ -39,14 +39,14 @@
     SDJSPlatformAPI *platformAPI = [[SDJSPlatformAPI alloc] initWithWebViewController:nil];
     [bridge addScriptObject:platformAPI name:@"platform"];
     
-    SDJSProgressAPI *progressAPI = [[bridge evaluateScript:@"platform.progress();"] toObject];
+    SDJSProgressHUDScript *progressAPI = [[bridge evaluateScript:@"platform.progress();"] toObject];
     SDJSNavigationAPI *navigationAPI = [[bridge evaluateScript:@"platform.navigation();"] toObject];
     NSDictionary *shareMember = [[bridge evaluateScript:@"platform.share;"] toObject];
     NSDictionary *shareService = [[bridge evaluateScript:@"platform.ShareService;"] toObject];
     NSDictionary *alertMember = [[bridge evaluateScript:@"platform.alert;"] toObject];
     NSDictionary *alertAction = [[bridge evaluateScript:@"platform.AlertAction;"] toObject];
 
-    XCTAssertTrue([progressAPI isKindOfClass:[SDJSProgressAPI class]]);
+    XCTAssertTrue([progressAPI isKindOfClass:[SDJSProgressHUDScript class]]);
     XCTAssertTrue([navigationAPI isKindOfClass:[SDJSNavigationAPI class]]);
     XCTAssertTrue([shareMember isKindOfClass:[NSDictionary class]]);
     XCTAssertTrue([shareService isKindOfClass:[NSDictionary class]]);

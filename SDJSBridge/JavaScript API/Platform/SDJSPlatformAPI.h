@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class SDJSNavigationAPI;
-@class SDJSProgressAPI;
+@class SDJSProgressHUDScript;
 @class SDJSShareAPI;
 @class SDJSShareService;
 
@@ -31,7 +31,7 @@
 /**
  Returns the progress API script.
  */
-- (SDJSProgressAPI *)progress;
+- (SDJSProgressHUDScript *)progress;
 
 /**
  Returns the share service constants. (Ex: ShareService.Facebook, ShareService.Mail)
@@ -76,7 +76,7 @@ JSExportAs(share, - (UIActivityViewController *)shareURL:(NSString *)urlString m
 /**
  Progress API script that provides the progress API bridge.
  */
-@property (nonatomic, strong) SDJSProgressAPI *progressScript;
+@property (nonatomic, strong) SDJSProgressHUDScript *progressScript;
 
 /**
  Share API script that provides the share API bridge.

@@ -9,7 +9,7 @@
 #import "SDJSPlatformAPI.h"
 
 #import "SDJSNavigationAPI.h"
-#import "SDJSProgressAPI.h"
+#import "SDJSProgressHUDScript.h"
 #import "SDJSShareAPI.h"
 #import "SDJSShareService.h"
 
@@ -34,7 +34,7 @@
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
     if ((self = [super initWithWebViewController:webViewController])) {
         _navigationScript = [[SDJSNavigationAPI alloc] initWithWebViewController:webViewController];
-        _progressScript = [[SDJSProgressAPI alloc] initWithWebViewController:webViewController];
+        _progressScript = [[SDJSProgressHUDScript alloc] initWithWebViewController:webViewController];
     }
     
     return self;
@@ -46,7 +46,7 @@
     return _navigationScript;
 }
 
-- (SDJSProgressAPI *)progress {
+- (SDJSProgressHUDScript *)progress {
     return _progressScript;
 }
 

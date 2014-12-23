@@ -1,5 +1,5 @@
 //
-//  SDJSProgressAPI.h
+//  SDJSProgressHUDScript.h
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 11/6/14.
@@ -11,10 +11,10 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 /**
- A delegate protocol for handling the showing and hiding of a progress HUD. 
+ A delegate protocol for handling the showing and hiding of a progress HUD.
  Implement to control how the progress HUD is shown and hidden.
  */
-@protocol SDJSProgressAPIDelegate <NSObject>
+@protocol SDJSProgressHUDScriptDelegate <NSObject>
 
 /**
  Show the progress HUD
@@ -32,43 +32,47 @@
 /**
  A protocol that describes how the progress HUD API is exported to JavaScript.
  */
-@protocol SDJSProgressAPIExports <JSExport>
+@protocol SDJSProgressHUDScriptExports <JSExport>
 
 /// @name JavaScript API
 
 /**
  Show the progress HUD and display the provided message text.
  */
-JSExportAs(show, - (void)showWithMessage:(NSString *)message);
+JSExportAs(showLoadingIndicator, - (void)showLoadingIndicatorWithOptions:(NSDictionary *)options);
 
 /**
  Hide progress HUD.
  */
-- (void)hide;
+- (void)hideLoadingIndicator;
 
 @end
 
 /**
- A JavaScript bridge script for interacting with a progress HUD object. The 
+ A JavaScript bridge script for interacting with a loading progress HUD object. The
  object requires a delegate to handle hiding and showing of the progress HUD.
- 
+
  ## JavaScript Usage
- 
+
  Showing a progress HUD with message text.
- 
-     JSBridgeAPI.platform().progress().show("One moment please...");
- 
+
+     var options = {
+       message: 'Loading...'
+     };
+
+     JSBridgeAPI.showLoadingIndicator(options);
+
  Hiding a progress HUD.
 
-     JSBridgeAPI.platform().progress().hide();
+     JSBridgeAPI.hideLoadingIndicator();
 
  */
-@interface SDJSProgressAPI : SDJSBridgeScript <SDJSProgressAPIExports>
+@interface SDJSProgressHUDScript : SDJSBridgeScript
 
 /**
  Progress API delegate. The delgate handles showing/hiding the progress HUD.
  */
-@property (nonatomic, weak) id<SDJSProgressAPIDelegate> delegate;
+@property (nonatomic, weak) id<SDJSProgressHUDScriptDelegate> delegate;
 
 /// @name Showing and Hiding the Progress HUD
 
@@ -82,5 +86,7 @@ JSExportAs(show, - (void)showWithMessage:(NSString *)message);
  Hide the progress HUD.
  */
 - (void)hide;
+
+- (void)showLoadingIndicatorWithOptions:(NSDictionary *)options;
 
 @end

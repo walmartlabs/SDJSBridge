@@ -12,6 +12,7 @@
 #import "SDJSPlatformAPI.h"
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
+#import "SDJSProgressHUDScript.h"
 
 NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
@@ -24,14 +25,6 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 @implementation SDJSTopLevelAPI
 
-#pragma mark - Accessors
-
-- (void)setWebViewController:(SDWebViewController *)webViewController {
-    [super setWebViewController:webViewController];
-    _platformScript.webViewController = webViewController;
-    _alertScript.webViewController = webViewController;
-}
-
 #pragma mark - Initialization
 
 - (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
@@ -40,6 +33,14 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     }
     
     return self;
+}
+
+#pragma mark - Web View Controller
+
+- (void)setWebViewController:(SDWebViewController *)webViewController {
+    [super setWebViewController:webViewController];
+    _platformScript.webViewController = webViewController;
+    _alertScript.webViewController = webViewController;
 }
 
 #pragma mark - Logging API
@@ -63,7 +64,7 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     };
 }
 
-#pragma mark - Alert Script
+#pragma mark - Alert
 
 - (SDJSAlertScript *)alertScript {
     if (!_alertScript) {
@@ -73,13 +74,11 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     return _alertScript;
 }
 
-#pragma mark - Alert Exports
-
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     [self.alertScript showAlertWithOptions:options callback:[self handlerBlockWithCallback:callback]];
 }
 
-#pragma mark - Navigation Script
+#pragma mark - Navigation
 
 - (SDJSNavigationScript *)navigationScript {
     if (!_navigationScript) {
@@ -89,9 +88,6 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     return _navigationScript;
 }
 
-
-#pragma mark - Navigatino Exports
-
 - (void)pushStateWithOptions:(NSDictionary *)options {
     [self.navigationScript pushStateWithOptions:options];
 }
@@ -99,6 +95,24 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 - (void)replaceStateWithOptions:(NSDictionary *)options {
     [self.navigationScript replaceStateWithOptions:options];
 
+}
+
+#pragma mark - Loading Indicator
+
+- (SDJSProgressHUDScript *)progressScript {
+    if (!_progressScript) {
+        _progressScript = [[SDJSProgressHUDScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _progressScript;
+}
+
+- (void)showLoadingIndicatorWithOptions:(NSDictionary *)options {
+    [self.progressScript showLoadingIndicatorWithOptions:options];
+}
+
+- (void)hideLoadingIndicator {
+    [self.progressScript hide];
 }
 
 @end

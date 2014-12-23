@@ -1,15 +1,10 @@
 <!doctype html5>
+<h1>page 1</h1>
 
 <h2>navigation</h2>
 
 <button id="push-state">push state</button>
 <button id="replace-state">replace state</button>
-
-<h2>navigation items</h2>
-
-<button id="navitem-add">add right items</button>
-<button id="navitem-remove">remove right item</button>
-<button id="navitem-removeall">remove all right items</button>
 
 <h2>alerts</h2>
 
@@ -25,6 +20,20 @@
 
 <button id="share">share</button>
 <button id="share-exclusions">share with exclusions</button>
+
+<h1>legacy API</h2>
+
+<h2>navigation</h2>
+
+<button id="pop">pop</button>
+<button id="modal">present modal</button>
+<button id="dismiss">dismiss modal</button>
+
+<h2>navigation items</h2>
+
+<button id="navitem-add">add right items</button>
+<button id="navitem-remove">remove right item</button>
+<button id="navitem-removeall">remove all right items</button>
 
 <a href="example2.html" id="test-href">page two</a>
 
@@ -87,6 +96,11 @@ NoClickDelay.prototype = {
 
         JSBridgeAPI.replaceState(options);
     });
+
+    document.getElementById('pop').addEventListener('touchend', function() {
+        JSBridgeAPI.platform().navigation().popUrl();
+    });
+
     document.getElementById('modal').addEventListener('touchend', function() {
         JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
     });
@@ -151,10 +165,14 @@ NoClickDelay.prototype = {
 
 
     document.getElementById('progress-show').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().progress().show("One moment please...");
+        var options = {
+            message: 'Loading...'
+        };
+
+        JSBridgeAPI.showLoadingIndicator(options);
     });
     document.getElementById('progress-hide').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().progress().hide();
+        JSBridgeAPI.hideLoadingIndicator();
     });
 
     document.getElementById('share').addEventListener('touchend', function() {
