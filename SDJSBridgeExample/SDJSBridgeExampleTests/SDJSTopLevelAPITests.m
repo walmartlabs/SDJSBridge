@@ -30,13 +30,21 @@
     XCTAssertTrue([webViewController isEqual:api.webViewController]);
 }
 
-//- (void)testJavaScriptExports {
-//    SDJSBridge *bridge = [[SDJSBridge alloc] init];
-//    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
-//    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
-//    SDJSPlatformAPI *platform = [[bridge evaluateScript:@"JSBridgeAPI.platform();"] toObject];
-//    
-//    XCTAssertTrue([platform isKindOfClass:[SDJSPlatformAPI class]]);
-//}
+- (void)testJavaScriptExports {
+    SDJSBridge *bridge = [[SDJSBridge alloc] init];
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    [bridge addScriptObject:api name:@"bridge"];
+    NSDictionary *alertMember = [[bridge evaluateScript:@"bridge.alert"] toObject];
+    NSDictionary *showLoadingIndicatorMember = [[bridge evaluateScript:@"bridge.showLoadingIndicator"] toObject];
+    NSDictionary *hideLoadingIndicatorMember = [[bridge evaluateScript:@"bridge.hideLoadingIndicator"] toObject];
+    NSDictionary *pushStateMember = [[bridge evaluateScript:@"bridge.pushState"] toObject];
+    NSDictionary *replaceStateMember = [[bridge evaluateScript:@"bridge.replaceState"] toObject];
+
+    XCTAssertTrue([alertMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([showLoadingIndicatorMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([hideLoadingIndicatorMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([pushStateMember isKindOfClass:[NSDictionary class]]);
+    XCTAssertTrue([replaceStateMember isKindOfClass:[NSDictionary class]]);
+}
 
 @end
