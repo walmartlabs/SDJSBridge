@@ -8,7 +8,6 @@
 
 #import "SDWebViewController.h"
 #import "XCTestCase+ExampleAppUtilities.h"
-#import "SDJSPlatformAPI.h"
 #import "SDJSTopLevelAPI.h"
 #import "SDJSProgressHUDScript.h"
 #import "SDJSBridge.h"
@@ -46,7 +45,7 @@
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
     [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
-    api.platform.progressScript.delegate = self;
+    api.progressScript.delegate = self;
     
     NSString *originalMessage = @"One moment please...";
     NSString *format = @"JSBridgeAPI.platform().progress().show('%@');";
@@ -61,7 +60,7 @@
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
     [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
-    api.platform.progressScript.delegate = self;
+    api.progressScript.delegate = self;
     
     NSString *script = @"JSBridgeAPI.platform().progress().hide();";
     [bridge evaluateScript:script];

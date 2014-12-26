@@ -26,11 +26,6 @@ extern NSString * const SDJSTopLevelAPIScriptName;
 /// @name JavaScript API
 
 /**
- Platform API object.
- */
-- (SDJSPlatformAPI *)platform;
-
-/**
  Log JavaScript values in Objective-C.
  */
 JSExportAs(log, - (void)logValue:(JSValue *)value);
@@ -44,11 +39,6 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
                                                 SDJSAlertScriptExports,
                                                 SDJSNavigationScriptExports,
                                                 SDJSProgressHUDScriptExports>
-
-/**
- Platform API script that provides the platform API bridge.
- */
-@property (nonatomic, strong) SDJSPlatformAPI *platformScript;
 
 /**
  Progress HUD API script.

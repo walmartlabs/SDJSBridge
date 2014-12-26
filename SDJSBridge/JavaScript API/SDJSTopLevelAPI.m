@@ -9,7 +9,6 @@
 #import "SDJSTopLevelAPI.h"
 
 #import "SDWebViewController.h"
-#import "SDJSPlatformAPI.h"
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
@@ -25,21 +24,10 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 @implementation SDJSTopLevelAPI
 
-#pragma mark - Initialization
-
-- (instancetype)initWithWebViewController:(SDWebViewController *)webViewController {
-    if ((self = [super initWithWebViewController:webViewController])) {
-        _platformScript = [[SDJSPlatformAPI alloc] initWithWebViewController:webViewController];
-    }
-    
-    return self;
-}
-
 #pragma mark - Web View Controller
 
 - (void)setWebViewController:(SDWebViewController *)webViewController {
     [super setWebViewController:webViewController];
-    _platformScript.webViewController = webViewController;
     _alertScript.webViewController = webViewController;
 }
 
@@ -47,12 +35,6 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 - (void)logValue:(JSValue *)value {
     NSLog(@"SDJSTopLevelAPI: %@", value);
-}
-
-#pragma mark - SDJSTopLevelAPIExports
-
-- (SDJSPlatformAPI *)platform {
-    return _platformScript;
 }
 
 #pragma mark - Bridge Callback Block
