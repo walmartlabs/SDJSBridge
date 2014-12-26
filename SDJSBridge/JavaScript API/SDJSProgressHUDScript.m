@@ -14,7 +14,6 @@ NSString * const SDJSProgressOptionMessageKey = @"message";
 @implementation SDJSProgressHUDScript
 
 - (void)showWithMessage:(NSString *)message {
-    NSLog(@"show message %@", message);
     // possibly support built-in HUD instead of delegating?
     @strongify(self.delegate, strongDelegate);
     
