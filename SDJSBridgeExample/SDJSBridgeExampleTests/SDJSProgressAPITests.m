@@ -7,7 +7,6 @@
 //
 
 #import "SDWebViewController.h"
-#import "XCTestCase+ExampleAppUtilities.h"
 #import "SDJSTopLevelAPI.h"
 #import "SDJSProgressHUDScript.h"
 #import "SDJSBridge.h"
@@ -27,28 +26,14 @@
 
 #pragma mark - Tests
 
-// todo: update progress HUD exports test
-
-//- (void)testJavaScriptExports {
-//    SDJSBridge *bridge = [[SDJSBridge alloc] init];
-//    SDJSProgressHUDScript *progressAPI = [[SDJSProgressHUDScript alloc] initWithWebViewController:nil];
-//    [bridge addScriptObject:progressAPI name:@"progress"];
-//    
-//    NSDictionary *showMember = [[bridge evaluateScript:@"progress.show;"] toObject];
-//    NSDictionary *hideMember = [[bridge evaluateScript:@"progress.hide;"] toObject];
-//
-//    XCTAssertTrue([showMember isKindOfClass:[NSDictionary class]]);
-//    XCTAssertTrue([hideMember isKindOfClass:[NSDictionary class]]);
-//}
-
 - (void)testShowProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
-    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    [bridge addScriptObject:api name:@"bridge"];
     api.progressScript.delegate = self;
     
     NSString *originalMessage = @"One moment please...";
-    NSString *format = @"JSBridgeAPI.platform().progress().show('%@');";
+    NSString *format = @"bridge.showLoadingIndicator({message: '%@'});";
     NSString *script = [NSString stringWithFormat:format, originalMessage];
     [bridge evaluateScript:script];
     
@@ -59,10 +44,10 @@
 - (void)testHideProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
-    [bridge addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    [bridge addScriptObject:api name:@"bridge"];
     api.progressScript.delegate = self;
     
-    NSString *script = @"JSBridgeAPI.platform().progress().hide();";
+    NSString *script = @"brige.hideLoadingIndicator();";
     [bridge evaluateScript:script];
     
     XCTAssertTrue(self.isHideCalled);
