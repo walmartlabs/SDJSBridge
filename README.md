@@ -116,10 +116,38 @@ No Callback.
 
 **Example**
 
+```
 var options = {
   title: 'title page',
   url: 'example2.html'
 };
 
 JSBridgeAPI.replaceState(options);
+```
+
+### share
+
+Display native share action sheet.
+
+**Input**
+
+- `url` (string) - URL to share.
+- `message` (string) - Optional message text to share.
+
+**Output**
+
+No Callback.
+
+**Example**
+
+```
+var options = {
+  message: 'Check out this great deal!',
+  url: 'http://www.walmart.com/'
+};
+
+JSBridgeAPI.share(options);
+```
+
+
 
