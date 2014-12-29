@@ -1,18 +1,21 @@
 //
-//  SDJSShareAPI.m
+//  SDJSShareScript.m
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 11/12/14.
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import "SDJSShareAPI.h"
+#import "SDJSShareScript.h"
 
 #import "SDWebViewController.h"
 #import "SDMacros.h"
 #import "SDJSShareService.h"
 
-@implementation SDJSShareAPI
+NSString * const SDJSShareScriptMessageKey = @"message";
+NSString * const SDJSShareScriptURLKey = @"url";
+
+@implementation SDJSShareScript
 
 #pragma mark - Initialization
 
@@ -26,7 +29,7 @@
 
 #pragma mark - JavaScript Bridge API
 
-- (UIActivityViewController *)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
+- (UIActivityViewController *)shareURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices {
     UIActivityViewController *activityViewController = [self activityViewControllerWithURL:url message:message excludedServices:excludedServices];
     [self presentActivityViewController:activityViewController];
     return activityViewController;
@@ -100,7 +103,7 @@
     }
 }
 
-#pragma mark - SDJSShareAPIDelegate
+#pragma mark - SDJSShareScriptDelegate
 
 - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message {
     return @[message, url];
@@ -125,6 +128,14 @@
 
 - (void)shareBridgeAPIPresentActivityViewController:(UIActivityViewController *)activityViewController {
     [self.webViewController presentViewController:activityViewController animated:YES completion:nil];
+}
+
+#pragma mark - External API
+
+- (void)shareWithOptions:(NSDictionary *)options {
+    NSString *message = options[SDJSShareScriptMessageKey];
+    NSURL *url = [NSURL URLWithString:options[SDJSShareScriptURLKey]];
+    [self shareURL:url message:message excludedServices:nil];
 }
 
 @end

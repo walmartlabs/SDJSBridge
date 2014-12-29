@@ -12,6 +12,7 @@
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
+#import "SDJSShareScript.h"
 
 NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
@@ -95,6 +96,20 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 - (void)hideLoadingIndicator {
     [self.progressScript hide];
+}
+
+#pragma mark - SDJSShareScriptExports
+
+- (SDJSShareScript *)shareScript {
+    if (!_shareScript) {
+        _shareScript = [[SDJSShareScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _shareScript;
+}
+
+- (void)shareWithOptions:(NSDictionary *)options {
+    [self.shareScript shareWithOptions:options];
 }
 
 @end

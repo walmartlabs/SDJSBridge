@@ -17,7 +17,7 @@
 		17417FE11A4DDE2B0077ED4F /* SDJSNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD01A4DDE2B0077ED4F /* SDJSNavigationItem.m */; };
 		17417FE21A4DDE2B0077ED4F /* SDJSNavigationScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD21A4DDE2B0077ED4F /* SDJSNavigationScript.m */; };
 		17417FE31A4DDE2B0077ED4F /* SDJSProgressHUDScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD41A4DDE2B0077ED4F /* SDJSProgressHUDScript.m */; };
-		17417FE41A4DDE2B0077ED4F /* SDJSShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD71A4DDE2B0077ED4F /* SDJSShareAPI.m */; };
+		17417FE41A4DDE2B0077ED4F /* SDJSShareScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD71A4DDE2B0077ED4F /* SDJSShareScript.m */; };
 		17417FE51A4DDE2B0077ED4F /* SDJSShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FD91A4DDE2B0077ED4F /* SDJSShareService.m */; };
 		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
 		19377A8C1A3227A700B10CEB /* SDJSShareAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8B1A3227A700B10CEB /* SDJSShareAPITests.m */; };
@@ -85,8 +85,8 @@
 		17417FD21A4DDE2B0077ED4F /* SDJSNavigationScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationScript.m; sourceTree = "<group>"; };
 		17417FD31A4DDE2B0077ED4F /* SDJSProgressHUDScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressHUDScript.h; sourceTree = "<group>"; };
 		17417FD41A4DDE2B0077ED4F /* SDJSProgressHUDScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressHUDScript.m; sourceTree = "<group>"; };
-		17417FD61A4DDE2B0077ED4F /* SDJSShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareAPI.h; sourceTree = "<group>"; };
-		17417FD71A4DDE2B0077ED4F /* SDJSShareAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareAPI.m; sourceTree = "<group>"; };
+		17417FD61A4DDE2B0077ED4F /* SDJSShareScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareScript.h; sourceTree = "<group>"; };
+		17417FD71A4DDE2B0077ED4F /* SDJSShareScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareScript.m; sourceTree = "<group>"; };
 		17417FD81A4DDE2B0077ED4F /* SDJSShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareService.h; sourceTree = "<group>"; };
 		17417FD91A4DDE2B0077ED4F /* SDJSShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareService.m; sourceTree = "<group>"; };
 		19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareServiceTests.m; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 		17417FD51A4DDE2B0077ED4F /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				17417FD61A4DDE2B0077ED4F /* SDJSShareAPI.h */,
-				17417FD71A4DDE2B0077ED4F /* SDJSShareAPI.m */,
+				17417FD61A4DDE2B0077ED4F /* SDJSShareScript.h */,
+				17417FD71A4DDE2B0077ED4F /* SDJSShareScript.m */,
 				17417FD81A4DDE2B0077ED4F /* SDJSShareService.h */,
 				17417FD91A4DDE2B0077ED4F /* SDJSShareService.m */,
 			);
@@ -453,7 +453,7 @@
 				19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
 				17417FDD1A4DDE2B0077ED4F /* SDJSBridgeScript.m in Sources */,
-				17417FE41A4DDE2B0077ED4F /* SDJSShareAPI.m in Sources */,
+				17417FE41A4DDE2B0077ED4F /* SDJSShareScript.m in Sources */,
 				19AAED041A081BF500238146 /* SDJSTopLevelAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

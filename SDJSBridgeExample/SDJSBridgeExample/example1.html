@@ -176,11 +176,12 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('share').addEventListener('touchend', function() {
-        var url = "http://www.walmart.com/";
-        var message = "Check out this great deal!"
-        JSBridgeAPI.platform().share(url, message, function () {
-            // share complete
-        });
+        var options = {
+            url: "http://www.walmart.com/",
+            message: "Check out this great deal!"
+        };
+
+        JSBridgeAPI.share(options);
     });
 
     document.getElementById('share-exclusions').addEventListener('touchend', function() {

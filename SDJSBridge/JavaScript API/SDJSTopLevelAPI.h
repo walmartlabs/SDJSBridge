@@ -10,6 +10,7 @@
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
+#import "SDJSShareScript.h"
 
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
@@ -38,12 +39,18 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
 @interface SDJSTopLevelAPI : SDJSHandlerScript <SDJSTopLevelAPIExports,
                                                 SDJSAlertScriptExports,
                                                 SDJSNavigationScriptExports,
-                                                SDJSProgressHUDScriptExports>
+                                                SDJSProgressHUDScriptExports,
+                                                SDJSShareScriptExports>
 
 /**
  Progress HUD API script.
  */
 @property (nonatomic, strong) SDJSProgressHUDScript *progressScript;
+
+/**
+ Share API script.
+ */
+@property (nonatomic, strong) SDJSShareScript *shareScript;
 
 /// @name Logging JavaScript Values
 

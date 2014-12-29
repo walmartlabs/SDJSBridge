@@ -1,5 +1,5 @@
 //
-//  SDJSShareAPI.h
+//  SDJSShareScript.h
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 11/12/14.
@@ -11,11 +11,17 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <UIKit/UIKit.h>
 
+@protocol SDJSShareScriptExports <JSExport>
+
+JSExportAs(share, - (void)shareWithOptions:(NSDictionary *)options);
+
+@end
+
 /**
- A delegate protocol for interacting with a SDJSShareAPI object. Allows for 
+ A delegate protocol for interacting with a SDJSShareScript object. Allows for 
  customization over the `UIActivityViewController` that is used to share an item.
  */
-@protocol SDJSShareAPIDelegate <NSObject>
+@protocol SDJSShareScriptDelegate <NSObject>
 
 @optional
 
@@ -61,7 +67,7 @@
  A JavaScript bridge script for sharing a URL and message with a
  `UIActivityViewController`. The class has built-in support for configuring and
  presenting a `UIActivityViewController` but the behavior can be customized by
- setting the delegate property and implementing methods of the SDJSShareAPIDelegate
+ setting the delegate property and implementing methods of the SDJSShareScriptDelegate
  protocol.
  
  ## Objective-C Usage
@@ -69,12 +75,12 @@
  Set the delegate property to customize the `UIActivityViewController` behavior.
 
      SDWebViewController *webViewController;
-     SDJSShareAPI *shareAPI = [[SDJSShareAPI alloc] initWithWebViewController:webViewController];
+     SDJSShareScript *shareAPI = [[SDJSShareScript alloc] initWithWebViewController:webViewController];
      shareAPI.delegate = self;
 
  Implement the delegate methods to make customizations.
 
-     #pragma mark - SDJSShareAPIDelegate
+     #pragma mark - SDJSShareScriptDelegate
 
      - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message {
          return @[message, url];
@@ -97,22 +103,14 @@
      });
  
  */
-@interface SDJSShareAPI : SDJSBridgeResponder <SDJSShareAPIDelegate>
+@interface SDJSShareScript : SDJSBridgeResponder <SDJSShareScriptDelegate>
 
 /**
- By default an instance of SDJSShareAPI makes itself the delegate. Set to 
+ By default an instance of SDJSShareScript makes itself the delegate. Set to 
  customize share behavior.
  */
-@property (nonatomic, weak) id<SDJSShareAPIDelegate> delegate;
+@property (nonatomic, weak) id<SDJSShareScriptDelegate> delegate;
 
-/**
- Share an item with a URL and message.
- @param url URL of the item being shared.
- @param message Message text of the item being shared.
- @param url URL of the item being shared.
- @param excludedServices Array of share services (SDJSShareService instances) to
- exclude.
- */
-- (UIActivityViewController *)shareWithURL:(NSURL *)url message:(NSString *)message excludedServices:(NSArray *)excludedServices;
+- (void)shareWithOptions:(NSDictionary *)options;
 
 @end

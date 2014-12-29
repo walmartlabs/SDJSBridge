@@ -1,5 +1,5 @@
 //
-//  SDJSShareAPITests.m
+//  SDJSShareScriptTests.m
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 12/5/14.
@@ -8,12 +8,12 @@
 
 #import "SDWebViewController.h"
 #import "XCTestCase+ExampleAppUtilities.h"
-#import "SDJSShareAPI.h"
+#import "SDJSShareScript.h"
 #import "SDJSTopLevelAPI.h"
 
 #import <XCTest/XCTest.h>
 
-@interface SDJSShareAPITests : XCTestCase <SDJSShareAPIDelegate>
+@interface SDJSShareScriptTests : XCTestCase <SDJSShareScriptDelegate>
 
 @property (nonatomic, assign) BOOL isActivityItemsCalled;
 @property (nonatomic, assign) BOOL isApplicationActivitiesCalled;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation SDJSShareAPITests
+@implementation SDJSShareScriptTests
 
 // todo: update test share
 
@@ -35,7 +35,7 @@
 //    
 //    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
 //    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
-//    api.platform.shareScript = [[SDJSShareAPI alloc] initWithWebViewController:webViewController];
+//    api.platform.shareScript = [[SDJSShareScript alloc] initWithWebViewController:webViewController];
 //    api.platform.shareScript.delegate = self;
 //    
 //    NSString *shareURLString = @"http://www.walmart.com/";
@@ -55,7 +55,7 @@
 //    XCTAssertTrue(self.isPresentCalled);
 //}
 
-#pragma mark - SDJSShareAPIDelegate
+#pragma mark - SDJSShareScriptDelegate
 
 - (NSArray *)shareBridgeAPIActivityItemsWithURL:(NSURL *)url message:(NSString *)message {
     self.isActivityItemsCalled = YES;
