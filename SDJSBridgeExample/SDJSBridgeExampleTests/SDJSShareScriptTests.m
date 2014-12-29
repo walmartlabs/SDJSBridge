@@ -30,30 +30,29 @@
 
 // todo: update test share
 
-//- (void)testShare {
-//    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-//    
-//    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-//    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
-//    api.platform.shareScript = [[SDJSShareScript alloc] initWithWebViewController:webViewController];
-//    api.platform.shareScript.delegate = self;
-//    
-//    NSString *shareURLString = @"http://www.walmart.com/";
-//    self.shareURL = [NSURL URLWithString:shareURLString];
-//    self.shareMessage = @"Check out this great deal!";
-//    NSString *format = @"JSBridgeAPI.platform().share('%@', '%@');";
-//    NSString *script = [NSString stringWithFormat:format, shareURLString, self.shareMessage];
-//
-//    JSValue *rtn = [webViewController evaluateScript:script];
-//    UIActivityViewController *activityViewController = [rtn toObject];
-//    
-//    XCTAssertTrue([activityViewController isKindOfClass:[UIActivityViewController class]]);
-//    XCTAssertTrue(self.isActivityItemsCalled);
-//    XCTAssertTrue(self.isApplicationActivitiesCalled);
-//    XCTAssertTrue(self.isExcludedActivityTypesCalled);
-//    XCTAssertTrue(self.isCompletionHandlerCalled);
-//    XCTAssertTrue(self.isPresentCalled);
-//}
+- (void)testShare {
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
+    
+    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    api.shareScript = [[SDJSShareScript alloc] initWithWebViewController:webViewController];
+    api.shareScript.delegate = self;
+    
+    NSString *shareURLString = @"http://www.walmart.com/";
+    self.shareURL = [NSURL URLWithString:shareURLString];
+    self.shareMessage = @"Check out this great deal!";
+    
+    NSString *format = @"JSBridgeAPI.share({url: '%@', message: '%@'});";
+    NSString *script = [NSString stringWithFormat:format, shareURLString, self.shareMessage];
+
+    [webViewController evaluateScript:script];
+
+    XCTAssertTrue(self.isActivityItemsCalled);
+    XCTAssertTrue(self.isApplicationActivitiesCalled);
+    XCTAssertTrue(self.isExcludedActivityTypesCalled);
+    XCTAssertTrue(self.isCompletionHandlerCalled);
+    XCTAssertTrue(self.isPresentCalled);
+}
 
 #pragma mark - SDJSShareScriptDelegate
 
