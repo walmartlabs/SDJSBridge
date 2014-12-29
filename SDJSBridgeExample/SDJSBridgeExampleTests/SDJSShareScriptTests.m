@@ -28,8 +28,6 @@
 
 @implementation SDJSShareScriptTests
 
-// todo: update test share
-
 - (void)testShare {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
     
