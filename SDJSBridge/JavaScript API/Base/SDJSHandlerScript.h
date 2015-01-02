@@ -30,6 +30,9 @@ JSExportAs(callHandler, - (void)callHandlerWithName:(NSString *)handlerName data
 
 @interface SDJSHandlerScript : SDJSBridgeScript <SDJSBridgeScriptExports>
 
+/// @name Handler API
+
+- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback;
 - (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler;
 - (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback;
 

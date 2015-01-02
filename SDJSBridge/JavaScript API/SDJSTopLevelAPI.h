@@ -52,10 +52,6 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
  */
 @property (nonatomic, strong) SDJSShareScript *shareScript;
 
-/// @name Handler API
-
-- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback;
-
 /// @name Logging JavaScript Values
 
 /**

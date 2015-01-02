@@ -38,15 +38,6 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
     NSLog(@"SDJSTopLevelAPI: %@", value);
 }
 
-#pragma mark - Bridge Callback Block
-
-- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback {
-    return ^(id outputData) {
-        NSArray *arguments = outputData == nil ? nil : @[outputData];
-        [callback callWithArguments:arguments];
-    };
-}
-
 #pragma mark - Alert
 
 - (SDJSAlertScript *)alertScript {

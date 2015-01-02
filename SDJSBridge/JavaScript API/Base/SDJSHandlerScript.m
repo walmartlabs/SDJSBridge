@@ -16,7 +16,16 @@
 
 @implementation SDJSHandlerScript
 
-#pragma mark -
+#pragma mark - Bridge Callback Block
+
+- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback {
+    return ^(id outputData) {
+        NSArray *arguments = outputData == nil ? nil : @[outputData];
+        [callback callWithArguments:arguments];
+    };
+}
+
+#pragma mark - Handler API
 
 - (void)registerHandlerWithName:(NSString *)handlerName handler:(SDBridgeHandlerBlock)handler {
     if (!self.handlers) {
