@@ -86,7 +86,7 @@ NoClickDelay.prototype = {
             url: 'example1.html'
         };
 
-        JSBridgeAPI.pushState(options);
+        SDJSPlatformAPI.pushState(options);
     });
     document.getElementById('replace-state').addEventListener('touchend', function() {
         var options = {
@@ -94,21 +94,21 @@ NoClickDelay.prototype = {
             url: 'example2.html'
         };
 
-        JSBridgeAPI.replaceState(options);
+        SDJSPlatformAPI.replaceState(options);
     });
 
     document.getElementById('pop').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().popUrl();
+        SDJSPlatformAPI.platform().navigation().popUrl();
     });
 
     document.getElementById('modal').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
+        SDJSPlatformAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
     });
     document.getElementById('dismiss').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().dismissModalUrl();
+        SDJSPlatformAPI.platform().navigation().dismissModalUrl();
     });
     document.getElementById('navitem-add').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform().navigation();
+        var navigation = SDJSPlatformAPI.platform().navigation();
 
         var navItemOne = navigation.NavigationItem("One", null, function () {
             alert('One tapped!');
@@ -121,7 +121,7 @@ NoClickDelay.prototype = {
         navigation.navigationBar().setRightItems([navItemTwo, navItemOne]);
     });
     document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var navigation = JSBridgeAPI.platform().navigation();
+        var navigation = SDJSPlatformAPI.platform().navigation();
         var rightItems = navigation.navigationBar().rightItems();
 
         if (rightItems.length === 1) {
@@ -132,7 +132,7 @@ NoClickDelay.prototype = {
         }
     });
     document.getElementById('navitem-removeall').addEventListener('touchend', function() {
-        JSBridgeAPI.platform().navigation().navigationBar().setRightItems(null);
+        SDJSPlatformAPI.platform().navigation().navigationBar().setRightItems(null);
     });
 
     document.getElementById('alerts-show').addEventListener('touchend', function() {
@@ -144,23 +144,23 @@ NoClickDelay.prototype = {
             neutralButton: "hmm..."
         };
 
-        JSBridgeAPI.alert(alertOptions, function (data) {
-            JSBridgeAPI.log(data);
+        SDJSPlatformAPI.alert(alertOptions, function (data) {
+            SDJSPlatformAPI.log(data);
         });
     });
 
     document.getElementById('alerts-action').addEventListener('touchend', function() {
-        var okAction = JSBridgeAPI.platform().AlertAction("Yes!", function () {
+        var okAction = SDJSPlatformAPI.platform().AlertAction("Yes!", function () {
             alert('Yes tapped!');
         });
 
-        var cancelAction = JSBridgeAPI.platform().AlertAction("Cancel", function () {
+        var cancelAction = SDJSPlatformAPI.platform().AlertAction("Cancel", function () {
             alert('Cancel tapped!');
         });
 
         var actions = [cancelAction, okAction];
 
-        JSBridgeAPI.platform().alert("Not found", "Continue?", actions);
+        SDJSPlatformAPI.platform().alert("Not found", "Continue?", actions);
     });
 
 
@@ -169,10 +169,10 @@ NoClickDelay.prototype = {
             message: 'Loading...'
         };
 
-        JSBridgeAPI.showLoadingIndicator(options);
+        SDJSPlatformAPI.showLoadingIndicator(options);
     });
     document.getElementById('progress-hide').addEventListener('touchend', function() {
-        JSBridgeAPI.hideLoadingIndicator();
+        SDJSPlatformAPI.hideLoadingIndicator();
     });
 
     document.getElementById('share').addEventListener('touchend', function() {
@@ -181,17 +181,17 @@ NoClickDelay.prototype = {
             message: "Check out this great deal!"
         };
 
-        JSBridgeAPI.share(options);
+        SDJSPlatformAPI.share(options);
     });
 
     document.getElementById('share-exclusions').addEventListener('touchend', function() {
-        var ShareService = JSBridgeAPI.platform().ShareService();
+        var ShareService = SDJSPlatformAPI.platform().ShareService();
         var excludedServices = [ShareService.Facebook, ShareService.Mail];
 
         var url = "http://www.walmart.com/";
         var message = "Check out this great deal!"
 
-        JSBridgeAPI.platform().share(url, message, excludedServices, function () {
+        SDJSPlatformAPI.platform().share(url, message, excludedServices, function () {
             // share complete
         });
     });
