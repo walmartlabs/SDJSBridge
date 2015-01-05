@@ -10,7 +10,7 @@
 #import "SDJSBridge.h"
 #import "SDMacros.h"
 #import "SDJSNavigationAPI.h"
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;

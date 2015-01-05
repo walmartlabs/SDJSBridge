@@ -7,7 +7,7 @@
 //
 
 #import "SDWebViewController.h"
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 #import "SDJSProgressHUDScript.h"
 #import "SDJSBridge.h"
 
@@ -28,7 +28,7 @@
 
 - (void)testShowProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:nil];
     [bridge addScriptObject:api name:@"bridge"];
     api.progressScript.delegate = self;
     
@@ -43,7 +43,7 @@
 
 - (void)testHideProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:nil];
     [bridge addScriptObject:api name:@"bridge"];
     api.progressScript.delegate = self;
     

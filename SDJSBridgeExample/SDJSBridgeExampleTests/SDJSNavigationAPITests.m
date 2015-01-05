@@ -8,7 +8,7 @@
 
 #import "XCTestCase+ExampleAppUtilities.h"
 #import "SDWebViewController.h"
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 #import "SDJSNavigationAPI.h"
 #import "SDJSBridge.h"
 #import "SDJSNavigationBarAPI.h"

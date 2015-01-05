@@ -1,12 +1,12 @@
 //
-//  SDJSTopLevelAPITests.m
+//  SDJSPlatformScriptTests.m
 //  SDJSBridgeExample
 //
 //  Created by Angelo Di Paolo on 12/8/14.
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "XCTestCase+ExampleAppUtilities.h"
@@ -14,25 +14,25 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface SDJSTopLevelAPITests : XCTestCase
+@interface SDJSPlatformScriptTests : XCTestCase
 
 @end
 
-@implementation SDJSTopLevelAPITests
+@implementation SDJSPlatformScriptTests
 
 #pragma mark - Tests
 
 - (void)testInitialization {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:webViewController];
     
-    XCTAssertTrue([api isKindOfClass:[SDJSTopLevelAPI class]]);
+    XCTAssertTrue([api isKindOfClass:[SDJSPlatformScript class]]);
     XCTAssertTrue([webViewController isEqual:api.webViewController]);
 }
 
 - (void)testJavaScriptExports {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:nil];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:nil];
     [bridge addScriptObject:api name:@"bridge"];
     NSDictionary *alertMember = [[bridge evaluateScript:@"bridge.alert"] toObject];
     NSDictionary *showLoadingIndicatorMember = [[bridge evaluateScript:@"bridge.showLoadingIndicator"] toObject];

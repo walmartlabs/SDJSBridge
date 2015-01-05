@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "SDWebViewController.h"
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +25,8 @@
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
     
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSPlatformScriptName];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     self.window.rootViewController = navController;

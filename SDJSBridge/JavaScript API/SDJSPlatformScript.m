@@ -1,29 +1,23 @@
 //
-//  SDJSTopLevelAPI.m
-//  SDJSBridge
+//  SDJSPlatformScript.m
+//  SDJSBridgeExample
 //
-//  Created by Brandon Sneed on 9/22/14.
-//  Copyright (c) 2014 SetDirection. All rights reserved.
+//  Created by Angelo Di Paolo on 1/5/15.
+//  Copyright (c) 2015 SetDirection. All rights reserved.
 //
 
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 
-#import "SDWebViewController.h"
-#import "SDJSAlertScript.h"
-#import "SDJSNavigationScript.h"
-#import "SDJSProgressHUDScript.h"
-#import "SDJSShareScript.h"
+NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 
-NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
-
-@interface SDJSTopLevelAPI ()
+@interface SDJSPlatformScript ()
 
 @property (nonatomic, strong) SDJSAlertScript *alertScript;
 @property (nonatomic, strong) SDJSNavigationScript *navigationScript;
 
 @end
 
-@implementation SDJSTopLevelAPI
+@implementation SDJSPlatformScript
 
 #pragma mark - Web View Controller
 
@@ -35,7 +29,7 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 #pragma mark - Logging API
 
 - (void)logValue:(JSValue *)value {
-    NSLog(@"SDJSTopLevelAPI: %@", value);
+    NSLog(@"SDJSPlatformAPI: %@", value);
 }
 
 #pragma mark - Alert
@@ -68,7 +62,7 @@ NSString * const SDJSTopLevelAPIScriptName = @"JSBridgeAPI";
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
     [self.navigationScript replaceStateWithOptions:options];
-
+    
 }
 
 #pragma mark - Loading Indicator

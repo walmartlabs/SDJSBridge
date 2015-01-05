@@ -24,7 +24,7 @@
 
  Add scripts to the JavaScript context.
 
-     SDJSTopLevelAPI *apiScript = [[SDJSTopLevelAPI alloc] initWithWebViewController:self];
+     SDJSPlatformScript *apiScript = [[SDJSPlatformScript alloc] initWithWebViewController:self];
      [bridge addScriptObject:apiScript name:@"JSBridgeAPI"];
 
  Retrieving scripts from the JavaScript context.

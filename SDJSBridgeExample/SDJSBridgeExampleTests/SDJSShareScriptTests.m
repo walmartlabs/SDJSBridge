@@ -9,7 +9,7 @@
 #import "SDWebViewController.h"
 #import "XCTestCase+ExampleAppUtilities.h"
 #import "SDJSShareScript.h"
-#import "SDJSTopLevelAPI.h"
+#import "SDJSPlatformScript.h"
 
 #import <XCTest/XCTest.h>
 
@@ -31,8 +31,8 @@
 - (void)testShare {
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
     
-    SDJSTopLevelAPI *api = [[SDJSTopLevelAPI alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:api name:SDJSTopLevelAPIScriptName];
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSPlatformScriptName];
     api.shareScript = [[SDJSShareScript alloc] initWithWebViewController:webViewController];
     api.shareScript.delegate = self;
     
