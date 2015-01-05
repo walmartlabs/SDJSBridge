@@ -11,6 +11,7 @@
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
 #import "SDJSShareScript.h"
+#import "SDJSWebDialogScript.h"
 
 extern NSString * const SDJSPlatformScriptName;
 
@@ -33,7 +34,8 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
                                                    SDJSAlertScriptExports,
                                                    SDJSNavigationScriptExports,
                                                    SDJSProgressHUDScriptExports,
-                                                   SDJSShareScriptExports>
+                                                   SDJSShareScriptExports,
+                                                   SDJSWebDialogScriptExports>
 
 /**
  Progress HUD API script.

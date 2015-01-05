@@ -14,6 +14,7 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 
 @property (nonatomic, strong) SDJSAlertScript *alertScript;
 @property (nonatomic, strong) SDJSNavigationScript *navigationScript;
+@property (nonatomic, strong) SDJSWebDialogScript *webDialogScript;
 
 @end
 
@@ -83,7 +84,7 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
     [self.progressScript hide];
 }
 
-#pragma mark - SDJSShareScriptExports
+#pragma mark - Share
 
 - (SDJSShareScript *)shareScript {
     if (!_shareScript) {
@@ -95,6 +96,20 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 
 - (void)shareWithOptions:(NSDictionary *)options {
     [self.shareScript shareWithOptions:options];
+}
+
+#pragma mark - Web Dialog
+
+- (SDJSWebDialogScript *)webDialogScript {
+    if (!_webDialogScript) {
+        _webDialogScript = [[SDJSWebDialogScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _webDialogScript;
+}
+
+- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    
 }
 
 @end
