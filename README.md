@@ -7,7 +7,11 @@ Native/Hybrid Javascript Bridge
 
 See the [documentation](http://setdirection.github.io/SDJSBridge).
 
-## JavaScript API
+# JavaScript API
+
+## SDJSPlatformAPI
+
+Object containing the API for interacting with the platform API.
 
 ### alert
 
@@ -36,7 +40,7 @@ var options = {
     neutralButton: "hmm..."
 };
 
-JSBridgeAPI.alert(options, function (action) {
+SDJSPlatformAPI.alert(options, function (action) {
 
 });
 ```
@@ -60,7 +64,7 @@ var options = {
     message: 'Loading...'
 };
 
-JSBridgeAPI.showLoadingIndicator(options);
+SDJSPlatformAPI.showLoadingIndicator(options);
 ```
 
 ### hideLoadingIndicator
@@ -97,7 +101,7 @@ var options = {
   url: 'example1.html'
 };
 
-JSBridgeAPI.pushState(options);
+SDJSPlatformAPI.pushState(options);
 ```
 
 ### replaceState
@@ -122,7 +126,7 @@ var options = {
   url: 'example2.html'
 };
 
-JSBridgeAPI.replaceState(options);
+SDJSPlatformAPI.replaceState(options);
 ```
 
 ### share
@@ -146,7 +150,7 @@ var options = {
   url: 'http://www.walmart.com/'
 };
 
-JSBridgeAPI.share(options);
+SDJSPlatformAPI.share(options);
 ```
 
 
