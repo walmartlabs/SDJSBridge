@@ -16,6 +16,10 @@
 <button id="progress-show">show</button>
 <button id="progress-hide">hide</button>
 
+<h2>web dialog</h2>
+
+<button id="webdialog">open web dialog</button>
+
 <h2>sharing</h2>
 
 <button id="share">share</button>
@@ -195,4 +199,20 @@ NoClickDelay.prototype = {
             // share complete
         });
     });
+
+    document.getElementById('webdialog').addEventListener('touchend', function() {
+        var options = {
+            title: "Example Title",
+            body: "<html><h1>web dialog page</h1></html>",
+            okButton: "Apply",
+            cancelButton: "Cancel"
+        };
+
+        SDJSPlatformAPI.webDialog(options, function (data) {
+            alert('action is ', data.action);
+        });
+    });
+
+
+    // webdialog
 </script>
