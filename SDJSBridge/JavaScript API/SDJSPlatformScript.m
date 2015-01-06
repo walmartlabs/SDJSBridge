@@ -109,7 +109,7 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 }
 
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    
+    [self.webDialogScript showWebDialogWithOptions:options callback:[self handlerBlockWithCallback:callback]];
 }
 
 @end
