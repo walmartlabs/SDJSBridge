@@ -157,7 +157,7 @@
     return webViewController;
 }
 
-- (id)presentURL:(NSURL *)url title:(NSString *)title
+- (id)presentModalURL:(NSURL *)url title:(NSString *)title
 {
     self.placeholderView.image = [self imageWithView:self.webView];
     
@@ -167,6 +167,25 @@
     [self presentViewController:navigationController animated:YES completion:nil];
     [webViewController loadURL:url];
     return webViewController;
+}
+
+- (id)presentModalHTML:(NSString *)html title:(NSString *)title
+{
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
+    webViewController.title = title;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
+    NSURL *url = [NSURL URLWithString:@"#modal" relativeToURL:self.url];
+    [webViewController.webView loadHTMLString:html baseURL:url];
+    
+    return webViewController;
+}
+
+- (void)dismissModal {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - SDJSBridge

@@ -66,7 +66,7 @@
 
 - (id)presentModalUrl:(NSString *)urlString title:(NSString *)title {
     NSURL *url = [self URLWithURLString:urlString];
-    return [self.webViewController presentURL:url title:title];
+    return [self.webViewController presentModalURL:url title:title];
 }
 
 - (void)dismissModalUrlWithCompletion:(JSValue *)callback  {

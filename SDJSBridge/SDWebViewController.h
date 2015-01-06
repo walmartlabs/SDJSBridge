@@ -155,8 +155,10 @@
  @param title Title of the web view controller. Set as the view controller's
  title property.
  */
-- (id)presentURL:(NSURL *)url title:(NSString *)title;
+- (id)presentModalURL:(NSURL *)url title:(NSString *)title;
 
+- (id)presentModalHTML:(NSString *)html title:(NSString *)title;
+- (void)dismissModal;
 /// @name Interacting with the JS Bridge
 
 /**

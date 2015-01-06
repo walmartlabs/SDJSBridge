@@ -76,7 +76,7 @@
     NSString *expectedTitle = @"Page Two";
     
     SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:[self pageOneURL]];
-    SDWebViewController *newWebViewController = [webViewController presentURL:expectedURL title:expectedTitle];
+    SDWebViewController *newWebViewController = [webViewController presentModalURL:expectedURL title:expectedTitle];
     [self validateNavTestsWithWebViewController:newWebViewController expectedURL:expectedURL expectedTitle:expectedTitle];
 }
 
