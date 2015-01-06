@@ -24,6 +24,8 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
 @interface SDJSWebDialogScript ()
 
 @property (nonatomic, copy) SDBridgeHandlerCallbackBlock callback;
+@property (nonatomic, assign) BOOL shouldHandleAccept;
+@property (nonatomic, weak) SDWebViewController *modalWebViewController;
 
 @end
 
@@ -32,19 +34,26 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
 #pragma mark - Tap Events
 
 - (void)cancelButtonTapped:(id)sender {
+    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+
     [self triggerAction:SDJSWebDialogActionTypeCancel];
 
 }
 
 - (void)okayButtonTapped:(id)sender {
+    if (self.shouldHandleAccept) {
+        [self.modalWebViewController evaluateScript:@"onAccept();"];
+    } else {
+        [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+
     [self triggerAction:SDJSWebDialogActionTypeOk];
 }
 
-#pragma mark -
+#pragma mark - Actions
 
 - (void)triggerAction:(NSString *)action {
-    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
-    
     if (self.callback) {
         self.callback(@{@"action" : action});
     }
@@ -59,6 +68,7 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
     NSString *body = options[SDJSWebDialogScriptBodyKey];
     NSString *cancelTitle = options[SDJSWebDialogScriptCancelButtonKey];
     NSString *okTitle = options[SDJSWebDialogScriptOkButtonKey];
+    self.shouldHandleAccept = [options[SDJSWebDialogScriptHandleAcceptKey] boolValue];
     
     @strongify(self.webViewController, strongWebViewController);
   
@@ -77,6 +87,8 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
                                                                                                    target:self
                                                                                                    action:@selector(okayButtonTapped:)];
     }
+    
+    self.modalWebViewController = modalWebViewController;
 }
 
 @end
