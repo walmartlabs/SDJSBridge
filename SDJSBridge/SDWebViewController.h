@@ -157,8 +157,16 @@
  */
 - (id)presentModalURL:(NSURL *)url title:(NSString *)title;
 
+/// @name Displaying Modal Web View Controllers
+
+/**
+ Present a new modal web view controller that loads the provided HTML.
+ @param html HTML string to load in the web view.
+ @param title Title of the web view controller. Set as the view controller's
+ title property.
+ */
 - (id)presentModalHTML:(NSString *)html title:(NSString *)title;
-- (void)dismissModal;
+
 /// @name Interacting with the JS Bridge
 
 /**
