@@ -41,8 +41,6 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
 #pragma mark - Tap Events
 
 - (void)cancelButtonTapped:(id)sender {
-    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
-
     [self triggerAction:kSDJSWebDialogActionTypeCancel data:nil];
 
 }
@@ -50,10 +48,8 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
 - (void)okayButtonTapped:(id)sender {
     if (self.shouldHandleAccept) {
         [self.modalWebViewController evaluateScript:kSDJSWebDialogHandleAcceptScript];
-    } else {
-        [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+        return;
     }
-    
 
     [self triggerAction:kSDJSWebDialogActionTypeOk data:nil];
 }
@@ -61,6 +57,8 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
 #pragma mark - Actions
 
 - (void)triggerAction:(NSString *)action data:(NSString *)data {
+    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+
     if (self.callback) {
         self.callback(@{kSDJSWebDialogScriptActionKey : action,
                         kSDJSWebDialogScriptDataKey : data ?: [NSNull null]});
