@@ -129,6 +129,39 @@ var options = {
 SDJSPlatformAPI.replaceState(options);
 ```
 
+### webDialog
+
+**Input**
+
+- `title` (string) - Optional dialog title.
+- `body` (string) - Includes html/css/javascript needed to render web page dialog.
+- `okButton` (string) - Title text of OK button.
+- `cancelButton` (string) - Title text of Cancel button.
+- `neutralButton` (string) - Title text of neutral button.
+- `handleAccept` (boolean) -  If true, tapping the positive button doesn’t close the dialog. Instead, it calls onAccept Javascript function that needs to be passed as part of body parameter.
+
+**Output**
+
+- `action` (string)  - Value indicates the button that was pressed: “ok”, “cancel”, “neutral”.
+- `data` (string) -  An arbitrary string passed to close() function if the dialog is closed by Javascript code.
+
+**Example**
+
+```
+var html =  '<h1>web dialog</h1><button onclick="JavaScript:closeDialog();">close</button>';
+
+var options = {
+    title: "Example Title",
+    body: html,
+    okButton: "Apply",
+    cancelButton: "Cancel"
+};
+
+SDJSPlatformAPI.webDialog(options, function (data) {
+
+});
+```
+
 ### share
 
 Display native share action sheet.
