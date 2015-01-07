@@ -11,15 +11,22 @@
 #import "SDJSHandlerScript.h"
 #import "SDMacros.h"
 
-NSString * const SDJSWebDialogScriptTitleKey = @"title";
-NSString * const SDJSWebDialogScriptBodyKey = @"body";
-NSString * const SDJSWebDialogScriptOkButtonKey = @"okButton";
-NSString * const SDJSWebDialogScriptCancelButtonKey = @"cancelButton";
-NSString * const SDJSWebDialogScriptNeutralButtonKey = @"neutralButton";
-NSString * const SDJSWebDialogScriptHandleAcceptKey = @"handleAccept";
-NSString * const SDJSWebDialogActionTypeOk = @"ok";
-NSString * const SDJSWebDialogActionTypeNeutral = @"neutral";
-NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
+static NSString * const kSDJSWebDialogScriptTitleKey = @"title";
+static NSString * const kSDJSWebDialogScriptBodyKey = @"body";
+static NSString * const kSDJSWebDialogScriptOkButtonKey = @"okButton";
+static NSString * const kSDJSWebDialogScriptCancelButtonKey = @"cancelButton";
+static NSString * const kSDJSWebDialogScriptNeutralButtonKey = @"neutralButton";
+static NSString * const kSDJSWebDialogScriptHandleAcceptKey = @"handleAccept";
+static NSString * const kSDJSWebDialogScriptActionKey = @"action";
+static NSString * const kSDJSWebDialogScriptDataKey = @"data";
+
+static NSString * const kSDJSWebDialogActionTypeOk = @"ok";
+static NSString * const kSDJSWebDialogActionTypeNeutral = @"neutral";
+static NSString * const kSDJSWebDialogActionTypeCancel = @"cancel";
+
+static NSString * const kSDJSWebDialogHandleAcceptScript = @"onAccept();";
+static NSString * const kSDJSWebDialogCloseMethodName = @"closeWebDialog";
+static NSString * const kSDJSWebDialogHTMLFormat = @"<body class=\"native-dialog ios\">%@</body>";
 
 @interface SDJSWebDialogScript ()
 
@@ -36,26 +43,27 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
 - (void)cancelButtonTapped:(id)sender {
     [self.webViewController dismissViewControllerAnimated:YES completion:nil];
 
-    [self triggerAction:SDJSWebDialogActionTypeCancel];
+    [self triggerAction:kSDJSWebDialogActionTypeCancel data:nil];
 
 }
 
 - (void)okayButtonTapped:(id)sender {
     if (self.shouldHandleAccept) {
-        [self.modalWebViewController evaluateScript:@"onAccept();"];
+        [self.modalWebViewController evaluateScript:kSDJSWebDialogHandleAcceptScript];
     } else {
         [self.webViewController dismissViewControllerAnimated:YES completion:nil];
     }
     
 
-    [self triggerAction:SDJSWebDialogActionTypeOk];
+    [self triggerAction:kSDJSWebDialogActionTypeOk data:nil];
 }
 
 #pragma mark - Actions
 
-- (void)triggerAction:(NSString *)action {
+- (void)triggerAction:(NSString *)action data:(NSString *)data {
     if (self.callback) {
-        self.callback(@{@"action" : action});
+        self.callback(@{kSDJSWebDialogScriptActionKey : action,
+                        kSDJSWebDialogScriptDataKey : data ?: [NSNull null]});
     }
 }
 
@@ -64,15 +72,16 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
     self.callback = [callback copy];
     
-    NSString *title = options[SDJSWebDialogScriptTitleKey];
-    NSString *body = options[SDJSWebDialogScriptBodyKey];
-    NSString *cancelTitle = options[SDJSWebDialogScriptCancelButtonKey];
-    NSString *okTitle = options[SDJSWebDialogScriptOkButtonKey];
-    self.shouldHandleAccept = [options[SDJSWebDialogScriptHandleAcceptKey] boolValue];
+    NSString *title = options[kSDJSWebDialogScriptTitleKey];
+    NSString *body = options[kSDJSWebDialogScriptBodyKey];
+    NSString *cancelTitle = options[kSDJSWebDialogScriptCancelButtonKey];
+    NSString *okTitle = options[kSDJSWebDialogScriptOkButtonKey];
+    self.shouldHandleAccept = [options[kSDJSWebDialogScriptHandleAcceptKey] boolValue];
     
     @strongify(self.webViewController, strongWebViewController);
-  
-    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:body title:title];
+    
+    NSString *html = [NSString stringWithFormat:kSDJSWebDialogHTMLFormat, body];
+    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:html title:title];
     
     if (cancelTitle) {
         modalWebViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle
@@ -87,6 +96,10 @@ NSString * const SDJSWebDialogActionTypeCancel = @"cancel";
                                                                                                    target:self
                                                                                                    action:@selector(okayButtonTapped:)];
     }
+    
+    [modalWebViewController addScriptMethod:kSDJSWebDialogCloseMethodName block:^(NSString *action, NSString *data) {
+        [self triggerAction:action data:data];
+    }];
     
     self.modalWebViewController = modalWebViewController;
 }
