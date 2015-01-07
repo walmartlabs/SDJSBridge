@@ -112,4 +112,18 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
     [self.webDialogScript showWebDialogWithOptions:options callback:[self handlerBlockWithCallback:callback]];
 }
 
+#pragma mark - Radio Dialog
+
+- (SDJSRadioDialogScript *)radioDialogScript {
+    if (!_radioDialogScript) {
+        _radioDialogScript = [[SDJSRadioDialogScript alloc] initWithWebViewController:self.webViewController];
+    }
+    
+    return _radioDialogScript;
+}
+
+- (void)showRadioDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    
+}
+
 @end
