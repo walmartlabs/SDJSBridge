@@ -10,13 +10,8 @@
 #import "SDWebViewController.h"
 #import "SDJSHandlerScript.h"
 #import "SDMacros.h"
+#import "SDJSWebDialogOptions.h"
 
-static NSString * const kSDJSWebDialogScriptTitleKey = @"title";
-static NSString * const kSDJSWebDialogScriptBodyKey = @"body";
-static NSString * const kSDJSWebDialogScriptOkButtonKey = @"okButton";
-static NSString * const kSDJSWebDialogScriptCancelButtonKey = @"cancelButton";
-static NSString * const kSDJSWebDialogScriptNeutralButtonKey = @"neutralButton";
-static NSString * const kSDJSWebDialogScriptHandleAcceptKey = @"handleAccept";
 static NSString * const kSDJSWebDialogScriptActionKey = @"action";
 static NSString * const kSDJSWebDialogScriptDataKey = @"data";
 
@@ -65,31 +60,25 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
     }
 }
 
-#pragma mark - External API
+#pragma mark - Presenting Modal Web Dialog
 
-- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
-    self.callback = [callback copy];
-    
-    NSString *title = options[kSDJSWebDialogScriptTitleKey];
-    NSString *body = options[kSDJSWebDialogScriptBodyKey];
-    NSString *cancelTitle = options[kSDJSWebDialogScriptCancelButtonKey];
-    NSString *okTitle = options[kSDJSWebDialogScriptOkButtonKey];
-    self.shouldHandleAccept = [options[kSDJSWebDialogScriptHandleAcceptKey] boolValue];
+- (void)showWebDialogWithDialogOptions:(SDJSWebDialogOptions *)dialogOptions {
+    self.shouldHandleAccept = dialogOptions.shouldHandleAccept;
     
     @strongify(self.webViewController, strongWebViewController);
     
-    NSString *html = [NSString stringWithFormat:kSDJSWebDialogHTMLFormat, body];
-    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:html title:title];
+    NSString *html = [NSString stringWithFormat:kSDJSWebDialogHTMLFormat, dialogOptions.body];
+    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:html title:dialogOptions.title];
     
-    if (cancelTitle) {
-        modalWebViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelTitle
+    if (dialogOptions.cancelButtonTitle) {
+        modalWebViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dialogOptions.cancelButtonTitle
                                                                                                    style:UIBarButtonItemStylePlain
                                                                                                   target:self
                                                                                                   action:@selector(cancelButtonTapped:)];
     }
     
-    if (okTitle) {
-        modalWebViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:okTitle
+    if (dialogOptions.okButtonTitle) {
+        modalWebViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dialogOptions.okButtonTitle
                                                                                                     style:UIBarButtonItemStylePlain
                                                                                                    target:self
                                                                                                    action:@selector(okayButtonTapped:)];
@@ -100,6 +89,15 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
     }];
     
     self.modalWebViewController = modalWebViewController;
+}
+
+#pragma mark - External API
+
+- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
+    self.callback = [callback copy];
+    
+    SDJSWebDialogOptions *dialogOptions = [[SDJSWebDialogOptions alloc] initWithDictionary:options];
+    [self showWebDialogWithDialogOptions:dialogOptions];
 }
 
 @end
