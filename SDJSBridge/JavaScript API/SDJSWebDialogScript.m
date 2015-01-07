@@ -25,8 +25,8 @@ static NSString * const kSDJSWebDialogActionTypeNeutral = @"neutral";
 static NSString * const kSDJSWebDialogActionTypeCancel = @"cancel";
 
 static NSString * const kSDJSWebDialogHandleAcceptScript = @"onAccept();";
-static NSString * const kSDJSWebDialogCloseMethodName = @"closeWebDialog";
-static NSString * const kSDJSWebDialogHTMLFormat = @"<body class=\"native-dialog ios\">%@</body>";
+static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
+static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-dialog ios\">%@</body></html>";
 
 @interface SDJSWebDialogScript ()
 

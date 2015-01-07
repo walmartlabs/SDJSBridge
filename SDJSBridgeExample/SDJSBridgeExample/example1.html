@@ -201,9 +201,11 @@ NoClickDelay.prototype = {
     });
 
     document.getElementById('webdialog').addEventListener('touchend', function() {
+        var html =  '<h1>web dialog</h1><button onclick="JavaScript:closeDialog();">close</button>';
+
         var options = {
             title: "Example Title",
-            body: "<html><h1>web dialog page</h1></html>",
+            body: html,
             okButton: "Apply",
             cancelButton: "Cancel"
         };
@@ -213,6 +215,4 @@ NoClickDelay.prototype = {
         });
     });
 
-
-    // webdialog
 </script>
