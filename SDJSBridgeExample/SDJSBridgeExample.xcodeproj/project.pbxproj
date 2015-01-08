@@ -25,6 +25,7 @@
 		17DAAD7C1A5DDE8600554740 /* SDJSWebDialogOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DAAD761A5DDE8600554740 /* SDJSWebDialogOptions.m */; };
 		17DAAD7D1A5DDE8600554740 /* SDJSWebDialogScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DAAD781A5DDE8600554740 /* SDJSWebDialogScript.m */; };
 		17DAAD801A5DDF0100554740 /* SDJSAlertOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17DAAD7F1A5DDF0100554740 /* SDJSAlertOptions.m */; };
+		17E1C4921A5ECF8300D3859B /* SDJSRadioDialogOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17E1C4911A5ECF8300D3859B /* SDJSRadioDialogOptions.m */; };
 		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
 		19377A8C1A3227A700B10CEB /* SDJSShareScriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8B1A3227A700B10CEB /* SDJSShareScriptTests.m */; };
 		19377A8E1A36324100B10CEB /* SDJSProgressAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */; };
@@ -106,6 +107,8 @@
 		17DAAD781A5DDE8600554740 /* SDJSWebDialogScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSWebDialogScript.m; sourceTree = "<group>"; };
 		17DAAD7E1A5DDF0100554740 /* SDJSAlertOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertOptions.h; sourceTree = "<group>"; };
 		17DAAD7F1A5DDF0100554740 /* SDJSAlertOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertOptions.m; sourceTree = "<group>"; };
+		17E1C4901A5ECF8300D3859B /* SDJSRadioDialogOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSRadioDialogOptions.h; sourceTree = "<group>"; };
+		17E1C4911A5ECF8300D3859B /* SDJSRadioDialogOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSRadioDialogOptions.m; sourceTree = "<group>"; };
 		19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareServiceTests.m; sourceTree = "<group>"; };
 		19377A8B1A3227A700B10CEB /* SDJSShareScriptTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareScriptTests.m; sourceTree = "<group>"; };
 		19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPITests.m; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 			children = (
 				17DAAD721A5DDE8600554740 /* SDJSRadioDialogScript.h */,
 				17DAAD731A5DDE8600554740 /* SDJSRadioDialogScript.m */,
+				17E1C4901A5ECF8300D3859B /* SDJSRadioDialogOptions.h */,
+				17E1C4911A5ECF8300D3859B /* SDJSRadioDialogOptions.m */,
 			);
 			path = Radio;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
 				17417FDD1A4DDE2B0077ED4F /* SDJSBridgeScript.m in Sources */,
+				17E1C4921A5ECF8300D3859B /* SDJSRadioDialogOptions.m in Sources */,
 				17DAAD7D1A5DDE8600554740 /* SDJSWebDialogScript.m in Sources */,
 				17DAAD7B1A5DDE8600554740 /* SDJSRadioDialogScript.m in Sources */,
 				1753A57B1A5AE2990011E211 /* SDJSPlatformScript.m in Sources */,

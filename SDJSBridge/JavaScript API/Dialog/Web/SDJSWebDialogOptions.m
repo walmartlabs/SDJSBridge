@@ -13,6 +13,8 @@ static NSString * const kSDJSWebDialogOptionsHandleAcceptKey = @"handleAccept";
 
 @implementation SDJSWebDialogOptions
 
+#pragma mark - Initialization
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if ((self = [super initWithDictionary:dictionary])) {
         _shouldHandleAccept = [dictionary[kSDJSWebDialogOptionsHandleAcceptKey] boolValue];

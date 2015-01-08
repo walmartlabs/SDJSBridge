@@ -27,7 +27,7 @@ static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
 
 @implementation SDJSAlertScript
 
-#pragma mark - Alerts
+#pragma mark - UIAlertView
 
 - (UIAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message buttons:(NSArray *)buttons {
     self.buttons = buttons;

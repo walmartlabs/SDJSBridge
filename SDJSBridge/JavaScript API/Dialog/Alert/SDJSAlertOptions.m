@@ -12,6 +12,8 @@ static NSString * const kSDJSAlertOptionsMessageKey = @"message";
 
 @implementation SDJSAlertOptions
 
+#pragma mark - Initialization
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if ((self = [super initWithDictionary:dictionary])) {
         _message = dictionary[kSDJSAlertOptionsMessageKey];
