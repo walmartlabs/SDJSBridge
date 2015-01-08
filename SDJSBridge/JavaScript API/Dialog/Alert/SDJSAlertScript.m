@@ -12,11 +12,11 @@
 
 #import <UIKit/UIKit.h>
 
-NSString * const SDJSAlertOptionTitleKey = @"title";
-NSString * const SDJSAlertOptionMessageKey = @"title";
-NSString * const SDJSAlertOptionOkButtonKey = @"okButton";
-NSString * const SDJSAlertOptionCancelButtonKey = @"cancelButton";
-NSString * const SDJSAlertOptionNeutralButtonKey = @"neutralButton";
+static NSString * const kSDJSAlertOptionTitleKey = @"title";
+static NSString * const kSDJSAlertOptionMessageKey = @"title";
+static NSString * const kSDJSAlertOptionOkButtonKey = @"okButton";
+static NSString * const kSDJSAlertOptionCancelButtonKey = @"cancelButton";
+static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
 
 @interface SDJSAlertScript ()
 
