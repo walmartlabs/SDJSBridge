@@ -8,6 +8,7 @@
 
 #import "SDJSAlertScript.h"
 #import "SDJSAlertButton.h"
+#import "SDJSAlertOptions.h"
 
 #import <UIKit/UIKit.h>
 
@@ -28,7 +29,9 @@ NSString * const SDJSAlertOptionNeutralButtonKey = @"neutralButton";
 
 #pragma mark - Alerts
 
-- (UIAlertView *)showAlert:(NSString *)title message:(NSString *)message buttons:(NSArray *)buttons {
+- (UIAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message buttons:(NSArray *)buttons {
+    self.buttons = buttons;
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
     
     for (SDJSAlertButton *button in buttons) {
@@ -38,18 +41,31 @@ NSString * const SDJSAlertOptionNeutralButtonKey = @"neutralButton";
     if (!buttons.count) {
         [alert addButtonWithTitle:@"OK"];
     }
-    
-    self.buttons = buttons;
-    
+        
     [alert show];
     return alert;
+}
+
+- (UIAlertView *)showAlertWithAlertOptions:(SDJSAlertOptions *)alertOptions {
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    
+    if (alertOptions.cancelButtonTitle) {
+        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:alertOptions.cancelButtonTitle type:SDJSAlertButtonTypeCancel]];
+    }
+    if (alertOptions.neutralButtonTitle) {
+        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:alertOptions.neutralButtonTitle type:SDJSAlertButtonTypeNeutral]];
+    }
+    if (alertOptions.okButtonTitle) {
+        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:alertOptions.okButtonTitle type:SDJSAlertButtonTypeOk]];
+    }
+    
+    return [self showAlertWithTitle:alertOptions.title message:alertOptions.message buttons:buttons];
 }
 
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     SDJSAlertButton *button = self.buttons[(NSUInteger)buttonIndex];
-    NSLog(@"%@", [button actionType]);
     
     if (self.callback) {
         self.callback([button actionType]);
@@ -61,25 +77,8 @@ NSString * const SDJSAlertOptionNeutralButtonKey = @"neutralButton";
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
     self.callback = [callback copy];
     
-    NSString *title = options[SDJSAlertOptionTitleKey];
-    NSString *message = options[SDJSAlertOptionMessageKey];
-    NSString *okButtonTitle = options[SDJSAlertOptionOkButtonKey];
-    NSString *cancelButtonTitle = options[SDJSAlertOptionCancelButtonKey];
-    NSString *neutralButtonTitle = options[SDJSAlertOptionNeutralButtonKey];
-
-    NSMutableArray *buttons = [[NSMutableArray alloc] init];
-
-    if ([cancelButtonTitle isKindOfClass:[NSString class]]) {
-        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:cancelButtonTitle type:SDJSAlertButtonTypeCancel]];
-    }
-    if ([neutralButtonTitle isKindOfClass:[NSString class]]) {
-        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:neutralButtonTitle type:SDJSAlertButtonTypeNeutral]];
-    }
-    if ([okButtonTitle isKindOfClass:[NSString class]]) {
-        [buttons addObject:[SDJSAlertButton alertButtonWithTitle:okButtonTitle type:SDJSAlertButtonTypeOk]];
-    }
-    
-    [self showAlert:title message:message buttons:buttons];
+    SDJSAlertOptions *alertOptions = [[SDJSAlertOptions alloc] initWithDictionary:options];
+    [self showAlertWithAlertOptions:alertOptions];
 }
 
 @end

@@ -8,9 +8,9 @@
 
 #import "SDJSAlertButton.h"
 
-NSString * const SDJSAlertButtonActionTypeOk = @"ok";
-NSString * const SDJSAlertButtonActionTypeNeutral = @"neutral";
-NSString * const SDJSAlertButtonActionTypeCancel = @"cancel";
+static NSString * const kSDJSAlertButtonActionTypeOk = @"ok";
+static NSString * const kSDJSAlertButtonActionTypeNeutral = @"neutral";
+static NSString * const kSDJSAlertButtonActionTypeCancel = @"cancel";
 
 @implementation SDJSAlertButton
 
@@ -30,13 +30,13 @@ NSString * const SDJSAlertButtonActionTypeCancel = @"cancel";
 - (NSString *)actionType {
     switch (self.buttonType) {
         case SDJSAlertButtonTypeCancel:
-            return SDJSAlertButtonActionTypeCancel;
+            return kSDJSAlertButtonActionTypeCancel;
             break;
         case SDJSAlertButtonTypeNeutral:
-            return SDJSAlertButtonActionTypeNeutral;
+            return kSDJSAlertButtonActionTypeNeutral;
             break;
         case SDJSAlertButtonTypeOk:
-            return SDJSAlertButtonActionTypeOk;
+            return kSDJSAlertButtonActionTypeOk;
             break;
         default:
             return nil;

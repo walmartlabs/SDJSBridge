@@ -8,15 +8,15 @@
 
 #import "SDJSWebDialogOptions.h"
 
-static NSString * const SDJSWebDialogOptionsBodyKey = @"body";
-static NSString * const SDJSWebDialogOptionsHandleAcceptKey = @"handleAccept";
+static NSString * const kSDJSWebDialogOptionsBodyKey = @"body";
+static NSString * const kSDJSWebDialogOptionsHandleAcceptKey = @"handleAccept";
 
 @implementation SDJSWebDialogOptions
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if ((self = [super initWithDictionary:dictionary])) {
-        _shouldHandleAccept = [dictionary[SDJSWebDialogOptionsHandleAcceptKey] boolValue];
-        _body = dictionary[SDJSWebDialogOptionsBodyKey];
+        _shouldHandleAccept = [dictionary[kSDJSWebDialogOptionsHandleAcceptKey] boolValue];
+        _body = dictionary[kSDJSWebDialogOptionsBodyKey];
     }
     
     return self;
