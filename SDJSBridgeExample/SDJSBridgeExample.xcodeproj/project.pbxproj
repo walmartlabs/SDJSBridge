@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171DE2C81A60639100533480 /* SDJSBridgeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 171DE2C71A60639100533480 /* SDJSBridgeInfo.m */; };
 		17417FDC1A4DDE2B0077ED4F /* SDJSBridgeResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FC51A4DDE2B0077ED4F /* SDJSBridgeResponder.m */; };
 		17417FDD1A4DDE2B0077ED4F /* SDJSBridgeScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FC71A4DDE2B0077ED4F /* SDJSBridgeScript.m */; };
 		17417FDE1A4DDE2B0077ED4F /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17417FC91A4DDE2B0077ED4F /* SDJSHandlerScript.m */; };
@@ -71,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171DE2C61A60639100533480 /* SDJSBridgeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeInfo.h; sourceTree = "<group>"; };
+		171DE2C71A60639100533480 /* SDJSBridgeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeInfo.m; sourceTree = "<group>"; };
 		17417FC41A4DDE2B0077ED4F /* SDJSBridgeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeResponder.h; sourceTree = "<group>"; };
 		17417FC51A4DDE2B0077ED4F /* SDJSBridgeResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponder.m; sourceTree = "<group>"; };
 		17417FC61A4DDE2B0077ED4F /* SDJSBridgeScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeScript.h; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				17417FD41A4DDE2B0077ED4F /* SDJSProgressHUDScript.m */,
 				1753A5791A5AE2990011E211 /* SDJSPlatformScript.h */,
 				1753A57A1A5AE2990011E211 /* SDJSPlatformScript.m */,
+				171DE2C61A60639100533480 /* SDJSBridgeInfo.h */,
+				171DE2C71A60639100533480 /* SDJSBridgeInfo.m */,
 			);
 			path = "JavaScript API";
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				17417FDC1A4DDE2B0077ED4F /* SDJSBridgeResponder.m in Sources */,
 				17417FE11A4DDE2B0077ED4F /* SDJSNavigationItem.m in Sources */,
 				17417FDE1A4DDE2B0077ED4F /* SDJSHandlerScript.m in Sources */,
+				171DE2C81A60639100533480 /* SDJSBridgeInfo.m in Sources */,
 				17417FE51A4DDE2B0077ED4F /* SDJSShareService.m in Sources */,
 				17DAAD7A1A5DDE8600554740 /* SDJSAlertScript.m in Sources */,
 				17417FDF1A4DDE2B0077ED4F /* SDJSNavigationAPI.m in Sources */,
