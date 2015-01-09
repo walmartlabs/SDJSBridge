@@ -12,6 +12,10 @@
 
 @implementation SDJSBridgeInfo
 
++ (instancetype)bridgeInfoWithAPILevel:(NSUInteger)apiLevel {
+    return [[self alloc] initWithAPILevel:apiLevel];
+}
+
 - (instancetype)initWithAPILevel:(NSUInteger)apiLevel {
     if ((self = [super init])) {
         _apiLevel = apiLevel;

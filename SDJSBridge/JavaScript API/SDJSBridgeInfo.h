@@ -23,4 +23,7 @@
 @property (nonatomic, copy, readonly) NSString *osVersion;
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
++ (instancetype)bridgeInfoWithAPILevel:(NSUInteger)apiLevel;
+- (instancetype)initWithAPILevel:(NSUInteger)apiLevel;
+
 @end
