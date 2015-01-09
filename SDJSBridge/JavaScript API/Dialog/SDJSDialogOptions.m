@@ -17,10 +17,10 @@ static NSString * const kSDJSDialogOptionsNeutralButtonKey = @"neutralButton";
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if ((self = [super init])) {
-        _title = kSDJSDialogOptionsTitleKey;
-        _okButtonTitle = kSDJSDialogOptionsOkayButtonKey;
-        _cancelButtonTitle = kSDJSDialogOptionsCancelButtonKey;
-        _neutralButtonTitle = kSDJSDialogOptionsNeutralButtonKey;
+        _title = dictionary[kSDJSDialogOptionsTitleKey];
+        _okButtonTitle = dictionary[kSDJSDialogOptionsOkayButtonKey];
+        _cancelButtonTitle = dictionary[kSDJSDialogOptionsCancelButtonKey];
+        _neutralButtonTitle = dictionary[kSDJSDialogOptionsNeutralButtonKey];
     }
     
     return self;
