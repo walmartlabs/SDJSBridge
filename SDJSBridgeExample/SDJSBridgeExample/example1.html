@@ -1,6 +1,8 @@
 <!doctype html5>
 <h1>page 1</h1>
 
+<button id="bridge-version">bridge version</button>
+
 <h2>navigation</h2>
 
 <button id="push-state">push state</button>
@@ -83,6 +85,11 @@ NoClickDelay.prototype = {
         }
     }
 };
+    document.getElementById('bridge-version').addEventListener('touchend', function () {
+        var bridgeInfo = SDJSPlatformAPI.info();
+
+        alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
+    });
 
     document.getElementById('push-state').addEventListener('touchend', function () {
         var options = {
