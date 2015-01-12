@@ -21,7 +21,6 @@ static NSString * const kSDJSWebDialogActionTypeCancel = @"cancel";
 
 static NSString * const kSDJSWebDialogHandleAcceptScript = @"onAccept();";
 static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
-static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-dialog ios\">%@</body></html>";
 
 @interface SDJSWebDialogScript ()
 
@@ -67,8 +66,7 @@ static NSString * const kSDJSWebDialogHTMLFormat = @"<html><body class=\"native-
     
     @strongify(self.webViewController, strongWebViewController);
     
-    NSString *html = [NSString stringWithFormat:kSDJSWebDialogHTMLFormat, dialogOptions.body];
-    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:html title:dialogOptions.title];
+    SDWebViewController *modalWebViewController = [strongWebViewController presentModalHTML:dialogOptions.content title:dialogOptions.title];
     
     if (dialogOptions.cancelButtonTitle) {
         modalWebViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:dialogOptions.cancelButtonTitle

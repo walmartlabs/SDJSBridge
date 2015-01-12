@@ -10,7 +10,7 @@
 
 @interface SDJSWebDialogOptions : SDJSDialogOptions
 
-@property (nonatomic, copy, readonly) NSString *body;
+@property (nonatomic, copy, readonly) NSString *content;
 @property (nonatomic, assign, readonly) BOOL shouldHandleAccept;
 
 @end
