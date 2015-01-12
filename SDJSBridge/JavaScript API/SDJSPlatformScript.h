@@ -30,14 +30,15 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
 
 @end
 
-
 @interface SDJSPlatformScript : SDJSHandlerScript <SDJSPlatformScriptExports,
                                                    SDJSAlertScriptExports,
                                                    SDJSNavigationScriptExports,
                                                    SDJSProgressHUDScriptExports,
                                                    SDJSShareScriptExports,
                                                    SDJSWebDialogScriptExports,
-                                                   SDJSRadioDialogScriptExports>
+                                                   SDJSRadioDialogScriptExports,
+                                                   SDJSBridgeScriptVersionExports>
+/// @name Script Properties
 
 /**
  Progress HUD API script.
@@ -58,6 +59,5 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
  @param value Value to log out in the console.
  */
 - (void)logValue:(JSValue *)value;
-
 
 @end

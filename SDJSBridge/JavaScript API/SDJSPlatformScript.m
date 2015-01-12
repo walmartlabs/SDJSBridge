@@ -7,8 +7,10 @@
 //
 
 #import "SDJSPlatformScript.h"
+#import "SDJSBridgeInfo.h"
 
 NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
+static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 @interface SDJSPlatformScript ()
 
@@ -31,6 +33,12 @@ NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 
 - (void)logValue:(JSValue *)value {
     NSLog(@"SDJSPlatformAPI: %@", value);
+}
+
+#pragma mark - SDJSBridgeScriptVersionExports
+
+- (SDJSBridgeInfo *)info {
+    return [SDJSBridgeInfo bridgeInfoWithAPILevel:kSDJSPlatformScriptVersionNumber];
 }
 
 #pragma mark - Alert
