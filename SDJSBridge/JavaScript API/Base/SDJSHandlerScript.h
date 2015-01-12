@@ -21,14 +21,14 @@ typedef void (^SDBridgeHandlerBlock)(JSValue *data, SDBridgeHandlerCallbackBlock
 @end
 
 
-@protocol SDJSBridgeScriptExports <JSExport>
+@protocol SDJSHandlerScriptExports <JSExport>
 
 JSExportAs(callHandler, - (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback);
 
 @end
 
 
-@interface SDJSHandlerScript : SDJSBridgeScript <SDJSBridgeScriptExports>
+@interface SDJSHandlerScript : SDJSBridgeScript <SDJSHandlerScriptExports>
 
 /// @name Handler API
 
