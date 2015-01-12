@@ -7,8 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @class SDWebViewController;
+@class SDJSBridgeInfo;
+
+/**
+ JavaScript export protocol for providing version information
+ of a script.
+ */
+@protocol SDJSBridgeScriptVersionExports <JSExport>
+
+- (SDJSBridgeInfo *)info;
+
+@end
 
 /**
  An abstract class for creating a JavaScript bridge script that interacts with
@@ -21,7 +33,7 @@
  */
 @property (nonatomic, weak) SDWebViewController *webViewController;
 
-/// @name Initializaing a Bridge Script
+/// @name Initializing a Bridge Script
 
 /**
  Create a new bridge script with weak reference to a parent web view controller.
