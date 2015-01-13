@@ -1,5 +1,8 @@
 <!doctype html5>
+
 <h1>page 2</h1>
+
+<button id="bridge-version">bridge version</button>
 
 <h2>navigation</h2>
 
@@ -9,7 +12,6 @@
 <h2>alerts</h2>
 
 <button id="alerts-show">show alert</button>
-<button id="alerts-action">show alert with actions</button>
 
 <h2>progress</h2>
 
@@ -20,199 +22,81 @@
 
 <button id="webdialog">open web dialog</button>
 
-<h2>sharing</h2>
-
-<button id="share">share</button>
-<button id="share-exclusions">share with exclusions</button>
-
-<h1>legacy API</h2>
-
-<h2>navigation</h2>
-
-<button id="pop">pop</button>
-<button id="modal">present modal</button>
-<button id="dismiss">dismiss modal</button>
-
-<h2>navigation items</h2>
-
-<button id="navitem-add">add right items</button>
-<button id="navitem-remove">remove right item</button>
-<button id="navitem-removeall">remove all right items</button>
-
 <a href="example2.html" id="test-href">page two</a>
 
 <script>
-    function NoClickDelay(el) {
-        this.element = el;
-        if( window.Touch ) this.element.addEventListener('touchstart', this, false);
-    }
+  // info
 
-NoClickDelay.prototype = {
-    handleEvent: function(e) {
-        switch(e.type) {
-            case 'touchstart': this.onTouchStart(e); break;
-            case 'touchmove': this.onTouchMove(e); break;
-            case 'touchend': this.onTouchEnd(e); break;
-        }
-    },
+  document.getElementById('bridge-version').addEventListener('click', function() {
+    var bridgeInfo = SDJSPlatformAPI.info();
 
-    onTouchStart: function(e) {
-        e.preventDefault();
-        this.moved = false;
+    alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
+  });
 
-        this.element.addEventListener('touchmove', this, false);
-        this.element.addEventListener('touchend', this, false);
-    },
+  // pushState/replaceState
 
-    onTouchMove: function(e) {
-        this.moved = true;
-    },
+  document.getElementById('push-state').addEventListener('click', function() {
+    var options = {
+      title: 'title page',
+      url: 'example2.html'
+    };
 
-    onTouchEnd: function(e) {
-        this.element.removeEventListener('touchmove', this, false);
-        this.element.removeEventListener('touchend', this, false);
+    SDJSPlatformAPI.pushState(options);
+  });
 
-        if( !this.moved ) {
-            // Place your code here or use the click simulation below
-            var theTarget = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
-            if(theTarget.nodeType == 3) theTarget = theTarget.parentNode;
+  document.getElementById('replace-state').addEventListener('click', function() {
+    var options = {
+      title: 'title page',
+      url: 'example2.html'
+    };
 
-            var theEvent = document.createEvent('MouseEvents');
-            theEvent.initEvent('click', true, true);
-            theTarget.dispatchEvent(theEvent);
-        }
-    }
-};
+    SDJSPlatformAPI.replaceState(options);
+  });
 
-    document.getElementById('push-state').addEventListener('touchend', function () {
-        var options = {
-            title: 'title page',
-            url: 'example1.html'
-        };
+  // alert
 
-        SDJSPlatformAPI.pushState(options);
+  document.getElementById('alerts-show').addEventListener('click', function() {
+    var alertOptions = {
+      message: "hello",
+      title: "hey! listen!",
+      okButton: "OKAY",
+      cancelButton: "CANCEL",
+      neutralButton: "hmm..."
+    };
+
+    SDJSPlatformAPI.alert(alertOptions, function(data) {
+      SDJSPlatformAPI.log(data);
     });
-    document.getElementById('replace-state').addEventListener('touchend', function() {
-        var options = {
-            title: 'title page',
-            url: 'example2.html'
-        };
+  });
 
-        SDJSPlatformAPI.replaceState(options);
+  // showLoadingIndicator/hideLoadingIndicator
+
+  document.getElementById('progress-show').addEventListener('click', function() {
+    var options = {
+      message: 'Loading...'
+    };
+
+    SDJSPlatformAPI.showLoadingIndicator(options);
+  });
+
+  document.getElementById('progress-hide').addEventListener('click', function() {
+    SDJSPlatformAPI.hideLoadingIndicator();
+  });
+
+  // webDialog
+
+  document.getElementById('webdialog').addEventListener('touchend', function(e) {
+    var content = '<h1>web dialog</h1><button onclick="JavaScript:closeDialog();">close</button>';
+
+    var options = {
+      title: "Example Title",
+      content: content,
+      okButton: "Apply",
+      cancelButton: "Cancel"
+    };
+
+    SDJSPlatformAPI.webDialog(options, function(data) {
+      alert('action is ' + data.action);
     });
-
-    document.getElementById('pop').addEventListener('touchend', function() {
-        SDJSPlatformAPI.platform().navigation().popUrl();
-    });
-
-    document.getElementById('modal').addEventListener('touchend', function() {
-        SDJSPlatformAPI.platform().navigation().presentModalUrl('example1.html', 'Modal Title');
-    });
-    document.getElementById('dismiss').addEventListener('touchend', function() {
-        SDJSPlatformAPI.platform().navigation().dismissModalUrl();
-    });
-    document.getElementById('navitem-add').addEventListener('touchend', function() {
-        var navigation = SDJSPlatformAPI.platform().navigation();
-
-        var navItemOne = navigation.NavigationItem("One", null, function () {
-            alert('One tapped!');
-        });
-
-        var navItemTwo = navigation.NavigationItem("Two", null, function () {
-            alert('Two tapped!');
-        });
-
-        navigation.navigationBar().setRightItems([navItemTwo, navItemOne]);
-    });
-    document.getElementById('navitem-remove').addEventListener('touchend', function() {
-        var navigation = SDJSPlatformAPI.platform().navigation();
-        var rightItems = navigation.navigationBar().rightItems();
-
-        if (rightItems.length === 1) {
-            navigation.navigationBar().setRightItems(null);
-        } else {
-            var remainingItems = rightItems.splice(rightItems.length - 1, 1);
-            navigation.navigationBar().setRightItems(remainingItems);
-        }
-    });
-    document.getElementById('navitem-removeall').addEventListener('touchend', function() {
-        SDJSPlatformAPI.platform().navigation().navigationBar().setRightItems(null);
-    });
-
-    document.getElementById('alerts-show').addEventListener('touchend', function() {
-        var alertOptions = {
-            message: "hello",
-            title: "hey! listen!",
-            okButton: "OKAY",
-            cancelButton: "CANCEL",
-            neutralButton: "hmm..."
-        };
-
-        SDJSPlatformAPI.alert(alertOptions, function (data) {
-            SDJSPlatformAPI.log(data);
-        });
-    });
-
-    document.getElementById('alerts-action').addEventListener('touchend', function() {
-        var okAction = SDJSPlatformAPI.platform().AlertAction("Yes!", function () {
-            alert('Yes tapped!');
-        });
-
-        var cancelAction = SDJSPlatformAPI.platform().AlertAction("Cancel", function () {
-            alert('Cancel tapped!');
-        });
-
-        var actions = [cancelAction, okAction];
-
-        SDJSPlatformAPI.platform().alert("Not found", "Continue?", actions);
-    });
-
-
-    document.getElementById('progress-show').addEventListener('touchend', function() {
-        var options = {
-            message: 'Loading...'
-        };
-
-        SDJSPlatformAPI.showLoadingIndicator(options);
-    });
-    document.getElementById('progress-hide').addEventListener('touchend', function() {
-        SDJSPlatformAPI.hideLoadingIndicator();
-    });
-
-    document.getElementById('share').addEventListener('touchend', function() {
-        var options = {
-            url: "http://www.walmart.com/",
-            message: "Check out this great deal!"
-        };
-
-        SDJSPlatformAPI.share(options);
-    });
-
-    document.getElementById('share-exclusions').addEventListener('touchend', function() {
-        var ShareService = SDJSPlatformAPI.platform().ShareService();
-        var excludedServices = [ShareService.Facebook, ShareService.Mail];
-
-        var url = "http://www.walmart.com/";
-        var message = "Check out this great deal!"
-
-        SDJSPlatformAPI.platform().share(url, message, excludedServices, function () {
-            // share complete
-        });
-    });
-
-    document.getElementById('webdialog').addEventListener('touchend', function() {
-        var options = {
-            title: "Example Title",
-            body: "<html><h1>web dialog page</h1></html>",
-            okButton: "Apply",
-            cancelButton: "Cancel"
-        };
-
-        SDJSPlatformAPI.webDialog(options, function (data) {
-            alert('action is ' + data.action);
-        });
-    });
-
-
-    // webdialog
+  });
 </script>
