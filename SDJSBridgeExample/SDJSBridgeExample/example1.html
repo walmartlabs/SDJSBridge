@@ -2,9 +2,14 @@
 
 <h1>page 1</h1>
 
-<button id="bridge-version">bridge version</button>
+<h2>handler API</h2>
+
 <button id="register-handler">register handler</button>
 <button id="call-handler">call handler</button>
+
+<h2>versioning</h2>
+
+<button id="bridge-version">bridge version</button>
 
 <h2>navigation</h2>
 
@@ -28,13 +33,7 @@
 
 <script>
 
-  // info
-
-  document.getElementById('bridge-version').addEventListener('click', function() {
-    var bridgeInfo = SDJSPlatformAPI.info();
-
-    alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
-  });
+  // handler API
 
   document.getElementById('register-handler').addEventListener('click', function() {
     SDJSPlatformAPI.registerHandler('customHandler', function (data, callback) {
@@ -50,6 +49,14 @@
     SDJSPlatformAPI.callHandler('customHandler', options, function (data) {
 
     });
+  });
+
+  // info
+
+  document.getElementById('bridge-version').addEventListener('click', function() {
+    var bridgeInfo = SDJSPlatformAPI.info();
+
+    alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
   });
 
   // pushState/replaceState

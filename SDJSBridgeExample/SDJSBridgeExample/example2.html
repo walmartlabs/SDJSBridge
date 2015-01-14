@@ -2,6 +2,13 @@
 
 <h1>page 2</h1>
 
+<h2>handler API</h2>
+
+<button id="register-handler">register handler</button>
+<button id="call-handler">call handler</button>
+
+<h2>versioning</h2>
+
 <button id="bridge-version">bridge version</button>
 
 <h2>navigation</h2>
@@ -25,6 +32,25 @@
 <a href="example2.html" id="test-href">page two</a>
 
 <script>
+
+  // handler API
+
+  document.getElementById('register-handler').addEventListener('click', function() {
+    SDJSPlatformAPI.registerHandler('customHandler', function (data, callback) {
+      alert(data.message);
+      callback();
+    });
+
+  });
+
+  document.getElementById('call-handler').addEventListener('click', function() {
+    var options = {message: "Hello"};
+
+    SDJSPlatformAPI.callHandler('customHandler', options, function (data) {
+
+    });
+  });
+
   // info
 
   document.getElementById('bridge-version').addEventListener('click', function() {
