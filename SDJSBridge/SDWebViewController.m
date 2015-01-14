@@ -9,8 +9,7 @@
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "SDMacros.h"
-#import "SDJSNavigationAPI.h"
-#import "SDJSPlatformScript.h"
+#import "SDJSHandlerScript.h"
 
 @interface SDWebViewController () <UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
@@ -19,6 +18,7 @@
 @property (nonatomic, assign) BOOL sharedWebView;
 @property (nonatomic, strong) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
+@property (nonatomic, weak) SDJSHandlerScript *handlerScript;
 
 @end
 
@@ -50,7 +50,7 @@
 
         if (!_bridge)
         {
-            _bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+            [self loadBridge];
         }
     }
     
@@ -185,6 +185,19 @@
 }
 
 #pragma mark - SDJSBridge
+
+- (void)loadBridge {
+    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+    
+    [self loadHandlerScript];
+}
+
+- (void)loadHandlerScript {
+    // handler JS API
+    SDJSHandlerScript *handlerScript = [[SDJSHandlerScript alloc] initWithWebViewController:self];
+    [self.bridge addScriptObject:handlerScript name:SDJSHandlerScriptName];
+    self.handlerScript = handlerScript;
+}
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
 {
@@ -352,7 +365,8 @@
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
         _webView.delegate = self;
-        self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        
+        [self loadBridge];
     }
 
     return _webView;

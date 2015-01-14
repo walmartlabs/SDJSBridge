@@ -10,7 +10,6 @@
 
 #import "SDWebViewController.h"
 #import "SDJSPlatformScript.h"
-#import "SDJSHandlerScript.h"
 
 @interface AppDelegate ()
 
@@ -29,10 +28,6 @@
     // add platform API script
     SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:webViewController];
     [webViewController addScriptObject:api name:SDJSPlatformScriptName];
-    
-    // add handler API script
-    SDJSHandlerScript *handlerScript = [[SDJSHandlerScript alloc] initWithWebViewController:webViewController];
-    [webViewController addScriptObject:handlerScript name:SDJSHandlerScriptName];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     self.window.rootViewController = navController;
