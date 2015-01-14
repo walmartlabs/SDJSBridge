@@ -10,6 +10,8 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
+extern NSString * const SDJSHandlerScriptName;
+
 typedef void (^SDBridgeHandlerOutputBlock)(id data);
 typedef void (^SDBridgeHandlerBlock)(id data, SDBridgeHandlerOutputBlock callback);
 
@@ -45,6 +47,5 @@ JSExportAs(registerHandler, - (void)registerHandlerWithName:(NSString *)handlerN
  the output block gets sent back to JavaScript as part of the handler callback.
  */
 - (void)callHandlerWithName:(NSString *)handlerName data:(id)data outputBlock:(SDBridgeHandlerOutputBlock)outputBlock;
-- (SDBridgeHandlerOutputBlock)handlerBlockWithCallback:(JSValue *)callback;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "SDJSHandlerScript.h"
 
+NSString * const SDJSHandlerScriptName = @"WebViewJavascriptBridge";
+
 @interface SDJSHandlerScript ()
 
 @property (nonatomic, strong) NSMutableDictionary *handlers;
@@ -15,15 +17,6 @@
 @end
 
 @implementation SDJSHandlerScript
-
-#pragma mark - Bridge Callback Block
-
-- (SDBridgeHandlerOutputBlock)handlerBlockWithCallback:(JSValue *)callback {
-    return ^(id outputData) {
-        NSArray *arguments = outputData == nil ? nil : @[outputData];
-        [callback callWithArguments:arguments];
-    };
-}
 
 #pragma mark - Handler API
 
