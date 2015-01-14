@@ -11,7 +11,10 @@
 #import "SDMacros.h"
 #import "SDJSHandlerScript.h"
 
+NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
+
 @interface SDWebViewController () <UIWebViewDelegate>
+
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
 @property (nonatomic, strong) NSTimer *loadTimer;
@@ -286,6 +289,8 @@
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.title = title;
     self.webView.hidden = NO;
+    
+    [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
     
     @strongify(self.delegate, strongDelegate);
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])

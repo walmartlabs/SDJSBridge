@@ -13,6 +13,8 @@
 
 @class SDWebViewController;
 
+extern NSString * const SDJSPageFinishedHandlerName;
+
 /**
  A protocol for handling SDWebViewController events.
  */
