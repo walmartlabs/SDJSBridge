@@ -48,4 +48,6 @@ JSExportAs(registerHandler, - (void)registerHandlerWithName:(NSString *)handlerN
  */
 - (void)callHandlerWithName:(NSString *)handlerName data:(id)data outputBlock:(SDBridgeHandlerOutputBlock)outputBlock;
 
+- (void)callHandlerWithName:(NSString *)handlerName data:(id)data;
+
 @end

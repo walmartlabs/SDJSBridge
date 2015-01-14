@@ -28,6 +28,10 @@ NSString * const SDJSHandlerScriptName = @"WebViewJavascriptBridge";
     self.handlers[handlerName] = [handler copy];
 }
 
+- (void)callHandlerWithName:(NSString *)handlerName data:(id)data {
+    [self callHandlerWithName:handlerName data:data outputBlock:nil];
+}
+
 - (void)callHandlerWithName:(NSString *)handlerName data:(id)data outputBlock:(SDBridgeHandlerOutputBlock)outputBlock {
     SDBridgeHandlerBlock handler = self.handlers[handlerName];
     
