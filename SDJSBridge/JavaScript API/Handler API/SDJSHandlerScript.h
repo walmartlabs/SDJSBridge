@@ -48,6 +48,12 @@ JSExportAs(registerHandler, - (void)registerHandlerWithName:(NSString *)handlerN
  */
 - (void)callHandlerWithName:(NSString *)handlerName data:(id)data outputBlock:(SDBridgeHandlerOutputBlock)outputBlock;
 
+/**
+ Call a JavaScript handler.
+ @param handlerName Name of handler.
+ @param data Parameter data for handler.
+ the output block gets sent back to JavaScript as part of the handler callback.
+ */
 - (void)callHandlerWithName:(NSString *)handlerName data:(id)data;
 
 @end
