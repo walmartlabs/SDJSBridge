@@ -8,6 +8,7 @@
 
 #import "SDJSPlatformScript.h"
 #import "SDJSBridgeInfo.h"
+#import "SDJSBridgeScript+HandlerHelpers.h"
 
 NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
 static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
@@ -52,7 +53,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    [self.alertScript showAlertWithOptions:options callback:[self handlerBlockWithCallback:callback]];
+    [self.alertScript showAlertWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
 }
 
 #pragma mark - Navigation
@@ -117,7 +118,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    [self.webDialogScript showWebDialogWithOptions:options callback:[self handlerBlockWithCallback:callback]];
+    [self.webDialogScript showWebDialogWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
 }
 
 #pragma mark - Radio Dialog
