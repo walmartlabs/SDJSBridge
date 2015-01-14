@@ -7,6 +7,8 @@
 //
 
 #import "SDJSHandlerScript.h"
+#import "SDJSBridgeScript+HandlerHelpers.m"
+#import "SDMacros.h"
 
 NSString * const SDJSHandlerScriptName = @"WebViewJavascriptBridge";
 
@@ -43,16 +45,27 @@ NSString * const SDJSHandlerScriptName = @"WebViewJavascriptBridge";
 #pragma mark - SDJSHandlerScriptExports
 
 - (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback {
+    @weakify(self);
+    
     [self callHandlerWithName:handlerName data:[data toObject] outputBlock:^(id outputData) {
-        NSArray *arguments = outputData == nil ? nil : @[outputData];
-        [callback callWithArguments:arguments];
+        @strongify(self);
+        [callback callWithArguments:[self argumentsWithOutputData:data]];
     }];
 }
 
 - (void)registerHandlerWithName:(NSString *)handlerName jsHandler:(JSValue *)jsHandler {
+    @weakify(self);
+    
     [self registerHandlerWithName:handlerName handler:^(id data, SDBridgeHandlerOutputBlock callback) {
-        [jsHandler callWithArguments:@[data]];
+        @strongify(self);
+        [jsHandler callWithArguments:[self argumentsWithOutputData:data]];
     }];
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)argumentsWithOutputData:(id)outputData {
+    return outputData == nil ? nil : @[outputData];
 }
 
 @end
