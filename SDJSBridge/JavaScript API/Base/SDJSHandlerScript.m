@@ -18,7 +18,7 @@
 
 #pragma mark - Bridge Callback Block
 
-- (SDBridgeHandlerCallbackBlock)handlerBlockWithCallback:(JSValue *)callback {
+- (SDBridgeHandlerOutputBlock)handlerBlockWithCallback:(JSValue *)callback {
     return ^(id outputData) {
         NSArray *arguments = outputData == nil ? nil : @[outputData];
         [callback callWithArguments:arguments];
@@ -35,15 +35,27 @@
     self.handlers[handlerName] = [handler copy];
 }
 
-- (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback {
+- (void)callHandlerWithName:(NSString *)handlerName data:(id)data outputBlock:(SDBridgeHandlerOutputBlock)outputBlock {
     SDBridgeHandlerBlock handler = self.handlers[handlerName];
     
-    SDBridgeHandlerCallbackBlock callbackBlock = ^(id outputData) {
+    if (handler) {
+        handler(data, outputBlock);
+    }
+}
+
+#pragma mark - SDJSHandlerScriptExports
+
+- (void)callHandlerWithName:(NSString *)handlerName data:(JSValue *)data callback:(JSValue *)callback {
+    [self callHandlerWithName:handlerName data:[data toObject] outputBlock:^(id outputData) {
         NSArray *arguments = outputData == nil ? nil : @[outputData];
         [callback callWithArguments:arguments];
-    };
-    
-    handler(data, callbackBlock);
+    }];
+}
+
+- (void)registerHandlerWithName:(NSString *)handlerName jsHandler:(JSValue *)jsHandler {
+    [self registerHandlerWithName:handlerName handler:^(id data, SDBridgeHandlerOutputBlock callback) {
+        [jsHandler callWithArguments:@[data]];
+    }];
 }
 
 @end

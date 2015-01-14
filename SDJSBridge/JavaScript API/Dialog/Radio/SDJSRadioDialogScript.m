@@ -25,7 +25,7 @@ static NSString * const kSDJSRadioDialogScriptSelectedItemsKey = @"selectedItems
 
 #pragma mark - External API
 
-- (void)showRadioDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
+- (void)showRadioDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback {
     
 }
 

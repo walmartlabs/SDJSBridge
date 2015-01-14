@@ -17,6 +17,6 @@ JSExportAs(webDialog, - (void)showWebDialogWithOptions:(NSDictionary *)options c
 
 @interface SDJSWebDialogScript : SDJSBridgeScript
 
-- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback;
+- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback;
 
 @end

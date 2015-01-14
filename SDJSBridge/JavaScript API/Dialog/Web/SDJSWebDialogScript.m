@@ -24,7 +24,7 @@ static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
 
 @interface SDJSWebDialogScript ()
 
-@property (nonatomic, copy) SDBridgeHandlerCallbackBlock callback;
+@property (nonatomic, copy) SDBridgeHandlerOutputBlock callback;
 @property (nonatomic, assign) BOOL shouldHandleAccept;
 @property (nonatomic, weak) SDWebViewController *modalWebViewController;
 
@@ -91,7 +91,7 @@ static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
 
 #pragma mark - External API
 
-- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
+- (void)showWebDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback {
     self.callback = [callback copy];
     
     SDJSWebDialogOptions *dialogOptions = [[SDJSWebDialogOptions alloc] initWithDictionary:options];

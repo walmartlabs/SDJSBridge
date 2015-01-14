@@ -21,7 +21,7 @@ static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
 @interface SDJSAlertScript ()
 
 @property (nonatomic, copy) NSArray *buttons;
-@property (nonatomic, copy) SDBridgeHandlerCallbackBlock callback;
+@property (nonatomic, copy) SDBridgeHandlerOutputBlock callback;
 
 @end
 
@@ -74,7 +74,7 @@ static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
 
 #pragma mark - External API
 
-- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback {
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback {
     self.callback = [callback copy];
     
     SDJSAlertOptions *alertOptions = [[SDJSAlertOptions alloc] initWithDictionary:options];

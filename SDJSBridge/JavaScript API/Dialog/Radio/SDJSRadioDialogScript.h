@@ -24,6 +24,6 @@ JSExportAs(radioDialog, - (void)showRadioDialogWithOptions:(NSDictionary *)optio
 
 @interface SDJSRadioDialogScript : SDJSBridgeScript
 
-- (void)showRadioDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerCallbackBlock)callback;
+- (void)showRadioDialogWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback;
 
 @end
