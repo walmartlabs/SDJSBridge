@@ -3,15 +3,75 @@ SDJSBridge
 
 Native/Hybrid Javascript Bridge
 
-## Documentation
-
-See the [documentation](http://setdirection.github.io/SDJSBridge).
-
 # JavaScript API
 
-## SDJSPlatformAPI
+- Handler API - low-level API for registering and calling handlers.
+- Platform API - API for native iOS features
 
-Object containing the API for interacting with the platform API.
+## Handler API
+
+The Handler API is contained in the `WebViewJavascriptBridge` namespace.
+
+### registerHandler
+
+Register a native handler.
+
+**Parameters**
+
+- `handlerName` (string) - Name of handler to register.
+- `callback` (function(data)) - Callback function to execute when the handler is called.
+
+**Example**
+
+```
+WebViewJavascriptBridge.registerHandler('customAlert', function (data) {
+  var message = data.message;
+  alert(message);
+});
+```
+
+### callHandler
+
+Call a native handler.
+
+**Parameters**
+
+- `handlerName` (string) - Name of handler
+- `data` (object) - Parameters of handler
+- `callback` (function(data)) - Callback function that is called after handler execution has finished.
+
+**Example**
+
+```
+var options = {message: "Hello"};
+
+WebViewJavascriptBridge.callHandler('customAlert', options, function (data) {
+
+});
+```
+
+## Platform API
+  
+The Platform API is contained in the `SDJSPlatformAPI` namespace.
+
+### info
+
+Method returns platform information such as OS name, version, and API level.
+
+**Input**
+
+- `osName` (string) - OS name.
+- `osVersion` (string) - OS version.
+- `osName` (number) - Bridge API level supported by native platform.
+
+**Example**
+
+```
+var info = SDJSPlatformAPI.info();
+
+alert('bridge is running on ' + info.osName + ' ' + info.osVersion +
+      '. Platform API v' + info.apiLevel);
+```
 
 ### alert
 
@@ -161,30 +221,3 @@ SDJSPlatformAPI.webDialog(options, function (data) {
 
 });
 ```
-
-### share
-
-Display native share action sheet.
-
-**Input**
-
-- `url` (string) - URL to share.
-- `message` (string) - Optional message text to share.
-
-**Output**
-
-No Callback.
-
-**Example**
-
-```
-var options = {
-  message: 'Check out this great deal!',
-  url: 'http://www.walmart.com/'
-};
-
-SDJSPlatformAPI.share(options);
-```
-
-
-
