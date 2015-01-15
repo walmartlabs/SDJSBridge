@@ -131,7 +131,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)initializeController
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.webView.hidden = YES;
+    
+    if (self.webView.loading) {
+        self.webView.hidden = YES;
+    }
 }
 
 #pragma mark - URLs
@@ -156,7 +159,11 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     [self.navigationController pushViewController:webViewController animated:YES];
-    [webViewController loadURL:url];
+    
+    if (url) {
+        [webViewController loadURL:url];
+    }
+    
     return webViewController;
 }
 
