@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 SetDirection. All rights reserved.
 //
 
-#import "SDJSBridgeScript.h"
+#import "SDJSHandlerScript.h"
 #import "SDJSAlertScript.h"
 #import "SDJSNavigationScript.h"
 #import "SDJSProgressHUDScript.h"
@@ -30,14 +30,14 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
 
 @end
 
-@interface SDJSPlatformScript : SDJSBridgeScript <SDJSPlatformScriptExports,
-                                                  SDJSAlertScriptExports,
-                                                  SDJSNavigationScriptExports,
-                                                  SDJSProgressHUDScriptExports,
-                                                  SDJSShareScriptExports,
-                                                  SDJSWebDialogScriptExports,
-                                                  SDJSRadioDialogScriptExports,
-                                                  SDJSBridgeScriptVersionExports>
+@interface SDJSPlatformScript : SDJSHandlerScript <SDJSPlatformScriptExports,
+                                                   SDJSAlertScriptExports,
+                                                   SDJSNavigationScriptExports,
+                                                   SDJSProgressHUDScriptExports,
+                                                   SDJSShareScriptExports,
+                                                   SDJSWebDialogScriptExports,
+                                                   SDJSRadioDialogScriptExports,
+                                                   SDJSBridgeScriptVersionExports>
 /// @name Script Properties
 
 /**

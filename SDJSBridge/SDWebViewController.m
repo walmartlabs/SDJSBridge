@@ -197,21 +197,16 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 #pragma mark - SDJSBridge
 
 - (void)loadBridge {
-    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
-    
-    [self loadHandlerScript];
-}
-
-- (void)loadHandlerScript {
-    // handler JS API
-    SDJSHandlerScript *handlerScript = [[SDJSHandlerScript alloc] initWithWebViewController:self];
-    [self.bridge addScriptObject:handlerScript name:SDJSHandlerScriptName];
-    self.handlerScript = handlerScript;
+    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];    
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
 {
     [self.bridge addScriptObject:object name:name];
+    
+    if ([object isKindOfClass:[SDJSHandlerScript class]]) {
+        self.handlerScript = (SDJSHandlerScript *)object;
+    }
 }
 
 - (void)addScriptMethod:(NSString *)name block:(id)block

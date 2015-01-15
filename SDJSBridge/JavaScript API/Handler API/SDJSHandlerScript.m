@@ -10,8 +10,6 @@
 #import "SDJSBridgeScript+HandlerHelpers.m"
 #import "SDMacros.h"
 
-NSString * const SDJSHandlerScriptName = @"WebViewJavascriptBridge";
-
 @interface SDJSHandlerScript ()
 
 @property (nonatomic, strong) NSMutableDictionary *handlers;

@@ -10,8 +10,6 @@ Native/Hybrid Javascript Bridge
 
 ## Handler API
 
-The Handler API is contained in the `WebViewJavascriptBridge` namespace.
-
 ### registerHandler
 
 Register a native handler.
@@ -51,8 +49,6 @@ WebViewJavascriptBridge.callHandler('customAlert', options, function (data) {
 ```
 
 ## Platform API
-  
-The Platform API is contained in the `SDJSPlatformAPI` namespace.
 
 ### info
 
@@ -67,7 +63,7 @@ Method returns platform information such as OS name, version, and API level.
 **Example**
 
 ```
-var info = SDJSPlatformAPI.info();
+var info = WebViewJavascriptBridge.info();
 
 alert('bridge is running on ' + info.osName + ' ' + info.osVersion +
       '. Platform API v' + info.apiLevel);
@@ -100,7 +96,7 @@ var options = {
     neutralButton: "hmm..."
 };
 
-SDJSPlatformAPI.alert(options, function (action) {
+WebViewJavascriptBridge.alert(options, function (action) {
 
 });
 ```
@@ -124,7 +120,7 @@ var options = {
     message: 'Loading...'
 };
 
-SDJSPlatformAPI.showLoadingIndicator(options);
+WebViewJavascriptBridge.showLoadingIndicator(options);
 ```
 
 ### hideLoadingIndicator
@@ -161,7 +157,7 @@ var options = {
   url: 'example1.html'
 };
 
-SDJSPlatformAPI.pushState(options);
+WebViewJavascriptBridge.pushState(options);
 ```
 
 ### replaceState
@@ -186,7 +182,7 @@ var options = {
   url: 'example2.html'
 };
 
-SDJSPlatformAPI.replaceState(options);
+WebViewJavascriptBridge.replaceState(options);
 ```
 
 ### webDialog
@@ -217,7 +213,7 @@ var options = {
     cancelButton: "Cancel"
 };
 
-SDJSPlatformAPI.webDialog(options, function (data) {
+WebViewJavascriptBridge.webDialog(options, function (data) {
 
 });
 ```

@@ -10,7 +10,7 @@
 #import "SDJSBridgeInfo.h"
 #import "SDJSBridgeScript+HandlerHelpers.h"
 
-NSString * const SDJSPlatformScriptName = @"SDJSPlatformAPI";
+NSString * const SDJSPlatformScriptName = @"WebViewJavascriptBridge";
 static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 @interface SDJSPlatformScript ()

@@ -10,8 +10,6 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
-extern NSString * const SDJSHandlerScriptName;
-
 typedef void (^SDBridgeHandlerOutputBlock)(id data);
 typedef void (^SDBridgeHandlerBlock)(id data, SDBridgeHandlerOutputBlock callback);
 

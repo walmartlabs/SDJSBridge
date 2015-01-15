@@ -54,7 +54,7 @@
   // info
 
   document.getElementById('bridge-version').addEventListener('click', function() {
-    var bridgeInfo = SDJSPlatformAPI.info();
+    var bridgeInfo = WebViewJavascriptBridge.info();
 
     alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
   });
@@ -64,10 +64,9 @@
   document.getElementById('push-state').addEventListener('click', function() {
     var options = {
       title: 'title page',
-      backTitle: 'last page'
     };
 
-    SDJSPlatformAPI.pushState(options);
+    WebViewJavascriptBridge.pushState(options);
   });
 
   document.getElementById('replace-state').addEventListener('click', function() {
@@ -75,7 +74,7 @@
       title: 'replace state'
     };
 
-    SDJSPlatformAPI.replaceState(options);
+    WebViewJavascriptBridge.replaceState(options);
   });
 
   // alert
@@ -89,8 +88,8 @@
       neutralButton: "hmm..."
     };
 
-    SDJSPlatformAPI.alert(alertOptions, function(data) {
-      SDJSPlatformAPI.log(data);
+    WebViewJavascriptBridge.alert(alertOptions, function(data) {
+      WebViewJavascriptBridge.log(data);
     });
   });
 
@@ -101,11 +100,11 @@
       message: 'Loading...'
     };
 
-    SDJSPlatformAPI.showLoadingIndicator(options);
+    WebViewJavascriptBridge.showLoadingIndicator(options);
   });
 
   document.getElementById('progress-hide').addEventListener('click', function() {
-    SDJSPlatformAPI.hideLoadingIndicator();
+    WebViewJavascriptBridge.hideLoadingIndicator();
   });
 
   // webDialog
@@ -120,7 +119,7 @@
       cancelButton: "Cancel"
     };
 
-    SDJSPlatformAPI.webDialog(options, function(data) {
+    WebViewJavascriptBridge.webDialog(options, function(data) {
       alert('action is ' + data.action);
     });
   });
