@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 171F45FB1A6843B300B0386E /* SDJSDate.m */; };
 		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
 		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
 		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171F45FA1A6843B300B0386E /* SDJSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDate.h; sourceTree = "<group>"; };
+		171F45FB1A6843B300B0386E /* SDJSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDate.m; sourceTree = "<group>"; };
 		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
 		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
 		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				17B5AA201A670139004465F1 /* SDJSBridgeResponder.m */,
 				17B5AA211A670139004465F1 /* SDJSBridgeScript.h */,
 				17B5AA221A670139004465F1 /* SDJSBridgeScript.m */,
+				171F45FA1A6843B300B0386E /* SDJSDate.h */,
+				171F45FB1A6843B300B0386E /* SDJSDate.m */,
 			);
 			path = "JavaScript API";
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				17B5AA2D1A670139004465F1 /* SDJSNavigationAPI.m in Sources */,
 				17B5AA321A670139004465F1 /* SDJSProgressHUDScript.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */,
 				17B5AA301A670139004465F1 /* SDJSNavigationScript.m in Sources */,
 				17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */,
 				17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */,
