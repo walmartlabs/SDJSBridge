@@ -9,6 +9,7 @@
 #import "SDJSNavigationScript.h"
 #import "SDJSHandlerScript.h"
 #import "SDWebViewController.h"
+#import "SDMacros.h"
 
 NSString * const SDJSNavigationScriptTitleKey = @"title";
 NSString * const SDJSNavigationScriptBackTitleKey = @"backTitle";
@@ -37,10 +38,17 @@ NSString * const SDJSNavigationScriptURLKey = @"url";
 }
 
 - (void)loadURL:(NSString *)urlString title:(NSString *)title backTitle:(NSString *)backTitle {
-    NSURL *url = [self URLWithURLString:urlString];
-    [self.webViewController loadURL:url];
+    @strongify(self.webViewController, strongWebViewController);
+    
+    if (urlString) {
+        NSURL *url = [self URLWithURLString:urlString];
+        [strongWebViewController loadURL:url];
+    }
+    
+    if (title) {
+        strongWebViewController.title = title;
+    }
 }
-
 
 #pragma mark - External API
 
