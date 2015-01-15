@@ -287,7 +287,11 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    self.title = title;
+ 
+    if (title.length) {
+        self.title = title;
+    }
+    
     self.webView.hidden = NO;
     
     [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
