@@ -18,7 +18,7 @@
  */
 @protocol SDJSBridgeScriptVersionExports <JSExport>
 
-- (SDJSBridgeInfo *)info;
+JSExportAs(info, - (void)bridgeInfoWithOptions:(NSDictionary *)options callback:(JSValue *)callback);
 
 @end
 

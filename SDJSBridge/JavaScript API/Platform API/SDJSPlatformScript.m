@@ -38,8 +38,8 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 #pragma mark - SDJSBridgeScriptVersionExports
 
-- (SDJSBridgeInfo *)info {
-    return [SDJSBridgeInfo bridgeInfoWithAPILevel:kSDJSPlatformScriptVersionNumber];
+- (void)bridgeInfoWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    [callback callWithArguments:@[[SDJSBridgeInfo bridgeInfoWithAPILevel:kSDJSPlatformScriptVersionNumber]]];
 }
 
 #pragma mark - Alert
