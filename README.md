@@ -217,3 +217,29 @@ WebViewJavascriptBridge.webDialog(options, function (data) {
 
 });
 ```
+
+### datePicker
+
+Show date picker.
+
+**Input**
+
+- `year` (number)
+- `month` (number) - number from 0 to 11
+- `day` (number) - number from 1 to 31
+
+**Output**
+
+- `year` (number)
+- `month` (number) - number from 0 to 11
+- `day` (number) - number from 1 to 31
+
+**Example**
+
+```
+var options = {year : 2015, month: 3, day: 15};
+
+WebViewJavascriptBridge.datePicker(options, function (selectedDate) {
+    alert('date selected is ' + selectedDate.month + '/' + selectedDate.day + '/' + selectedDate.year);
+});
+```

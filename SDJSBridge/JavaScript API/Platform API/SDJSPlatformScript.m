@@ -135,4 +135,19 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
     
 }
 
+#pragma mark - Date Picker
+
+- (SDJSDatePickerScript *)datePickerScript {
+    if (!_datePickerScript) {
+        _datePickerScript = [[SDJSDatePickerScript alloc] init];
+    }
+    
+    return _datePickerScript;
+}
+
+- (void)presentDatePickerWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    [self.datePickerScript presentDatePickerWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+}
+
+
 @end

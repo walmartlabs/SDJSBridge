@@ -13,6 +13,7 @@
 #import "SDJSShareScript.h"
 #import "SDJSWebDialogScript.h"
 #import "SDJSRadioDialogScript.h"
+#import "SDJSDatePickerScript.h"
 
 extern NSString * const SDJSPlatformScriptName;
 
@@ -37,7 +38,8 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
                                                    SDJSShareScriptExports,
                                                    SDJSWebDialogScriptExports,
                                                    SDJSRadioDialogScriptExports,
-                                                   SDJSBridgeScriptVersionExports>
+                                                   SDJSBridgeScriptVersionExports,
+                                                   SDJSDatePickerScriptExports>
 /// @name Script Properties
 
 /**
@@ -50,7 +52,13 @@ JSExportAs(log, - (void)logValue:(JSValue *)value);
  */
 @property (nonatomic, strong) SDJSShareScript *shareScript;
 
+/**
+ Date picker API script.
+ */
+@property (nonatomic, strong) SDJSDatePickerScript *datePickerScript;
+
 @property (nonatomic, strong) SDJSRadioDialogScript *radioDialogScript;
+
 
 /// @name Logging JavaScript Values
 

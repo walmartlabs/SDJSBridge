@@ -1,6 +1,6 @@
 <!doctype html5>
 
-<h1>page 1</h1>
+<h1>page 2</h1>
 
 <h2>handler API</h2>
 
@@ -29,9 +29,21 @@
 
 <button id="webdialog">open web dialog</button>
 
+<h2>date picker</h2>
+
+<button id="date-picker">select date</button>
+
+
 <a href="example2.html" id="test-href">page two</a>
 
 <script>
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    WebViewJavascriptBridge.registerHandler('pageFinished', function (data) {
+      alert('page finished');
+    });
+
+  });
 
   // handler API
 
@@ -54,9 +66,9 @@
   // info
 
   document.getElementById('bridge-version').addEventListener('click', function() {
-    var bridgeInfo = WebViewJavascriptBridge.info();
-
-    alert('bridge is running on ' + bridgeInfo.osName + ' ' + bridgeInfo.osVersion + '. Platform API v' + bridgeInfo.apiLevel);
+    WebViewJavascriptBridge.info(null, function(info) {
+      alert('bridge is running on ' + info.osName + ' ' + info.osVersion + '. Platform API v' + info.apiLevel)
+    });
   });
 
   // pushState/replaceState
@@ -123,4 +135,15 @@
       alert('action is ' + data.action);
     });
   });
+
+  // date picker
+
+  document.getElementById('date-picker').addEventListener('click', function() {
+    var options = {year : 2014, month: 2, day: 15};
+
+    WebViewJavascriptBridge.datePicker(options, function (date) {
+        alert('date selected is ' + date.month + '/' + date.day + '/' + date.year);
+    });
+  });
+
 </script>
