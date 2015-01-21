@@ -40,7 +40,7 @@
     self.shareURL = [NSURL URLWithString:shareURLString];
     self.shareMessage = @"Check out this great deal!";
     
-    NSString *format = @"JSBridgeAPI.share({url: '%@', message: '%@'});";
+    NSString *format = @"WebViewJavascriptBridge.share({url: '%@', message: '%@'});";
     NSString *script = [NSString stringWithFormat:format, shareURLString, self.shareMessage];
 
     [webViewController evaluateScript:script];

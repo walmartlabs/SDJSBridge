@@ -29,11 +29,11 @@
 - (void)testShowProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:nil];
-    [bridge addScriptObject:api name:@"bridge"];
+    [bridge addScriptObject:api name:SDJSPlatformScriptName];
     api.progressScript.delegate = self;
     
     NSString *originalMessage = @"One moment please...";
-    NSString *format = @"bridge.showLoadingIndicator({message: '%@'});";
+    NSString *format = @"WebViewJavascriptBridge.showLoadingIndicator({message: '%@'});";
     NSString *script = [NSString stringWithFormat:format, originalMessage];
     [bridge evaluateScript:script];
     
@@ -44,10 +44,10 @@
 - (void)testHideProgress {
     SDJSBridge *bridge = [[SDJSBridge alloc] init];
     SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:nil];
-    [bridge addScriptObject:api name:@"bridge"];
+    [bridge addScriptObject:api name:SDJSPlatformScriptName];
     api.progressScript.delegate = self;
     
-    NSString *script = @"brige.hideLoadingIndicator();";
+    NSString *script = @"WebViewJavascriptBridge.hideLoadingIndicator();";
     [bridge evaluateScript:script];
     
     XCTAssertTrue(self.isHideCalled);
