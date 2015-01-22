@@ -15,6 +15,7 @@
 
 <button id="push-state">push state</button>
 <button id="replace-state">replace state</button>
+<button id="back">back</button>
 
 <h2>alerts</h2>
 
@@ -71,11 +72,12 @@
     });
   });
 
-  // pushState/replaceState
+  // navigation
 
   document.getElementById('push-state').addEventListener('click', function() {
     var options = {
       title: 'title page',
+      shareText: 'this is a great item'
     };
 
     WebViewJavascriptBridge.pushState(options);
@@ -89,6 +91,9 @@
     WebViewJavascriptBridge.replaceState(options);
   });
 
+  document.getElementById('back').addEventListener('click', function() {
+    WebViewJavascriptBridge.back();
+  });
   // alert
 
   document.getElementById('alerts-show').addEventListener('click', function() {
