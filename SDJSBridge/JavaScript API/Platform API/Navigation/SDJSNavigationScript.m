@@ -110,4 +110,8 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
     [self loadURL:urlString title:title backTitle:backTitle];
 }
 
+- (void)back {
+    [self.webViewController.navigationController popViewControllerAnimated:YES];
+}
+
 @end

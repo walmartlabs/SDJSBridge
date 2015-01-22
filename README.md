@@ -185,6 +185,24 @@ var options = {
 WebViewJavascriptBridge.replaceState(options);
 ```
 
+### back
+
+Pops the navigation stack to the previous view controller.
+
+**Input**
+
+No input.
+
+**Output**
+
+No Callback.
+
+**Example**
+
+```
+WebViewJavascriptBridge.back();
+```
+
 ### webDialog
 
 **Input**
