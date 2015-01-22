@@ -11,9 +11,18 @@
 #import "SDWebViewController.h"
 #import "SDMacros.h"
 
-NSString * const SDJSNavigationScriptTitleKey = @"title";
-NSString * const SDJSNavigationScriptBackTitleKey = @"backTitle";
-NSString * const SDJSNavigationScriptURLKey = @"url";
+NSString * const kSDJSNavigationScriptTitleKey = @"title";
+NSString * const kSDJSNavigationScriptBackTitleKey = @"backTitle";
+NSString * const kSDJSNavigationScriptURLKey = @"url";
+NSString * const kSDJSNavigationScriptShareTextKey = @"shareText";
+NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
+
+@interface SDJSNavigationScript ()
+
+@property (nonatomic, copy) NSString *shareTitle;
+@property (nonatomic, copy) NSString *shareText;
+
+@end
 
 @implementation SDJSNavigationScript
 
@@ -50,20 +59,53 @@ NSString * const SDJSNavigationScriptURLKey = @"url";
     }
 }
 
+#pragma mark - Share
+
+- (void)shareTapped:(id)sender {
+    NSArray *items = nil;
+    
+    if (self.shareTitle.length && self.shareText.length) {
+        items = @[self.shareText, self.shareTitle];
+    } else {
+        items = @[self.shareText];
+    }
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
+                                                                                         applicationActivities:nil];
+    [self.webViewController presentViewController:activityViewController animated:YES completion:nil];
+}
+
 #pragma mark - External API
 
 - (void)pushStateWithOptions:(NSDictionary *)options {
-    NSString *title = options[SDJSNavigationScriptTitleKey];
-    NSString *backTitle = options[SDJSNavigationScriptBackTitleKey];
-    NSString *urlString = options[SDJSNavigationScriptURLKey];
+    NSString *title = options[kSDJSNavigationScriptTitleKey];
+    NSString *backTitle = options[kSDJSNavigationScriptBackTitleKey];
+    NSString *urlString = options[kSDJSNavigationScriptURLKey];
+    NSURL *url = [self URLWithURLString:urlString];
+
+    SDWebViewController *webViewController = [self.webViewController pushURL:url title:title];
+   
+    if (backTitle.length) {
+        webViewController.navigationItem.backBarButtonItem.title = backTitle;
+    }
     
-    [self pushURL:urlString title:title backTitle:backTitle];
+    // add share button
+    self.shareText = options[kSDJSNavigationScriptShareTextKey];
+    self.shareTitle = options[kSDJSNavigationScriptShareTitleKey];
+    
+    
+    if (self.shareText.length) {
+        UIBarButtonItem *shareItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                   target:self
+                                                                                   action:@selector(shareTapped:)];
+        webViewController.navigationItem.rightBarButtonItem = shareItem;
+    }
 }
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
-    NSString *title = options[SDJSNavigationScriptTitleKey];
-    NSString *backTitle = options[SDJSNavigationScriptBackTitleKey];
-    NSString *urlString = options[SDJSNavigationScriptURLKey];
+    NSString *title = options[kSDJSNavigationScriptTitleKey];
+    NSString *backTitle = options[kSDJSNavigationScriptBackTitleKey];
+    NSString *urlString = options[kSDJSNavigationScriptURLKey];
     
     [self loadURL:urlString title:title backTitle:backTitle];
 }
