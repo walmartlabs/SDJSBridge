@@ -75,6 +75,10 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
     
 }
 
+- (void)back {
+    [self.navigationScript back];
+}
+
 #pragma mark - Loading Indicator
 
 - (SDJSProgressHUDScript *)progressScript {

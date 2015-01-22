@@ -14,6 +14,7 @@
 
 JSExportAs(pushState, - (void)pushStateWithOptions:(NSDictionary *)options);
 JSExportAs(replaceState, - (void)replaceStateWithOptions:(NSDictionary *)options);
+- (void)back;
 
 @end
 
@@ -21,5 +22,6 @@ JSExportAs(replaceState, - (void)replaceStateWithOptions:(NSDictionary *)options
 
 - (void)pushStateWithOptions:(NSDictionary *)options;
 - (void)replaceStateWithOptions:(NSDictionary *)options;
+- (void)back;
 
 @end
