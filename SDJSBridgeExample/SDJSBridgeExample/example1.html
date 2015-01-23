@@ -67,9 +67,8 @@
   // info
 
   document.getElementById('bridge-version').addEventListener('click', function() {
-    WebViewJavascriptBridge.info(null, function(info) {
-      alert('bridge is running on ' + info.osName + ' ' + info.osVersion + '. Platform API v' + info.apiLevel)
-    });
+    var info = WebViewJavascriptBridge.info();
+    alert('bridge is running on ' + info.osName + ' ' + info.osVersion + '. Platform API v' + info.apiLevel)
   });
 
   // navigation
