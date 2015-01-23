@@ -103,6 +103,11 @@ extern NSString * const SDJSPageFinishedHandlerName;
  */
 @property (nonatomic, readonly) UIWebView *webView;
 
+/**
+ User agent string to use for web view requests.
+ */
+@property (nonatomic, copy) NSString *defaultUserAgent;
+
 /// @name Creating Web View Controllers
 
 /**
