@@ -147,7 +147,14 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)loadURL:(NSURL *)url
 {
     self.currentURL = url;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
+    
+    if (self.defaultUserAgent.length) {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.currentURL];
+        [request setValue:self.defaultUserAgent forHTTPHeaderField:@"User-Agent"];
+        [self.webView loadRequest:request];
+    } else {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
+    }
 }
 
 #pragma mark - Navigation
