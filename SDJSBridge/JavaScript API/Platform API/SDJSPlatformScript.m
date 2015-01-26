@@ -28,6 +28,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 - (void)setWebViewController:(SDWebViewController *)webViewController {
     [super setWebViewController:webViewController];
     _alertScript.webViewController = webViewController;
+    _navigationScript.webViewController = webViewController;
 }
 
 #pragma mark - Logging API
