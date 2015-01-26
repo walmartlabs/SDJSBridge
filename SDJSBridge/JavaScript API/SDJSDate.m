@@ -46,6 +46,10 @@ NSString * const kSDJSDateDayKey = @"day";
 
 - (instancetype)initWithDate:(NSDate *)date {
     if ((self = [super init])) {
+        if (date == nil) {
+            return nil;
+        }
+        
         NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                                                            fromDate:date];
         _year = @([dateComponents year]);
