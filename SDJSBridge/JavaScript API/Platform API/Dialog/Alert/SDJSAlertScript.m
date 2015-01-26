@@ -9,14 +9,9 @@
 #import "SDJSAlertScript.h"
 #import "SDJSAlertButton.h"
 #import "SDJSAlertOptions.h"
+#import "SDJSAlertScriptOutput.h"
 
 #import <UIKit/UIKit.h>
-
-static NSString * const kSDJSAlertOptionTitleKey = @"title";
-static NSString * const kSDJSAlertOptionMessageKey = @"title";
-static NSString * const kSDJSAlertOptionOkButtonKey = @"okButton";
-static NSString * const kSDJSAlertOptionCancelButtonKey = @"cancelButton";
-static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
 
 @interface SDJSAlertScript ()
 
@@ -68,7 +63,8 @@ static NSString * const kSDJSAlertOptionNeutralButtonKey = @"neutralButton";
     SDJSAlertButton *button = self.buttons[(NSUInteger)buttonIndex];
     
     if (self.callback) {
-        self.callback([button actionType]);
+        SDJSAlertScriptOutput *scriptOutput = [[SDJSAlertScriptOutput alloc] initWithAction:[button actionType]];
+        self.callback(scriptOutput);
     }
 }
 
