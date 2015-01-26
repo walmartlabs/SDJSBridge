@@ -153,5 +153,4 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
     [self.datePickerScript presentDatePickerWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
 }
 
-
 @end

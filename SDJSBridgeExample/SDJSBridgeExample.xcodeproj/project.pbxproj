@@ -14,6 +14,7 @@
 		1723A0961A6D85F100200488 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08F1A6D85F100200488 /* SDLog.m */; };
 		1723A0971A6D85F100200488 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0911A6D85F100200488 /* SDPickerView.m */; };
 		1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */; };
+		177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */; };
 		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
 		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
 		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
@@ -88,6 +89,8 @@
 		1723A0911A6D85F100200488 /* SDPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPickerView.m; sourceTree = "<group>"; };
 		1723A0921A6D85F100200488 /* UIColor+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtensions.h"; sourceTree = "<group>"; };
 		1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
+		177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScriptOutput.h; sourceTree = "<group>"; };
+		177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScriptOutput.m; sourceTree = "<group>"; };
 		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
 		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
 		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				17B5A9FC1A670139004465F1 /* SDJSAlertOptions.m */,
 				17B5A9FD1A670139004465F1 /* SDJSAlertScript.h */,
 				17B5A9FE1A670139004465F1 /* SDJSAlertScript.m */,
+				177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */,
+				177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -532,6 +537,7 @@
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */,
 				17B5AA301A670139004465F1 /* SDJSNavigationScript.m in Sources */,
+				177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */,
 				17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */,
 				1723A0881A6D7FF900200488 /* SDJSDatePickerScript.m in Sources */,
 				17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */,
