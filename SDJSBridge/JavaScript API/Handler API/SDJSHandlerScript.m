@@ -7,7 +7,7 @@
 //
 
 #import "SDJSHandlerScript.h"
-#import "SDJSBridgeScript+HandlerHelpers.m"
+#import "SDJSBridgeScript+HandlerHelpers.h"
 #import "SDMacros.h"
 
 @interface SDJSHandlerScript ()
