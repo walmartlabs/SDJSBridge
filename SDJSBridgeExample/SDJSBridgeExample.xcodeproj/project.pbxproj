@@ -7,13 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 171F45FB1A6843B300B0386E /* SDJSDate.m */; };
+		1723A0881A6D7FF900200488 /* SDJSDatePickerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */; };
+		1723A0941A6D85F100200488 /* NSData+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */; };
+		1723A0951A6D85F100200488 /* NSString+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */; };
+		1723A0961A6D85F100200488 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08F1A6D85F100200488 /* SDLog.m */; };
+		1723A0971A6D85F100200488 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0911A6D85F100200488 /* SDPickerView.m */; };
+		1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */; };
+		177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */; };
+		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
+		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
+		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
+		17B5AA261A670139004465F1 /* SDJSAlertOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FC1A670139004465F1 /* SDJSAlertOptions.m */; };
+		17B5AA271A670139004465F1 /* SDJSAlertScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FE1A670139004465F1 /* SDJSAlertScript.m */; };
+		17B5AA281A670139004465F1 /* SDJSRadioDialogOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA011A670139004465F1 /* SDJSRadioDialogOptions.m */; };
+		17B5AA291A670139004465F1 /* SDJSRadioDialogScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA031A670139004465F1 /* SDJSRadioDialogScript.m */; };
+		17B5AA2A1A670139004465F1 /* SDJSDialogOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA051A670139004465F1 /* SDJSDialogOptions.m */; };
+		17B5AA2B1A670139004465F1 /* SDJSWebDialogOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA081A670139004465F1 /* SDJSWebDialogOptions.m */; };
+		17B5AA2C1A670139004465F1 /* SDJSWebDialogScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA0A1A670139004465F1 /* SDJSWebDialogScript.m */; };
+		17B5AA301A670139004465F1 /* SDJSNavigationScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA131A670139004465F1 /* SDJSNavigationScript.m */; };
+		17B5AA311A670139004465F1 /* SDJSPlatformScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA151A670139004465F1 /* SDJSPlatformScript.m */; };
+		17B5AA321A670139004465F1 /* SDJSProgressHUDScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA171A670139004465F1 /* SDJSProgressHUDScript.m */; };
+		17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA1A1A670139004465F1 /* SDJSShareScript.m */; };
+		17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA1C1A670139004465F1 /* SDJSShareService.m */; };
+		17B5AA351A670139004465F1 /* SDJSBridgeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA1E1A670139004465F1 /* SDJSBridgeInfo.m */; };
+		17B5AA361A670139004465F1 /* SDJSBridgeResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA201A670139004465F1 /* SDJSBridgeResponder.m */; };
+		17B5AA371A670139004465F1 /* SDJSBridgeScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5AA221A670139004465F1 /* SDJSBridgeScript.m */; };
+		19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */; };
+		19377A8C1A3227A700B10CEB /* SDJSShareScriptTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8B1A3227A700B10CEB /* SDJSShareScriptTests.m */; };
+		19377A8E1A36324100B10CEB /* SDJSProgressAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */; };
+		19377A901A36364900B10CEB /* SDJSTopLevelAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */; };
+		19377A921A3742B700B10CEB /* SDJSBridgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A911A3742B700B10CEB /* SDJSBridgeTests.m */; };
+		19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */; };
+		196650541A02C04300AAC405 /* example1.html in Resources */ = {isa = PBXBuildFile; fileRef = 196650531A02C04300AAC405 /* example1.html */; };
+		196C1F301A2CF14F008E7FD3 /* example2.html in Resources */ = {isa = PBXBuildFile; fileRef = 196C1F2F1A2CF14F008E7FD3 /* example2.html */; };
+		19842F761A389E7500C73C98 /* SDWebViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */; };
+		19842F791A38A78F00C73C98 /* SDJSTestScriptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */; };
+		19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A68C511A1B9E8600D5D057 /* NSString+SDJSExtensions.m */; };
+		19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */; };
 		CA0249D119E70B10007CAAC7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D019E70B10007CAAC7 /* main.m */; };
 		CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D319E70B10007CAAC7 /* AppDelegate.m */; };
-		CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249D619E70B10007CAAC7 /* ViewController.m */; };
-		CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0249D819E70B10007CAAC7 /* Main.storyboard */; };
 		CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DB19E70B10007CAAC7 /* Images.xcassets */; };
 		CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */; };
-		CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */; };
 		CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
 		CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249F619E70B81007CAAC7 /* SDJSBridge.m */; };
 		CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */; };
@@ -40,19 +75,82 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171F45FA1A6843B300B0386E /* SDJSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDate.h; sourceTree = "<group>"; };
+		171F45FB1A6843B300B0386E /* SDJSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDate.m; sourceTree = "<group>"; };
+		1723A0861A6D7FF900200488 /* SDJSDatePickerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDatePickerScript.h; sourceTree = "<group>"; };
+		1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDatePickerScript.m; sourceTree = "<group>"; };
+		1723A08A1A6D85F100200488 /* NSData+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDExtensions.h"; sourceTree = "<group>"; };
+		1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDExtensions.m"; sourceTree = "<group>"; };
+		1723A08C1A6D85F100200488 /* NSString+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDExtensions.h"; sourceTree = "<group>"; };
+		1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDExtensions.m"; sourceTree = "<group>"; };
+		1723A08E1A6D85F100200488 /* SDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLog.h; sourceTree = "<group>"; };
+		1723A08F1A6D85F100200488 /* SDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLog.m; sourceTree = "<group>"; };
+		1723A0901A6D85F100200488 /* SDPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPickerView.h; sourceTree = "<group>"; };
+		1723A0911A6D85F100200488 /* SDPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPickerView.m; sourceTree = "<group>"; };
+		1723A0921A6D85F100200488 /* UIColor+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtensions.h"; sourceTree = "<group>"; };
+		1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
+		177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScriptOutput.h; sourceTree = "<group>"; };
+		177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScriptOutput.m; sourceTree = "<group>"; };
+		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
+		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
+		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
+		17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSHandlerScript.m; sourceTree = "<group>"; };
+		17B5A9F91A670139004465F1 /* SDJSAlertButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertButton.h; sourceTree = "<group>"; };
+		17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertButton.m; sourceTree = "<group>"; };
+		17B5A9FB1A670139004465F1 /* SDJSAlertOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertOptions.h; sourceTree = "<group>"; };
+		17B5A9FC1A670139004465F1 /* SDJSAlertOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertOptions.m; sourceTree = "<group>"; };
+		17B5A9FD1A670139004465F1 /* SDJSAlertScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScript.h; sourceTree = "<group>"; };
+		17B5A9FE1A670139004465F1 /* SDJSAlertScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScript.m; sourceTree = "<group>"; };
+		17B5AA001A670139004465F1 /* SDJSRadioDialogOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSRadioDialogOptions.h; sourceTree = "<group>"; };
+		17B5AA011A670139004465F1 /* SDJSRadioDialogOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSRadioDialogOptions.m; sourceTree = "<group>"; };
+		17B5AA021A670139004465F1 /* SDJSRadioDialogScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSRadioDialogScript.h; sourceTree = "<group>"; };
+		17B5AA031A670139004465F1 /* SDJSRadioDialogScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSRadioDialogScript.m; sourceTree = "<group>"; };
+		17B5AA041A670139004465F1 /* SDJSDialogOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDialogOptions.h; sourceTree = "<group>"; };
+		17B5AA051A670139004465F1 /* SDJSDialogOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDialogOptions.m; sourceTree = "<group>"; };
+		17B5AA071A670139004465F1 /* SDJSWebDialogOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSWebDialogOptions.h; sourceTree = "<group>"; };
+		17B5AA081A670139004465F1 /* SDJSWebDialogOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSWebDialogOptions.m; sourceTree = "<group>"; };
+		17B5AA091A670139004465F1 /* SDJSWebDialogScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSWebDialogScript.h; sourceTree = "<group>"; };
+		17B5AA0A1A670139004465F1 /* SDJSWebDialogScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSWebDialogScript.m; sourceTree = "<group>"; };
+		17B5AA121A670139004465F1 /* SDJSNavigationScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSNavigationScript.h; sourceTree = "<group>"; };
+		17B5AA131A670139004465F1 /* SDJSNavigationScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSNavigationScript.m; sourceTree = "<group>"; };
+		17B5AA141A670139004465F1 /* SDJSPlatformScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSPlatformScript.h; sourceTree = "<group>"; };
+		17B5AA151A670139004465F1 /* SDJSPlatformScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSPlatformScript.m; sourceTree = "<group>"; };
+		17B5AA161A670139004465F1 /* SDJSProgressHUDScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSProgressHUDScript.h; sourceTree = "<group>"; };
+		17B5AA171A670139004465F1 /* SDJSProgressHUDScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressHUDScript.m; sourceTree = "<group>"; };
+		17B5AA191A670139004465F1 /* SDJSShareScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareScript.h; sourceTree = "<group>"; };
+		17B5AA1A1A670139004465F1 /* SDJSShareScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareScript.m; sourceTree = "<group>"; };
+		17B5AA1B1A670139004465F1 /* SDJSShareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSShareService.h; sourceTree = "<group>"; };
+		17B5AA1C1A670139004465F1 /* SDJSShareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareService.m; sourceTree = "<group>"; };
+		17B5AA1D1A670139004465F1 /* SDJSBridgeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeInfo.h; sourceTree = "<group>"; };
+		17B5AA1E1A670139004465F1 /* SDJSBridgeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeInfo.m; sourceTree = "<group>"; };
+		17B5AA1F1A670139004465F1 /* SDJSBridgeResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeResponder.h; sourceTree = "<group>"; };
+		17B5AA201A670139004465F1 /* SDJSBridgeResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponder.m; sourceTree = "<group>"; };
+		17B5AA211A670139004465F1 /* SDJSBridgeScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridgeScript.h; sourceTree = "<group>"; };
+		17B5AA221A670139004465F1 /* SDJSBridgeScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeScript.m; sourceTree = "<group>"; };
+		19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareServiceTests.m; sourceTree = "<group>"; };
+		19377A8B1A3227A700B10CEB /* SDJSShareScriptTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSShareScriptTests.m; sourceTree = "<group>"; };
+		19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSProgressAPITests.m; sourceTree = "<group>"; };
+		19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTopLevelAPITests.m; sourceTree = "<group>"; };
+		19377A911A3742B700B10CEB /* SDJSBridgeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeTests.m; sourceTree = "<group>"; };
+		19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeResponderTests.m; sourceTree = "<group>"; };
+		196650531A02C04300AAC405 /* example1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example1.html; sourceTree = "<group>"; };
+		196C1F2F1A2CF14F008E7FD3 /* example2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example2.html; sourceTree = "<group>"; };
+		19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebViewControllerTests.m; sourceTree = "<group>"; };
+		19842F771A38A78F00C73C98 /* SDJSTestScriptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSTestScriptObject.h; sourceTree = "<group>"; };
+		19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSTestScriptObject.m; sourceTree = "<group>"; };
+		19A68C501A1B9E8600D5D057 /* NSString+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDJSExtensions.h"; sourceTree = "<group>"; };
+		19A68C511A1B9E8600D5D057 /* NSString+SDJSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDJSExtensions.m"; sourceTree = "<group>"; };
+		19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+ExampleAppUtilities.h"; sourceTree = "<group>"; };
+		19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+ExampleAppUtilities.m"; sourceTree = "<group>"; };
 		CA0249CB19E70B10007CAAC7 /* SDJSBridgeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDJSBridgeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249CF19E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA0249D019E70B10007CAAC7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CA0249D219E70B10007CAAC7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0249D319E70B10007CAAC7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CA0249D519E70B10007CAAC7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CA0249D619E70B10007CAAC7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CA0249D919E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA0249DB19E70B10007CAAC7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA0249DE19E70B10007CAAC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CA0249E419E70B10007CAAC7 /* SDJSBridgeExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDJSBridgeExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0249E919E70B10007CAAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDJSBridgeExampleTests.m; sourceTree = "<group>"; };
 		CA0249F519E70B81007CAAC7 /* SDJSBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSBridge.h; sourceTree = "<group>"; };
 		CA0249F619E70B81007CAAC7 /* SDJSBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSBridge.m; sourceTree = "<group>"; };
 		CA0249F919E70C23007CAAC7 /* UIWebView+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+SDJSExtensions.h"; sourceTree = "<group>"; };
@@ -86,6 +184,137 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1723A0891A6D85F100200488 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				1723A08A1A6D85F100200488 /* NSData+SDExtensions.h */,
+				1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */,
+				1723A08C1A6D85F100200488 /* NSString+SDExtensions.h */,
+				1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */,
+				1723A08E1A6D85F100200488 /* SDLog.h */,
+				1723A08F1A6D85F100200488 /* SDLog.m */,
+				1723A0901A6D85F100200488 /* SDPickerView.h */,
+				1723A0911A6D85F100200488 /* SDPickerView.m */,
+				1723A0921A6D85F100200488 /* UIColor+SDExtensions.h */,
+				1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */,
+			);
+			name = External;
+			path = ../../External;
+			sourceTree = "<group>";
+		};
+		17B5A9F01A670139004465F1 /* JavaScript API */ = {
+			isa = PBXGroup;
+			children = (
+				17B5A9F11A670139004465F1 /* Handler API */,
+				17B5A9F61A670139004465F1 /* Platform API */,
+				17B5AA1D1A670139004465F1 /* SDJSBridgeInfo.h */,
+				17B5AA1E1A670139004465F1 /* SDJSBridgeInfo.m */,
+				17B5AA1F1A670139004465F1 /* SDJSBridgeResponder.h */,
+				17B5AA201A670139004465F1 /* SDJSBridgeResponder.m */,
+				17B5AA211A670139004465F1 /* SDJSBridgeScript.h */,
+				17B5AA221A670139004465F1 /* SDJSBridgeScript.m */,
+				171F45FA1A6843B300B0386E /* SDJSDate.h */,
+				171F45FB1A6843B300B0386E /* SDJSDate.m */,
+			);
+			path = "JavaScript API";
+			sourceTree = "<group>";
+		};
+		17B5A9F11A670139004465F1 /* Handler API */ = {
+			isa = PBXGroup;
+			children = (
+				17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */,
+				17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */,
+				17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */,
+				17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */,
+			);
+			path = "Handler API";
+			sourceTree = "<group>";
+		};
+		17B5A9F61A670139004465F1 /* Platform API */ = {
+			isa = PBXGroup;
+			children = (
+				17B5A9F71A670139004465F1 /* Dialog */,
+				17B5AA0B1A670139004465F1 /* Navigation */,
+				17B5AA181A670139004465F1 /* Share */,
+				17B5AA141A670139004465F1 /* SDJSPlatformScript.h */,
+				17B5AA151A670139004465F1 /* SDJSPlatformScript.m */,
+				17B5AA161A670139004465F1 /* SDJSProgressHUDScript.h */,
+				17B5AA171A670139004465F1 /* SDJSProgressHUDScript.m */,
+				1723A0861A6D7FF900200488 /* SDJSDatePickerScript.h */,
+				1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */,
+			);
+			path = "Platform API";
+			sourceTree = "<group>";
+		};
+		17B5A9F71A670139004465F1 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				17B5A9F81A670139004465F1 /* Alert */,
+				17B5A9FF1A670139004465F1 /* Radio */,
+				17B5AA041A670139004465F1 /* SDJSDialogOptions.h */,
+				17B5AA051A670139004465F1 /* SDJSDialogOptions.m */,
+				17B5AA061A670139004465F1 /* Web */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		17B5A9F81A670139004465F1 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				17B5A9F91A670139004465F1 /* SDJSAlertButton.h */,
+				17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */,
+				17B5A9FB1A670139004465F1 /* SDJSAlertOptions.h */,
+				17B5A9FC1A670139004465F1 /* SDJSAlertOptions.m */,
+				17B5A9FD1A670139004465F1 /* SDJSAlertScript.h */,
+				17B5A9FE1A670139004465F1 /* SDJSAlertScript.m */,
+				177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */,
+				177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		17B5A9FF1A670139004465F1 /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				17B5AA001A670139004465F1 /* SDJSRadioDialogOptions.h */,
+				17B5AA011A670139004465F1 /* SDJSRadioDialogOptions.m */,
+				17B5AA021A670139004465F1 /* SDJSRadioDialogScript.h */,
+				17B5AA031A670139004465F1 /* SDJSRadioDialogScript.m */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
+		17B5AA061A670139004465F1 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				17B5AA071A670139004465F1 /* SDJSWebDialogOptions.h */,
+				17B5AA081A670139004465F1 /* SDJSWebDialogOptions.m */,
+				17B5AA091A670139004465F1 /* SDJSWebDialogScript.h */,
+				17B5AA0A1A670139004465F1 /* SDJSWebDialogScript.m */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		17B5AA0B1A670139004465F1 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				17B5AA121A670139004465F1 /* SDJSNavigationScript.h */,
+				17B5AA131A670139004465F1 /* SDJSNavigationScript.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		17B5AA181A670139004465F1 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				17B5AA191A670139004465F1 /* SDJSShareScript.h */,
+				17B5AA1A1A670139004465F1 /* SDJSShareScript.m */,
+				17B5AA1B1A670139004465F1 /* SDJSShareService.h */,
+				17B5AA1C1A670139004465F1 /* SDJSShareService.m */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		CA0249C219E70B10007CAAC7 = {
 			isa = PBXGroup;
 			children = (
@@ -108,14 +337,14 @@
 		CA0249CD19E70B10007CAAC7 /* SDJSBridgeExample */ = {
 			isa = PBXGroup;
 			children = (
+				1723A0891A6D85F100200488 /* External */,
+				196650531A02C04300AAC405 /* example1.html */,
+				196C1F2F1A2CF14F008E7FD3 /* example2.html */,
 				CA024A1819E884EF007CAAC7 /* Macros */,
 				CA024A0B19E88463007CAAC7 /* Configurations */,
 				CA0249F419E70B2B007CAAC7 /* SDJSBridge */,
 				CA0249D219E70B10007CAAC7 /* AppDelegate.h */,
 				CA0249D319E70B10007CAAC7 /* AppDelegate.m */,
-				CA0249D519E70B10007CAAC7 /* ViewController.h */,
-				CA0249D619E70B10007CAAC7 /* ViewController.m */,
-				CA0249D819E70B10007CAAC7 /* Main.storyboard */,
 				CA0249DB19E70B10007CAAC7 /* Images.xcassets */,
 				CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */,
 				CA0249CE19E70B10007CAAC7 /* Supporting Files */,
@@ -135,7 +364,17 @@
 		CA0249E719E70B10007CAAC7 /* SDJSBridgeExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				CA0249EA19E70B10007CAAC7 /* SDJSBridgeExampleTests.m */,
+				19377A931A3754EF00B10CEB /* SDJSBridgeResponderTests.m */,
+				19377A911A3742B700B10CEB /* SDJSBridgeTests.m */,
+				19377A891A32259E00B10CEB /* SDJSShareServiceTests.m */,
+				19377A8B1A3227A700B10CEB /* SDJSShareScriptTests.m */,
+				19377A8D1A36324100B10CEB /* SDJSProgressAPITests.m */,
+				19377A8F1A36364900B10CEB /* SDJSTopLevelAPITests.m */,
+				19842F751A389E7500C73C98 /* SDWebViewControllerTests.m */,
+				19B3B9AC1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.h */,
+				19B3B9AD1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m */,
+				19842F771A38A78F00C73C98 /* SDJSTestScriptObject.h */,
+				19842F781A38A78F00C73C98 /* SDJSTestScriptObject.m */,
 				CA0249E819E70B10007CAAC7 /* Supporting Files */,
 			);
 			path = SDJSBridgeExampleTests;
@@ -152,12 +391,15 @@
 		CA0249F419E70B2B007CAAC7 /* SDJSBridge */ = {
 			isa = PBXGroup;
 			children = (
+				17B5A9F01A670139004465F1 /* JavaScript API */,
 				CA0249F519E70B81007CAAC7 /* SDJSBridge.h */,
 				CA0249F619E70B81007CAAC7 /* SDJSBridge.m */,
 				CA0249FD19E70FFF007CAAC7 /* SDWebViewController.h */,
 				CA0249FE19E70FFF007CAAC7 /* SDWebViewController.m */,
 				CA0249F919E70C23007CAAC7 /* UIWebView+SDJSExtensions.h */,
 				CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */,
+				19A68C501A1B9E8600D5D057 /* NSString+SDJSExtensions.h */,
+				19A68C511A1B9E8600D5D057 /* NSString+SDJSExtensions.m */,
 			);
 			name = SDJSBridge;
 			path = ../../SDJSBridge;
@@ -265,11 +507,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA024A1419E88463007CAAC7 /* Project-iOS-Release.xcconfig in Resources */,
-				CA0249DA19E70B10007CAAC7 /* Main.storyboard in Resources */,
 				CA0249DF19E70B10007CAAC7 /* LaunchScreen.xib in Resources */,
 				CA0249DC19E70B10007CAAC7 /* Images.xcassets in Resources */,
 				CA024A1019E88463007CAAC7 /* Global-iOS.xcconfig in Resources */,
+				196C1F301A2CF14F008E7FD3 /* example2.html in Resources */,
 				CA024A1219E88463007CAAC7 /* Project-iOS-Debug.xcconfig in Resources */,
+				196650541A02C04300AAC405 /* example1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,12 +533,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17B5AA321A670139004465F1 /* SDJSProgressHUDScript.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */,
+				17B5AA301A670139004465F1 /* SDJSNavigationScript.m in Sources */,
+				177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */,
+				17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */,
+				1723A0881A6D7FF900200488 /* SDJSDatePickerScript.m in Sources */,
+				17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */,
+				1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
-				CA0249D719E70B10007CAAC7 /* ViewController.m in Sources */,
+				1723A0941A6D85F100200488 /* NSData+SDExtensions.m in Sources */,
+				1723A0951A6D85F100200488 /* NSString+SDExtensions.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
+				17B5AA2B1A670139004465F1 /* SDJSWebDialogOptions.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				17B5AA291A670139004465F1 /* SDJSRadioDialogScript.m in Sources */,
+				19A68C521A1B9E8600D5D057 /* NSString+SDJSExtensions.m in Sources */,
+				17B5AA2C1A670139004465F1 /* SDJSWebDialogScript.m in Sources */,
+				17B5AA261A670139004465F1 /* SDJSAlertOptions.m in Sources */,
+				17B5AA361A670139004465F1 /* SDJSBridgeResponder.m in Sources */,
+				17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */,
+				17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
+				17B5AA2A1A670139004465F1 /* SDJSDialogOptions.m in Sources */,
+				17B5AA271A670139004465F1 /* SDJSAlertScript.m in Sources */,
+				17B5AA351A670139004465F1 /* SDJSBridgeInfo.m in Sources */,
+				1723A0961A6D85F100200488 /* SDLog.m in Sources */,
+				17B5AA281A670139004465F1 /* SDJSRadioDialogOptions.m in Sources */,
+				17B5AA311A670139004465F1 /* SDJSPlatformScript.m in Sources */,
+				17B5AA371A670139004465F1 /* SDJSBridgeScript.m in Sources */,
+				1723A0971A6D85F100200488 /* SDPickerView.m in Sources */,
+				17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,9 +573,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA024A0019E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
+				19842F791A38A78F00C73C98 /* SDJSTestScriptObject.m in Sources */,
 				CA0249F819E70B81007CAAC7 /* SDJSBridge.m in Sources */,
-				CA0249EB19E70B10007CAAC7 /* SDJSBridgeExampleTests.m in Sources */,
+				19377A921A3742B700B10CEB /* SDJSBridgeTests.m in Sources */,
+				19377A8A1A32259E00B10CEB /* SDJSShareServiceTests.m in Sources */,
+				19B3B9AE1A2FA21B009A5137 /* XCTestCase+ExampleAppUtilities.m in Sources */,
+				19377A901A36364900B10CEB /* SDJSTopLevelAPITests.m in Sources */,
+				19377A8C1A3227A700B10CEB /* SDJSShareScriptTests.m in Sources */,
+				19377A8E1A36324100B10CEB /* SDJSProgressAPITests.m in Sources */,
 				CA0249FC19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
+				19842F761A389E7500C73C98 /* SDWebViewControllerTests.m in Sources */,
+				19377A941A3754EF00B10CEB /* SDJSBridgeResponderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,14 +598,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CA0249D819E70B10007CAAC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CA0249D919E70B10007CAAC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CA0249DD19E70B10007CAAC7 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -9,19 +9,25 @@
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "SDMacros.h"
+#import "SDJSHandlerScript.h"
+
+NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 @interface SDWebViewController () <UIWebViewDelegate>
+
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
 @property (nonatomic, strong) NSTimer *loadTimer;
 @property (nonatomic, assign) BOOL sharedWebView;
-@property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, strong) SDJSBridge *bridge;
+@property (nonatomic, weak) SDJSHandlerScript *handlerScript;
+
 @end
 
 @implementation SDWebViewController
 
-#pragma mark - Public methods
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -34,40 +40,35 @@
 
 - (instancetype)initWithWebView:(UIWebView *)webView
 {
+    return [self initWithWebView:webView bridge:nil];
+}
+
+- (instancetype)initWithWebView:(UIWebView *)webView bridge:(SDJSBridge *)bridge
+{
     if ((self = [super init]))
     {
         _webView = webView;
         _sharedWebView = YES;
+        _bridge = bridge;
+
+        if (!_bridge)
+        {
+            [self loadBridge];
+        }
     }
     
     return self;
 }
 
-- (NSURL *)url
+- (instancetype)initWithURL:(NSURL *)url
 {
-    return [self.currentURL copy];
-}
-
-- (void)loadURL:(NSURL *)url
-{
-    self.currentURL = url;
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
-}
-
-- (void)initializeController
-{
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.webView.hidden = YES;
-}
-
-- (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
-{
-    [self.bridge addScriptObject:object name:name];
-}
-
-- (void)addScriptMethod:(NSString *)name block:(void *)block
-{
-    [self.bridge addScriptMethod:name block:block];
+    if ((self = [super init]))
+    {
+        _currentURL = url;
+        [self loadURL:_currentURL];
+    }
+    
+    return self;
 }
 
 #pragma mark - Lifecycle methods
@@ -77,7 +78,8 @@
     self.delegate = nil;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -89,7 +91,7 @@
     //self.placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
     self.placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view insertSubview:self.placeholderView atIndex:0];
-
+    
     [self initializeController];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -106,6 +108,12 @@
         self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
+        self.webView.hidden = NO;
+    }
+    
+    if (_bridge)
+    {
+        [self configureScriptObjects];
     }
 }
 
@@ -118,6 +126,120 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initializeController
+{
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    if (self.webView.loading) {
+        self.webView.hidden = YES;
+    }
+}
+
+#pragma mark - URLs
+
+- (NSURL *)url
+{
+    return [self.currentURL copy];
+}
+
+- (void)loadURL:(NSURL *)url
+{
+    self.currentURL = url;
+    
+    if (self.defaultUserAgent.length) {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.currentURL];
+        [request setValue:self.defaultUserAgent forHTTPHeaderField:@"User-Agent"];
+        [self.webView loadRequest:request];
+    } else {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
+    }
+}
+
+#pragma mark - Navigation
+
+- (id)pushURL:(NSURL *)url title:(NSString *)title
+{
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
+    webViewController.title = title;
+    [self.navigationController pushViewController:webViewController animated:YES];
+    
+    if (url) {
+        [webViewController loadURL:url];
+    }
+    
+    return webViewController;
+}
+
+- (id)presentModalURL:(NSURL *)url title:(NSString *)title
+{
+    self.placeholderView.image = [self imageWithView:self.webView];
+    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
+    webViewController.title = title;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
+    [webViewController loadURL:url];
+    
+    return webViewController;
+}
+
+- (id)presentModalHTML:(NSString *)html title:(NSString *)title
+{    
+    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:nil bridge:self.bridge];
+    webViewController.title = title;
+    [webViewController.webView loadHTMLString:html baseURL:self.url];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
+    
+    return webViewController;
+}
+
+#pragma mark - SDJSBridge
+
+- (void)loadBridge {
+    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];    
+}
+
+- (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
+{
+    [self.bridge addScriptObject:object name:name];
+    
+    if ([object isKindOfClass:[SDJSHandlerScript class]]) {
+        self.handlerScript = (SDJSHandlerScript *)object;
+    }
+}
+
+- (void)addScriptMethod:(NSString *)name block:(id)block
+{
+    [self.bridge addScriptMethod:name block:block];
+}
+
+- (void)configureScriptObjects
+{
+    // update parent web view controller reference in scripts
+    for (NSString *scriptName in [_bridge scriptObjects]) {
+        SDJSBridgeScript *script = [_bridge scriptObjects][scriptName];
+        if ([script isKindOfClass:[SDJSBridgeScript class]]) {
+            script.webViewController = self;
+        }
+    }
+    
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
+        [strongDelegate webViewControllerConfigureScriptObjects:self];
+    }
+}
+
+- (JSValue *)evaluateScript:(NSString *)script {
+    return [self.bridge evaluateScript:script];
 }
 
 #pragma mark - UIWebViewDelegate methods
@@ -144,12 +266,7 @@
             {
                 if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
                 {
-                    self.placeholderView.image = [self imageWithView:self.webView];
-                    
-                    id webViewController = [[[self class] alloc] initWithWebView:self.webView];
-                    [self.navigationController pushViewController:webViewController animated:YES];
-                    [webViewController loadURL:request.URL];
-
+                    [self pushURL:request.URL title:nil];
                     result = NO;
                 }
                 else
@@ -179,8 +296,14 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    self.title = title;
+ 
+    if (title.length) {
+        self.title = title;
+    }
+    
     self.webView.hidden = NO;
+    
+    [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
     
     @strongify(self.delegate, strongDelegate);
     if ([strongDelegate respondsToSelector:@selector(webViewControllerDidFinishLoad:)])
@@ -194,12 +317,18 @@
     [self webViewDidFinishLoad];
 }
 
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*) ctx
+- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)context
 {
-    [self.bridge configureContext:ctx];
+    [self.bridge configureContext:context];
+    
+    @strongify(self.delegate, strongDelegate);
+
+    if ([strongDelegate respondsToSelector:@selector(webViewController:didCreateJavaScriptContext:)]) {
+        [strongDelegate webViewController:self didCreateJavaScriptContext:context];
+    }
 }
 
-#pragma mark - Subclasses should override.
+#pragma mark - Web view events.
 
 - (void)webViewDidStartLoad
 {
@@ -223,7 +352,7 @@
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
-    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
@@ -253,8 +382,9 @@
         _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
+        _webView.delegate = self;
         
-        self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
+        [self loadBridge];
     }
 
     return _webView;

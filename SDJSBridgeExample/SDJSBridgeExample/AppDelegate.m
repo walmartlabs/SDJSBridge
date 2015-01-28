@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "SDWebViewController.h"
+#import "SDJSPlatformScript.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +20,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"example1" withExtension:@"html"];
+    SDWebViewController *webViewController = [[SDWebViewController alloc] initWithURL:url];
+    
+    // add platform API script
+    SDJSPlatformScript *api = [[SDJSPlatformScript alloc] initWithWebViewController:webViewController];
+    [webViewController addScriptObject:api name:SDJSPlatformScriptName];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    self.window.rootViewController = navController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
