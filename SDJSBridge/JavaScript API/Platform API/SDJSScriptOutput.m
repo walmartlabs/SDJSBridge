@@ -10,11 +10,26 @@
 
 static NSString * const kSDJSScriptOutputSuccessAction = @"ok";
 static NSString * const kSDJSSDJSScriptOutputCancelAction = @"cancel";
+static NSString * const kSDJSSDJSScriptOutputNeutralAction = @"neutral";
 
 @implementation SDJSScriptOutput
 
-+ (NSString *)actionForCancelled:(BOOL)cancelled {
+#pragma mark - Actions
+
++ (NSString *)actionValueForCancelled:(BOOL)cancelled {
     return cancelled ? kSDJSSDJSScriptOutputCancelAction : kSDJSScriptOutputSuccessAction;
+}
+
++ (NSString *)successActionValue {
+    return kSDJSScriptOutputSuccessAction;
+}
+
++ (NSString *)cancelActionValue {
+    return kSDJSSDJSScriptOutputCancelAction;
+}
+
++ (NSString *)neutralActionValue {
+    return kSDJSSDJSScriptOutputNeutralAction;
 }
 
 @end

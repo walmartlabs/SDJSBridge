@@ -76,7 +76,7 @@ static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
         return;
     }
     
-    [self triggerAction:[SDJSScriptOutput actionForCancelled:cancelled] data:data];
+    [self triggerAction:[SDJSScriptOutput actionValueForCancelled:cancelled] data:data];
 }
 
 #pragma mark - Action

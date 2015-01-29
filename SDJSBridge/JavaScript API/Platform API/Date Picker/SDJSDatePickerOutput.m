@@ -23,7 +23,7 @@
 - (instancetype)initWithDate:(NSDate *)date cancelled:(BOOL)cancelled {
     if ((self = [super init])) {
         _jsDate = [SDJSDate dateModelWithDate:date];
-        _action = [SDJSScriptOutput actionForCancelled:cancelled];
+        _action = [SDJSScriptOutput actionValueForCancelled:cancelled];
     }
     
     return self;

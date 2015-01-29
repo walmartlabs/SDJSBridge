@@ -16,6 +16,21 @@
 /**
  Return the action value for cancelled status.
  */
-+ (NSString *)actionForCancelled:(BOOL)cancelled;
++ (NSString *)actionValueForCancelled:(BOOL)cancelled;
+
+/**
+ Returns the string value representing success status or "okay" selection.
+ */
++ (NSString *)successActionValue;
+
+/**
+ Returns the string value representing cancellation.
+ */
++ (NSString *)cancelActionValue;
+
+/**
+ Returns the string value representing neutral selection.
+ */
++ (NSString *)neutralActionValue;
 
 @end
