@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 171F45FB1A6843B300B0386E /* SDJSDate.m */; };
-		1723A0941A6D85F100200488 /* NSData+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */; };
-		1723A0951A6D85F100200488 /* NSString+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */; };
-		1723A0961A6D85F100200488 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08F1A6D85F100200488 /* SDLog.m */; };
-		1723A0971A6D85F100200488 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0911A6D85F100200488 /* SDPickerView.m */; };
-		1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */; };
 		177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */; };
 		17814BC61A7AAC4200C6A0D1 /* SDJSDatePickerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BC51A7AAC4200C6A0D1 /* SDJSDatePickerScript.m */; };
 		17814BC91A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BC81A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m */; };
 		17814BCD1A7AB8A400C6A0D1 /* SDJSScriptOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BCC1A7AB8A400C6A0D1 /* SDJSScriptOutput.m */; };
+		17814BD81A7ADCB200C6A0D1 /* NSData+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BCF1A7ADCB200C6A0D1 /* NSData+SDExtensions.m */; };
+		17814BD91A7ADCB200C6A0D1 /* NSString+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD11A7ADCB200C6A0D1 /* NSString+SDExtensions.m */; };
+		17814BDA1A7ADCB200C6A0D1 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD31A7ADCB200C6A0D1 /* SDLog.m */; };
+		17814BDB1A7ADCB200C6A0D1 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD51A7ADCB200C6A0D1 /* SDPickerView.m */; };
+		17814BDC1A7ADCB200C6A0D1 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD71A7ADCB200C6A0D1 /* UIColor+SDExtensions.m */; };
 		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
 		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
 		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
@@ -79,16 +79,6 @@
 /* Begin PBXFileReference section */
 		171F45FA1A6843B300B0386E /* SDJSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDate.h; sourceTree = "<group>"; };
 		171F45FB1A6843B300B0386E /* SDJSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDate.m; sourceTree = "<group>"; };
-		1723A08A1A6D85F100200488 /* NSData+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDExtensions.h"; sourceTree = "<group>"; };
-		1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDExtensions.m"; sourceTree = "<group>"; };
-		1723A08C1A6D85F100200488 /* NSString+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDExtensions.h"; sourceTree = "<group>"; };
-		1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDExtensions.m"; sourceTree = "<group>"; };
-		1723A08E1A6D85F100200488 /* SDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLog.h; sourceTree = "<group>"; };
-		1723A08F1A6D85F100200488 /* SDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLog.m; sourceTree = "<group>"; };
-		1723A0901A6D85F100200488 /* SDPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPickerView.h; sourceTree = "<group>"; };
-		1723A0911A6D85F100200488 /* SDPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPickerView.m; sourceTree = "<group>"; };
-		1723A0921A6D85F100200488 /* UIColor+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtensions.h"; sourceTree = "<group>"; };
-		1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
 		177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScriptOutput.h; sourceTree = "<group>"; };
 		177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScriptOutput.m; sourceTree = "<group>"; };
 		17814BC41A7AAC4200C6A0D1 /* SDJSDatePickerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDatePickerScript.h; sourceTree = "<group>"; };
@@ -97,6 +87,16 @@
 		17814BC81A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDatePickerOutput.m; sourceTree = "<group>"; };
 		17814BCB1A7AB8A400C6A0D1 /* SDJSScriptOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSScriptOutput.h; sourceTree = "<group>"; };
 		17814BCC1A7AB8A400C6A0D1 /* SDJSScriptOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSScriptOutput.m; sourceTree = "<group>"; };
+		17814BCE1A7ADCB200C6A0D1 /* NSData+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDExtensions.h"; sourceTree = "<group>"; };
+		17814BCF1A7ADCB200C6A0D1 /* NSData+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDExtensions.m"; sourceTree = "<group>"; };
+		17814BD01A7ADCB200C6A0D1 /* NSString+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDExtensions.h"; sourceTree = "<group>"; };
+		17814BD11A7ADCB200C6A0D1 /* NSString+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SDExtensions.m"; sourceTree = "<group>"; };
+		17814BD21A7ADCB200C6A0D1 /* SDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLog.h; sourceTree = "<group>"; };
+		17814BD31A7ADCB200C6A0D1 /* SDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLog.m; sourceTree = "<group>"; };
+		17814BD41A7ADCB200C6A0D1 /* SDPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPickerView.h; sourceTree = "<group>"; };
+		17814BD51A7ADCB200C6A0D1 /* SDPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPickerView.m; sourceTree = "<group>"; };
+		17814BD61A7ADCB200C6A0D1 /* UIColor+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtensions.h"; sourceTree = "<group>"; };
+		17814BD71A7ADCB200C6A0D1 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
 		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
 		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
 		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
@@ -193,16 +193,16 @@
 		1723A0891A6D85F100200488 /* External */ = {
 			isa = PBXGroup;
 			children = (
-				1723A08A1A6D85F100200488 /* NSData+SDExtensions.h */,
-				1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */,
-				1723A08C1A6D85F100200488 /* NSString+SDExtensions.h */,
-				1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */,
-				1723A08E1A6D85F100200488 /* SDLog.h */,
-				1723A08F1A6D85F100200488 /* SDLog.m */,
-				1723A0901A6D85F100200488 /* SDPickerView.h */,
-				1723A0911A6D85F100200488 /* SDPickerView.m */,
-				1723A0921A6D85F100200488 /* UIColor+SDExtensions.h */,
-				1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */,
+				17814BCE1A7ADCB200C6A0D1 /* NSData+SDExtensions.h */,
+				17814BCF1A7ADCB200C6A0D1 /* NSData+SDExtensions.m */,
+				17814BD01A7ADCB200C6A0D1 /* NSString+SDExtensions.h */,
+				17814BD11A7ADCB200C6A0D1 /* NSString+SDExtensions.m */,
+				17814BD21A7ADCB200C6A0D1 /* SDLog.h */,
+				17814BD31A7ADCB200C6A0D1 /* SDLog.m */,
+				17814BD41A7ADCB200C6A0D1 /* SDPickerView.h */,
+				17814BD51A7ADCB200C6A0D1 /* SDPickerView.m */,
+				17814BD61A7ADCB200C6A0D1 /* UIColor+SDExtensions.h */,
+				17814BD71A7ADCB200C6A0D1 /* UIColor+SDExtensions.m */,
 			);
 			name = External;
 			path = ../../External;
@@ -559,10 +559,10 @@
 				177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */,
 				17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */,
 				17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */,
-				1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */,
+				17814BDC1A7ADCB200C6A0D1 /* UIColor+SDExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
-				1723A0941A6D85F100200488 /* NSData+SDExtensions.m in Sources */,
-				1723A0951A6D85F100200488 /* NSString+SDExtensions.m in Sources */,
+				17814BD81A7ADCB200C6A0D1 /* NSData+SDExtensions.m in Sources */,
+				17814BD91A7ADCB200C6A0D1 /* NSString+SDExtensions.m in Sources */,
 				CA0249D419E70B10007CAAC7 /* AppDelegate.m in Sources */,
 				17B5AA2B1A670139004465F1 /* SDJSWebDialogOptions.m in Sources */,
 				CA0249FF19E70FFF007CAAC7 /* SDWebViewController.m in Sources */,
@@ -578,12 +578,12 @@
 				17B5AA2A1A670139004465F1 /* SDJSDialogOptions.m in Sources */,
 				17B5AA271A670139004465F1 /* SDJSAlertScript.m in Sources */,
 				17B5AA351A670139004465F1 /* SDJSBridgeInfo.m in Sources */,
-				1723A0961A6D85F100200488 /* SDLog.m in Sources */,
 				17B5AA281A670139004465F1 /* SDJSRadioDialogOptions.m in Sources */,
+				17814BDA1A7ADCB200C6A0D1 /* SDLog.m in Sources */,
 				17B5AA311A670139004465F1 /* SDJSPlatformScript.m in Sources */,
 				17B5AA371A670139004465F1 /* SDJSBridgeScript.m in Sources */,
-				1723A0971A6D85F100200488 /* SDPickerView.m in Sources */,
 				17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */,
+				17814BDB1A7ADCB200C6A0D1 /* SDPickerView.m in Sources */,
 				17814BCD1A7AB8A400C6A0D1 /* SDJSScriptOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
