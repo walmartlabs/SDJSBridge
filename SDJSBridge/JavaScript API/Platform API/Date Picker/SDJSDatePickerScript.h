@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-typedef void(^WMJSDatePickerCompletionBlock)(NSDate *selectedDate);
+typedef void(^WMJSDatePickerCompletionBlock)(BOOL canceled, NSDate *selectedDate);
 
 @protocol SDJSDatePickerScriptDelegate <NSObject>
 

@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 171F45FB1A6843B300B0386E /* SDJSDate.m */; };
-		1723A0881A6D7FF900200488 /* SDJSDatePickerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */; };
 		1723A0941A6D85F100200488 /* NSData+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */; };
 		1723A0951A6D85F100200488 /* NSString+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08D1A6D85F100200488 /* NSString+SDExtensions.m */; };
 		1723A0961A6D85F100200488 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A08F1A6D85F100200488 /* SDLog.m */; };
 		1723A0971A6D85F100200488 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0911A6D85F100200488 /* SDPickerView.m */; };
 		1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */; };
 		177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */; };
+		17814BC61A7AAC4200C6A0D1 /* SDJSDatePickerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BC51A7AAC4200C6A0D1 /* SDJSDatePickerScript.m */; };
+		17814BC91A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BC81A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m */; };
 		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
 		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
 		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
@@ -77,8 +78,6 @@
 /* Begin PBXFileReference section */
 		171F45FA1A6843B300B0386E /* SDJSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDate.h; sourceTree = "<group>"; };
 		171F45FB1A6843B300B0386E /* SDJSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDate.m; sourceTree = "<group>"; };
-		1723A0861A6D7FF900200488 /* SDJSDatePickerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDatePickerScript.h; sourceTree = "<group>"; };
-		1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDatePickerScript.m; sourceTree = "<group>"; };
 		1723A08A1A6D85F100200488 /* NSData+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDExtensions.h"; sourceTree = "<group>"; };
 		1723A08B1A6D85F100200488 /* NSData+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDExtensions.m"; sourceTree = "<group>"; };
 		1723A08C1A6D85F100200488 /* NSString+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SDExtensions.h"; sourceTree = "<group>"; };
@@ -91,6 +90,10 @@
 		1723A0931A6D85F100200488 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
 		177DD1F21A76867A00EEB38C /* SDJSAlertScriptOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSAlertScriptOutput.h; sourceTree = "<group>"; };
 		177DD1F31A76867A00EEB38C /* SDJSAlertScriptOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSAlertScriptOutput.m; sourceTree = "<group>"; };
+		17814BC41A7AAC4200C6A0D1 /* SDJSDatePickerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDatePickerScript.h; sourceTree = "<group>"; };
+		17814BC51A7AAC4200C6A0D1 /* SDJSDatePickerScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDatePickerScript.m; sourceTree = "<group>"; };
+		17814BC71A7AAC6100C6A0D1 /* SDJSDatePickerOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSDatePickerOutput.h; sourceTree = "<group>"; };
+		17814BC81A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDJSDatePickerOutput.m; sourceTree = "<group>"; };
 		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
 		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
 		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
@@ -202,6 +205,17 @@
 			path = ../../External;
 			sourceTree = "<group>";
 		};
+		17814BC31A7AAC4200C6A0D1 /* Date Picker */ = {
+			isa = PBXGroup;
+			children = (
+				17814BC41A7AAC4200C6A0D1 /* SDJSDatePickerScript.h */,
+				17814BC51A7AAC4200C6A0D1 /* SDJSDatePickerScript.m */,
+				17814BC71A7AAC6100C6A0D1 /* SDJSDatePickerOutput.h */,
+				17814BC81A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m */,
+			);
+			path = "Date Picker";
+			sourceTree = "<group>";
+		};
 		17B5A9F01A670139004465F1 /* JavaScript API */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +247,7 @@
 		17B5A9F61A670139004465F1 /* Platform API */ = {
 			isa = PBXGroup;
 			children = (
+				17814BC31A7AAC4200C6A0D1 /* Date Picker */,
 				17B5A9F71A670139004465F1 /* Dialog */,
 				17B5AA0B1A670139004465F1 /* Navigation */,
 				17B5AA181A670139004465F1 /* Share */,
@@ -240,8 +255,6 @@
 				17B5AA151A670139004465F1 /* SDJSPlatformScript.m */,
 				17B5AA161A670139004465F1 /* SDJSProgressHUDScript.h */,
 				17B5AA171A670139004465F1 /* SDJSProgressHUDScript.m */,
-				1723A0861A6D7FF900200488 /* SDJSDatePickerScript.h */,
-				1723A0871A6D7FF900200488 /* SDJSDatePickerScript.m */,
 			);
 			path = "Platform API";
 			sourceTree = "<group>";
@@ -533,13 +546,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17814BC91A7AAC6100C6A0D1 /* SDJSDatePickerOutput.m in Sources */,
 				17B5AA321A670139004465F1 /* SDJSProgressHUDScript.m in Sources */,
 				CA0249FB19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m in Sources */,
 				171F45FC1A6843B300B0386E /* SDJSDate.m in Sources */,
 				17B5AA301A670139004465F1 /* SDJSNavigationScript.m in Sources */,
 				177DD1F41A76867A00EEB38C /* SDJSAlertScriptOutput.m in Sources */,
 				17B5AA331A670139004465F1 /* SDJSShareScript.m in Sources */,
-				1723A0881A6D7FF900200488 /* SDJSDatePickerScript.m in Sources */,
 				17B5AA341A670139004465F1 /* SDJSShareService.m in Sources */,
 				1723A0981A6D85F100200488 /* UIColor+SDExtensions.m in Sources */,
 				CA0249F719E70B81007CAAC7 /* SDJSBridge.m in Sources */,
@@ -556,6 +569,7 @@
 				17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */,
 				17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */,
 				CA0249D119E70B10007CAAC7 /* main.m in Sources */,
+				17814BC61A7AAC4200C6A0D1 /* SDJSDatePickerScript.m in Sources */,
 				17B5AA2A1A670139004465F1 /* SDJSDialogOptions.m in Sources */,
 				17B5AA271A670139004465F1 /* SDJSAlertScript.m in Sources */,
 				17B5AA351A670139004465F1 /* SDJSBridgeInfo.m in Sources */,
