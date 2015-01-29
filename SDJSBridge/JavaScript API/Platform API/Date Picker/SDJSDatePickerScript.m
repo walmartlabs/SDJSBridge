@@ -40,7 +40,7 @@
         self.pickerView = [[SDPickerView alloc] init];
     }
     
-    [self.pickerView configureAsDatePicker:date completion:selectDate];
+    [self.pickerView configureAsDatePicker:date datePickerMode:UIDatePickerModeDate completion:selectDate];
     
     [self.pickerView sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
