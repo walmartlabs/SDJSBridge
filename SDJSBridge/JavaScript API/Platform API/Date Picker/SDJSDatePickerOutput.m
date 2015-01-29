@@ -8,9 +8,7 @@
 
 #import "SDJSDatePickerOutput.h"
 #import "SDJSDate.h"
-
-static NSString * const kSDJSDatePickerOutputSuccessAction = @"ok";
-static NSString * const kSDJSDatePickerOutputCancelAction = @"cancel";
+#import "SDJSScriptOutput.h"
 
 @interface SDJSDatePickerOutput ()
 
@@ -25,7 +23,7 @@ static NSString * const kSDJSDatePickerOutputCancelAction = @"cancel";
 - (instancetype)initWithDate:(NSDate *)date cancelled:(BOOL)cancelled {
     if ((self = [super init])) {
         _jsDate = [SDJSDate dateModelWithDate:date];
-        _action = cancelled ? kSDJSDatePickerOutputCancelAction : kSDJSDatePickerOutputSuccessAction;
+        _action = [SDJSScriptOutput actionForCancelled:cancelled];
     }
     
     return self;
