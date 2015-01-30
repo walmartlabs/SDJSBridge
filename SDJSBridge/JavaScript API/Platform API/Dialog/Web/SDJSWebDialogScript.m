@@ -11,14 +11,10 @@
 #import "SDJSHandlerScript.h"
 #import "SDMacros.h"
 #import "SDJSWebDialogOptions.h"
+#import "SDJSScriptOutput.h"
 
 static NSString * const kSDJSWebDialogScriptActionKey = @"action";
 static NSString * const kSDJSWebDialogScriptDataKey = @"data";
-
-static NSString * const kSDJSWebDialogActionTypeOk = @"ok";
-static NSString * const kSDJSWebDialogActionTypeNeutral = @"neutral";
-static NSString * const kSDJSWebDialogActionTypeCancel = @"cancel";
-
 static NSString * const kSDJSWebDialogHandleAcceptScript = @"onAccept();";
 static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
 
@@ -31,33 +27,6 @@ static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
 @end
 
 @implementation SDJSWebDialogScript
-
-#pragma mark - Tap Events
-
-- (void)cancelButtonTapped:(id)sender {
-    [self triggerAction:kSDJSWebDialogActionTypeCancel data:nil];
-
-}
-
-- (void)okayButtonTapped:(id)sender {
-    if (self.shouldHandleAccept) {
-        [self.modalWebViewController evaluateScript:kSDJSWebDialogHandleAcceptScript];
-        return;
-    }
-
-    [self triggerAction:kSDJSWebDialogActionTypeOk data:nil];
-}
-
-#pragma mark - Actions
-
-- (void)triggerAction:(NSString *)action data:(NSString *)data {
-    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
-
-    if (self.callback) {
-        self.callback(@{kSDJSWebDialogScriptActionKey : action,
-                        kSDJSWebDialogScriptDataKey : data ?: [NSNull null]});
-    }
-}
 
 #pragma mark - Presenting Modal Web Dialog
 
@@ -87,6 +56,38 @@ static NSString * const kSDJSWebDialogCloseMethodName = @"closeDialog";
     }];
     
     self.modalWebViewController = modalWebViewController;
+}
+
+#pragma mark - Tap Events
+
+- (void)cancelButtonTapped:(id)sender {
+    [self dismissDialogWithCancelled:YES data:nil];
+}
+
+- (void)okayButtonTapped:(id)sender {
+    [self dismissDialogWithCancelled:NO data:nil];
+}
+
+#pragma mark - Dismissing Modal Web Dialog
+
+- (void)dismissDialogWithCancelled:(BOOL)cancelled data:(NSString *)data {
+    if (self.shouldHandleAccept && !cancelled) {
+        [self.modalWebViewController evaluateScript:kSDJSWebDialogHandleAcceptScript];
+        return;
+    }
+    
+    [self triggerAction:[SDJSScriptOutput actionValueForCancelled:cancelled] data:data];
+}
+
+#pragma mark - Action
+
+- (void)triggerAction:(NSString *)action data:(NSString *)data {
+    [self.webViewController dismissViewControllerAnimated:YES completion:nil];
+
+    if (self.callback) {
+        self.callback(@{kSDJSWebDialogScriptActionKey : action,
+                        kSDJSWebDialogScriptDataKey : data ?: [NSNull null]});
+    }
 }
 
 #pragma mark - External API
