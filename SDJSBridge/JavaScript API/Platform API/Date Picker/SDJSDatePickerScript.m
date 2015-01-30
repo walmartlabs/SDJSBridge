@@ -11,6 +11,7 @@
 #import "SDMacros.h"
 #import "SDJSHandlerScript.h"
 #import "SDJSDate.h"
+#import "SDJSDatePickerOutput.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
@@ -39,9 +40,7 @@
         self.pickerView = [[SDPickerView alloc] init];
     }
     
-    [self.pickerView configureAsDatePicker:date completion:^(BOOL canceled, NSDate *selectedDate) {
-        selectDate(selectedDate);
-    }];
+    [self.pickerView configureAsDatePicker:date datePickerMode:UIDatePickerModeDate completion:selectDate];
     
     [self.pickerView sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
@@ -54,9 +53,9 @@
     
     if ([strongDelegate respondsToSelector:@selector(presentDatePickerWithDate:selectionBlock:)]) {
         SDJSDate *dateModel = [SDJSDate dateModelWithDictionary:options];
-        [strongDelegate presentDatePickerWithDate:[dateModel dateValue] selectionBlock:^(NSDate *selectedDate) {
-            SDJSDate *selectedDateModel = [SDJSDate dateModelWithDate:selectedDate];
-            callback(selectedDateModel);
+        [strongDelegate presentDatePickerWithDate:[dateModel dateValue] selectionBlock:^(BOOL canceled, NSDate *selectedDate) {
+            SDJSDatePickerOutput *pickerOutput = [[SDJSDatePickerOutput alloc] initWithDate:selectedDate cancelled:canceled];
+            callback(pickerOutput);
         }];
     }
 }
