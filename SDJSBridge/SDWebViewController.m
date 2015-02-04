@@ -244,11 +244,13 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 #pragma mark - UIWebViewDelegate methods
 
-- (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request
+                    navigationType:(UIWebViewNavigationType)navigationType
+     againstWebViewNavigationTypes:(NSArray *)navigationTypes
 {
     BOOL result = YES;
     
-    if (navigationType == UIWebViewNavigationTypeLinkClicked)
+    if ([navigationTypes containsObject:@(navigationType)])
     {
         if ([request.URL.absoluteString isEqualToString:self.currentURL.absoluteString])
             return YES;
@@ -286,7 +288,9 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType
 {
-    return [self shouldStartLoadWithRequest:request navigationType:navigationType];
+    return [self shouldStartLoadWithRequest:request
+                             navigationType:navigationType
+              againstWebViewNavigationTypes:@[@(UIWebViewNavigationTypeLinkClicked)]];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

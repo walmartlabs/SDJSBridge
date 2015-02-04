@@ -219,8 +219,10 @@ extern NSString * const SDJSPageFinishedHandlerName;
 /**
  Designed to be a pass-thru method for UIWebView delegate method webView:shouldStartLoadWithRequest:navigationType:
  This way, subclasses can also have a piece of the action in deciding if the 
- navigation request should be handled. Call super on overrides.
+ navigation request should be handled. It is possible to pass in which types of 
+ UIWebViewNavigationTypes to compare against. Call super on overrides.
  */
 - (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request
-                    navigationType:(UIWebViewNavigationType)navigationType;
+                    navigationType:(UIWebViewNavigationType)navigationType
+     againstWebViewNavigationTypes:(NSArray *)navigationTypes;
 @end
