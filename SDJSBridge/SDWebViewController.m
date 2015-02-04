@@ -19,7 +19,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong) UIImageView *placeholderView;
 @property (nonatomic, strong) NSTimer *loadTimer;
 @property (nonatomic, assign) BOOL sharedWebView;
-@property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, strong, readwrite) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
 
@@ -244,7 +244,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 #pragma mark - UIWebViewDelegate methods
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     BOOL result = YES;
     
@@ -281,6 +281,12 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     //NSLog(@"navType = %d, url = %@", navigationType, request.URL);
     
     return result;
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
+ navigationType:(UIWebViewNavigationType)navigationType
+{
+    return [self shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

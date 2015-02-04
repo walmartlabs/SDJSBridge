@@ -99,6 +99,11 @@ extern NSString * const SDJSPageFinishedHandlerName;
 @property (nonatomic, readonly) NSURL *url;
 
 /**
+ Current URL that is displayed
+ */
+@property (nonatomic, strong, readonly) NSURL *currentURL;
+
+/**
  Web view used to load the URL requests.
  */
 @property (nonatomic, readonly) UIWebView *webView;
@@ -211,4 +216,11 @@ extern NSString * const SDJSPageFinishedHandlerName;
  */
 - (BOOL)shouldHandleURL:(NSURL *)url;
 
+/**
+ Designed to be a pass-thru method for UIWebView delegate method webView:shouldStartLoadWithRequest:navigationType:
+ This way, subclasses can also have a piece of the action in deciding if the 
+ navigation request should be handled. Call super on overrides.
+ */
+- (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request
+                    navigationType:(UIWebViewNavigationType)navigationType;
 @end
