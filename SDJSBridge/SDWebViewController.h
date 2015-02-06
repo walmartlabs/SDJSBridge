@@ -225,4 +225,15 @@ extern NSString * const SDJSPageFinishedHandlerName;
 - (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request
                     navigationType:(UIWebViewNavigationType)navigationType
      againstWebViewNavigationTypes:(NSArray *)navigationTypes;
+
+/**
+ A chance to manipulate the request for subclasses. Perhaps inject some cross-domain
+ cookies with the request going out?? Perhaps change the url??? Who knows, the world
+ is now ours with this opportunity.
+ 
+ @param request - The original NSURLRequest to be inspected before manipulation
+ 
+ @return NSURLRequest - The parsed NSURLRequest after changes
+ */
+- (NSURLRequest *)parseURLRequest:(NSURLRequest *)request;
 @end

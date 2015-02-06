@@ -144,17 +144,32 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     return [self.currentURL copy];
 }
 
+- (NSURLRequest *)parseURLRequest:(NSURLRequest *)request
+{
+    // Don't do anything with this implementation, we just want to pass it
+    // on for now. This is only here for subclasses to override
+    
+    return request;
+}
+
 - (void)loadURL:(NSURL *)url
 {
     self.currentURL = url;
     
+    NSURLRequest *request = nil;
+    
     if (self.defaultUserAgent.length) {
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.currentURL];
-        [request setValue:self.defaultUserAgent forHTTPHeaderField:@"User-Agent"];
-        [self.webView loadRequest:request];
+        NSMutableURLRequest *tempRequest = [NSMutableURLRequest requestWithURL:self.currentURL];
+        [tempRequest setValue:self.defaultUserAgent forHTTPHeaderField:@"User-Agent"];
+        request = tempRequest;
     } else {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:self.currentURL]];
+        request = [NSURLRequest requestWithURL:self.currentURL];
     }
+    
+    // A chance for the request to manipulated
+    NSURLRequest *modifiedRequest = [self parseURLRequest:request];
+    
+    [self.webView loadRequest:modifiedRequest];
 }
 
 #pragma mark - Navigation
