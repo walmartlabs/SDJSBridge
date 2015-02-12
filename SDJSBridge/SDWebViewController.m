@@ -82,22 +82,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 {
     [super viewDidLoad];
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.autoresizesSubviews = YES;
-    //self.view.translatesAutoresizingMaskIntoConstraints = NO;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    self.placeholderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    //self.placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view insertSubview:self.placeholderView atIndex:0];
-    
     [self initializeController];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.webView.backgroundColor = [UIColor whiteColor];
-    
-    [self recontainWebView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,7 +93,6 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         self.webView.hidden = YES;
         [self recontainWebView];
         [self.webView goBack];
-        self.webView.hidden = NO;
     }
     
     if (_bridge)
@@ -130,11 +114,24 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)initializeController
 {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.autoresizesSubviews = YES;
+    //self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    self.placeholderView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    //self.placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.placeholderView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view insertSubview:self.placeholderView atIndex:0];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    if (self.webView.loading) {
-        self.webView.hidden = YES;
-    }
+    self.webView.hidden = YES;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.webView.backgroundColor = [UIColor whiteColor];
+    
+    [self recontainWebView];
 }
 
 #pragma mark - URLs
@@ -177,7 +174,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (id)pushURL:(NSURL *)url title:(NSString *)title
 {
     self.placeholderView.image = [self imageWithView:self.webView];
-    
+
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     [self.navigationController pushViewController:webViewController animated:YES];
