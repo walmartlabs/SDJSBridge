@@ -12,6 +12,8 @@
 
 @interface SDJSBridge: NSObject
 
+@property (nonatomic, readonly) JSContext *context;
+
 - (instancetype)init;
 - (instancetype)initWithWebView:(UIWebView *)webView;
 
