@@ -169,6 +169,14 @@ extern NSString * const SDJSPageFinishedHandlerName;
  */
 - (id)presentModalURL:(NSURL *)url title:(NSString *)title;
 
+
+/**
+ Tells the webview to go back a url for reloading, backs or getting out of
+ sticky situations. Handles hiding and other various tasks associated with going
+ back in this type of situation.
+ */
+- (void)goBackInWebView;
+
 /// @name Displaying Modal Web View Controllers
 
 /**

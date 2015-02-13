@@ -90,9 +90,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [super viewWillAppear:animated];
     if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
-        self.webView.hidden = YES;
-        [self recontainWebView];
-        [self.webView goBack];
+        [self goBackInWebView];
     }
     
     if (_bridge)
@@ -211,6 +209,13 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self presentViewController:navigationController animated:YES completion:nil];
     
     return webViewController;
+}
+
+- (void)goBackInWebView
+{
+    self.webView.hidden = YES;
+    [self recontainWebView];
+    [self.webView goBack];
 }
 
 #pragma mark - SDJSBridge
