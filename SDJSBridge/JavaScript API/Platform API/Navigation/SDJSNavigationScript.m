@@ -105,7 +105,11 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
     @strongify(self.webViewController, strongWebViewController);
-    strongWebViewController.title = options[kSDJSNavigationScriptTitleKey];
+    
+    NSString *title = options[kSDJSNavigationScriptTitleKey];
+    if (title.length) {
+        strongWebViewController.title = options[kSDJSNavigationScriptTitleKey];
+    }
     strongWebViewController.navigationItem.backBarButtonItem.title = options[kSDJSNavigationScriptBackTitleKey];
 }
 
