@@ -22,6 +22,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong, readwrite) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
+@property (nonatomic, assign) BOOL shouldHideWebView;
 
 @end
 
@@ -124,7 +125,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.webView.hidden = YES;
+    if (self.shouldHideWebView)
+    {
+        self.webView.hidden = YES;
+    }
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
@@ -178,7 +182,11 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.navigationController pushViewController:webViewController animated:YES];
     
     if (url) {
+        self.shouldHideWebView = YES;
         [webViewController loadURL:url];
+    } else {
+        self.shouldHideWebView = NO;
+        [self webViewDidFinishLoad];
     }
     
     return webViewController;
