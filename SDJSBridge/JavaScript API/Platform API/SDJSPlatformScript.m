@@ -54,7 +54,9 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    [self.alertScript showAlertWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.alertScript showAlertWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    });
 }
 
 #pragma mark - Navigation
@@ -68,11 +70,15 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)pushStateWithOptions:(NSDictionary *)options {
-    [self.navigationScript pushStateWithOptions:options];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationScript pushStateWithOptions:options];
+    });
 }
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
-    [self.navigationScript replaceStateWithOptions:options];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationScript replaceStateWithOptions:options];
+    });
     
 }
 
@@ -91,11 +97,15 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showLoadingIndicatorWithOptions:(NSDictionary *)options {
-    [self.progressScript showLoadingIndicatorWithOptions:options];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progressScript showLoadingIndicatorWithOptions:options];
+    });
 }
 
 - (void)hideLoadingIndicator {
-    [self.progressScript hide];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.progressScript hide];
+    });
 }
 
 #pragma mark - Share
@@ -109,7 +119,9 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)shareWithOptions:(NSDictionary *)options {
-    [self.shareScript shareWithOptions:options];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.shareScript shareWithOptions:options];
+    });
 }
 
 #pragma mark - Web Dialog
@@ -123,8 +135,6 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    // run on main thread because the result of this call allocs a web view
-    // instance which is not thread safe
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.webDialogScript showWebDialogWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
     });
@@ -155,7 +165,9 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)presentDatePickerWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    [self.datePickerScript presentDatePickerWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.datePickerScript presentDatePickerWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    });
 }
 
 @end
