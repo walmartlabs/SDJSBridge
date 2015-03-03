@@ -123,7 +123,11 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 }
 
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
-    [self.webDialogScript showWebDialogWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    // run on main thread because the result of this call allocs a web view
+    // instance which is not thread safe
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.webDialogScript showWebDialogWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+    });
 }
 
 #pragma mark - Radio Dialog
