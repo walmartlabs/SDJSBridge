@@ -78,6 +78,7 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
 #pragma mark - External API
 
 - (void)pushStateWithOptions:(NSDictionary *)options {
+    
     NSString *title = options[kSDJSNavigationScriptTitleKey];
     NSString *urlString = options[kSDJSNavigationScriptURLKey];
     NSURL *url = [self URLWithURLString:urlString];
@@ -91,12 +92,11 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
 }
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
+    
     @strongify(self.webViewController, strongWebViewController);
     
     // Make sure to add the options
     [self p_addOptions:options toController:strongWebViewController];
-    
-    strongWebViewController.navigationItem.backBarButtonItem.title = options[kSDJSNavigationScriptBackTitleKey];
 }
 
 - (void)back {
