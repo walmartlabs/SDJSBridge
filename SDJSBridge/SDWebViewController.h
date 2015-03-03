@@ -114,7 +114,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
  The state that the view was loaded. Needed to test animations and states involved 
  in determining showing and hiding states.
  */
-@property (nonatomic, readonly) SDLoadState loadedURLState;
+@property (nonatomic, assign, readonly) SDLoadState loadedURLState;
 
 /**
  Web view used to load the URL requests.

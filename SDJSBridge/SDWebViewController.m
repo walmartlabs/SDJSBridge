@@ -22,7 +22,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong, readwrite) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
-@property (nonatomic, readwrite) SDLoadState loadedURLState;
+@property (nonatomic, assign, readwrite) SDLoadState loadedURLState;
 
 @end
 
