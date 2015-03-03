@@ -22,6 +22,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong, readwrite) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
+@property (nonatomic, assign) BOOL shouldHideWebView;
 
 @end
 
@@ -76,6 +77,12 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)dealloc
 {
     self.delegate = nil;
+    
+    // Clear the webview delegate but only if it's pointing at us
+    // Since these webviews are shared, we were not clearing the delegate on pop to home
+    if (self.webView.delegate == self) {
+        self.webView.delegate = nil;
+    }
 }
 
 - (void)viewDidLoad
@@ -88,15 +95,18 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![self isMovingToParentViewController] && self.webView.superview != self.view)
-    {
-        [self goBackInWebView];
-    }
-    
+
+    // I think it is better if the bridge is updated before we pop back, no?
     if (_bridge)
     {
         [self configureScriptObjects];
     }
+
+    if (![self isMovingToParentViewController] && self.webView.superview != self.view)
+    {
+        [self goBackInWebView];
+    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -124,7 +134,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.webView.hidden = YES;
+    if (self.shouldHideWebView)
+    {
+        self.webView.hidden = YES;
+    }
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.webView.backgroundColor = [UIColor whiteColor];
@@ -178,7 +191,11 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.navigationController pushViewController:webViewController animated:YES];
     
     if (url) {
+        self.shouldHideWebView = YES;
         [webViewController loadURL:url];
+    } else {
+        self.shouldHideWebView = NO;
+        [self updateState];     // Call new updateState method to make sure the webview is configured properly
     }
     
     return webViewController;
@@ -216,6 +233,12 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     self.webView.hidden = YES;
     [self recontainWebView];
     [self.webView goBack];
+    
+    // If we are going back and we don't think we should hide the webview (ie this is a SPA thingy)
+    // then make sure the webview gets updated (ie unhidden, etc)
+    if (self.shouldHideWebView == NO) {
+        [self updateState];
+    }
 }
 
 #pragma mark - SDJSBridge
@@ -240,6 +263,16 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)configureScriptObjects
 {
+    
+    // Change 1: Tell the delegate to configure its script objects first
+    @strongify(self.delegate, strongDelegate);
+    
+    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
+        [strongDelegate webViewControllerConfigureScriptObjects:self];
+    }
+    
+    // Change 2: THEN update the current bridge scripts to point to self
+    
     // update parent web view controller reference in scripts
     for (NSString *scriptName in [_bridge scriptObjects]) {
         SDJSBridgeScript *script = [_bridge scriptObjects][scriptName];
@@ -247,12 +280,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
             script.webViewController = self;
         }
     }
-    
-    @strongify(self.delegate, strongDelegate);
-    
-    if ([strongDelegate respondsToSelector:@selector(webViewControllerConfigureScriptObjects:)]) {
-        [strongDelegate webViewControllerConfigureScriptObjects:self];
-    }
+
 }
 
 - (JSValue *)evaluateScript:(NSString *)script {
@@ -322,13 +350,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
- 
-    if (title.length) {
-        self.title = title;
-    }
-    
-    self.webView.hidden = NO;
+    // Call new updateState method to make sure the webview is configured properly
+    [self updateState];
     
     [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
     
@@ -415,6 +438,20 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     }
 
     return _webView;
+}
+
+// Call this to update the state of the webview
+// This code used to be buried in webViewDidFinishLoad:
+// This purposely does not call any of the javascript stuff as this is a simple back
+// If we need that to be called, then we can extend the functionality of this method as needed
+- (void)updateState {
+    NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
+    if (title.length) {
+        self.title = title;
+    }
+    
+    self.webView.hidden = NO;
 }
 
 @end

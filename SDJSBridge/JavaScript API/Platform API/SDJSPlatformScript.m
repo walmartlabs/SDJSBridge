@@ -27,8 +27,8 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)setWebViewController:(SDWebViewController *)webViewController {
     [super setWebViewController:webViewController];
-    _alertScript.webViewController = webViewController;
-    _navigationScript.webViewController = webViewController;
+    self.alertScript.webViewController = webViewController;         // Call self or lazy init would not run if nil and the webViewController set would be lost
+    self.navigationScript.webViewController = webViewController;    // Call self or lazy init would not run if nil and the webViewController set would be lost
 }
 
 #pragma mark - Logging API
