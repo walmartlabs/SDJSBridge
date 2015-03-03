@@ -15,6 +15,13 @@
 
 extern NSString * const SDJSPageFinishedHandlerName;
 
+typedef NS_ENUM(NSInteger, SDLoadState)
+{
+    kSDLoadStateNone = 0,
+    kSDLoadStateURL,
+    kSDLoadStatePushState,
+};
+
 /**
  A protocol for handling SDWebViewController events.
  */
@@ -102,6 +109,12 @@ extern NSString * const SDJSPageFinishedHandlerName;
  Current URL that is displayed
  */
 @property (nonatomic, strong, readonly) NSURL *currentURL;
+
+/**
+ The state that the view was loaded. Needed to test animations and states involved 
+ in determining showing and hiding states.
+ */
+@property (nonatomic, readonly) SDLoadState loadedURLState;
 
 /**
  Web view used to load the URL requests.

@@ -78,25 +78,31 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
 #pragma mark - External API
 
 - (void)pushStateWithOptions:(NSDictionary *)options {
-    NSString *title = options[kSDJSNavigationScriptTitleKey];
-    NSString *urlString = options[kSDJSNavigationScriptURLKey];
-    NSURL *url = [self URLWithURLString:urlString];
+    
+    // Make sure we're on the main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSString *title = options[kSDJSNavigationScriptTitleKey];
+        NSString *urlString = options[kSDJSNavigationScriptURLKey];
+        NSURL *url = [self URLWithURLString:urlString];
 
-    SDWebViewController *webViewController = [self.webViewController pushURL:url title:title];
-    
-    // Make sure to add the options
-    [self p_addOptions:options toController:webViewController];
-    
-    self.webViewController = webViewController;
+        SDWebViewController *webViewController = [self.webViewController pushURL:url title:title];
+        
+        // Make sure to add the options
+        [self p_addOptions:options toController:webViewController];
+        
+        self.webViewController = webViewController;
+    });
 }
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
-    @strongify(self.webViewController, strongWebViewController);
     
-    // Make sure to add the options
-    [self p_addOptions:options toController:strongWebViewController];
-    
-    strongWebViewController.navigationItem.backBarButtonItem.title = options[kSDJSNavigationScriptBackTitleKey];
+    // Make sure we're on the main thread
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self.webViewController, strongWebViewController);
+        
+        // Make sure to add the options
+        [self p_addOptions:options toController:strongWebViewController];
+    });
 }
 
 - (void)back {

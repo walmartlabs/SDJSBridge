@@ -22,7 +22,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong, readwrite) NSURL *currentURL;
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
-@property (nonatomic, assign) BOOL shouldHideWebView;
+@property (nonatomic, readwrite) SDLoadState loadedURLState;
 
 @end
 
@@ -134,7 +134,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    if (self.shouldHideWebView)
+    if (self.loadedURLState == kSDLoadStateURL)
     {
         self.webView.hidden = YES;
     }
@@ -188,15 +188,17 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
-    [self.navigationController pushViewController:webViewController animated:YES];
     
+    BOOL animateViewController = YES;
     if (url) {
-        self.shouldHideWebView = YES;
+        webViewController.loadedURLState = kSDLoadStateURL;
         [webViewController loadURL:url];
     } else {
-        self.shouldHideWebView = NO;
-        [self updateState];     // Call new updateState method to make sure the webview is configured properly
+        webViewController.loadedURLState = kSDLoadStatePushState;
+        animateViewController = NO;
     }
+    
+    [self.navigationController pushViewController:webViewController animated:animateViewController];
     
     return webViewController;
 }
@@ -230,15 +232,16 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)goBackInWebView
 {
-    self.webView.hidden = YES;
-    [self recontainWebView];
-    [self.webView goBack];
     
     // If we are going back and we don't think we should hide the webview (ie this is a SPA thingy)
     // then make sure the webview gets updated (ie unhidden, etc)
-    if (self.shouldHideWebView == NO) {
+    if (self.loadedURLState == kSDLoadStatePushState)
+    {
         [self updateState];
     }
+
+    [self recontainWebView];
+    [self.webView goBack];
 }
 
 #pragma mark - SDJSBridge
@@ -351,7 +354,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     // Call new updateState method to make sure the webview is configured properly
-    [self updateState];
+    self.webView.hidden = NO;
     
     [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
     
@@ -444,14 +447,23 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 // This code used to be buried in webViewDidFinishLoad:
 // This purposely does not call any of the javascript stuff as this is a simple back
 // If we need that to be called, then we can extend the functionality of this method as needed
-- (void)updateState {
+- (void)updateState
+{
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
-    if (title.length) {
+    if (title.length)
+    {
         self.title = title;
     }
     
-    self.webView.hidden = NO;
+    if (self.loadedURLState == kSDLoadStatePushState)
+    {
+        self.webView.hidden = NO;
+    }
+    else
+    {
+        self.webView.hidden = YES;
+    }
 }
 
 @end
