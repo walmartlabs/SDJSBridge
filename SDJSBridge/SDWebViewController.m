@@ -353,8 +353,9 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    // Call new updateState method to make sure the webview is configured properly
-    self.webView.hidden = NO;
+    if (!webView.isLoading) {
+        self.webView.hidden = NO;
+    }
     
     [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
     
