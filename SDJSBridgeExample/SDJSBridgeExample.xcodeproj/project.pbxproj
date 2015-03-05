@@ -17,6 +17,7 @@
 		17814BDA1A7ADCB200C6A0D1 /* SDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD31A7ADCB200C6A0D1 /* SDLog.m */; };
 		17814BDB1A7ADCB200C6A0D1 /* SDPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD51A7ADCB200C6A0D1 /* SDPickerView.m */; };
 		17814BDC1A7ADCB200C6A0D1 /* UIColor+SDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 17814BD71A7ADCB200C6A0D1 /* UIColor+SDExtensions.m */; };
+		179171CA1AA8A69800408F09 /* NSDictionary+SDJSExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 179171C91AA8A69800408F09 /* NSDictionary+SDJSExtensions.m */; };
 		17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */; };
 		17B5AA241A670139004465F1 /* SDJSHandlerScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9F51A670139004465F1 /* SDJSHandlerScript.m */; };
 		17B5AA251A670139004465F1 /* SDJSAlertButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B5A9FA1A670139004465F1 /* SDJSAlertButton.m */; };
@@ -97,6 +98,8 @@
 		17814BD51A7ADCB200C6A0D1 /* SDPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDPickerView.m; sourceTree = "<group>"; };
 		17814BD61A7ADCB200C6A0D1 /* UIColor+SDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SDExtensions.h"; sourceTree = "<group>"; };
 		17814BD71A7ADCB200C6A0D1 /* UIColor+SDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SDExtensions.m"; sourceTree = "<group>"; };
+		179171C81AA8A69800408F09 /* NSDictionary+SDJSExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SDJSExtensions.h"; sourceTree = "<group>"; };
+		179171C91AA8A69800408F09 /* NSDictionary+SDJSExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SDJSExtensions.m"; sourceTree = "<group>"; };
 		17B5A9F21A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDJSBridgeScript+HandlerHelpers.h"; sourceTree = "<group>"; };
 		17B5A9F31A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDJSBridgeScript+HandlerHelpers.m"; sourceTree = "<group>"; };
 		17B5A9F41A670139004465F1 /* SDJSHandlerScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDJSHandlerScript.h; sourceTree = "<group>"; };
@@ -418,6 +421,8 @@
 				CA0249FA19E70C23007CAAC7 /* UIWebView+SDJSExtensions.m */,
 				19A68C501A1B9E8600D5D057 /* NSString+SDJSExtensions.h */,
 				19A68C511A1B9E8600D5D057 /* NSString+SDJSExtensions.m */,
+				179171C81AA8A69800408F09 /* NSDictionary+SDJSExtensions.h */,
+				179171C91AA8A69800408F09 /* NSDictionary+SDJSExtensions.m */,
 			);
 			name = SDJSBridge;
 			path = ../../SDJSBridge;
@@ -583,6 +588,7 @@
 				17B5AA311A670139004465F1 /* SDJSPlatformScript.m in Sources */,
 				17B5AA371A670139004465F1 /* SDJSBridgeScript.m in Sources */,
 				17B5AA231A670139004465F1 /* SDJSBridgeScript+HandlerHelpers.m in Sources */,
+				179171CA1AA8A69800408F09 /* NSDictionary+SDJSExtensions.m in Sources */,
 				17814BDB1A7ADCB200C6A0D1 /* SDPickerView.m in Sources */,
 				17814BCD1A7AB8A400C6A0D1 /* SDJSScriptOutput.m in Sources */,
 			);
