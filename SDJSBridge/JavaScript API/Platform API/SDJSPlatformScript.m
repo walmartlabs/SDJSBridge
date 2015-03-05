@@ -9,6 +9,7 @@
 #import "SDJSPlatformScript.h"
 #import "SDJSBridgeInfo.h"
 #import "SDJSBridgeScript+HandlerHelpers.h"
+#import "NSDictionary+SDJSExtensions.h"
 
 NSString * const SDJSPlatformScriptName = @"WebViewJavascriptBridge";
 static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
@@ -55,7 +56,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.alertScript showAlertWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+        [self.alertScript showAlertWithOptions:[options validBridgeScriptOptions] callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
     });
 }
 
@@ -71,13 +72,13 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)pushStateWithOptions:(NSDictionary *)options {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationScript pushStateWithOptions:options];
+        [self.navigationScript pushStateWithOptions:[options validBridgeScriptOptions]];
     });
 }
 
 - (void)replaceStateWithOptions:(NSDictionary *)options {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationScript replaceStateWithOptions:options];
+        [self.navigationScript replaceStateWithOptions:[options validBridgeScriptOptions]];
     });
 }
 
@@ -97,7 +98,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)showLoadingIndicatorWithOptions:(NSDictionary *)options {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.progressScript showLoadingIndicatorWithOptions:options];
+        [self.progressScript showLoadingIndicatorWithOptions:[options validBridgeScriptOptions]];
     });
 }
 
@@ -119,7 +120,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)shareWithOptions:(NSDictionary *)options {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.shareScript shareWithOptions:options];
+        [self.shareScript shareWithOptions:[options validBridgeScriptOptions]];
     });
 }
 
@@ -135,7 +136,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)showWebDialogWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.webDialogScript showWebDialogWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+        [self.webDialogScript showWebDialogWithOptions:[options validBridgeScriptOptions] callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
     });
 }
 
@@ -165,7 +166,7 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)presentDatePickerWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.datePickerScript presentDatePickerWithOptions:options callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+        [self.datePickerScript presentDatePickerWithOptions:[options validBridgeScriptOptions] callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
     });
 }
 
