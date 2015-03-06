@@ -104,6 +104,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
     if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
+        [self goBackInWebView];
         [self recontainWebView];
     }
 
@@ -114,7 +115,6 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     
     // go back in web view before popping back to previous vc
     if (self.isMovingFromParentViewController) {
-        [self goBackInWebView];
         
         if (self.loadedURLState == kSDLoadStatePushState) {
             self.webView.hidden = NO;
