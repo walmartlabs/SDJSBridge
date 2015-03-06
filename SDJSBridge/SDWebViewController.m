@@ -105,8 +105,24 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
         [self goBackInWebView];
+        [self recontainWebView];
     }
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    // go back in web view before popping back to previous vc
+    if (self.isMovingFromParentViewController) {
+        
+        if (self.loadedURLState == kSDLoadStatePushState) {
+            self.webView.hidden = NO;
+        }
+        else {
+            self.webView.hidden = YES;
+        }
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -239,20 +255,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     return webViewController;
 }
 
-- (void)goBackInWebView
-{
-    // If we are going back and we don't think we should hide the webview (ie this is a SPA thingy)
-    // then make sure the webview gets updated (ie unhidden, etc)
-    if (self.loadedURLState == kSDLoadStatePushState)
-    {
-        self.webView.hidden = NO;
-    }
-    else
-    {
-        self.webView.hidden = YES;
-    }
-
-    [self recontainWebView];
+- (void)goBackInWebView {
     [self.webView goBack];
 }
 
