@@ -65,7 +65,7 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
     NSArray *items = nil;
     
     if (self.shareTitle.length && self.shareText.length) {
-        items = @[self.shareText, self.shareTitle];
+        items = @[self.shareTitle, self.shareText];
     } else {
         items = @[self.shareText];
     }
