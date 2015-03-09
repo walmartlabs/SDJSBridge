@@ -62,17 +62,14 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
 #pragma mark - Share
 
 - (void)shareTapped:(id)sender {
-    NSArray *items = nil;
     
-    if (self.shareTitle.length && self.shareText.length) {
-        items = @[self.shareTitle, self.shareText];
-    } else {
-        items = @[self.shareText];
+    @strongify(self.webViewController, strongWebViewController);
+    UIActivityViewController *activityViewController = [strongWebViewController shareWithTitle:self.shareTitle andBody:self.shareText];
+    
+    // Show the VC
+    if (activityViewController) {
+        [strongWebViewController presentViewController:activityViewController animated:YES completion:nil];
     }
-    
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
-                                                                                         applicationActivities:nil];
-    [self.webViewController presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark - External API
