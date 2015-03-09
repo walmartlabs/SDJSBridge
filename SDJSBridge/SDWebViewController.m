@@ -204,6 +204,23 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.webView loadRequest:modifiedRequest];
 }
 
+#pragma mark - Sharing
+- (UIActivityViewController *)shareWithTitle:(NSString *)title andBody:(NSString *)body
+{
+    // Pass-thru
+    NSArray *items = nil;
+    
+    if (title.length && body.length) {
+        items = @[title, body];
+    } else {
+        items = @[body];
+    }
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    
+    return activityViewController;
+}
+
 #pragma mark - Navigation
 
 - (id)pushURL:(NSURL *)url title:(NSString *)title
