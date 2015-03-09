@@ -67,7 +67,9 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
     UIActivityViewController *activityViewController = [strongWebViewController shareWithTitle:self.shareTitle andBody:self.shareText];
     
     // Show the VC
-    [strongWebViewController presentViewController:activityViewController animated:YES completion:nil];
+    if (activityViewController) {
+        [strongWebViewController presentViewController:activityViewController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - External API

@@ -214,6 +214,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         items = @[title, body];
     } else if (body.length) {
         items = @[body];
+    } else {
+        return nil;
     }
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
