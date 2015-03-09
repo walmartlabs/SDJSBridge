@@ -212,7 +212,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     
     if (title.length && body.length) {
         items = @[title, body];
-    } else {
+    } else if (body.length) {
         items = @[body];
     }
     
