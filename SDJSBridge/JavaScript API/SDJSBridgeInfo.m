@@ -30,13 +30,4 @@
     
     return self;
 }
-
-- (void)updateWithAniviaEvents:(NSDictionary *)aniviaEvents {
-    
-    if (_latestAniviaEvents != aniviaEvents) {
-        _latestAniviaEvents = aniviaEvents;
-    }
-    
-}
-
 @end

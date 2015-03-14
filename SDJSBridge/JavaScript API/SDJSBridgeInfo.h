@@ -13,7 +13,6 @@
 
 @property (nonatomic, copy, readonly) NSString *osName;
 @property (nonatomic, copy, readonly) NSString *osVersion;
-@property (nonatomic, copy, readonly) NSDictionary *latestAniviaEvents;
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
 @end
@@ -22,18 +21,9 @@
 
 @property (nonatomic, copy, readonly) NSString *osName;
 @property (nonatomic, copy, readonly) NSString *osVersion;
-@property (nonatomic, copy, readonly) NSDictionary *latestAniviaEvents;
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
 + (instancetype)bridgeInfoWithAPILevel:(NSUInteger)apiLevel;
 
 - (instancetype)initWithAPILevel:(NSUInteger)apiLevel;
-
-/**
- This is to add data for the latestAniviaEvents key that goes out in info so we 
- can map Anivia to Beacon events.
- 
- @param aniviaEvents - The events dictionary that need to go out with the bridge.
- */
-- (void)updateWithAniviaEvents:(NSDictionary *)aniviaEvents;
 @end
