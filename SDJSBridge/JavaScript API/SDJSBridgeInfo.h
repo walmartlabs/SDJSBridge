@@ -13,7 +13,7 @@
 
 @property (nonatomic, copy, readonly) NSString *osName;
 @property (nonatomic, copy, readonly) NSString *osVersion;
-@property (nonatomic, copy, readonly) NSArray *latestAniviaEvents;
+@property (nonatomic, copy, readonly) NSDictionary *latestAniviaEvents;
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
 @end
@@ -22,7 +22,7 @@
 
 @property (nonatomic, copy, readonly) NSString *osName;
 @property (nonatomic, copy, readonly) NSString *osVersion;
-@property (nonatomic, copy, readonly) NSArray *latestAniviaEvents;
+@property (nonatomic, copy, readonly) NSDictionary *latestAniviaEvents;
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
 + (instancetype)bridgeInfoWithAPILevel:(NSUInteger)apiLevel;
@@ -35,5 +35,5 @@
  
  @param aniviaEvents - The events dictionary that need to go out with the bridge.
  */
-- (void)updateWithAniviaEvents:(NSArray *)aniviaEvents;
+- (void)updateWithAniviaEvents:(NSDictionary *)aniviaEvents;
 @end
