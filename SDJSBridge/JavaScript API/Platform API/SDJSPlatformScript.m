@@ -8,11 +8,12 @@
 
 #import "SDJSPlatformScript.h"
 #import "SDJSBridgeInfo.h"
+#import "SDJSBridgeAnalytics.h"
 #import "SDJSBridgeScript+HandlerHelpers.h"
 #import "NSDictionary+SDJSExtensions.h"
 
 NSString * const SDJSPlatformScriptName = @"WebViewJavascriptBridge";
-static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
+NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 @interface SDJSPlatformScript ()
 
@@ -42,6 +43,10 @@ static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (SDJSBridgeInfo *)info {
     return [SDJSBridgeInfo bridgeInfoWithAPILevel:kSDJSPlatformScriptVersionNumber];
+}
+
+- (SDJSBridgeAnalytics *)analytics {
+    return [[SDJSBridgeAnalytics alloc] init];
 }
 
 #pragma mark - Alert

@@ -105,8 +105,32 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
         [self goBackInWebView];
+        [self recontainWebView];
     }
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    // go back in web view before popping back to previous vc
+    if (self.isMovingFromParentViewController) {
+        
+        if (self.loadedURLState == kSDLoadStatePushState) {
+            self.webView.hidden = NO;
+        }
+        else {
+            self.webView.hidden = YES;
+        }
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    // hide placeholder view after view animates away so that when we pop back
+    // we do not see a flicker of the previous page while web view's goBack
+    // updates the page
+    self.placeholderView.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -180,11 +204,31 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.webView loadRequest:modifiedRequest];
 }
 
+#pragma mark - Sharing
+- (UIActivityViewController *)shareWithTitle:(NSString *)title andBody:(NSString *)body
+{
+    // Pass-thru
+    NSArray *items = nil;
+    
+    if (title.length && body.length) {
+        items = @[title, body];
+    } else if (body.length) {
+        items = @[body];
+    } else {
+        return nil;
+    }
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    
+    return activityViewController;
+}
+
 #pragma mark - Navigation
 
 - (id)pushURL:(NSURL *)url title:(NSString *)title
 {
     self.placeholderView.image = [self imageWithView:self.webView];
+    self.placeholderView.hidden = NO;
 
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
@@ -230,17 +274,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     return webViewController;
 }
 
-- (void)goBackInWebView
-{
-    
-    // If we are going back and we don't think we should hide the webview (ie this is a SPA thingy)
-    // then make sure the webview gets updated (ie unhidden, etc)
-    if (self.loadedURLState == kSDLoadStatePushState)
-    {
-        [self updateState];
-    }
-
-    [self recontainWebView];
+- (void)goBackInWebView {
     [self.webView goBack];
 }
 
@@ -283,7 +317,6 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
             script.webViewController = self;
         }
     }
-
 }
 
 - (JSValue *)evaluateScript:(NSString *)script {
@@ -316,6 +349,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
             {
                 if ([request.URL.scheme isEqualToString:@"https"] || [request.URL.scheme isEqualToString:@"http"])
                 {
+                    [self.webView stopLoading];
                     [self pushURL:request.URL title:nil];
                     result = NO;
                 }
@@ -354,7 +388,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     if (!webView.isLoading) {
-        self.webView.hidden = NO;
+        [self updateState];
+        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(_actuallyShowWebView) userInfo:nil repeats:NO];
     }
     
     [self.handlerScript callHandlerWithName:SDJSPageFinishedHandlerName data:nil];
@@ -413,6 +448,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     return img;
 }
 
+#pragma mark - UIWebView
+
 - (void)recontainWebView
 {
     self.webView.delegate = self;
@@ -426,6 +463,15 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.view addSubview:self.webView];
     
     self.placeholderView.frame = frame;
+}
+
+- (void)_actuallyShowWebView {
+    // called by timer in webViewDidFinishLoad. this is the best estimation of
+    // when the web view will be completely finished loading. this prevents
+    // flicker that was causing the webView to be shown too early with the
+    // previous page still renderered. before you would see a flicker of the
+    // previous page before seeing the newly loaded page.
+    self.webView.hidden = NO;
 }
 
 - (UIWebView *)webView
@@ -455,15 +501,6 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     if (title.length)
     {
         self.title = title;
-    }
-    
-    if (self.loadedURLState == kSDLoadStatePushState)
-    {
-        self.webView.hidden = NO;
-    }
-    else
-    {
-        self.webView.hidden = YES;
     }
 }
 

@@ -163,6 +163,15 @@ typedef NS_ENUM(NSInteger, SDLoadState)
  */
 - (void)loadURL:(NSURL *)url;
 
+/// @name Sharing
+
+/**
+ Attempt to share via UIActivityViewController
+ @param title - The subject or title of the share action.
+ @param body - The body or content of the share action.
+ */
+- (UIActivityViewController *)shareWithTitle:(NSString *)title andBody:(NSString *)body;
+
 /// @name Navigating to URLs
 
 /**
