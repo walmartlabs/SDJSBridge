@@ -16,16 +16,16 @@ NSString * const SDJSProgressOptionMessageKey = @"message";
 - (void)showWithMessage:(NSString *)message {
     @strongify(self.delegate, strongDelegate);
     
-    if ([strongDelegate respondsToSelector:@selector(showProgressHUDWithMessage:)]) {
-        [strongDelegate showProgressHUDWithMessage:message];
+    if ([strongDelegate respondsToSelector:@selector(progressScriptShowProgressHUDWithMessage:)]) {
+        [strongDelegate progressScriptShowProgressHUDWithMessage:message];
     }
 }
 
 - (void)hide {
     @strongify(self.delegate, strongDelegate);
     
-    if ([strongDelegate respondsToSelector:@selector(hideProgressHUD)]) {
-        [strongDelegate hideProgressHUD];
+    if ([strongDelegate respondsToSelector:@selector(progressScriptHideProgressHUD)]) {
+        [strongDelegate progressScriptHideProgressHUD];
     }
 }
 
