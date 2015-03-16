@@ -21,8 +21,6 @@
 
 - (SDJSBridgeInfo *)info;
 
-- (SDJSBridgeAnalytics *)analytics;
-
 @end
 
 /**
