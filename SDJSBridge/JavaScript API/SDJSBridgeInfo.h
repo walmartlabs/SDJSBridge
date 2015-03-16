@@ -24,6 +24,6 @@
 @property (nonatomic, assign, readonly) NSUInteger apiLevel;
 
 + (instancetype)bridgeInfoWithAPILevel:(NSUInteger)apiLevel;
-- (instancetype)initWithAPILevel:(NSUInteger)apiLevel;
 
+- (instancetype)initWithAPILevel:(NSUInteger)apiLevel;
 @end
