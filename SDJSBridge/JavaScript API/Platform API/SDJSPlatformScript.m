@@ -12,7 +12,7 @@
 #import "NSDictionary+SDJSExtensions.h"
 
 NSString * const SDJSPlatformScriptName = @"WebViewJavascriptBridge";
-static NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
+NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 @interface SDJSPlatformScript ()
 

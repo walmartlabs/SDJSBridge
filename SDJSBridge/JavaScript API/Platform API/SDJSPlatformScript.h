@@ -16,6 +16,7 @@
 #import "SDJSDatePickerScript.h"
 
 extern NSString * const SDJSPlatformScriptName;
+extern NSUInteger const kSDJSPlatformScriptVersionNumber;
 
 /**
  A protocol that describes how the top level API is exported to JavaScript.

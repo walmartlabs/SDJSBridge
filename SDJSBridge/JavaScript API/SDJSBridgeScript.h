@@ -11,6 +11,7 @@
 
 @class SDWebViewController;
 @class SDJSBridgeInfo;
+@class SDJSBridgeAnalytics;
 
 /**
  JavaScript export protocol for providing version information

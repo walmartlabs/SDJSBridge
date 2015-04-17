@@ -20,12 +20,12 @@
  Show the progress HUD
  @param message Message text to display in the progerss HUD.
  */
-- (void)showProgressHUDWithMessage:(NSString *)message;
+- (void)progressScriptShowProgressHUDWithMessage:(NSString *)message;
 
 /**
  Hide the progress HUD
  */
-- (void)hideProgressHUD;
+- (void)progressScriptHideProgressHUD;
 
 @end
 
