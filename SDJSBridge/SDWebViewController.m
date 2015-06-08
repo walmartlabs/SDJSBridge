@@ -122,14 +122,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    // Get a snapshot of the current webview, save it to disk to use later
-    UIImage *image = [self imageWithView:self.webView];
-    self.placeholderView.image = image;
-    self.storedScreenshotGUID = [image saveImageToDisk];
-    
-    [self.view bringSubviewToFront:self.placeholderView];
-    
+        
     // go back in web view before popping back to previous vc
     if (self.isMovingFromParentViewController) {
         
@@ -259,6 +252,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         webViewController.loadedURLState = kSDLoadStatePushState;
         animateViewController = NO;
     }
+    
+    // Take snapshot
+    [self p_takeSnapshotOfWebview];
+    
     
     [self.navigationController pushViewController:webViewController animated:animateViewController];
     
@@ -474,6 +471,16 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         self.placeholderView.image = nil;
         [self.view sendSubviewToBack:self.placeholderView];
     });
+}
+
+- (void)p_takeSnapshotOfWebview
+{
+    // Get a snapshot of the current webview, save it to disk to use later
+    UIImage *image = [self imageWithView:self.webView];
+    self.placeholderView.image = image;
+    self.storedScreenshotGUID = [image saveImageToDisk];
+    
+    [self.view bringSubviewToFront:self.placeholderView];
 }
 
 #pragma mark - UIWebView
