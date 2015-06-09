@@ -10,6 +10,7 @@
 #import "SDJSBridge.h"
 #import "SDMacros.h"
 #import "SDJSHandlerScript.h"
+#import "UIImage+SDExtensions.h"
 
 NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
@@ -23,6 +24,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 @property (nonatomic, strong) SDJSBridge *bridge;
 @property (nonatomic, weak) SDJSHandlerScript *handlerScript;
 @property (nonatomic, assign, readwrite) SDLoadState loadedURLState;
+@property (nonatomic, copy) NSString *storedScreenshotGUID;
 
 @end
 
@@ -51,7 +53,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         _webView = webView;
         _sharedWebView = YES;
         _bridge = bridge;
-
+        
         if (!_bridge)
         {
             [self loadBridge];
@@ -95,24 +97,32 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
+    // Load a screenshot if we have one
+    if (self.storedScreenshotGUID)
+    {
+        self.placeholderView.image = [UIImage loadImageFromGUID:self.storedScreenshotGUID];
+        self.placeholderView.frame = self.view.bounds;
+        [self.view bringSubviewToFront:self.placeholderView];
+    }
+    
     // I think it is better if the bridge is updated before we pop back, no?
     if (_bridge)
     {
         [self configureScriptObjects];
     }
-
+    
     if (![self isMovingToParentViewController] && self.webView.superview != self.view)
     {
         [self goBackInWebView];
         [self recontainWebView];
     }
-
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+        
     // go back in web view before popping back to previous vc
     if (self.isMovingFromParentViewController) {
         
@@ -130,7 +140,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     // hide placeholder view after view animates away so that when we pop back
     // we do not see a flicker of the previous page while web view's goBack
     // updates the page
-    self.placeholderView.hidden = YES;
+    self.placeholderView.image = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -228,8 +238,9 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 - (id)pushURL:(NSURL *)url title:(NSString *)title
 {
     self.placeholderView.image = [self imageWithView:self.webView];
+    
     self.placeholderView.hidden = NO;
-
+    
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     
@@ -241,6 +252,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         webViewController.loadedURLState = kSDLoadStatePushState;
         animateViewController = NO;
     }
+    
+    // Take snapshot
+    [self p_takeSnapshotOfWebview];
+    
     
     [self.navigationController pushViewController:webViewController animated:animateViewController];
     
@@ -263,7 +278,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 }
 
 - (id)presentModalHTML:(NSString *)html title:(NSString *)title
-{    
+{
     SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:nil bridge:self.bridge];
     webViewController.title = title;
     [webViewController.webView loadHTMLString:html baseURL:self.url];
@@ -281,7 +296,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 #pragma mark - SDJSBridge
 
 - (void)loadBridge {
-    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];    
+    self.bridge = [[SDJSBridge alloc] initWithWebView:self.webView];
 }
 
 - (void)addScriptObject:(NSObject<JSExport> *)object name:(NSString *)name
@@ -411,7 +426,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self.bridge configureContext:context];
     
     @strongify(self.delegate, strongDelegate);
-
+    
     if ([strongDelegate respondsToSelector:@selector(webViewController:didCreateJavaScriptContext:)]) {
         [strongDelegate webViewController:self didCreateJavaScriptContext:context];
     }
@@ -448,12 +463,32 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     return img;
 }
 
+- (void)p_showWebView
+{
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, .25 * NSEC_PER_MSEC);
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        self.webView.hidden = NO;
+        self.placeholderView.image = nil;
+        [self.view sendSubviewToBack:self.placeholderView];
+    });
+}
+
+- (void)p_takeSnapshotOfWebview
+{
+    // Get a snapshot of the current webview, save it to disk to use later
+    UIImage *image = [self imageWithView:self.webView];
+    self.placeholderView.image = image;
+    self.storedScreenshotGUID = [image saveImageToDisk];
+    
+    [self.view bringSubviewToFront:self.placeholderView];
+}
+
 #pragma mark - UIWebView
 
 - (void)recontainWebView
 {
     self.webView.delegate = self;
-
+    
     CGRect frame = self.view.bounds;
     
     [self.webView removeFromSuperview];
@@ -471,7 +506,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     // flicker that was causing the webView to be shown too early with the
     // previous page still renderered. before you would see a flicker of the
     // previous page before seeing the newly loaded page.
-    self.webView.hidden = NO;
+    [self p_showWebView];
 }
 
 - (UIWebView *)webView
@@ -486,7 +521,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         
         [self loadBridge];
     }
-
+    
     return _webView;
 }
 
