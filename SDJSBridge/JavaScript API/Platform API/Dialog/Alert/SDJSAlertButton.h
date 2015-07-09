@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ENUM(NSInteger, SDJSAlertButtonType) {
+typedef NS_ENUM(NSInteger, SDJSAlertButtonType) {
     SDJSAlertButtonTypeOk,
     SDJSAlertButtonTypeCancel,
     SDJSAlertButtonTypeNeutral
