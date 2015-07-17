@@ -76,22 +76,22 @@ typedef NS_ENUM(NSInteger, SDLoadState)
  
  Creating a web view controller and loading a URL.
  
-     NSURL *url;
-     SDWebViewController *webViewController = [[SDWebViewController alloc] init];
-     [webViewController loadURL:url];
+ NSURL *url;
+ SDWebViewController *webViewController = [[SDWebViewController alloc] init];
+ [webViewController loadURL:url];
  
  ### Navigation
  
  Push a new web view controller on to the navigation stack and load the URL.
  
-     NSURL *nextPageURL;
-     [webViewController pushURL:nextPageURL title:nil]
-    
+ NSURL *nextPageURL;
+ [webViewController pushURL:nextPageURL title:nil]
+ 
  Present a modal new web view controller and load the URL.
-
-     NSURL *modalURL;
-     [webViewController presentURL:modalURL title:nil]
-
+ 
+ NSURL *modalURL;
+ [webViewController presentURL:modalURL title:nil]
+ 
  */
 @interface SDWebViewController : UIViewController
 
@@ -111,7 +111,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
 @property (nonatomic, strong, readonly) NSURL *currentURL;
 
 /**
- The state that the view was loaded. Needed to test animations and states involved 
+ The state that the view was loaded. Needed to test animations and states involved
  in determining showing and hiding states.
  */
 @property (nonatomic, assign, readonly) SDLoadState loadedURLState;
@@ -178,7 +178,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
  Push a new web view controller on the navigation stack that loads the provided
  URL.
  @param url URL of the request to load in the web view.
- @param title Title of the web view controller. Set as the view controller's 
+ @param title Title of the web view controller. Set as the view controller's
  title property.
  */
 - (id)pushURL:(NSURL *)url title:(NSString *)title;
@@ -219,7 +219,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
 
 /**
  @param name Name of the JavaScript function.
- @param block Objective-C block that is added to the JavaScript context as a 
+ @param block Objective-C block that is added to the JavaScript context as a
  function.
  */
 - (void)addScriptMethod:(NSString *)name block:(id)block;
@@ -240,7 +240,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
 
 /**
  Return `NO` to handle force the web view controller to handle the click though
- the standard web navigation system. Default implementation returns `YES` to 
+ the standard web navigation system. Default implementation returns `YES` to
  push new web view controllers on the navigation stack that load the uRL.
  in a subclass.
  */
@@ -248,8 +248,8 @@ typedef NS_ENUM(NSInteger, SDLoadState)
 
 /**
  Designed to be a pass-thru method for UIWebView delegate method webView:shouldStartLoadWithRequest:navigationType:
- This way, subclasses can also have a piece of the action in deciding if the 
- navigation request should be handled. It is possible to pass in which types of 
+ This way, subclasses can also have a piece of the action in deciding if the
+ navigation request should be handled. It is possible to pass in which types of
  UIWebViewNavigationTypes to compare against. Call super on overrides.
  */
 - (BOOL)shouldStartLoadWithRequest:(NSURLRequest *)request
