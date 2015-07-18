@@ -240,8 +240,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     self.placeholderView.image = [self imageWithView:self.webView];
     
     self.placeholderView.hidden = NO;
-    
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
+
+    SDWebViewController *webViewController = [(SDWebViewController *)[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     
     BOOL animateViewController = YES;
@@ -266,7 +266,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 {
     self.placeholderView.image = [self imageWithView:self.webView];
     
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
+    SDWebViewController *webViewController = [(SDWebViewController *)[[self class] alloc] initWithWebView:self.webView bridge:self.bridge];
     webViewController.title = title;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
@@ -279,7 +279,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 - (id)presentModalHTML:(NSString *)html title:(NSString *)title
 {
-    SDWebViewController *webViewController = [[[self class] alloc] initWithWebView:nil bridge:self.bridge];
+    SDWebViewController *webViewController = [(SDWebViewController *)[[self class] alloc] initWithWebView:nil bridge:self.bridge];
     webViewController.title = title;
     [webViewController.webView loadHTMLString:html baseURL:self.url];
     
