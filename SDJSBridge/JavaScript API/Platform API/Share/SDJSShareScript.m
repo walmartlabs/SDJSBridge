@@ -43,7 +43,12 @@ NSString * const SDJSShareScriptURLKey = @"url";
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
                                                                                          applicationActivities:applicationActivities];
     activityViewController.excludedActivityTypes = [self excludedActivityTypesWithURL:url message:message excludedServices:excludedServices];
+    
+// This class is deprecated, so I am not fixing this
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     activityViewController.completionHandler = [self completionHandler];
+#pragma clang diagnostic pop
     return activityViewController;
 }
 
