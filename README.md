@@ -1,3 +1,5 @@
+ATTN:  This bridge implementation is now deprecated.  It is not to be used in future projects or outside of the Walmart iOS application!
+
 SDJSBridge
 ==========
 
