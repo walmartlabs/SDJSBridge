@@ -421,8 +421,10 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self webViewDidFinishLoad];
 }
 
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)context
-{
+#pragma mark - JavaScriptContextDelegate
+
+- (void)didCreateJavaScriptContext:(JSContext * __nonnull)context webView:(UIWebView * __nonnull)webView {
+    
     [self.bridge configureContext:context];
     
     @strongify(self.delegate, strongDelegate);
@@ -518,6 +520,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         _webView.scrollView.delaysContentTouches = NO;
         [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
         _webView.delegate = self;
+        
+        [JavaScriptContextEventManager registerWebView:_webView];
         
         [self loadBridge];
     }

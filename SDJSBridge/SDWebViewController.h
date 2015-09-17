@@ -10,6 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "walmart-swift.h"
 
 @class SDWebViewController;
 
@@ -93,7 +94,7 @@ typedef NS_ENUM(NSInteger, SDLoadState)
  [webViewController presentURL:modalURL title:nil]
  
  */
-@interface SDWebViewController : UIViewController
+@interface SDWebViewController : UIViewController <JavaScriptContextDelegate>
 
 /**
  Web view controller delegate.
