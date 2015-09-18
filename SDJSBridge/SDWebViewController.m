@@ -30,9 +30,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
 @end
 
-@implementation SDWebViewController {
-    UIWebView *_webView;
-};
+@implementation SDWebViewController
 
 #pragma mark - Initialization
 
@@ -55,7 +53,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     if ((self = [super init]))
     {
         self.webView = webView;
-        //_webView = webView;
+
         _sharedWebView = YES;
         _bridge = bridge;
         
@@ -524,15 +522,6 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self p_showWebView];
 }
 
-//- (void)setWebView:(UIWebView *)webView {
-    //if (_webView) {
-    //    [WebViewManager removeBridgedWebView: _webView];
-    //}
-    //_webView = webView;
-    //[WebViewManager addBridgedWebView:_webView];
-//}
-
-
 - (UIWebView *)webView
 {
     if (!_webView)
@@ -544,6 +533,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         aWebView.delegate = self;
         
         _webView = aWebView;
+        [WebViewManager addBridgedWebView:_webView];
         
         [self loadBridge];
     }
