@@ -12,9 +12,11 @@
 #import "SDJSHandlerScript.h"
 #import "UIImage+SDExtensions.h"
 
+#import "walmart-Swift.h"
+
 NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 
-@interface SDWebViewController () <UIWebViewDelegate>
+@interface SDWebViewController () <UIWebViewDelegate, WebViewBridging>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIImageView *placeholderView;
@@ -50,7 +52,8 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 {
     if ((self = [super init]))
     {
-        _webView = webView;
+        self.webView = webView;
+
         _sharedWebView = YES;
         _bridge = bridge;
         
@@ -421,8 +424,7 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
     [self webViewDidFinishLoad];
 }
 
-- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)context
-{
+- (void)didCreateJavaScriptContext:(JSContext * __nonnull)context {
     [self.bridge configureContext:context];
     
     @strongify(self.delegate, strongDelegate);
@@ -431,6 +433,17 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
         [strongDelegate webViewController:self didCreateJavaScriptContext:context];
     }
 }
+
+//- (void)webView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext *)context
+//{
+//    [self.bridge configureContext:context];
+//    
+//    @strongify(self.delegate, strongDelegate);
+//    
+//    if ([strongDelegate respondsToSelector:@selector(webViewController:didCreateJavaScriptContext:)]) {
+//        [strongDelegate webViewController:self didCreateJavaScriptContext:context];
+//    }
+//}
 
 #pragma mark - Web view events.
 
@@ -513,11 +526,14 @@ NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 {
     if (!_webView)
     {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-        _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _webView.scrollView.delaysContentTouches = NO;
-        [_webView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
-        _webView.delegate = self;
+        UIWebView *aWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        aWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        aWebView.scrollView.delaysContentTouches = NO;
+        [aWebView.scrollView setDecelerationRate:UIScrollViewDecelerationRateNormal];
+        aWebView.delegate = self;
+        
+        _webView = aWebView;
+        [WebViewManager addBridgedWebView:_webView];
         
         [self loadBridge];
     }
