@@ -43,7 +43,7 @@ NSString * const SDJSShareScriptURLKey = @"url";
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:items
                                                                                          applicationActivities:applicationActivities];
     activityViewController.excludedActivityTypes = [self excludedActivityTypesWithURL:url message:message excludedServices:excludedServices];
-    activityViewController.completionHandler = [self completionHandler];
+    activityViewController.completionWithItemsHandler = [self completionHandler];
     return activityViewController;
 }
 
@@ -85,7 +85,7 @@ NSString * const SDJSShareScriptURLKey = @"url";
     return javaScriptExcludedTypes;
 }
 
-- (UIActivityViewControllerCompletionHandler)completionHandler {
+- (UIActivityViewControllerCompletionWithItemsHandler)completionHandler {
     @strongify(self.delegate, strongDelegate);
     
     if ([strongDelegate respondsToSelector:@selector(shareBridgeAPICompletionHandler)]) {
@@ -117,8 +117,8 @@ NSString * const SDJSShareScriptURLKey = @"url";
     return nil;
 }
 
-- (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler {
-    return ^(NSString *activityTtpe, BOOL completed) {
+- (UIActivityViewControllerCompletionWithItemsHandler)shareBridgeAPICompletionHandler {
+    return ^(NSString *activityTtpe, BOOL completed, NSArray* returnedItems, NSError* activityError) {
         if (completed) {
             // invoke JS callback
             [self runCallbackWithSender:nil];

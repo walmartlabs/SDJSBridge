@@ -57,9 +57,9 @@ JSExportAs(share, - (void)shareWithOptions:(NSDictionary *)options);
 
 /**
  Implement to customize the completion logic.
- @return The completion handler block of type `UIActivityViewControllerCompletionHandler`.
+ @return The completion handler block of type `UIActivityViewControllerCompletionWithItemsHandler`.
  */
-- (UIActivityViewControllerCompletionHandler)shareBridgeAPICompletionHandler;
+- (UIActivityViewControllerCompletionWithItemsHandler)shareBridgeAPICompletionHandler;
 
 @end
 
