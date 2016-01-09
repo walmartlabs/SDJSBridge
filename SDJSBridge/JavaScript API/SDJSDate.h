@@ -25,6 +25,7 @@
 
 + (instancetype)dateModelWithDictionary:(NSDictionary *)dictionary;
 + (instancetype)dateModelWithDate:(NSDate *)date;
++ (instancetype)dateModelWithDate:(NSDate *)date useBaseZeroMonth:(BOOL)baseZeroMonth;
 - (NSDate *)dateValue;
 
 @end
