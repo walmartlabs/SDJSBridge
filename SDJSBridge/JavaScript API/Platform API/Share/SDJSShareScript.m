@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
 #import "SDJSShareScript.h"
-
 #import "SDWebViewController.h"
-#import "SDMacros.h"
 #import "SDJSShareService.h"
 
 NSString * const SDJSShareScriptMessageKey = @"message";

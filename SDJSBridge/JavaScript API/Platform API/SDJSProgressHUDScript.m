@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
 #import "SDJSProgressHUDScript.h"
-#import "SDMacros.h"
 
 NSString * const SDJSProgressOptionMessageKey = @"message";
 

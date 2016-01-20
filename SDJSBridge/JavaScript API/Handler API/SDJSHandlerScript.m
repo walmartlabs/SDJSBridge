@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
 #import "SDJSHandlerScript.h"
 #import "SDJSBridgeScript+HandlerHelpers.h"
-#import "SDMacros.h"
 
 @interface SDJSHandlerScript ()
 

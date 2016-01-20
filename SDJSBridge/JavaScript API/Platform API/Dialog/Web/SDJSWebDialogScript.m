@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
 #import "SDJSWebDialogScript.h"
 #import "SDWebViewController.h"
 #import "SDJSHandlerScript.h"
-#import "SDMacros.h"
 #import "SDJSWebDialogOptions.h"
 #import "SDJSScriptOutput.h"
 

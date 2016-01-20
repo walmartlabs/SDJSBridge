@@ -6,13 +6,11 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
+#import <THGHybridWeb/THGHybridWeb.h>
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
-#import "SDMacros.h"
 #import "SDJSHandlerScript.h"
-#import "UIImage+SDExtensions.h"
-
-#import "walmart-Swift.h"
 
 NSString * const SDJSPageFinishedHandlerName = @"pageFinished";
 

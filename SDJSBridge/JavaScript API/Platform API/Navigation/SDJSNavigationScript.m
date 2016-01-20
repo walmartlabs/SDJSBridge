@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
+#import <IOSShared/IOSShared.h>
 #import "SDJSNavigationScript.h"
 #import "SDJSHandlerScript.h"
 #import "SDWebViewController.h"
-#import "SDMacros.h"
 
 NSString * const kSDJSNavigationScriptTitleKey = @"title";
 NSString * const kSDJSNavigationScriptBackTitleKey = @"backTitle";
