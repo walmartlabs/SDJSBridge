@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import <IOSShared/IOSShared.h>
+@import IOSShared;
 #import <THGHybridWeb/THGHybridWeb.h>
+
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
 #import "SDJSHandlerScript.h"

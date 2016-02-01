@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 SetDirection. All rights reserved.
 //
 
-#import <IOSShared/IOSShared.h>
+@import IOSShared;
+
 #import "SDJSHandlerScript.h"
 #import "SDJSBridgeScript+HandlerHelpers.h"
 
