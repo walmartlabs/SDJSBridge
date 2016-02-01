@@ -32,6 +32,17 @@ NSString * const kSDJSDateDayKey = @"day";
     return [[self alloc] initWithDate:date];
 }
 
+// The service which validates receipt data when a TC number is used expects the receipt
+// date to be in 0 - 11 format.  This version of dataModelWithData accomodates this.  CB-4815
++ (instancetype)dateModelWithDate:(NSDate *)date useBaseZeroMonth:(BOOL)baseZeroMonth {
+    SDJSDate *newDate = [[self alloc] initWithDate:date];
+    if (baseZeroMonth) {
+        newDate.month = [NSNumber numberWithInteger:[newDate.month integerValue] - 1];
+    }
+    
+    return newDate;
+}
+
 #pragma mark - Initialization
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
