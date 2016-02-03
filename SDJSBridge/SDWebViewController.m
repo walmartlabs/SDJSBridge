@@ -7,7 +7,7 @@
 //
 
 @import IOSShared;
-#import <THGHybridWeb/THGHybridWeb.h>
+@import ELHybridWeb;
 
 #import "SDWebViewController.h"
 #import "SDJSBridge.h"
