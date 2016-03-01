@@ -33,7 +33,7 @@ NSString * const kSDJSNavigationScriptShareTitleKey = @"shareTitle";
     NSURL *url = [NSURL URLWithString:urlString];
     
     if (!url.scheme) {
-        NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:urlString withExtension:nil];
+        NSURL *bundleURL = [[NSBundle bundleForClass:[self class]] URLForResource:urlString withExtension:nil];
         url = bundleURL;
     }
     
