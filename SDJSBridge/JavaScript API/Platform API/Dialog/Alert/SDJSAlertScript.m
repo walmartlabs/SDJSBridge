@@ -16,7 +16,7 @@
 @interface SDJSAlertScript ()
 
 @property (nonatomic, copy) NSArray *buttons;
-@property (nonatomic, copy) SDBridgeHandlerOutputBlock callback;
+@property (nonatomic, strong) JSManagedValue *buttonTappedCallback;
 
 @end
 
@@ -61,17 +61,18 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     SDJSAlertButton *button = self.buttons[(NSUInteger)buttonIndex];
+    SDJSAlertScriptOutput *scriptOutput = [[SDJSAlertScriptOutput alloc] initWithAction:[button actionType]];
+    JSValue *callback = self.buttonTappedCallback.value;
     
-    if (self.callback) {
-        SDJSAlertScriptOutput *scriptOutput = [[SDJSAlertScriptOutput alloc] initWithAction:[button actionType]];
-        self.callback(scriptOutput);
+    if (callback != nil && scriptOutput != nil) {
+        [callback callWithArguments:@[scriptOutput]];
     }
 }
 
 #pragma mark - External API
 
-- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback {
-    self.callback = [callback copy];
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
+    self.buttonTappedCallback = [JSManagedValue managedValueWithValue:callback andOwner:self];
     
     SDJSAlertOptions *alertOptions = [[SDJSAlertOptions alloc] initWithDictionary:options];
     [self showAlertWithAlertOptions:alertOptions];

@@ -19,6 +19,6 @@ JSExportAs(alert, - (void)showAlertWithOptions:(NSDictionary *)options callback:
 
 @interface SDJSAlertScript : SDJSBridgeScript
 
-- (void)showAlertWithOptions:(NSDictionary *)options callback:(SDBridgeHandlerOutputBlock)callback;
+- (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback;
 
 @end

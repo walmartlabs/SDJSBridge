@@ -56,7 +56,7 @@ NSUInteger const kSDJSPlatformScriptVersionNumber = 1;
 
 - (void)showAlertWithOptions:(NSDictionary *)options callback:(JSValue *)callback {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.alertScript showAlertWithOptions:[options validBridgeScriptOptions] callback:[SDJSPlatformScript handlerOutputBlockWithCallback:callback]];
+        [self.alertScript showAlertWithOptions:[options validBridgeScriptOptions] callback:callback];
     });
 }
 
